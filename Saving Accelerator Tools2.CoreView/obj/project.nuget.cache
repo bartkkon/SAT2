@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "EVnAMI7pVlxORfWdJWA7lWAdkHcT3vqPJxgnGJM9wuSws+U/c7QPMKjV9AqtkioxfolK3Wlalbfun/gLSw0AYQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\bartkkon\\OneDrive - Electrolux\\Visual Studio\\Saving Accelerator Tool2\\Saving Accelerator Tools2.CoreView\\Saving Accelerator Tools2.CoreView.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\bartkkon\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

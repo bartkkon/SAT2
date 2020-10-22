@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>Saving_Accelerator_Tools2.Core</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20200916075416_Currencychange.cs" />
+    <Compile Remove="Migrations\20200916075416_Currencychange.Designer.cs" />
+    <Compile Remove="Migrations\20200916075552_CurrencychangeDrop.cs" />
+    <Compile Remove="Migrations\20200916075552_CurrencychangeDrop.Designer.cs" />
+    <Compile Remove="Migrations\20200923084724_NewMonthlyANC.cs" />
+    <Compile Remove="Migrations\20200923084724_NewMonthlyANC.Designer.cs" />
+    <Compile Remove="Migrations\20200930083725_ActionPart1.cs" />
+    <Compile Remove="Migrations\20200930083725_ActionPart1.Designer.cs" />
+    <Compile Remove="Migrations\20200930085422_ActionPart1.cs" />
+    <Compile Remove="Migrations\20200930085422_ActionPart1.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,9 @@
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.CoreView\obj\Debug\netstandard2.0\Saving Accelerator Tools2.CoreView.AssemblyInfoInputs.cache
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.CoreView\obj\Debug\netstandard2.0\Saving Accelerator Tools2.CoreView.AssemblyInfo.cs
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.CoreView\obj\Debug\netstandard2.0\Saving Accelerator Tools2.CoreView.csproj.CoreCompileInputs.cache
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.CoreView\bin\Debug\netstandard2.0\Saving Accelerator Tools2.CoreView.deps.json
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.CoreView\bin\Debug\netstandard2.0\Saving Accelerator Tools2.CoreView.dll
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.CoreView\bin\Debug\netstandard2.0\Saving Accelerator Tools2.CoreView.pdb
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.CoreView\obj\Debug\netstandard2.0\Saving Accelerator Tools2.CoreView.dll
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.CoreView\obj\Debug\netstandard2.0\Saving Accelerator Tools2.CoreView.pdb
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.CoreView\obj\Debug\netstandard2.0\Saving Accelerator Tools2.CoreView.csprojAssemblyReference.cache
