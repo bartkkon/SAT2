@@ -1,5 +1,5 @@
 ﻿using System.Windows.Controls;
-
+using Saving_Accelerator_Tools2.Models.Action;
 using Saving_Accelerator_Tools2.ViewModels;
 
 namespace Saving_Accelerator_Tools2.Views
@@ -9,6 +9,7 @@ namespace Saving_Accelerator_Tools2.Views
         public ActionPage(ActionViewModel viewModel)
         {
             InitializeComponent();
+            //var Action = new ActionModel();
             DataContext = viewModel;
         }
     }

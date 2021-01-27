@@ -15,16 +15,16 @@ namespace Saving_Accelerator_Tools2.Core.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.8")
+                .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "5.0.0");
 
             modelBuilder.Entity("Saving_Accelerator_Tools2.Core.Models.Action.Action_DB", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<int>("ActionID")
                         .HasColumnType("int");
@@ -81,7 +81,7 @@ namespace Saving_Accelerator_Tools2.Core.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<decimal>("Finish")
                         .HasColumnType("decimal(4,0)");
@@ -102,7 +102,7 @@ namespace Saving_Accelerator_Tools2.Core.Migrations
                     b.Property<int>("LeaderID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<bool>("Active")
                         .HasColumnType("bit");
@@ -126,7 +126,7 @@ namespace Saving_Accelerator_Tools2.Core.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<string>("ANC")
                         .HasColumnType("varchar(9)");
@@ -150,7 +150,7 @@ namespace Saving_Accelerator_Tools2.Core.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<int>("Month")
                         .HasColumnType("int");
@@ -174,7 +174,7 @@ namespace Saving_Accelerator_Tools2.Core.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<string>("Instalation")
                         .HasColumnType("varchar(4)");
@@ -204,7 +204,7 @@ namespace Saving_Accelerator_Tools2.Core.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<string>("ANC")
                         .HasColumnType("varchar(9)");
@@ -231,7 +231,7 @@ namespace Saving_Accelerator_Tools2.Core.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<int>("Month")
                         .HasColumnType("int");
@@ -258,7 +258,7 @@ namespace Saving_Accelerator_Tools2.Core.Migrations
                     b.Property<int>("DevisionID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<bool>("Active")
                         .HasColumnType("bit");
@@ -306,7 +306,7 @@ namespace Saving_Accelerator_Tools2.Core.Migrations
                     b.Property<int>("PlantID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<bool>("Active")
                         .HasColumnType("bit");
@@ -324,7 +324,7 @@ namespace Saving_Accelerator_Tools2.Core.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<string>("Devision")
                         .HasColumnType("nvarchar(max)");
@@ -373,10 +373,10 @@ namespace Saving_Accelerator_Tools2.Core.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<string>("ANC")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(9)");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
@@ -388,10 +388,10 @@ namespace Saving_Accelerator_Tools2.Core.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("STD")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(8,4)");
 
                     b.Property<decimal>("Year")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(4,0)");
 
                     b.HasKey("ID");
 
@@ -403,7 +403,7 @@ namespace Saving_Accelerator_Tools2.Core.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<decimal>("DM")
                         .HasColumnType("decimal(18,2)");
@@ -481,7 +481,7 @@ namespace Saving_Accelerator_Tools2.Core.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<string>("Tab")
                         .HasColumnType("nvarchar(max)");
@@ -496,7 +496,7 @@ namespace Saving_Accelerator_Tools2.Core.Migrations
                     b.Property<int>("RoleID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<bool>("Active")
                         .HasColumnType("bit");
@@ -529,7 +529,7 @@ namespace Saving_Accelerator_Tools2.Core.Migrations
                     b.Property<int>("UserID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<string>("Login")
                         .HasColumnType("nvarchar(max)");
@@ -561,6 +561,10 @@ namespace Saving_Accelerator_Tools2.Core.Migrations
                         .HasForeignKey("DevisionID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Action");
+
+                    b.Navigation("Devision");
                 });
 
             modelBuilder.Entity("Saving_Accelerator_Tools2.Core.Models.Action.InterTable.Action_Plant_InterTable", b =>
@@ -576,6 +580,10 @@ namespace Saving_Accelerator_Tools2.Core.Migrations
                         .HasForeignKey("PlantID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Action");
+
+                    b.Navigation("Plant");
                 });
 
             modelBuilder.Entity("Saving_Accelerator_Tools2.Core.Models.Other.InterTable.ActionLeader_Devision_DB", b =>
@@ -591,6 +599,10 @@ namespace Saving_Accelerator_Tools2.Core.Migrations
                         .HasForeignKey("LeaderID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Devision");
+
+                    b.Navigation("Leader");
                 });
 
             modelBuilder.Entity("Saving_Accelerator_Tools2.Core.Models.Other.InterTable.ActionLeader_Plant_DB", b =>
@@ -606,6 +618,10 @@ namespace Saving_Accelerator_Tools2.Core.Migrations
                         .HasForeignKey("LeaderID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Factory");
+
+                    b.Navigation("Leader");
                 });
 
             modelBuilder.Entity("Saving_Accelerator_Tools2.Core.Models.Users.InterTable.User_Devision_DB", b =>
@@ -621,6 +637,10 @@ namespace Saving_Accelerator_Tools2.Core.Migrations
                         .HasForeignKey("UserID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Devisions");
+
+                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("Saving_Accelerator_Tools2.Core.Models.Users.InterTable.User_Pages_DB", b =>
@@ -636,6 +656,10 @@ namespace Saving_Accelerator_Tools2.Core.Migrations
                         .HasForeignKey("UserID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Page");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Saving_Accelerator_Tools2.Core.Models.Users.InterTable.User_Role_DB", b =>
@@ -651,6 +675,10 @@ namespace Saving_Accelerator_Tools2.Core.Migrations
                         .HasForeignKey("UserID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Role");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Saving_Accelerator_Tools2.Core.Models.Users.UserPlant_DB", b =>
@@ -666,6 +694,63 @@ namespace Saving_Accelerator_Tools2.Core.Migrations
                         .HasForeignKey("UserID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Plant");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Saving_Accelerator_Tools2.Core.Models.Action.Action_DB", b =>
+                {
+                    b.Navigation("Action_Devision");
+
+                    b.Navigation("Action_Plant");
+                });
+
+            modelBuilder.Entity("Saving_Accelerator_Tools2.Core.Models.Other.ActionLeader_DB", b =>
+                {
+                    b.Navigation("Leader_Devision");
+
+                    b.Navigation("Leader_Plant");
+                });
+
+            modelBuilder.Entity("Saving_Accelerator_Tools2.Core.Models.Other.Devision_DB", b =>
+                {
+                    b.Navigation("Action_Devision");
+
+                    b.Navigation("Leader_Devisions");
+
+                    b.Navigation("User_Devisions");
+                });
+
+            modelBuilder.Entity("Saving_Accelerator_Tools2.Core.Models.Other.Plant_DB", b =>
+                {
+                    b.Navigation("Action_Plant");
+
+                    b.Navigation("Leader_Plant");
+
+                    b.Navigation("User_Plant");
+                });
+
+            modelBuilder.Entity("Saving_Accelerator_Tools2.Core.Models.Users.PageVisibility_DB", b =>
+                {
+                    b.Navigation("User_Pages");
+                });
+
+            modelBuilder.Entity("Saving_Accelerator_Tools2.Core.Models.Users.Role_DB", b =>
+                {
+                    b.Navigation("User_Role");
+                });
+
+            modelBuilder.Entity("Saving_Accelerator_Tools2.Core.Models.Users.Users_DB", b =>
+                {
+                    b.Navigation("User_Devisions");
+
+                    b.Navigation("User_Pages");
+
+                    b.Navigation("User_Plant");
+
+                    b.Navigation("User_Role");
                 });
 #pragma warning restore 612, 618
         }

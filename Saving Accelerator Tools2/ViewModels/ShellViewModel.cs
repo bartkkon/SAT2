@@ -41,6 +41,7 @@ namespace Saving_Accelerator_Tools2.ViewModels
             new HamburgerMenuGlyphItem() { Label = Resources.ShellSummary_DetailPage, Glyph = "\uE8A5", TargetPageType = typeof(Summary_DetailViewModel) },
             new HamburgerMenuGlyphItem() { Label = Resources.ShellSummaryPage, Glyph = "\uE8A5", TargetPageType = typeof(SummaryViewModel) },
             new HamburgerMenuGlyphItem() { Label = Resources.ShellStatisticPage, Glyph = "\uE8A5", TargetPageType = typeof(StatisticViewModel) },
+            new HamburgerMenuGlyphItem() { Label = Resources.ShellQuantityPage, Glyph = "\uE8A5", TargetPageType = typeof(QuantityViewModel) },
             new HamburgerMenuGlyphItem() { Label = Resources.ShellAdminPage, Glyph = "\uE8A5", TargetPageType = typeof(AdminViewModel) },
             new HamburgerMenuGlyphItem() { Label = Resources.ShellAdminSQLViewPage, Glyph = "\uE8A5", TargetPageType = typeof(AdminSQLViewViewModel) },
         };

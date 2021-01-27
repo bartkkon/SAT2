@@ -1,0 +1,9 @@
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tool2.StandardCost\bin\Debug\netcoreapp3.1\Saving Accelerator Tools2.StandardCost.deps.json
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tool2.StandardCost\bin\Debug\netcoreapp3.1\Saving Accelerator Tools2.StandardCost.dll
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tool2.StandardCost\bin\Debug\netcoreapp3.1\Saving Accelerator Tools2.StandardCost.pdb
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tool2.StandardCost\obj\Debug\netcoreapp3.1\Saving Accelerator Tools2.StandardCost.AssemblyInfoInputs.cache
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tool2.StandardCost\obj\Debug\netcoreapp3.1\Saving Accelerator Tools2.StandardCost.AssemblyInfo.cs
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tool2.StandardCost\obj\Debug\netcoreapp3.1\Saving Accelerator Tools2.StandardCost.csproj.CoreCompileInputs.cache
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tool2.StandardCost\obj\Debug\netcoreapp3.1\Saving Accelerator Tools2.StandardCost.dll
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tool2.StandardCost\obj\Debug\netcoreapp3.1\Saving Accelerator Tools2.StandardCost.pdb
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tool2.StandardCost\obj\Debug\netcoreapp3.1\Saving Accelerator Tools2.StandardCost.csprojAssemblyReference.cache

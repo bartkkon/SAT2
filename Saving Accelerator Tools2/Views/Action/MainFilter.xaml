@@ -4,22 +4,26 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="Saving_Accelerator_Tools2.Views.Action.MainFilter"
+             xmlns:model="clr-namespace:Saving_Accelerator_Tools2.ViewModels.Action"
              mc:Ignorable="d" d:DesignWidth="320" MinWidth="320" MaxWidth="320" MinHeight="500">
+    <UserControl.DataContext>
+        <model:MainFilterViewModel/>
+    </UserControl.DataContext>
     <Grid MinWidth="320" MinHeight="230" MaxWidth="320" ScrollViewer.VerticalScrollBarVisibility="Auto" VerticalAlignment="Stretch">
         <CheckBox x:Name="ActiveAction_CB" Content="Active Action" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="100" Margin="20,15,0,0" IsChecked="{Binding Path=Active, Mode=TwoWay}" Checked="ActiveAction_CB_Checked"/>
         <CheckBox x:Name="IdeaAction_CB" Content="Idea Action" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="99" Margin="20,35,0,0" IsChecked="{Binding Path=Idea, Mode=TwoWay}" Checked="IdeaAction_CB_Checked"/>
         <Button x:Name="NewAction_Button" Content="New Action" HorizontalAlignment="Left" Height="44" Margin="140,10,0,0" VerticalAlignment="Top" Width="171"/>
         <mah:NumericUpDown x:Name="Year_MainFilter_Num" HorizontalAlignment="Left" Height="10" VerticalAlignment="Top" Width="82" Margin="20,120,0,0" NumericInputMode="Decimal" Maximum="2100" Minimum="2018" Value="{Binding Path=Year}"/>
-        <ComboBox x:Name="LeaderAction_MainFilter_CB" HorizontalAlignment="Left" Height="31" Margin="20,190,0,0" VerticalAlignment="Top" Width="273" ItemsSource="{Binding Path=Leaders, Mode=OneWay}"/>
+        <ComboBox x:Name="LeaderAction_MainFilter_CB" HorizontalAlignment="Left" Height="31" Margin="20,190,0,0" VerticalAlignment="Top" Width="273" ItemsSource="{Binding Path=Leaders, Mode=OneWay}" SelectedIndex="{Binding Path=LeaderSelectedIndex, Mode=TwoWay}"/>
         <TextBlock HorizontalAlignment="Left" Height="24" TextWrapping="Wrap" VerticalAlignment="Top" Width="68" Margin="20,100,0,0"><Run Language="pl-pl" Text="Year:"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Height="14" TextWrapping="Wrap" VerticalAlignment="Top" Width="97" Margin="20,170,0,0"><Run Language="pl-pl" Text="Action Leader:"/></TextBlock>
-        <Grid x:Name="Devision_Grid" Margin="122,64,0,0" HorizontalAlignment="Left" Width="93" Height="121" VerticalAlignment="Top">
+        <Grid x:Name="Devision_Grid" Margin="122,64,0,0" HorizontalAlignment="Left" Width="93" Height="121" VerticalAlignment="Top" Visibility="{Binding Path=VisibleAdmin, Mode=OneWay}">
             <CheckBox x:Name="Electronic_MainFilter_CB" Content="Electronic" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="83" Margin="10,25,0,0" IsChecked="{Binding Path=Electronic, Mode=TwoWay}"/>
             <CheckBox x:Name="Mechanic_MainFilter_CB" Content="Mechanic" HorizontalAlignment="Left" Height="20" VerticalAlignment="Center" Width="78" Margin="10,0,0,0" IsChecked="{Binding Path=Mechanic, Mode=TwoWay}"/>
             <CheckBox x:Name="NVR_MainFilter_CB" Content="NVR" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="53" Margin="10,75,0,0" IsChecked="{Binding Path=NVR, Mode=TwoWay}"/>
             <TextBlock HorizontalAlignment="Left" Height="21" Text="Devision:" TextWrapping="Wrap" VerticalAlignment="Top" Width="63" Margin="5,5,0,0"/>
         </Grid>
-        <Grid x:Name="Plant_Grid" Margin="220,65,0,0" HorizontalAlignment="Left" Width="70" Height="120" VerticalAlignment="Top">
+        <Grid x:Name="Plant_Grid" Margin="220,65,0,0" HorizontalAlignment="Left" Width="70" Height="120" VerticalAlignment="Top" Visibility="{Binding Path=VisibleAdmin, Mode=OneWay}">
             <TextBlock HorizontalAlignment="Left" Height="15" TextWrapping="Wrap" VerticalAlignment="Top" Width="40" Margin="5,5,0,0"><Run Language="pl-pl" Text="Plant:"/></TextBlock>
             <CheckBox x:Name="PLV_Plant_MainFilter_CB" Content="PLV" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="55" Margin="5,25,0,0" IsChecked="{Binding Path=PLV, Mode=TwoWay}"/>
             <CheckBox x:Name="ZM_Plant_MainFilter_CB" Content="ZM" Height="20" VerticalAlignment="Top" Margin="5,50,0,0" HorizontalAlignment="Left" Width="55" IsChecked="{Binding Path=ZM, Mode=TwoWay}"/>

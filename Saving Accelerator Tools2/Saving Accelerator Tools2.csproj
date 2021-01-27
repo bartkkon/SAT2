@@ -11,15 +11,15 @@
     <None Remove="Views\Action\pobrane.png" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="MahApps.Metro" Version="2.1.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.8">
+    <PackageReference Include="MahApps.Metro" Version="2.3.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.8" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
+    <PackageReference Include="Prism.Core" Version="8.0.0.1909" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Saving Accelerator Tools2.CoreView\Saving Accelerator Tools2.CoreView.csproj" />
     <ProjectReference Include="..\Saving Accelerator Tools2.Core\Saving Accelerator Tools2.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
