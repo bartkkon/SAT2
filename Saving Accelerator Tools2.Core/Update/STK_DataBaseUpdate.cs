@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.SqlServer.Query.Internal;
 using Microsoft.EntityFrameworkCore.Storage;
+using Saving_Accelerator_Tools2.Core.Controllers.Data;
 using Saving_Accelerator_Tools2.Core.Data;
 using Saving_Accelerator_Tools2.Core.Models.ProductionData;
 using System;
@@ -31,10 +32,21 @@ namespace Saving_Accelerator_Tools2.Core.Update
         private int[] UpdateBase(string link)
         {
             string[] STKFileUpdate = File.ReadAllLines(link);
+            List<STK_DB> STK_Base;
             var context = new DataBaseConnetionContext();
             int CheckRecords = 0;
             int UpdatedRecords = 0;
             int AddRecords = 0;
+            decimal UpdateYear;
+
+            if(STKFileUpdate.Count() == 0)
+                return new int[] { CheckRecords, UpdatedRecords, AddRecords };
+
+            var helpLine = STKFileUpdate[0].Remove(0, 13);
+            UpdateYear = decimal.Parse("20" + helpLine.Remove(2));
+
+            STK_Base = STK_Controller.Load_Year(UpdateYear).ToList();
+
 
             foreach (string UpdateLine in STKFileUpdate) {
                 CheckRecords++;
@@ -56,27 +68,27 @@ namespace Saving_Accelerator_Tools2.Core.Update
 
                 var RecordDate = new DateTime(Year, Month, Day);
 
-                var DataBaseRecord = context.STK.Where(u => u.ANC == ANC && u.Year == (decimal)Year).FirstOrDefault();
-                if(DataBaseRecord != null) {
-                    var IfUpdate = false;
+                var DataBaseRecord = STK_Base.Where(u => u.ANC == ANC).FirstOrDefault();
+                if (DataBaseRecord != null) {
+                    var IfUpdated = false;
                     if (DataBaseRecord.STD != STK) {
                         DataBaseRecord.STD = STK;
-                        IfUpdate = true;
-                    }
-                        
-                    if (DataBaseRecord.IDCO != IDCO) {
-                        DataBaseRecord.IDCO = IDCO;
-                        IfUpdate = true;
-                    }
-                        
-                    if (DataBaseRecord.Description != Description) {
-                        DataBaseRecord.Description = Description;
-                        IfUpdate = true;
+                        DataBaseRecord.Date = RecordDate;
+                        IfUpdated = true;
                     }
 
-                    if (IfUpdate) {
+                    if (DataBaseRecord.IDCO != IDCO) {
+                        DataBaseRecord.IDCO = IDCO;
+                        IfUpdated = true;
+                    }
+
+                    if (DataBaseRecord.Description != Description) {
+                        DataBaseRecord.Description = Description;
+                        IfUpdated = true;
+                    }
+
+                    if(IfUpdated) {
                         UpdatedRecords++;
-                        context.STK.Update(DataBaseRecord);
                     }
                 }
                 else {
@@ -88,11 +100,11 @@ namespace Saving_Accelerator_Tools2.Core.Update
                         Date = RecordDate,
                         STD = STK,
                     };
-                    context.STK.Add(DataBaseRecord);
+                    STK_Base.Add(DataBaseRecord);
                     AddRecords++;
                 }
             }
-            context.SaveChanges();
+            STK_Controller.Update_Year(STK_Base);
 
             return  new int[] { CheckRecords, UpdatedRecords, AddRecords };
         }

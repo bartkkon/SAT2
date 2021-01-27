@@ -21,7 +21,7 @@
         <TextBlock HorizontalAlignment="Left" Height="20" Text="Start Month:" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Margin="435,70,0,0"/>
         <TextBlock HorizontalAlignment="Left" Height="20" Text="Devision:" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Margin="435,100,0,0"/>
         <TextBlock HorizontalAlignment="Left" Height="20" Text="Plant:" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Margin="435,130,0,0"/>
-        <TextBox x:Name="ActionID_TextBox" HorizontalAlignment="Left" Height="0" Margin="520,5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Text="{Binding Path=ActionID, Mode=TwoWay}"/>
+        <TextBox x:Name="ActionID_TextBox" HorizontalAlignment="Left" Height="0" Margin="520,5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Text="{Binding Path=TEST, Mode=TwoWay}"/>
         <mah:NumericUpDown x:Name="ActionStartYear_numeric" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="100" Margin="520,35,0,0" Value="{Binding Path=StartYear, Mode=TwoWay}"/>
         <ComboBox x:Name="Devision_Combobox" HorizontalAlignment="Left" Height="10" Margin="520,95,0,0" VerticalAlignment="Top" Width="100" ItemsSource="{Binding Path=Devision}" DisplayMemberPath="Value" SelectedValuePath="Key" SelectedValue="{Binding Path=Devisions_SelectedItem, Mode=TwoWay}" SelectedIndex="{Binding Path=Devision_SelectedIndex}"/>
         <ComboBox x:Name="Factory_Combobox" HorizontalAlignment="Left" Height="20" Margin="520,125,0,0" VerticalAlignment="Top" Width="100" ItemsSource="{Binding Path=Plants}" DisplayMemberPath="Value" SelectedValuePath="Key" SelectedValue="{Binding Path=Plants_SelectedItem, Mode=TwoWay}" SelectedIndex="{Binding Path=Plant_SelectedIndex}"/>

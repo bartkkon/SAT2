@@ -86,6 +86,9 @@ namespace Saving_Accelerator_Tools2
             services.AddTransient<StatisticViewModel>();
             services.AddTransient<StatisticPage>();
 
+            services.AddTransient<QuantityViewModel>();
+            services.AddTransient<QuantityPage>();
+
             services.AddTransient<AdminViewModel>();
             services.AddTransient<AdminPage>();
 

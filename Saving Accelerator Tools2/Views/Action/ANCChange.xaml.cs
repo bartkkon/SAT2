@@ -1,6 +1,7 @@
 ﻿using Saving_Accelerator_Tools2.ViewModels.Action;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -22,16 +23,16 @@ namespace Saving_Accelerator_Tools2.Views.Action
         public ANCChange()
         {
             InitializeComponent();
-            DataContext = new ANCChangeViewModel();
+            //DataContext = new ANCChangeViewModel();
         }
 
         private void ANC_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.Key == Key.Tab)
+            if (e.Key == Key.Tab)
             {
                 return;
             }
-            if (e.Key != Key.A && !char.IsDigit((char)KeyInterop.VirtualKeyFromKey(e.Key)))
+            if (e.Key != Key.A && !(e.Key >= Key.D0 && e.Key <= Key.D9) && !(e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9))
             {
                 e.Handled = true;
             }
@@ -46,38 +47,102 @@ namespace Saving_Accelerator_Tools2.Views.Action
                     e.Handled = true;
                 }
             }
-
-        }
-
-        private void ANC_BorderCheck(object sender, EventArgs eventArgs)
-        {
-            if((sender as TextBox).Text.Length < 9 && (sender as TextBox).Text.Length >0)
-            {
-                //(sender as TextBox).va
-            }
-            else
-            {
-                //(sender as TextBox).BorderBrush = Brushes.;
-            }
         }
 
         private void Quantity_KeyDown(object sender, KeyEventArgs e)
         {
-
+            if (e.Key == Key.Tab)
+                return;
+            if (e.Key != Key.OemComma && e.Key != Key.Decimal && !(e.Key >= Key.D0 && e.Key <= Key.D9) && !(e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9))
+            {
+                e.Handled = true;
+            }
+            else if ((e.Key == Key.OemComma || e.Key == Key.Decimal) && (e.Source as TextBox).Text.Count(f => f == ',') != 0)
+            {
+                e.Handled = true;
+            }
+            else if ((e.Key == Key.OemComma || e.Key == Key.Decimal) && (e.Source as TextBox).SelectionStart == 0)
+            {
+                (e.Source as TextBox).Text = "0" + (e.Source as TextBox).Text;
+                (e.Source as TextBox).SelectionStart = 1;
+            }
         }
 
-        private void Delta_TargetUpdated(object sender, DataTransferEventArgs e)
+        private void Color_TargetUpdated(object sender, DataTransferEventArgs e)
         {
-
+            (sender as TextBlock).Foreground = default;
+            if (decimal.TryParse((sender as TextBlock).Text, out decimal result))
+            {
+                if (result > 0)
+                    (sender as TextBlock).Foreground = Brushes.Lime;
+                else if (result < 0)
+                    (sender as TextBlock).Foreground = Brushes.Red;
+            }
         }
 
         private void Cost_KeyDown(object sender, KeyEventArgs e)
         {
-
+            if (e.Key == Key.Tab)
+                return;
+            if (e.Key != Key.OemComma &&
+                e.Key != Key.Decimal &&
+                e.Key != Key.OemMinus &&
+                e.Key != Key.Subtract &&
+                !(e.Key >= Key.D0 && e.Key <= Key.D9) &&
+                !(e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9))
+            {
+                e.Handled = true;
+            }
+            else if ((e.Key == Key.OemComma || e.Key == Key.Decimal) && (e.Source as TextBox).Text.Count(f => f == ',') != 0)
+            {
+                e.Handled = true;
+            }
+            else if ((e.Key == Key.OemMinus || e.Key == Key.Subtract) && (e.Source as TextBox).Text.Count(f => f == '-') != 0)
+            {
+                e.Handled = true;
+            }
+            else if ((e.Key == Key.OemComma || e.Key == Key.Decimal) && (e.Source as TextBox).SelectionStart == 0)
+            {
+                (e.Source as TextBox).Text = "0" + (e.Source as TextBox).Text;
+                (e.Source as TextBox).SelectionStart = 1;
+            }
+            else if ((e.Key == Key.OemMinus || e.Key == Key.Subtract) && (e.Source as TextBox).SelectionStart != 0)
+            {
+                e.Handled = true;
+            }
         }
+
         private void Percent_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.Key == Key.Tab)
+                return;
+            if (e.Key != Key.OemComma && e.Key != Key.Decimal && !(e.Key >= Key.D0 && e.Key <= Key.D9) && !(e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9))
+            {
+                e.Handled = true;
+            }
+            else if ((e.Key == Key.OemComma || e.Key == Key.Decimal) && (e.Source as TextBox).Text.Count(f => f == ',') != 0)
+            {
+                e.Handled = true;
+            }
+            else if ((e.Key == Key.OemComma || e.Key == Key.Decimal) && (e.Source as TextBox).SelectionStart == 0)
+            {
+                (e.Source as TextBox).Text = "0" + (e.Source as TextBox).Text;
+                (e.Source as TextBox).SelectionStart = 1;
+            }
+        }
 
+        private void Percent_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if ((sender as TextBox).Text == string.Empty)
+            {
+                (sender as TextBox).Text = "100";
+            }
+        }
+
+        private void Estimation1_TargetUpdated(object sender, DataTransferEventArgs e)
+        {
+            //SumEstymationAll();
+            //GeneretedCalculationValue();
         }
     }
 }

@@ -22,6 +22,7 @@ namespace Saving_Accelerator_Tools2.Services
             Configure<Summary_DetailViewModel, Summary_DetailPage>();
             Configure<SummaryViewModel, SummaryPage>();
             Configure<StatisticViewModel, StatisticPage>();
+            Configure<QuantityViewModel, QuantityPage>();
             Configure<AdminViewModel, AdminPage>();
             Configure<AdminSQLViewViewModel, AdminSQLViewPage>();
             Configure<SettingsViewModel, SettingsPage>();

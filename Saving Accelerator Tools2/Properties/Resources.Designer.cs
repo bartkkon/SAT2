@@ -10,7 +10,8 @@
 
 namespace Saving_Accelerator_Tools2.Properties {
     using System;
-
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -22,15 +23,15 @@ namespace Saving_Accelerator_Tools2.Properties {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
-
+        
         private static global::System.Resources.ResourceManager resourceMan;
-
+        
         private static global::System.Globalization.CultureInfo resourceCulture;
-
+        
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal Resources() {
         }
-
+        
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
@@ -44,7 +45,7 @@ namespace Saving_Accelerator_Tools2.Properties {
                 return resourceMan;
             }
         }
-
+        
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
@@ -58,34 +59,7 @@ namespace Saving_Accelerator_Tools2.Properties {
                 resourceCulture = value;
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to wts.ItemName.
-        /// </summary>
-        public static string AppDisplayName {
-            get {
-                return ResourceManager.GetString("AppDisplayName", resourceCulture);
-            }
-        }
-    
-        /// <summary>
-        ///   Looks up a localized string similar to ShellGoBackButton.
-        /// </summary>
-        public static string ShellGoBackButton {
-            get {
-                return ResourceManager.GetString("ShellGoBackButton", resourceCulture);
-            }
-        }
-    
-        /// <summary>
-        ///   Looks up a localized string similar to ShellHamburgerButtonName.
-        /// </summary>
-        public static string ShellHamburgerButtonName {
-            get {
-                return ResourceManager.GetString("ShellHamburgerButtonName", resourceCulture);
-            }
-        }
-    
+        
         /// <summary>
         ///   Looks up a localized string similar to Action.
         /// </summary>
@@ -94,70 +68,7 @@ namespace Saving_Accelerator_Tools2.Properties {
                 return ResourceManager.GetString("ActionPageTitle", resourceCulture);
             }
         }
-    
-        /// <summary>
-        ///   Looks up a localized string similar to Action.
-        /// </summary>
-        public static string ShellActionPage {
-            get {
-                return ResourceManager.GetString("ShellActionPage", resourceCulture);
-            }
-        }
-    
-        /// <summary>
-        ///   Looks up a localized string similar to Summary_Detail.
-        /// </summary>
-        public static string Summary_DetailPageTitle {
-            get {
-                return ResourceManager.GetString("Summary_DetailPageTitle", resourceCulture);
-            }
-        }
-    
-        /// <summary>
-        ///   Looks up a localized string similar to Summary_Detail.
-        /// </summary>
-        public static string ShellSummary_DetailPage {
-            get {
-                return ResourceManager.GetString("ShellSummary_DetailPage", resourceCulture);
-            }
-        }
-    
-        /// <summary>
-        ///   Looks up a localized string similar to Summary.
-        /// </summary>
-        public static string SummaryPageTitle {
-            get {
-                return ResourceManager.GetString("SummaryPageTitle", resourceCulture);
-            }
-        }
-    
-        /// <summary>
-        ///   Looks up a localized string similar to Summary.
-        /// </summary>
-        public static string ShellSummaryPage {
-            get {
-                return ResourceManager.GetString("ShellSummaryPage", resourceCulture);
-            }
-        }
-    
-        /// <summary>
-        ///   Looks up a localized string similar to Statistic.
-        /// </summary>
-        public static string StatisticPageTitle {
-            get {
-                return ResourceManager.GetString("StatisticPageTitle", resourceCulture);
-            }
-        }
-    
-        /// <summary>
-        ///   Looks up a localized string similar to Statistic.
-        /// </summary>
-        public static string ShellStatisticPage {
-            get {
-                return ResourceManager.GetString("ShellStatisticPage", resourceCulture);
-            }
-        }
-    
+        
         /// <summary>
         ///   Looks up a localized string similar to Admin.
         /// </summary>
@@ -166,16 +77,7 @@ namespace Saving_Accelerator_Tools2.Properties {
                 return ResourceManager.GetString("AdminPageTitle", resourceCulture);
             }
         }
-    
-        /// <summary>
-        ///   Looks up a localized string similar to Admin.
-        /// </summary>
-        public static string ShellAdminPage {
-            get {
-                return ResourceManager.GetString("ShellAdminPage", resourceCulture);
-            }
-        }
-    
+        
         /// <summary>
         ///   Looks up a localized string similar to AdminSQLView.
         /// </summary>
@@ -184,79 +86,88 @@ namespace Saving_Accelerator_Tools2.Properties {
                 return ResourceManager.GetString("AdminSQLViewPageTitle", resourceCulture);
             }
         }
-    
+        
         /// <summary>
-        ///   Looks up a localized string similar to AdminSQLView.
+        ///   Looks up a localized string similar to Saving_Accelerator_Tools2.
         /// </summary>
-        public static string ShellAdminSQLViewPage {
+        public static string AppDisplayName {
             get {
-                return ResourceManager.GetString("ShellAdminSQLViewPage", resourceCulture);
+                return ResourceManager.GetString("AppDisplayName", resourceCulture);
             }
         }
-    
+        
         /// <summary>
-            ///   Looks up a localized string similar to Settings page placeholder text.  Your app description goes here..
-            /// </summary>
-            public static string SettingsPageAboutText {
-                get {
-                    return ResourceManager.GetString("SettingsPageAboutText", resourceCulture);
-                }
+        ///   Looks up a localized string similar to Quantity.
+        /// </summary>
+        public static string QuantityPageTitle {
+            get {
+                return ResourceManager.GetString("QuantityPageTitle", resourceCulture);
             }
-    
-            /// <summary>
-            ///   Looks up a localized string similar to About this application.
-            /// </summary>
-            public static string SettingsPageAboutTitle {
-                get {
-                    return ResourceManager.GetString("SettingsPageAboutTitle", resourceCulture);
-                }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings page placeholder text.  Your app description goes here..
+        /// </summary>
+        public static string SettingsPageAboutText {
+            get {
+                return ResourceManager.GetString("SettingsPageAboutText", resourceCulture);
             }
-    
-            /// <summary>
-            ///   Looks up a localized string similar to Choose Theme.
-            /// </summary>
-            public static string SettingsPageChooseThemeText {
-                get {
-                    return ResourceManager.GetString("SettingsPageChooseThemeText", resourceCulture);
-                }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to About this application.
+        /// </summary>
+        public static string SettingsPageAboutTitle {
+            get {
+                return ResourceManager.GetString("SettingsPageAboutTitle", resourceCulture);
             }
-    
-            /// <summary>
-            ///   Looks up a localized string similar to Personalization.
-            /// </summary>
-            public static string SettingsPagePersonalizationTitle {
-                get {
-                    return ResourceManager.GetString("SettingsPagePersonalizationTitle", resourceCulture);
-                }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose Theme.
+        /// </summary>
+        public static string SettingsPageChooseThemeText {
+            get {
+                return ResourceManager.GetString("SettingsPageChooseThemeText", resourceCulture);
             }
-    
-            /// <summary>
-            ///   Looks up a localized string similar to Privacy Statement.
-            /// </summary>
-            public static string SettingsPagePrivacyStatementText {
-                get {
-                    return ResourceManager.GetString("SettingsPagePrivacyStatementText", resourceCulture);
-                }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Personalization.
+        /// </summary>
+        public static string SettingsPagePersonalizationTitle {
+            get {
+                return ResourceManager.GetString("SettingsPagePersonalizationTitle", resourceCulture);
             }
-    
-            /// <summary>
-            ///   Looks up a localized string similar to Dark.
-            /// </summary>
-            public static string SettingsPageRadioButtonDarkTheme {
-                get {
-                    return ResourceManager.GetString("SettingsPageRadioButtonDarkTheme", resourceCulture);
-                }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Privacy Statement.
+        /// </summary>
+        public static string SettingsPagePrivacyStatementText {
+            get {
+                return ResourceManager.GetString("SettingsPagePrivacyStatementText", resourceCulture);
             }
-    
-            /// <summary>
-            ///   Looks up a localized string similar to Light.
-            /// </summary>
-            public static string SettingsPageRadioButtonLightTheme {
-                get {
-                    return ResourceManager.GetString("SettingsPageRadioButtonLightTheme", resourceCulture);
-                }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dark.
+        /// </summary>
+        public static string SettingsPageRadioButtonDarkTheme {
+            get {
+                return ResourceManager.GetString("SettingsPageRadioButtonDarkTheme", resourceCulture);
             }
-    
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light.
+        /// </summary>
+        public static string SettingsPageRadioButtonLightTheme {
+            get {
+                return ResourceManager.GetString("SettingsPageRadioButtonLightTheme", resourceCulture);
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
@@ -265,13 +176,121 @@ namespace Saving_Accelerator_Tools2.Properties {
                 return ResourceManager.GetString("SettingsPageTitle", resourceCulture);
             }
         }
-    
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Action.
+        /// </summary>
+        public static string ShellActionPage {
+            get {
+                return ResourceManager.GetString("ShellActionPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Admin.
+        /// </summary>
+        public static string ShellAdminPage {
+            get {
+                return ResourceManager.GetString("ShellAdminPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AdminSQLView.
+        /// </summary>
+        public static string ShellAdminSQLViewPage {
+            get {
+                return ResourceManager.GetString("ShellAdminSQLViewPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Go back.
+        /// </summary>
+        public static string ShellGoBackButton {
+            get {
+                return ResourceManager.GetString("ShellGoBackButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open or close navigation.
+        /// </summary>
+        public static string ShellHamburgerButtonName {
+            get {
+                return ResourceManager.GetString("ShellHamburgerButtonName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quantity.
+        /// </summary>
+        public static string ShellQuantityPage {
+            get {
+                return ResourceManager.GetString("ShellQuantityPage", resourceCulture);
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
         public static string ShellSettingsPage {
             get {
                 return ResourceManager.GetString("ShellSettingsPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Statistic.
+        /// </summary>
+        public static string ShellStatisticPage {
+            get {
+                return ResourceManager.GetString("ShellStatisticPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Summary_Detail.
+        /// </summary>
+        public static string ShellSummary_DetailPage {
+            get {
+                return ResourceManager.GetString("ShellSummary_DetailPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Summary.
+        /// </summary>
+        public static string ShellSummaryPage {
+            get {
+                return ResourceManager.GetString("ShellSummaryPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Statistic.
+        /// </summary>
+        public static string StatisticPageTitle {
+            get {
+                return ResourceManager.GetString("StatisticPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Summary_Detail.
+        /// </summary>
+        public static string Summary_DetailPageTitle {
+            get {
+                return ResourceManager.GetString("Summary_DetailPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Summary.
+        /// </summary>
+        public static string SummaryPageTitle {
+            get {
+                return ResourceManager.GetString("SummaryPageTitle", resourceCulture);
             }
         }
     }

@@ -26,18 +26,5 @@ namespace Saving_Accelerator_Tools2.Views.Admin
             InitializeComponent();
         }
 
-        private void STK_Normal_Buttom_Click(object sender, RoutedEventArgs e)
-        {
-            Mouse.OverrideCursor = Cursors.Wait;
-            var Results = new STK_DataBaseUpdate().StandardUpdate();
-            Mouse.OverrideCursor = null;
-            if (Results[0] != -1)
-                MessageBox.Show("Check Records: " + Results[0] + Environment.NewLine +
-                    "Updated Records: " + Results[1] + Environment.NewLine +
-                    "New Records: " + Results[2], "STK Updated");
-            else
-                MessageBox.Show("Problem with find file, more than 30 was not genereted!", "Error");
-        }
-
     }
 }

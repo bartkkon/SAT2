@@ -6,4 +6,3 @@ C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\S
 C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.Core\obj\Debug\netstandard2.0\Saving Accelerator Tools2.Core.csproj.CoreCompileInputs.cache
 C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.Core\obj\Debug\netstandard2.0\Saving Accelerator Tools2.Core.dll
 C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.Core\obj\Debug\netstandard2.0\Saving Accelerator Tools2.Core.pdb
-C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.Core\obj\Debug\netstandard2.0\Saving Accelerator Tools2.Core.csprojAssemblyReference.cache

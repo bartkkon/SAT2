@@ -4,12 +4,19 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Saving_Accelerator_Tools2.Views.Admin"
+             xmlns:model="clr-namespace:Saving_Accelerator_Tools2.ViewModels.Admin"
              xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="Saving_Accelerator_Tools2.Views.Admin.STKUpdate"
              mc:Ignorable="d" 
              d:DesignHeight="200" d:DesignWidth="250" Width="250" Height="200" MinWidth="250" MinHeight="200" MaxWidth="250" MaxHeight="200">
+    <UserControl.DataContext>
+        <model:STKUpdateViewModel/>
+    </UserControl.DataContext>
     <Grid>
         <Rectangle HorizontalAlignment="Stretch" Margin="0,0,0,0" Stroke="Black" VerticalAlignment="Stretch"/>
-        <Button x:Name="STK_Normal_Buttom" Content="STK Update" HorizontalAlignment="Left" Height="30" Margin="20,15,0,0" VerticalAlignment="Top" Width="85" Click="STK_Normal_Buttom_Click"/>
-
+        <Button x:Name="STK_Normal_Buttom" Content="STK Update" HorizontalAlignment="Left" Height="30" Margin="28,15,0,0" VerticalAlignment="Top" Width="85" Command="{Binding Path=StandardUpdate}"/>
+        <mah:NumericUpDown HorizontalAlignment="Left" Margin="54,61,0,0" VerticalAlignment="Top" Width="94" Minimum="2018" Maximum="2100" Value="{Binding Path=Year}"/>
+        <Label Content="Year:" HorizontalAlignment="Left" Margin="11,61,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="STK_Manual_Buttom" Content="STK Manual" HorizontalAlignment="Left" Height="30" Margin="28,100,0,0" VerticalAlignment="Top" Width="85" Command="{Binding Path=Manual}"/>
+        <Button x:Name="STK_Deleted_Buttom" Content="Delete" HorizontalAlignment="Left" Height="30" Margin="143,100,0,0" VerticalAlignment="Top" Width="85" Command="{Binding Path=DelateYear}"/>
     </Grid>
 </UserControl>
