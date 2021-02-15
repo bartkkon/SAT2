@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Saving_Accelerator_Tools2.TemplateSelectors.Validation"
              xmlns:model="clr-namespace:Saving_Accelerator_Tools2.ViewModels.Action"
              mc:Ignorable="d" 
-             d:DesignHeight="380" d:DesignWidth="740" MinWidth="740" MinHeight="380" MaxWidth="740" MaxHeight="380">
+             d:DesignHeight="380" d:DesignWidth="920" MinWidth="920" MinHeight="380" MaxWidth="920" MaxHeight="380">
     <UserControl.DataContext>
         <model:ANCChangeViewModel/>
     </UserControl.DataContext>
@@ -16,9 +16,9 @@
         <Button Name="Minus"  Content="-" HorizontalAlignment="Left" Height="30" Margin="50,10,0,0" VerticalAlignment="Top" Width="30" Command="{Binding MinusButton}"/>
         <!-- OLD ANC -->
         <TextBlock HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="55" Margin="25,50,0,0" FontWeight="Bold" FontStyle="Italic" Effect="{DynamicResource DropShadowBrush}"><Run Language="pl-pl" Text="OLD ANC"/></TextBlock>
-        <TextBox Name="OldANC1" HorizontalAlignment="Left" Height="20" Margin="15,75,0,0" VerticalAlignment="Top" Width="75" TextWrapping="Wrap" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper">
+        <TextBox Name="OldANC1" HorizontalAlignment="Left" Height="20" Margin="15,75,0,0" VerticalAlignment="Top" Width="75" TextWrapping="Wrap" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper" GotFocus="TextBox_GotFocus" TabIndex="1">
             <TextBox.Text>
-                <Binding Path="OldANC[0]" Mode="TwoWay" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True" ValidatesOnDataErrors="True" NotifyOnSourceUpdated="True">
+                <Binding Path="ANCList[0].OldANC" Mode="TwoWay" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True" ValidatesOnDataErrors="True" NotifyOnSourceUpdated="True" >
                     <Binding.ValidationRules>
                         <local:Length_Validation Min="0" Max="9" ValidatesOnTargetUpdated="True"/>
                     </Binding.ValidationRules>
@@ -28,9 +28,9 @@
                 <Binding Path="Visible[0]"/>
             </TextBox.Visibility>
         </TextBox>
-        <TextBox Name="OldANC2"  HorizontalAlignment="Left" Height="20" Margin="15,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper">
+        <TextBox Name="OldANC2"  HorizontalAlignment="Left" Height="20" Margin="15,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper" GotFocus="TextBox_GotFocus" TabIndex="7">
             <TextBox.Text>
-                <Binding Path="OldANC[1]" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" >
+                <Binding Path="ANCList[1].OldANC" Mode="TwoWay" UpdateSourceTrigger="LostFocus" ValidatesOnExceptions="True" ValidatesOnDataErrors="True" NotifyOnSourceUpdated="True" >
                     <Binding.ValidationRules>
                         <local:Length_Validation Min="0" Max="9" ValidatesOnTargetUpdated="True"/>
                     </Binding.ValidationRules>
@@ -40,9 +40,9 @@
                 <Binding Path="Visible[1]"/>
             </TextBox.Visibility>
         </TextBox>
-        <TextBox Name="OldANC3"  HorizontalAlignment="Left" Height="20" Margin="15,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper">
+        <TextBox Name="OldANC3"  HorizontalAlignment="Left" Height="20" Margin="15,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper" GotFocus="TextBox_GotFocus" TabIndex="13">
             <TextBox.Text>
-                <Binding Path="OldANC[2]" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" >
+                <Binding Path="ANCList[2].OldANC" Mode="TwoWay" UpdateSourceTrigger="LostFocus" ValidatesOnExceptions="True" ValidatesOnDataErrors="True" NotifyOnSourceUpdated="True" >
                     <Binding.ValidationRules>
                         <local:Length_Validation Min="0" Max="9" />
                     </Binding.ValidationRules>
@@ -52,9 +52,9 @@
                 <Binding Path="Visible[2]"/>
             </TextBox.Visibility>
         </TextBox>
-        <TextBox Name="OldANC4"  HorizontalAlignment="Left" Height="20" Margin="15,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper">
+        <TextBox Name="OldANC4"  HorizontalAlignment="Left" Height="20" Margin="15,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper" GotFocus="TextBox_GotFocus" TabIndex="19">
             <TextBox.Text>
-                <Binding Path="OldANC[3]" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" >
+                <Binding Path="ANCList[3].OldANC" Mode="TwoWay" UpdateSourceTrigger="LostFocus" ValidatesOnExceptions="True" ValidatesOnDataErrors="True" NotifyOnSourceUpdated="True" >
                     <Binding.ValidationRules>
                         <local:Length_Validation Min="0" Max="9" />
                     </Binding.ValidationRules>
@@ -64,9 +64,9 @@
                 <Binding Path="Visible[3]"/>
             </TextBox.Visibility>
         </TextBox>
-        <TextBox Name="OldANC5"  HorizontalAlignment="Left" Height="20" Margin="15,195,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper">
+        <TextBox Name="OldANC5"  HorizontalAlignment="Left" Height="20" Margin="15,195,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper" GotFocus="TextBox_GotFocus" TabIndex="25">
             <TextBox.Text>
-                <Binding Path="OldANC[4]" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" >
+                <Binding Path="ANCList[4].OldANC" Mode="TwoWay" UpdateSourceTrigger="LostFocus" ValidatesOnExceptions="True" ValidatesOnDataErrors="True" NotifyOnSourceUpdated="True" >
                     <Binding.ValidationRules>
                         <local:Length_Validation Min="0" Max="9" />
                     </Binding.ValidationRules>
@@ -76,9 +76,9 @@
                 <Binding Path="Visible[4]"/>
             </TextBox.Visibility>
         </TextBox>
-        <TextBox Name="OldANC6"  HorizontalAlignment="Left" Height="20" Margin="15,225,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper">
+        <TextBox Name="OldANC6"  HorizontalAlignment="Left" Height="20" Margin="15,225,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper" GotFocus="TextBox_GotFocus" TabIndex="31">
             <TextBox.Text>
-                <Binding Path="OldANC[5]" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" >
+                <Binding Path="ANCList[5].OldANC" Mode="TwoWay" UpdateSourceTrigger="LostFocus" ValidatesOnExceptions="True" ValidatesOnDataErrors="True" NotifyOnSourceUpdated="True" >
                     <Binding.ValidationRules>
                         <local:Length_Validation Min="0" Max="9" />
                     </Binding.ValidationRules>
@@ -88,9 +88,9 @@
                 <Binding Path="Visible[5]"/>
             </TextBox.Visibility>
         </TextBox>
-        <TextBox Name="OldANC7"  HorizontalAlignment="Left" Height="20" Margin="15,255,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper">
+        <TextBox Name="OldANC7"  HorizontalAlignment="Left" Height="20" Margin="15,255,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper" GotFocus="TextBox_GotFocus" TabIndex="37">
             <TextBox.Text>
-                <Binding Path="OldANC[6]" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" >
+                <Binding Path="ANCList[6].OldANC" Mode="TwoWay" UpdateSourceTrigger="LostFocus" ValidatesOnExceptions="True" ValidatesOnDataErrors="True" NotifyOnSourceUpdated="True" >
                     <Binding.ValidationRules>
                         <local:Length_Validation Min="0" Max="9" />
                     </Binding.ValidationRules>
@@ -100,9 +100,9 @@
                 <Binding Path="Visible[6]"/>
             </TextBox.Visibility>
         </TextBox>
-        <TextBox Name="OldANC8"  HorizontalAlignment="Left" Height="20" Margin="15,285,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper">
+        <TextBox Name="OldANC8"  HorizontalAlignment="Left" Height="20" Margin="15,285,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper" GotFocus="TextBox_GotFocus" TabIndex="43">
             <TextBox.Text>
-                <Binding Path="OldANC[7]" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" >
+                <Binding Path="ANCList[7].OldANC" Mode="TwoWay" UpdateSourceTrigger="LostFocus" ValidatesOnExceptions="True" ValidatesOnDataErrors="True" NotifyOnSourceUpdated="True" >
                     <Binding.ValidationRules>
                         <local:Length_Validation Min="0" Max="9" />
                     </Binding.ValidationRules>
@@ -112,9 +112,9 @@
                 <Binding Path="Visible[7]"/>
             </TextBox.Visibility>
         </TextBox>
-        <TextBox Name="OldANC9"  HorizontalAlignment="Left" Height="20" Margin="15,315,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper">
+        <TextBox Name="OldANC9"  HorizontalAlignment="Left" Height="20" Margin="15,315,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper" GotFocus="TextBox_GotFocus" TabIndex="49">
             <TextBox.Text>
-                <Binding Path="OldANC[8]" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" >
+                <Binding Path="ANCList[8].OldANC" Mode="TwoWay" UpdateSourceTrigger="LostFocus" ValidatesOnExceptions="True" ValidatesOnDataErrors="True" NotifyOnSourceUpdated="True" >
                     <Binding.ValidationRules>
                         <local:Length_Validation Min="0" Max="9" />
                     </Binding.ValidationRules>
@@ -124,9 +124,9 @@
                 <Binding Path="Visible[8]"/>
             </TextBox.Visibility>
         </TextBox>
-        <TextBox Name="OldANC10"  HorizontalAlignment="Left" Height="20" Margin="15,344,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper">
+        <TextBox Name="OldANC10"  HorizontalAlignment="Left" Height="20" Margin="15,344,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper" GotFocus="TextBox_GotFocus" TabIndex="55">
             <TextBox.Text>
-                <Binding Path="OldANC[9]" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" >
+                <Binding Path="ANCList[9].OldANC" Mode="TwoWay" UpdateSourceTrigger="LostFocus" ValidatesOnExceptions="True" ValidatesOnDataErrors="True" NotifyOnSourceUpdated="True" >
                     <Binding.ValidationRules>
                         <local:Length_Validation Min="0" Max="9" />
                     </Binding.ValidationRules>
@@ -138,16 +138,16 @@
         </TextBox>
         <!-- OLD ANC Quantity-->
         <TextBlock HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="15" Margin="115,50,0,0" FontWeight="Bold" FontStyle="Italic" Effect="{DynamicResource DropShadowBrush}"><Run Language="pl-pl" Text="Q"/></TextBlock>
-        <TextBox Name="OldANCQ1"  HorizontalAlignment="Left" Height="20" Margin="95,75,0,0" Text="{Binding Path=OldANCQuantity[0], Mode=TwoWay, UpdateSourceTrigger=LostFocus}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Path=Visible[0]}" KeyDown="Quantity_KeyDown"/>
-        <TextBox Name="OldANCQ2"  HorizontalAlignment="Left" Height="20" Margin="95,105,0,0" Text="{Binding Path=OldANCQuantity[1], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Path=Visible[1]}" KeyDown="Quantity_KeyDown"/>
-        <TextBox Name="OldANCQ3"  HorizontalAlignment="Left" Height="20" Margin="95,135,0,0" Text="{Binding Path=OldANCQuantity[2], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Path=Visible[2]}" KeyDown="Quantity_KeyDown"/>
-        <TextBox Name="OldANCQ4"  HorizontalAlignment="Left" Height="20" Margin="95,165,0,0" Text="{Binding Path=OldANCQuantity[3], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Path=Visible[3]}" KeyDown="Quantity_KeyDown"/>
-        <TextBox Name="OldANCQ5"  HorizontalAlignment="Left" Height="20" Margin="95,195,0,0" Text="{Binding Path=OldANCQuantity[4], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Path=Visible[4]}" KeyDown="Quantity_KeyDown"/>
-        <TextBox Name="OldANCQ6"  HorizontalAlignment="Left" Height="20" Margin="95,225,0,0" Text="{Binding Path=OldANCQuantity[5], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Path=Visible[5]}" KeyDown="Quantity_KeyDown"/>
-        <TextBox Name="OldANCQ7"  HorizontalAlignment="Left" Height="20" Margin="95,255,0,0" Text="{Binding Path=OldANCQuantity[6], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Path=Visible[6]}" KeyDown="Quantity_KeyDown"/>
-        <TextBox Name="OldANCQ8"  HorizontalAlignment="Left" Height="20" Margin="95,285,0,0" Text="{Binding Path=OldANCQuantity[7], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Path=Visible[7]}" KeyDown="Quantity_KeyDown"/>
-        <TextBox Name="OldANCQ9"  HorizontalAlignment="Left" Height="20" Margin="95,315,0,0" Text="{Binding Path=OldANCQuantity[8], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Path=Visible[8]}" KeyDown="Quantity_KeyDown"/>
-        <TextBox Name="OldANCQ10"  HorizontalAlignment="Left" Height="20" Margin="95,345,0,0" Text="{Binding Path=OldANCQuantity[9], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Path=Visible[9]}" KeyDown="Quantity_KeyDown"/>
+        <TextBox Name="OldANCQ1"  HorizontalAlignment="Left" Height="20" Margin="95,75,0,0" Text="{Binding Path=ANCList[0].OldANCQuantity, Mode=TwoWay, UpdateSourceTrigger=LostFocus, StringFormat={}{0:# ###.####}}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Path=Visible[0]}" KeyDown="Quantity_KeyDown" RenderTransformOrigin="0.5,0.5" GotFocus="TextBox_GotFocus" TabIndex="2"/>
+        <TextBox Name="OldANCQ2"  HorizontalAlignment="Left" Height="20" Margin="95,105,0,0" Text="{Binding Path=ANCList[1].OldANCQuantity, Mode=TwoWay, UpdateSourceTrigger=LostFocus, StringFormat={}{0:# ###.####}}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Path=Visible[1]}" KeyDown="Quantity_KeyDown"  GotFocus="TextBox_GotFocus" TabIndex="8"/>
+        <TextBox Name="OldANCQ3"  HorizontalAlignment="Left" Height="20" Margin="95,135,0,0" Text="{Binding Path=ANCList[2].OldANCQuantity, Mode=TwoWay, UpdateSourceTrigger=LostFocus, StringFormat={}{0:# ###.####}}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Path=Visible[2]}" KeyDown="Quantity_KeyDown" GotFocus="TextBox_GotFocus" TabIndex="14"/>
+        <TextBox Name="OldANCQ4"  HorizontalAlignment="Left" Height="20" Margin="95,165,0,0" Text="{Binding Path=ANCList[3].OldANCQuantity, Mode=TwoWay, UpdateSourceTrigger=LostFocus, StringFormat={}{0:# ###.####}}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Path=Visible[3]}" KeyDown="Quantity_KeyDown" GotFocus="TextBox_GotFocus" TabIndex="20"/>
+        <TextBox Name="OldANCQ5"  HorizontalAlignment="Left" Height="20" Margin="95,195,0,0" Text="{Binding Path=ANCList[4].OldANCQuantity, Mode=TwoWay, UpdateSourceTrigger=LostFocus, StringFormat={}{0:# ###.####}}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Path=Visible[4]}" KeyDown="Quantity_KeyDown" GotFocus="TextBox_GotFocus" TabIndex="26"/>
+        <TextBox Name="OldANCQ6"  HorizontalAlignment="Left" Height="20" Margin="95,225,0,0" Text="{Binding Path=ANCList[5].OldANCQuantity, Mode=TwoWay, UpdateSourceTrigger=LostFocus, StringFormat={}{0:# ###.####}}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Path=Visible[5]}" KeyDown="Quantity_KeyDown" GotFocus="TextBox_GotFocus" TabIndex="32"/>
+        <TextBox Name="OldANCQ7"  HorizontalAlignment="Left" Height="20" Margin="95,255,0,0" Text="{Binding Path=ANCList[6].OldANCQuantity, Mode=TwoWay, UpdateSourceTrigger=LostFocus, StringFormat={}{0:# ###.####}}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Path=Visible[6]}" KeyDown="Quantity_KeyDown" GotFocus="TextBox_GotFocus" TabIndex="38"/>
+        <TextBox Name="OldANCQ8"  HorizontalAlignment="Left" Height="20" Margin="95,285,0,0" Text="{Binding Path=ANCList[7].OldANCQuantity, Mode=TwoWay, UpdateSourceTrigger=LostFocus, StringFormat={}{0:# ###.####}}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Path=Visible[7]}" KeyDown="Quantity_KeyDown" GotFocus="TextBox_GotFocus" TabIndex="44"/>
+        <TextBox Name="OldANCQ9"  HorizontalAlignment="Left" Height="20" Margin="95,315,0,0" Text="{Binding Path=ANCList[8].OldANCQuantity, Mode=TwoWay, UpdateSourceTrigger=LostFocus, StringFormat={}{0:# ###.####}}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Path=Visible[8]}" KeyDown="Quantity_KeyDown" GotFocus="TextBox_GotFocus" TabIndex="50"/>
+        <TextBox Name="OldANCQ10"  HorizontalAlignment="Left" Height="20" Margin="95,345,0,0" Text="{Binding Path=ANCList[9].OldANCQuantity, Mode=TwoWay, UpdateSourceTrigger=LostFocus, StringFormat={}{0:# ###.####}}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Path=Visible[9]}" KeyDown="Quantity_KeyDown" GotFocus="TextBox_GotFocus" TabIndex="56"/>
         <!-- Arrows 
         <Image HorizontalAlignment="Left" Height="15" Margin="147,80,0,0" VerticalAlignment="Top" Width="20" Stretch="Fill" Source="/Image/arrow.png" Visibility="{Binding Path=Visible[0]}"/>
         <Image HorizontalAlignment="Left" Height="15" Margin="147,110,0,0" VerticalAlignment="Top" Width="20" Stretch="Fill" Source="/Image/arrow.png" Visibility="{Binding Path=Visible[1]}"/>
@@ -162,9 +162,9 @@
         -->
         <!-- NEW ANC -->
         <TextBlock HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="58" Margin="180,50,0,0" FontWeight="Bold" FontStyle="Italic" Effect="{DynamicResource DropShadowBrush}"><Run Language="pl-pl" Text="NEW ANC"/></TextBlock>
-        <TextBox x:Name="NewANC1"  HorizontalAlignment="Left" Height="20" Margin="170,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper">
+        <TextBox x:Name="NewANC1"  HorizontalAlignment="Left" Height="20" Margin="170,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper" GotFocus="TextBox_GotFocus" TabIndex="3">
             <TextBox.Text>
-                <Binding Path="NewANC[0]" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" >
+                <Binding Path="ANCList[0].NewANC" Mode="TwoWay" UpdateSourceTrigger="LostFocus" ValidatesOnExceptions="True" >
                     <Binding.ValidationRules>
                         <local:Length_Validation Min="0" Max="9" />
                     </Binding.ValidationRules>
@@ -174,9 +174,9 @@
                 <Binding Path="Visible[0]"/>
             </TextBox.Visibility>
         </TextBox>
-        <TextBox x:Name="NewANC2"  HorizontalAlignment="Left" Height="20" Margin="170,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper">
+        <TextBox x:Name="NewANC2"  HorizontalAlignment="Left" Height="20" Margin="170,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper" GotFocus="TextBox_GotFocus" TabIndex="9">
             <TextBox.Text>
-                <Binding Path="NewANC[1]" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" >
+                <Binding Path="ANCList[1].NewANC" Mode="TwoWay" UpdateSourceTrigger="LostFocus" ValidatesOnExceptions="True" >
                     <Binding.ValidationRules>
                         <local:Length_Validation Min="0" Max="9" />
                     </Binding.ValidationRules>
@@ -186,9 +186,9 @@
                 <Binding Path="Visible[1]"/>
             </TextBox.Visibility>
         </TextBox>
-        <TextBox x:Name="NewANC3"  HorizontalAlignment="Left" Height="20" Margin="170,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper">
+        <TextBox x:Name="NewANC3"  HorizontalAlignment="Left" Height="20" Margin="170,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper" GotFocus="TextBox_GotFocus" TabIndex="15">
             <TextBox.Text>
-                <Binding Path="NewANC[2]" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" >
+                <Binding Path="ANCList[2].NewANC" Mode="TwoWay" UpdateSourceTrigger="LostFocus" ValidatesOnExceptions="True" >
                     <Binding.ValidationRules>
                         <local:Length_Validation Min="0" Max="9" />
                     </Binding.ValidationRules>
@@ -198,9 +198,9 @@
                 <Binding Path="Visible[2]"/>
             </TextBox.Visibility>
         </TextBox>
-        <TextBox x:Name="NewANC4"  HorizontalAlignment="Left" Height="20" Margin="170,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper">
+        <TextBox x:Name="NewANC4"  HorizontalAlignment="Left" Height="20" Margin="170,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper" GotFocus="TextBox_GotFocus" TabIndex="21">
             <TextBox.Text>
-                <Binding Path="NewANC[3]" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" >
+                <Binding Path="ANCList[3].NewANC" Mode="TwoWay" UpdateSourceTrigger="LostFocus" ValidatesOnExceptions="True" >
                     <Binding.ValidationRules>
                         <local:Length_Validation Min="0" Max="9" />
                     </Binding.ValidationRules>
@@ -210,9 +210,9 @@
                 <Binding Path="Visible[3]"/>
             </TextBox.Visibility>
         </TextBox>
-        <TextBox x:Name="NewANC5"  HorizontalAlignment="Left" Height="20" Margin="170,195,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper">
+        <TextBox x:Name="NewANC5"  HorizontalAlignment="Left" Height="20" Margin="170,195,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper" GotFocus="TextBox_GotFocus" TabIndex="27">
             <TextBox.Text>
-                <Binding Path="NewANC[4]" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" >
+                <Binding Path="ANCList[4].NewANC" Mode="TwoWay" UpdateSourceTrigger="LostFocus" ValidatesOnExceptions="True" >
                     <Binding.ValidationRules>
                         <local:Length_Validation Min="0" Max="9" />
                     </Binding.ValidationRules>
@@ -222,9 +222,9 @@
                 <Binding Path="Visible[4]"/>
             </TextBox.Visibility>
         </TextBox>
-        <TextBox x:Name="NewANC6"  HorizontalAlignment="Left" Height="20" Margin="170,225,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper">
+        <TextBox x:Name="NewANC6"  HorizontalAlignment="Left" Height="20" Margin="170,225,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper" GotFocus="TextBox_GotFocus"  TabIndex="33">
             <TextBox.Text>
-                <Binding Path="NewANC[5]" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" >
+                <Binding Path="ANCList[5].NewANC" Mode="TwoWay" UpdateSourceTrigger="LostFocus" ValidatesOnExceptions="True" >
                     <Binding.ValidationRules>
                         <local:Length_Validation Min="0" Max="9" />
                     </Binding.ValidationRules>
@@ -234,9 +234,9 @@
                 <Binding Path="Visible[5]"/>
             </TextBox.Visibility>
         </TextBox>
-        <TextBox x:Name="NewANC7"  HorizontalAlignment="Left" Height="20" Margin="170,255,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper">
+        <TextBox x:Name="NewANC7"  HorizontalAlignment="Left" Height="20" Margin="170,255,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper" GotFocus="TextBox_GotFocus" TabIndex="39">
             <TextBox.Text>
-                <Binding Path="NewANC[6]" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" >
+                <Binding Path="ANCList[6].NewANC" Mode="TwoWay" UpdateSourceTrigger="LostFocus" ValidatesOnExceptions="True" >
                     <Binding.ValidationRules>
                         <local:Length_Validation Min="0" Max="9" />
                     </Binding.ValidationRules>
@@ -246,9 +246,9 @@
                 <Binding Path="Visible[6]"/>
             </TextBox.Visibility>
         </TextBox>
-        <TextBox x:Name="NewANC8"  HorizontalAlignment="Left" Height="20" Margin="170,285,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper">
+        <TextBox x:Name="NewANC8"  HorizontalAlignment="Left" Height="20" Margin="170,285,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper" GotFocus="TextBox_GotFocus" TabIndex="45">
             <TextBox.Text>
-                <Binding Path="NewANC[7]" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" >
+                <Binding Path="ANCList[7].NewANC" Mode="TwoWay" UpdateSourceTrigger="LostFocus" ValidatesOnExceptions="True" >
                     <Binding.ValidationRules>
                         <local:Length_Validation Min="0" Max="9" />
                     </Binding.ValidationRules>
@@ -258,9 +258,9 @@
                 <Binding Path="Visible[7]"/>
             </TextBox.Visibility>
         </TextBox>
-        <TextBox x:Name="NewANC9"  HorizontalAlignment="Left" Height="20" Margin="170,315,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper">
+        <TextBox x:Name="NewANC9"  HorizontalAlignment="Left" Height="20" Margin="170,315,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper" GotFocus="TextBox_GotFocus"  TabIndex="51">
             <TextBox.Text>
-                <Binding Path="NewANC[8]" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" >
+                <Binding Path="ANCList[8].NewANC" Mode="TwoWay" UpdateSourceTrigger="LostFocus" ValidatesOnExceptions="True" >
                     <Binding.ValidationRules>
                         <local:Length_Validation Min="0" Max="9" />
                     </Binding.ValidationRules>
@@ -270,9 +270,9 @@
                 <Binding Path="Visible[8]"/>
             </TextBox.Visibility>
         </TextBox>
-        <TextBox x:Name="NewANC10"  HorizontalAlignment="Left" Height="20" Margin="170,344,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper">
+        <TextBox x:Name="NewANC10"  HorizontalAlignment="Left" Height="20" Margin="170,344,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper" GotFocus="TextBox_GotFocus"  TabIndex="57">
             <TextBox.Text>
-                <Binding Path="NewANC[9]" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" >
+                <Binding Path="ANCList[9].NewANC" Mode="TwoWay" UpdateSourceTrigger="LostFocus" ValidatesOnExceptions="True" >
                     <Binding.ValidationRules>
                         <local:Length_Validation Min="0" Max="9" />
                     </Binding.ValidationRules>
@@ -284,94 +284,342 @@
         </TextBox>
         <!-- NEW ANC Quantity -->
         <TextBlock HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="15" Margin="270,50,0,0" FontWeight="Bold" FontStyle="Italic" Effect="{DynamicResource DropShadowBrush}"><Run Language="pl-pl" Text="Q"/></TextBlock>
-        <TextBox x:Name="NewANCQ1"  HorizontalAlignment="Left" Height="20" Margin="250,75,0,0" Text="{Binding NewANCQuantity[0], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[0]}" KeyDown="Quantity_KeyDown"/>
-        <TextBox x:Name="NewANCQ2"  HorizontalAlignment="Left" Height="20" Margin="250,105,0,0" Text="{Binding NewANCQuantity[1], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[1]}" KeyDown="Quantity_KeyDown"/>
-        <TextBox x:Name="NewANCQ3"  HorizontalAlignment="Left" Height="20" Margin="250,135,0,0" Text="{Binding NewANCQuantity[2], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[2]}" KeyDown="Quantity_KeyDown"/>
-        <TextBox x:Name="NewANCQ4"  HorizontalAlignment="Left" Height="20" Margin="250,165,0,0" Text="{Binding NewANCQuantity[3], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[3]}" KeyDown="Quantity_KeyDown"/>
-        <TextBox x:Name="NewANCQ5"  HorizontalAlignment="Left" Height="20" Margin="250,195,0,0" Text="{Binding NewANCQuantity[4], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[4]}" KeyDown="Quantity_KeyDown"/>
-        <TextBox x:Name="NewANCQ6"  HorizontalAlignment="Left" Height="20" Margin="250,225,0,0" Text="{Binding NewANCQuantity[5], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[5]}" KeyDown="Quantity_KeyDown"/>
-        <TextBox x:Name="NewANCQ7"  HorizontalAlignment="Left" Height="20" Margin="250,255,0,0" Text="{Binding NewANCQuantity[6], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[6]}" KeyDown="Quantity_KeyDown"/>
-        <TextBox x:Name="NewANCQ8"  HorizontalAlignment="Left" Height="20" Margin="250,285,0,0" Text="{Binding NewANCQuantity[7], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[7]}" KeyDown="Quantity_KeyDown"/>
-        <TextBox x:Name="NewANCQ9"  HorizontalAlignment="Left" Height="20" Margin="250,315,0,0" Text="{Binding NewANCQuantity[8], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[8]}" KeyDown="Quantity_KeyDown"/>
-        <TextBox x:Name="NewANCQ10"  HorizontalAlignment="Left" Height="20" Margin="250,345,0,0" Text="{Binding NewANCQuantity[9], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[9]}" KeyDown="Quantity_KeyDown"/>
+        <TextBox x:Name="NewANCQ1"  HorizontalAlignment="Left" Height="20" Margin="250,75,0,0" Text="{Binding ANCList[0].NewANCQuantity, Mode=TwoWay, UpdateSourceTrigger=LostFocus, StringFormat={}{0:# ###.####}}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[0]}" KeyDown="Quantity_KeyDown" GotFocus="TextBox_GotFocus" TabIndex="4"/>
+        <TextBox x:Name="NewANCQ2"  HorizontalAlignment="Left" Height="20" Margin="250,105,0,0" Text="{Binding ANCList[1].NewANCQuantity, Mode=TwoWay, UpdateSourceTrigger=LostFocus, StringFormat={}{0:# ###.####}}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[1]}" KeyDown="Quantity_KeyDown" GotFocus="TextBox_GotFocus"  TabIndex="10"/>
+        <TextBox x:Name="NewANCQ3"  HorizontalAlignment="Left" Height="20" Margin="250,135,0,0" Text="{Binding ANCList[2].NewANCQuantity, Mode=TwoWay, UpdateSourceTrigger=LostFocus, StringFormat={}{0:# ###.####}}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[2]}" KeyDown="Quantity_KeyDown" GotFocus="TextBox_GotFocus" TabIndex="16"/>
+        <TextBox x:Name="NewANCQ4"  HorizontalAlignment="Left" Height="20" Margin="250,165,0,0" Text="{Binding ANCList[3].NewANCQuantity, Mode=TwoWay, UpdateSourceTrigger=LostFocus, StringFormat={}{0:# ###.####}}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[3]}" KeyDown="Quantity_KeyDown" GotFocus="TextBox_GotFocus" TabIndex="22"/>
+        <TextBox x:Name="NewANCQ5"  HorizontalAlignment="Left" Height="20" Margin="250,195,0,0" Text="{Binding ANCList[4].NewANCQuantity, Mode=TwoWay, UpdateSourceTrigger=LostFocus, StringFormat={}{0:# ###.####}}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[4]}" KeyDown="Quantity_KeyDown" GotFocus="TextBox_GotFocus" TabIndex="28"/>
+        <TextBox x:Name="NewANCQ6"  HorizontalAlignment="Left" Height="20" Margin="250,225,0,0" Text="{Binding ANCList[5].NewANCQuantity, Mode=TwoWay, UpdateSourceTrigger=LostFocus, StringFormat={}{0:# ###.####}}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[5]}" KeyDown="Quantity_KeyDown" GotFocus="TextBox_GotFocus" TabIndex="34"/>
+        <TextBox x:Name="NewANCQ7"  HorizontalAlignment="Left" Height="20" Margin="250,255,0,0" Text="{Binding ANCList[6].NewANCQuantity, Mode=TwoWay, UpdateSourceTrigger=LostFocus, StringFormat={}{0:# ###.####}}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[6]}" KeyDown="Quantity_KeyDown" GotFocus="TextBox_GotFocus" TabIndex="40"/>
+        <TextBox x:Name="NewANCQ8"  HorizontalAlignment="Left" Height="20" Margin="250,285,0,0" Text="{Binding ANCList[7].NewANCQuantity, Mode=TwoWay, UpdateSourceTrigger=LostFocus, StringFormat={}{0:# ###.####}}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[7]}" KeyDown="Quantity_KeyDown" GotFocus="TextBox_GotFocus" TabIndex="46"/>
+        <TextBox x:Name="NewANCQ9"  HorizontalAlignment="Left" Height="20" Margin="250,315,0,0" Text="{Binding ANCList[8].NewANCQuantity, Mode=TwoWay, UpdateSourceTrigger=LostFocus, StringFormat={}{0:# ###.####}}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[8]}" KeyDown="Quantity_KeyDown" GotFocus="TextBox_GotFocus" TabIndex="52"/>
+        <TextBox x:Name="NewANCQ10"  HorizontalAlignment="Left" Height="20" Margin="250,345,0,0" Text="{Binding ANCList[9].NewANCQuantity, Mode=TwoWay, UpdateSourceTrigger=LostFocus, StringFormat={}{0:# ###.####}}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[9]}" KeyDown="Quantity_KeyDown" GotFocus="TextBox_GotFocus" TabIndex="58"/>
         <Path Data="M315,5 L315,365" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="320" Margin="310,50,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="1"/>
         <!-- OLD STK -->
         <TextBlock HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="55" Margin="320,50,0,0" FontWeight="Bold" FontStyle="Italic" Effect="{DynamicResource DropShadowBrush}"><Run Language="pl-pl" Text="OLD STK"/></TextBlock>
-        <TextBlock x:Name="Old_STK_1" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="320,80,0,0" Foreground="#FFF70404" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=OldSTK[0]}" Visibility="{Binding Visible[0]}"/>
-        <TextBlock x:Name="Old_STK_2" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="320,110,0,0" Foreground="#FFF70404" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=OldSTK[1]}" Visibility="{Binding Visible[1]}"/>
-        <TextBlock x:Name="Old_STK_3" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="320,140,0,0" Foreground="#FFF70404" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=OldSTK[2]}" Visibility="{Binding Visible[2]}"/>
-        <TextBlock x:Name="Old_STK_4" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="320,170,0,0" Foreground="#FFF70404" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=OldSTK[3]}" Visibility="{Binding Visible[3]}"/>
-        <TextBlock x:Name="Old_STK_5" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="320,200,0,0" Foreground="#FFF70404" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=OldSTK[4]}" Visibility="{Binding Visible[4]}"/>
-        <TextBlock x:Name="Old_STK_6" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="320,230,0,0" Foreground="#FFF70404" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=OldSTK[5]}" Visibility="{Binding Visible[5]}"/>
-        <TextBlock x:Name="Old_STK_7" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="320,260,0,0" Foreground="#FFF70404" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=OldSTK[6]}" Visibility="{Binding Visible[6]}"/>
-        <TextBlock x:Name="Old_STK_8" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="320,290,0,0" Foreground="#FFF70404" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=OldSTK[7]}" Visibility="{Binding Visible[7]}"/>
-        <TextBlock x:Name="Old_STK_9" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="320,320,0,0" Foreground="#FFF70404" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=OldSTK[8]}" Visibility="{Binding Visible[8]}"/>
-        <TextBlock x:Name="Old_STK_10" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="320,350,0,0" Foreground="#FFF70404" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=OldSTK[9]}" Visibility="{Binding Visible[9]}"/>
+        <TextBlock x:Name="Old_STK_1" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="320,80,0,0" Foreground="#FFF70404" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=ANCList[0].OldSTK}" Visibility="{Binding Visible[0]}"/>
+        <TextBlock x:Name="Old_STK_2" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="320,110,0,0" Foreground="#FFF70404" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=ANCList[1].OldSTK}" Visibility="{Binding Visible[1]}"/>
+        <TextBlock x:Name="Old_STK_3" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="320,140,0,0" Foreground="#FFF70404" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=ANCList[2].OldSTK}" Visibility="{Binding Visible[2]}"/>
+        <TextBlock x:Name="Old_STK_4" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="320,170,0,0" Foreground="#FFF70404" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=ANCList[3].OldSTK}" Visibility="{Binding Visible[3]}"/>
+        <TextBlock x:Name="Old_STK_5" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="320,200,0,0" Foreground="#FFF70404" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=ANCList[4].OldSTK}" Visibility="{Binding Visible[4]}"/>
+        <TextBlock x:Name="Old_STK_6" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="320,230,0,0" Foreground="#FFF70404" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=ANCList[5].OldSTK}" Visibility="{Binding Visible[5]}"/>
+        <TextBlock x:Name="Old_STK_7" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="320,260,0,0" Foreground="#FFF70404" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=ANCList[6].OldSTK}" Visibility="{Binding Visible[6]}"/>
+        <TextBlock x:Name="Old_STK_8" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="320,290,0,0" Foreground="#FFF70404" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=ANCList[7].OldSTK}" Visibility="{Binding Visible[7]}"/>
+        <TextBlock x:Name="Old_STK_9" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="320,320,0,0" Foreground="#FFF70404" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=ANCList[8].OldSTK}" Visibility="{Binding Visible[8]}"/>
+        <TextBlock x:Name="Old_STK_10" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="320,350,0,0" Foreground="#FFF70404" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=ANCList[9].OldSTK}" Visibility="{Binding Visible[9]}"/>
         <!-- NEW STK -->
         <TextBlock HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="55" Margin="400,50,0,0" FontWeight="Bold" FontStyle="Italic" Effect="{DynamicResource DropShadowBrush}"><Run Language="pl-pl" Text="NEW STK"/></TextBlock>
-        <TextBlock x:Name="New_STK_1" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="400,80,0,0" Foreground="Lime" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=NewSTK[0]}" Visibility="{Binding Visible[0]}"/>
-        <TextBlock x:Name="New_STK_2" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="400,110,0,0" Foreground="Lime" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=NewSTK[1]}" Visibility="{Binding Visible[1]}"/>
-        <TextBlock x:Name="New_STK_3" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="400,140,0,0" Foreground="Lime" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=NewSTK[2]}" Visibility="{Binding Visible[2]}"/>
-        <TextBlock x:Name="New_STK_4" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="400,170,0,0" Foreground="Lime" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=NewSTK[3]}" Visibility="{Binding Visible[3]}"/>
-        <TextBlock x:Name="New_STK_5" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="400,200,0,0" Foreground="Lime" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=NewSTK[4]}" Visibility="{Binding Visible[4]}"/>
-        <TextBlock x:Name="New_STK_6" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="400,230,0,0" Foreground="Lime" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=NewSTK[5]}" Visibility="{Binding Visible[5]}"/>
-        <TextBlock x:Name="New_STK_7" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="400,260,0,0" Foreground="Lime" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=NewSTK[6]}" Visibility="{Binding Visible[6]}"/>
-        <TextBlock x:Name="New_STK_8" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="400,290,0,0" Foreground="Lime" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=NewSTK[7]}" Visibility="{Binding Visible[7]}"/>
-        <TextBlock x:Name="New_STK_9" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="400,320,0,0" Foreground="Lime" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=NewSTK[8]}" Visibility="{Binding Visible[8]}"/>
-        <TextBlock x:Name="New_STK_10" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="400,350,0,0" Foreground="Lime" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=NewSTK[9]}" Visibility="{Binding Visible[9]}"/>
+        <TextBlock x:Name="New_STK_1" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="400,80,0,0" Foreground="Lime" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=ANCList[0].NewSTK}" Visibility="{Binding Visible[0]}"/>
+        <TextBlock x:Name="New_STK_2" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="400,110,0,0" Foreground="Lime" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=ANCList[1].NewSTK}" Visibility="{Binding Visible[1]}"/>
+        <TextBlock x:Name="New_STK_3" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="400,140,0,0" Foreground="Lime" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=ANCList[2].NewSTK}" Visibility="{Binding Visible[2]}"/>
+        <TextBlock x:Name="New_STK_4" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="400,170,0,0" Foreground="Lime" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=ANCList[3].NewSTK}" Visibility="{Binding Visible[3]}"/>
+        <TextBlock x:Name="New_STK_5" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="400,200,0,0" Foreground="Lime" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=ANCList[4].NewSTK}" Visibility="{Binding Visible[4]}"/>
+        <TextBlock x:Name="New_STK_6" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="400,230,0,0" Foreground="Lime" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=ANCList[5].NewSTK}" Visibility="{Binding Visible[5]}"/>
+        <TextBlock x:Name="New_STK_7" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="400,260,0,0" Foreground="Lime" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=ANCList[6].NewSTK}" Visibility="{Binding Visible[6]}"/>
+        <TextBlock x:Name="New_STK_8" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="400,290,0,0" Foreground="Lime" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=ANCList[7].NewSTK}" Visibility="{Binding Visible[7]}"/>
+        <TextBlock x:Name="New_STK_9" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="400,320,0,0" Foreground="Lime" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=ANCList[8].NewSTK}" Visibility="{Binding Visible[8]}"/>
+        <TextBlock x:Name="New_STK_10" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="400,350,0,0" Foreground="Lime" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=ANCList[9].NewSTK}" Visibility="{Binding Visible[9]}"/>
         <!-- Delta -->
         <TextBlock HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="35" Margin="480,50,0,0" FontWeight="Bold" FontStyle="Italic" Effect="{DynamicResource DropShadowBrush}"><Run Language="pl-pl" Text="Delta"/></TextBlock>
-        <TextBlock x:Name="Delta_1" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="470,80,0,0" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=Delta[0], NotifyOnTargetUpdated=True}" Visibility="{Binding Visible[0]}" TargetUpdated="Color_TargetUpdated" />
-        <TextBlock x:Name="Delta_2" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="470,110,0,0" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=Delta[1], NotifyOnTargetUpdated=True}" Visibility="{Binding Visible[1]}" TargetUpdated="Color_TargetUpdated"/>
-        <TextBlock x:Name="Delta_3" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="470,140,0,0" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=Delta[2], NotifyOnTargetUpdated=True}" Visibility="{Binding Visible[2]}" TargetUpdated="Color_TargetUpdated"/>
-        <TextBlock x:Name="Delta_4" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="470,170,0,0" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=Delta[3], NotifyOnTargetUpdated=True}" Visibility="{Binding Visible[3]}" TargetUpdated="Color_TargetUpdated"/>
-        <TextBlock x:Name="Delta_5" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="470,200,0,0" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=Delta[4], NotifyOnTargetUpdated=True}" Visibility="{Binding Visible[4]}" TargetUpdated="Color_TargetUpdated"/>
-        <TextBlock x:Name="Delta_6" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="470,230,0,0" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=Delta[5], NotifyOnTargetUpdated=True}" Visibility="{Binding Visible[5]}" TargetUpdated="Color_TargetUpdated"/>
-        <TextBlock x:Name="Delta_7" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="470,260,0,0" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=Delta[6], NotifyOnTargetUpdated=True}" Visibility="{Binding Visible[6]}" TargetUpdated="Color_TargetUpdated"/>
-        <TextBlock x:Name="Delta_8" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="470,290,0,0" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=Delta[7], NotifyOnTargetUpdated=True}" Visibility="{Binding Visible[7]}" TargetUpdated="Color_TargetUpdated"/>
-        <TextBlock x:Name="Delta_9" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="470,320,0,0" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=Delta[8], NotifyOnTargetUpdated=True}" Visibility="{Binding Visible[8]}" TargetUpdated="Color_TargetUpdated"/>
-        <TextBlock x:Name="Delta_10" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="470,350,0,0" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=Delta[9], NotifyOnTargetUpdated=True}" Visibility="{Binding Visible[9]}" TargetUpdated="Color_TargetUpdated"/>
+        <TextBlock x:Name="Delta_1" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="470,80,0,0" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=ANCList[0].Delta, Mode=TwoWay, NotifyOnTargetUpdated=True}" Visibility="{Binding Visible[0]}" TargetUpdated="Color_TargetUpdated" />
+        <TextBlock x:Name="Delta_2" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="470,110,0,0" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=ANCList[1].Delta, Mode=TwoWay, NotifyOnTargetUpdated=True}" Visibility="{Binding Visible[1]}" TargetUpdated="Color_TargetUpdated"/>
+        <TextBlock x:Name="Delta_3" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="470,140,0,0" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=ANCList[2].Delta, Mode=TwoWay, NotifyOnTargetUpdated=True}" Visibility="{Binding Visible[2]}" TargetUpdated="Color_TargetUpdated"/>
+        <TextBlock x:Name="Delta_4" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="470,170,0,0" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=ANCList[3].Delta, Mode=TwoWay, NotifyOnTargetUpdated=True}" Visibility="{Binding Visible[3]}" TargetUpdated="Color_TargetUpdated"/>
+        <TextBlock x:Name="Delta_5" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="470,200,0,0" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=ANCList[4].Delta, Mode=TwoWay, NotifyOnTargetUpdated=True}" Visibility="{Binding Visible[4]}" TargetUpdated="Color_TargetUpdated"/>
+        <TextBlock x:Name="Delta_6" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="470,230,0,0" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=ANCList[5].Delta, Mode=TwoWay, NotifyOnTargetUpdated=True}" Visibility="{Binding Visible[5]}" TargetUpdated="Color_TargetUpdated"/>
+        <TextBlock x:Name="Delta_7" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="470,260,0,0" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=ANCList[6].Delta, Mode=TwoWay, NotifyOnTargetUpdated=True}" Visibility="{Binding Visible[6]}" TargetUpdated="Color_TargetUpdated"/>
+        <TextBlock x:Name="Delta_8" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="470,290,0,0" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=ANCList[7].Delta, Mode=TwoWay, NotifyOnTargetUpdated=True}" Visibility="{Binding Visible[7]}" TargetUpdated="Color_TargetUpdated"/>
+        <TextBlock x:Name="Delta_9" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="470,320,0,0" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=ANCList[8].Delta, Mode=TwoWay, NotifyOnTargetUpdated=True}" Visibility="{Binding Visible[8]}" TargetUpdated="Color_TargetUpdated"/>
+        <TextBlock x:Name="Delta_10" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="470,350,0,0" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=ANCList[9].Delta, Mode=TwoWay, NotifyOnTargetUpdated=True}" Visibility="{Binding Visible[9]}" TargetUpdated="Color_TargetUpdated"/>
         <!-- User Estimation -->
         <TextBlock HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="60" Margin="540,50,0,0" FontWeight="Bold" FontStyle="Italic" Effect="{DynamicResource DropShadowBrush}"><Run Language="pl-pl" Text="Estimation"/></TextBlock>
-        <TextBox x:Name="Estimation1"  HorizontalAlignment="Left" Height="20" Margin="545,75,0,0" Text="{Binding Estymation[0], Mode=TwoWay, UpdateSourceTrigger=LostFocus}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[0]}" KeyDown="Cost_KeyDown"/>
-        <TextBox x:Name="Estimation2"  HorizontalAlignment="Left" Height="20" Margin="545,105,0,0" Text="{Binding Estymation[1], Mode=TwoWay, UpdateSourceTrigger=LostFocus}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[1]}" KeyDown="Cost_KeyDown"/>
-        <TextBox x:Name="Estimation3"  HorizontalAlignment="Left" Height="20" Margin="545,135,0,0" Text="{Binding Estymation[2], Mode=TwoWay, UpdateSourceTrigger=LostFocus}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[2]}" KeyDown="Cost_KeyDown"/>
-        <TextBox x:Name="Estimation4"  HorizontalAlignment="Left" Height="20" Margin="545,165,0,0" Text="{Binding Estymation[3], Mode=TwoWay, UpdateSourceTrigger=LostFocus}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[3]}" KeyDown="Cost_KeyDown"/>
-        <TextBox x:Name="Estimation5"  HorizontalAlignment="Left" Height="20" Margin="545,195,0,0" Text="{Binding Estymation[4], Mode=TwoWay, UpdateSourceTrigger=LostFocus}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[4]}" KeyDown="Cost_KeyDown"/>
-        <TextBox x:Name="Estimation6"  HorizontalAlignment="Left" Height="20" Margin="545,225,0,0" Text="{Binding Estymation[5], Mode=TwoWay, UpdateSourceTrigger=LostFocus}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[5]}" KeyDown="Cost_KeyDown"/>
-        <TextBox x:Name="Estimation7"  HorizontalAlignment="Left" Height="20" Margin="545,255,0,0" Text="{Binding Estymation[6], Mode=TwoWay, UpdateSourceTrigger=LostFocus}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[6]}" KeyDown="Cost_KeyDown"/>
-        <TextBox x:Name="Estimation8"  HorizontalAlignment="Left" Height="20" Margin="545,285,0,0" Text="{Binding Estymation[7], Mode=TwoWay, UpdateSourceTrigger=LostFocus}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[7]}" KeyDown="Cost_KeyDown"/>
-        <TextBox x:Name="Estimation9"  HorizontalAlignment="Left" Height="20" Margin="545,315,0,0" Text="{Binding Estymation[8], Mode=TwoWay, UpdateSourceTrigger=LostFocus}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[8]}" KeyDown="Cost_KeyDown"/>
-        <TextBox x:Name="Estimation10"  HorizontalAlignment="Left" Height="20" Margin="545,345,0,0" Text="{Binding Estymation[9], Mode=TwoWay, UpdateSourceTrigger=LostFocus}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[9]}" KeyDown="Cost_KeyDown"/>
+        <TextBox x:Name="Estimation1"  HorizontalAlignment="Left" Height="20" Margin="545,75,0,0" Text="{Binding ANCList[0].UserEstymacja, Mode=TwoWay, UpdateSourceTrigger=LostFocus, StringFormat={}{0:# ###.####}}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[0]}" KeyDown="Cost_KeyDown" GotFocus="TextBox_GotFocus" TabIndex="5"/>
+        <TextBox x:Name="Estimation2"  HorizontalAlignment="Left" Height="20" Margin="545,105,0,0" Text="{Binding ANCList[1].UserEstymacja, Mode=TwoWay, UpdateSourceTrigger=LostFocus, StringFormat={}{0:# ###.####}}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[1]}" KeyDown="Cost_KeyDown" GotFocus="TextBox_GotFocus" TabIndex="11"/>
+        <TextBox x:Name="Estimation3"  HorizontalAlignment="Left" Height="20" Margin="545,135,0,0" Text="{Binding ANCList[2].UserEstymacja, Mode=TwoWay, UpdateSourceTrigger=LostFocus, StringFormat={}{0:# ###.####}}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[2]}" KeyDown="Cost_KeyDown" GotFocus="TextBox_GotFocus" TabIndex="17"/>
+        <TextBox x:Name="Estimation4"  HorizontalAlignment="Left" Height="20" Margin="545,165,0,0" Text="{Binding ANCList[3].UserEstymacja, Mode=TwoWay, UpdateSourceTrigger=LostFocus, StringFormat={}{0:# ###.####}}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[3]}" KeyDown="Cost_KeyDown" GotFocus="TextBox_GotFocus" TabIndex="23"/>
+        <TextBox x:Name="Estimation5"  HorizontalAlignment="Left" Height="20" Margin="545,195,0,0" Text="{Binding ANCList[4].UserEstymacja, Mode=TwoWay, UpdateSourceTrigger=LostFocus, StringFormat={}{0:# ###.####}}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[4]}" KeyDown="Cost_KeyDown" GotFocus="TextBox_GotFocus" TabIndex="29"/>
+        <TextBox x:Name="Estimation6"  HorizontalAlignment="Left" Height="20" Margin="545,225,0,0" Text="{Binding ANCList[5].UserEstymacja, Mode=TwoWay, UpdateSourceTrigger=LostFocus, StringFormat={}{0:# ###.####}}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[5]}" KeyDown="Cost_KeyDown" GotFocus="TextBox_GotFocus" TabIndex="35"/>
+        <TextBox x:Name="Estimation7"  HorizontalAlignment="Left" Height="20" Margin="545,255,0,0" Text="{Binding ANCList[6].UserEstymacja, Mode=TwoWay, UpdateSourceTrigger=LostFocus, StringFormat={}{0:# ###.####}}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[6]}" KeyDown="Cost_KeyDown" GotFocus="TextBox_GotFocus" TabIndex="41"/>
+        <TextBox x:Name="Estimation8"  HorizontalAlignment="Left" Height="20" Margin="545,285,0,0" Text="{Binding ANCList[7].UserEstymacja, Mode=TwoWay, UpdateSourceTrigger=LostFocus, StringFormat={}{0:# ###.####}}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[7]}" KeyDown="Cost_KeyDown" GotFocus="TextBox_GotFocus" TabIndex="47"/>
+        <TextBox x:Name="Estimation9"  HorizontalAlignment="Left" Height="20" Margin="545,315,0,0" Text="{Binding ANCList[8].UserEstymacja, Mode=TwoWay, UpdateSourceTrigger=LostFocus, StringFormat={}{0:# ###.####}}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[8]}" KeyDown="Cost_KeyDown" GotFocus="TextBox_GotFocus" TabIndex="53"/>
+        <TextBox x:Name="Estimation10"  HorizontalAlignment="Left" Height="20" Margin="545,345,0,0" Text="{Binding ANCList[9].UserEstymacja, Mode=TwoWay, UpdateSourceTrigger=LostFocus, StringFormat={}{0:# ###.####}}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[9]}" KeyDown="Cost_KeyDown" GotFocus="TextBox_GotFocus" TabIndex="59"/>
         <!-- User Percent -->
         <TextBlock HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="15" Margin="630,50,0,0" FontWeight="Bold" FontStyle="Italic" Effect="{DynamicResource DropShadowBrush}"><Run Language="pl-pl" Text="%"/></TextBlock>
-        <TextBox x:Name="Percent1"  HorizontalAlignment="Left" Height="20" Margin="610,75,0,0" Text="{Binding Percent[0], Mode=TwoWay, UpdateSourceTrigger=LostFocus}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[0]}" KeyDown="Percent_KeyDown" LostFocus="Percent_LostFocus"/>
-        <TextBox x:Name="Percent2"  HorizontalAlignment="Left" Height="20" Margin="610,105,0,0" Text="{Binding Percent[1], Mode=TwoWay, UpdateSourceTrigger=LostFocus}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[1]}" KeyDown="Percent_KeyDown" LostFocus="Percent_LostFocus"/>
-        <TextBox x:Name="Percent3"  HorizontalAlignment="Left" Height="20" Margin="610,135,0,0" Text="{Binding Percent[2], Mode=TwoWay, UpdateSourceTrigger=LostFocus}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[2]}" KeyDown="Percent_KeyDown" LostFocus="Percent_LostFocus"/>
-        <TextBox x:Name="Percent4"  HorizontalAlignment="Left" Height="20" Margin="610,165,0,0" Text="{Binding Percent[3], Mode=TwoWay, UpdateSourceTrigger=LostFocus}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[3]}" KeyDown="Percent_KeyDown" LostFocus="Percent_LostFocus"/>
-        <TextBox x:Name="Percent5"  HorizontalAlignment="Left" Height="20" Margin="610,195,0,0" Text="{Binding Percent[4], Mode=TwoWay, UpdateSourceTrigger=LostFocus}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[4]}" KeyDown="Percent_KeyDown" LostFocus="Percent_LostFocus"/>
-        <TextBox x:Name="Percent6"  HorizontalAlignment="Left" Height="20" Margin="610,225,0,0" Text="{Binding Percent[5], Mode=TwoWay, UpdateSourceTrigger=LostFocus}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[5]}" KeyDown="Percent_KeyDown" LostFocus="Percent_LostFocus"/>
-        <TextBox x:Name="Percent7"  HorizontalAlignment="Left" Height="20" Margin="610,255,0,0" Text="{Binding Percent[6], Mode=TwoWay, UpdateSourceTrigger=LostFocus}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[6]}" KeyDown="Percent_KeyDown" LostFocus="Percent_LostFocus"/>
-        <TextBox x:Name="Percent8"  HorizontalAlignment="Left" Height="20" Margin="610,285,0,0" Text="{Binding Percent[7], Mode=TwoWay, UpdateSourceTrigger=LostFocus}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[7]}" KeyDown="Percent_KeyDown" LostFocus="Percent_LostFocus"/>
-        <TextBox x:Name="Percent9"  HorizontalAlignment="Left" Height="20" Margin="610,315,0,0" Text="{Binding Percent[8], Mode=TwoWay, UpdateSourceTrigger=LostFocus}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[8]}" KeyDown="Percent_KeyDown" LostFocus="Percent_LostFocus"/>
-        <TextBox x:Name="Percent10"  HorizontalAlignment="Left" Height="20" Margin="610,345,0,0" Text="{Binding Percent[9], Mode=TwoWay, UpdateSourceTrigger=LostFocus}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[9]}" KeyDown="Percent_KeyDown" LostFocus="Percent_LostFocus"/>
+        <TextBox x:Name="Percent1"  HorizontalAlignment="Left" Height="20" Margin="610,75,0,0" Text="{Binding ANCList[0].Percent, Mode=TwoWay, UpdateSourceTrigger=LostFocus, StringFormat={}{0:# ###.####}}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[0]}" KeyDown="Percent_KeyDown" LostFocus="Percent_LostFocus" GotFocus="TextBox_GotFocus" TabIndex="6"/>
+        <TextBox x:Name="Percent2"  HorizontalAlignment="Left" Height="20" Margin="610,105,0,0" Text="{Binding ANCList[1].Percent, Mode=TwoWay, UpdateSourceTrigger=LostFocus, StringFormat={}{0:# ###.####}}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[1]}" KeyDown="Percent_KeyDown" LostFocus="Percent_LostFocus" GotFocus="TextBox_GotFocus" TabIndex="12"/>
+        <TextBox x:Name="Percent3"  HorizontalAlignment="Left" Height="20" Margin="610,135,0,0" Text="{Binding ANCList[2].Percent, Mode=TwoWay, UpdateSourceTrigger=LostFocus, StringFormat={}{0:# ###.####}}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[2]}" KeyDown="Percent_KeyDown" LostFocus="Percent_LostFocus" GotFocus="TextBox_GotFocus" TabIndex="18"/>
+        <TextBox x:Name="Percent4"  HorizontalAlignment="Left" Height="20" Margin="610,165,0,0" Text="{Binding ANCList[3].Percent, Mode=TwoWay, UpdateSourceTrigger=LostFocus, StringFormat={}{0:# ###.####}}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[3]}" KeyDown="Percent_KeyDown" LostFocus="Percent_LostFocus" GotFocus="TextBox_GotFocus" TabIndex="24"/>
+        <TextBox x:Name="Percent5"  HorizontalAlignment="Left" Height="20" Margin="610,195,0,0" Text="{Binding ANCList[4].Percent, Mode=TwoWay, UpdateSourceTrigger=LostFocus, StringFormat={}{0:# ###.####}}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[4]}" KeyDown="Percent_KeyDown" LostFocus="Percent_LostFocus" GotFocus="TextBox_GotFocus" TabIndex="30"/>
+        <TextBox x:Name="Percent6"  HorizontalAlignment="Left" Height="20" Margin="610,225,0,0" Text="{Binding ANCList[5].Percent, Mode=TwoWay, UpdateSourceTrigger=LostFocus, StringFormat={}{0:# ###.####}}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[5]}" KeyDown="Percent_KeyDown" LostFocus="Percent_LostFocus" GotFocus="TextBox_GotFocus" TabIndex="36"/>
+        <TextBox x:Name="Percent7"  HorizontalAlignment="Left" Height="20" Margin="610,255,0,0" Text="{Binding ANCList[6].Percent, Mode=TwoWay, UpdateSourceTrigger=LostFocus, StringFormat={}{0:# ###.####}}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[6]}" KeyDown="Percent_KeyDown" LostFocus="Percent_LostFocus" GotFocus="TextBox_GotFocus" TabIndex="42"/>
+        <TextBox x:Name="Percent8"  HorizontalAlignment="Left" Height="20" Margin="610,285,0,0" Text="{Binding ANCList[7].Percent, Mode=TwoWay, UpdateSourceTrigger=LostFocus, StringFormat={}{0:# ###.####}}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[7]}" KeyDown="Percent_KeyDown" LostFocus="Percent_LostFocus" GotFocus="TextBox_GotFocus" TabIndex="48"/>
+        <TextBox x:Name="Percent9"  HorizontalAlignment="Left" Height="20" Margin="610,315,0,0" Text="{Binding ANCList[8].Percent, Mode=TwoWay, UpdateSourceTrigger=LostFocus, StringFormat={}{0:# ###.####}}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[8]}" KeyDown="Percent_KeyDown" LostFocus="Percent_LostFocus" GotFocus="TextBox_GotFocus" TabIndex="54"/>
+        <TextBox x:Name="Percent10"  HorizontalAlignment="Left" Height="20" Margin="610,345,0,0" Text="{Binding ANCList[9].Percent, Mode=TwoWay, UpdateSourceTrigger=LostFocus, StringFormat={}{0:# ###.####}}" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" MaxLength="5" IsUndoEnabled="False" Visibility="{Binding Visible[9]}" KeyDown="Percent_KeyDown" LostFocus="Percent_LostFocus" GotFocus="TextBox_GotFocus" TabIndex="60"/>
         <!-- Value for calculation to Revision only -->
         <TextBlock HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="65" Margin="665,50,0,0" FontWeight="Bold" FontStyle="Italic" Effect="{DynamicResource DropShadowBrush}"><Run Language="pl-pl" Text="Calculation"/></TextBlock>
-        <TextBlock x:Name="Calculation_1" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="670,80,0,0" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=Calculation[0], NotifyOnTargetUpdated=True}" Visibility="{Binding Visible[0]}" TargetUpdated="Color_TargetUpdated"/>
-        <TextBlock x:Name="Calculation_2" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="670,110,0,0" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=Calculation[1], NotifyOnTargetUpdated=True}" Visibility="{Binding Visible[1]}" TargetUpdated="Color_TargetUpdated"/>
-        <TextBlock x:Name="Calculation_3" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="670,140,0,0" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=Calculation[2], NotifyOnTargetUpdated=True}" Visibility="{Binding Visible[2]}" TargetUpdated="Color_TargetUpdated"/>
-        <TextBlock x:Name="Calculation_4" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="670,170,0,0" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=Calculation[3], NotifyOnTargetUpdated=True}" Visibility="{Binding Visible[3]}" TargetUpdated="Color_TargetUpdated"/>
-        <TextBlock x:Name="Calculation_5" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="670,200,0,0" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=Calculation[4], NotifyOnTargetUpdated=True}" Visibility="{Binding Visible[4]}" TargetUpdated="Color_TargetUpdated"/>
-        <TextBlock x:Name="Calculation_6" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="670,230,0,0" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=Calculation[5], NotifyOnTargetUpdated=True}" Visibility="{Binding Visible[5]}" TargetUpdated="Color_TargetUpdated"/>
-        <TextBlock x:Name="Calculation_7" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="670,260,0,0" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=Calculation[6], NotifyOnTargetUpdated=True}" Visibility="{Binding Visible[6]}" TargetUpdated="Color_TargetUpdated"/>
-        <TextBlock x:Name="Calculation_8" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="670,290,0,0" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=Calculation[7], NotifyOnTargetUpdated=True}" Visibility="{Binding Visible[7]}" TargetUpdated="Color_TargetUpdated"/>
-        <TextBlock x:Name="Calculation_9" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="670,320,0,0" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=Calculation[8], NotifyOnTargetUpdated=True}" Visibility="{Binding Visible[8]}" TargetUpdated="Color_TargetUpdated"/>
-        <TextBlock x:Name="Calculation_10" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="670,350,0,0" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=Calculation[9], NotifyOnTargetUpdated=True}" Visibility="{Binding Visible[9]}" TargetUpdated="Color_TargetUpdated"/>
+        <TextBlock x:Name="Calculation_1" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="670,80,0,0" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=ANCList[0].Estymacja, Mode=TwoWay, NotifyOnTargetUpdated=True, StringFormat={}{0:# ##0.####}}" Visibility="{Binding Visible[0]}" TargetUpdated="Color_TargetUpdated"/>
+        <TextBlock x:Name="Calculation_2" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="670,110,0,0" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=ANCList[1].Estymacja, Mode=TwoWay, NotifyOnTargetUpdated=True, StringFormat={}{0:# ##0.####}}" Visibility="{Binding Visible[1]}" TargetUpdated="Color_TargetUpdated"/>
+        <TextBlock x:Name="Calculation_3" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="670,140,0,0" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=ANCList[2].Estymacja, Mode=TwoWay, NotifyOnTargetUpdated=True, StringFormat={}{0:# ##0.####}}" Visibility="{Binding Visible[2]}" TargetUpdated="Color_TargetUpdated"/>
+        <TextBlock x:Name="Calculation_4" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="670,170,0,0" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=ANCList[3].Estymacja, Mode=TwoWay, NotifyOnTargetUpdated=True, StringFormat={}{0:# ##0.####}}" Visibility="{Binding Visible[3]}" TargetUpdated="Color_TargetUpdated"/>
+        <TextBlock x:Name="Calculation_5" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="670,200,0,0" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=ANCList[4].Estymacja, Mode=TwoWay, NotifyOnTargetUpdated=True, StringFormat={}{0:# ##0.####}}" Visibility="{Binding Visible[4]}" TargetUpdated="Color_TargetUpdated"/>
+        <TextBlock x:Name="Calculation_6" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="670,230,0,0" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=ANCList[5].Estymacja, Mode=TwoWay, NotifyOnTargetUpdated=True, StringFormat={}{0:# ##0.####}}" Visibility="{Binding Visible[5]}" TargetUpdated="Color_TargetUpdated"/>
+        <TextBlock x:Name="Calculation_7" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="670,260,0,0" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=ANCList[6].Estymacja, Mode=TwoWay, NotifyOnTargetUpdated=True, StringFormat={}{0:# ##0.####}}" Visibility="{Binding Visible[6]}" TargetUpdated="Color_TargetUpdated"/>
+        <TextBlock x:Name="Calculation_8" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="670,290,0,0" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=ANCList[7].Estymacja, Mode=TwoWay, NotifyOnTargetUpdated=True, StringFormat={}{0:# ##0.####}}" Visibility="{Binding Visible[7]}" TargetUpdated="Color_TargetUpdated"/>
+        <TextBlock x:Name="Calculation_9" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="670,320,0,0" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=ANCList[8].Estymacja, Mode=TwoWay, NotifyOnTargetUpdated=True, StringFormat={}{0:# ##0.####}}" Visibility="{Binding Visible[8]}" TargetUpdated="Color_TargetUpdated"/>
+        <TextBlock x:Name="Calculation_10" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="670,350,0,0" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding Path=ANCList[9].Estymacja, Mode=TwoWay, NotifyOnTargetUpdated=True, StringFormat={}{0:# ##0.####}}" Visibility="{Binding Visible[9]}" TargetUpdated="Color_TargetUpdated"/>
         <Path Data="M315,5 L315,365" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="320" Margin="530,50,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="1"/>
-        <TextBlock x:Name="Old_STK_Sum" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="320,20,0,0" Foreground="#FFF70404" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding OldSum}" Visibility="{Binding Visible[0]}"/>
-        <TextBlock x:Name="New_STK_Sum" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="400,20,0,0" Foreground="Lime" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding NewSum}" Visibility="{Binding Visible[0]}"/>
-        <TextBlock x:Name="Delta_Sum" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="470,20,0,0" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding DeltaSum, NotifyOnTargetUpdated=True}" Visibility="{Binding Visible[0]}" TargetUpdated="Color_TargetUpdated" />
-        <TextBlock x:Name="Estymation_Sum" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="540,20,0,0" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding EstimationSum, NotifyOnTargetUpdated=True}" Visibility="{Binding Visible[0]}" TargetUpdated="Color_TargetUpdated" />
-        <TextBlock x:Name="Calculation_Sum" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="670,20,0,0" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding CalculationSum, NotifyOnTargetUpdated=True}" Visibility="{Binding Visible[0]}" TargetUpdated="Color_TargetUpdated" />
+
+        <!-- Sumowanie komórek -->
+        <TextBlock x:Name="Old_STK_Sum" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="320,20,0,0" Foreground="#FFF70404" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding OldSum, Mode=Twoway}" Visibility="{Binding SumVisible}"/>
+        <TextBlock x:Name="New_STK_Sum" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="400,20,0,0" Foreground="Lime" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding NewSum, Mode=Twoway}" Visibility="{Binding SumVisible}"/>
+        <TextBlock x:Name="Delta_Sum" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="470,20,0,0" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding DeltaSum, Mode=Twoway, NotifyOnTargetUpdated=True}" Visibility="{Binding SumVisible}" TargetUpdated="Color_TargetUpdated" />
+        <TextBlock x:Name="Estymation_Sum" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="540,20,0,0" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding EstimationSum, Mode=Twoway, NotifyOnTargetUpdated=True}" Visibility="{Binding SumVisible}" TargetUpdated="Color_TargetUpdated" />
+        <TextBlock x:Name="Calculation_Sum" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Margin="671,20,0,0" FontWeight="Normal" FontStretch="Normal" FontStyle="Italic" TextAlignment="Center" Text="{Binding CalculationSum, Mode=Twoway, NotifyOnTargetUpdated=True}" Visibility="{Binding SumVisible}" TargetUpdated="Color_TargetUpdated" />
+        <Path Data="M315,5 L315,365" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="320" Margin="740,50,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="1"/>
+        <!-- Next ANC 1 for Final calculation-->
+        <TextBlock HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="65" Margin="755,50,0,0" FontWeight="Bold" FontStyle="Italic" Effect="{DynamicResource DropShadowBrush}"><Run Language="pl-pl" Text="Next ANC 1"/></TextBlock>
+        <TextBox Name="NextANC1" HorizontalAlignment="Left" Height="20" Margin="750,75,0,0" VerticalAlignment="Top" Width="75" TextWrapping="Wrap" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper" GotFocus="TextBox_GotFocus" TabIndex="61">
+            <TextBox.Text>
+                <Binding Path="ANCList[0].NextANC1" Mode="TwoWay" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True" ValidatesOnDataErrors="True" NotifyOnSourceUpdated="True" >
+                    <Binding.ValidationRules>
+                        <local:Length_Validation Min="0" Max="9" ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+            <TextBox.Visibility>
+                <Binding Path="Visible[0]"/>
+            </TextBox.Visibility>
+        </TextBox>
+        <TextBox Name="NextANC2" HorizontalAlignment="Left" Height="20" Margin="750,105,0,0" VerticalAlignment="Top" Width="75" TextWrapping="Wrap" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper" GotFocus="TextBox_GotFocus" TabIndex="63">
+            <TextBox.Text>
+                <Binding Path="ANCList[1].NextANC1" Mode="TwoWay" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True" ValidatesOnDataErrors="True" NotifyOnSourceUpdated="True" >
+                    <Binding.ValidationRules>
+                        <local:Length_Validation Min="0" Max="9" ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+            <TextBox.Visibility>
+                <Binding Path="Visible[1]"/>
+            </TextBox.Visibility>
+        </TextBox>
+        <TextBox Name="NextANC3" HorizontalAlignment="Left" Height="20" Margin="750,135,0,0" VerticalAlignment="Top" Width="75" TextWrapping="Wrap" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper" GotFocus="TextBox_GotFocus" TabIndex="65">
+            <TextBox.Text>
+                <Binding Path="ANCList[2].NextANC1" Mode="TwoWay" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True" ValidatesOnDataErrors="True" NotifyOnSourceUpdated="True" >
+                    <Binding.ValidationRules>
+                        <local:Length_Validation Min="0" Max="9" ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+            <TextBox.Visibility>
+                <Binding Path="Visible[2]"/>
+            </TextBox.Visibility>
+        </TextBox>
+        <TextBox Name="NextANC4" HorizontalAlignment="Left" Height="20" Margin="750,165,0,0" VerticalAlignment="Top" Width="75" TextWrapping="Wrap" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper" GotFocus="TextBox_GotFocus" TabIndex="67">
+            <TextBox.Text>
+                <Binding Path="ANCList[3].NextANC1" Mode="TwoWay" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True" ValidatesOnDataErrors="True" NotifyOnSourceUpdated="True" >
+                    <Binding.ValidationRules>
+                        <local:Length_Validation Min="0" Max="9" ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+            <TextBox.Visibility>
+                <Binding Path="Visible[3]"/>
+            </TextBox.Visibility>
+        </TextBox>
+        <TextBox Name="NextANC5" HorizontalAlignment="Left" Height="20" Margin="750,195,0,0" VerticalAlignment="Top" Width="75" TextWrapping="Wrap" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper" GotFocus="TextBox_GotFocus" TabIndex="69">
+            <TextBox.Text>
+                <Binding Path="ANCList[4].NextANC1" Mode="TwoWay" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True" ValidatesOnDataErrors="True" NotifyOnSourceUpdated="True" >
+                    <Binding.ValidationRules>
+                        <local:Length_Validation Min="0" Max="9" ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+            <TextBox.Visibility>
+                <Binding Path="Visible[4]"/>
+            </TextBox.Visibility>
+        </TextBox>
+        <TextBox Name="NextANC6" HorizontalAlignment="Left" Height="20" Margin="750,225,0,0" VerticalAlignment="Top" Width="75" TextWrapping="Wrap" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper" GotFocus="TextBox_GotFocus" TabIndex="71">
+            <TextBox.Text>
+                <Binding Path="ANCList[5].NextANC1" Mode="TwoWay" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True" ValidatesOnDataErrors="True" NotifyOnSourceUpdated="True" >
+                    <Binding.ValidationRules>
+                        <local:Length_Validation Min="0" Max="9" ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+            <TextBox.Visibility>
+                <Binding Path="Visible[5]"/>
+            </TextBox.Visibility>
+        </TextBox>
+        <TextBox Name="NextANC7" HorizontalAlignment="Left" Height="20" Margin="750,255,0,0" VerticalAlignment="Top" Width="75" TextWrapping="Wrap" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper" GotFocus="TextBox_GotFocus" TabIndex="73">
+            <TextBox.Text>
+                <Binding Path="ANCList[6].NextANC1" Mode="TwoWay" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True" ValidatesOnDataErrors="True" NotifyOnSourceUpdated="True" >
+                    <Binding.ValidationRules>
+                        <local:Length_Validation Min="0" Max="9" ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+            <TextBox.Visibility>
+                <Binding Path="Visible[6]"/>
+            </TextBox.Visibility>
+        </TextBox>
+        <TextBox Name="NextANC8" HorizontalAlignment="Left" Height="20" Margin="750,285,0,0" VerticalAlignment="Top" Width="75" TextWrapping="Wrap" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper" GotFocus="TextBox_GotFocus" TabIndex="75">
+            <TextBox.Text>
+                <Binding Path="ANCList[7].NextANC1" Mode="TwoWay" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True" ValidatesOnDataErrors="True" NotifyOnSourceUpdated="True" >
+                    <Binding.ValidationRules>
+                        <local:Length_Validation Min="0" Max="9" ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+            <TextBox.Visibility>
+                <Binding Path="Visible[7]"/>
+            </TextBox.Visibility>
+        </TextBox>
+        <TextBox Name="NextANC9" HorizontalAlignment="Left" Height="20" Margin="750,315,0,0" VerticalAlignment="Top" Width="75" TextWrapping="Wrap" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper" GotFocus="TextBox_GotFocus" TabIndex="77">
+            <TextBox.Text>
+                <Binding Path="ANCList[8].NextANC1" Mode="TwoWay" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True" ValidatesOnDataErrors="True" NotifyOnSourceUpdated="True" >
+                    <Binding.ValidationRules>
+                        <local:Length_Validation Min="0" Max="9" ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+            <TextBox.Visibility>
+                <Binding Path="Visible[8]"/>
+            </TextBox.Visibility>
+        </TextBox>
+        <TextBox Name="NextANC10" HorizontalAlignment="Left" Height="20" Margin="750,345,0,0" VerticalAlignment="Top" Width="75" TextWrapping="Wrap" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper" GotFocus="TextBox_GotFocus" TabIndex="79">
+            <TextBox.Text>
+                <Binding Path="ANCList[9].NextANC1" Mode="TwoWay" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True" ValidatesOnDataErrors="True" NotifyOnSourceUpdated="True" >
+                    <Binding.ValidationRules>
+                        <local:Length_Validation Min="0" Max="9" ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+            <TextBox.Visibility>
+                <Binding Path="Visible[9]"/>
+            </TextBox.Visibility>
+        </TextBox>
+        <!-- Next ANC 2 for Final calculation-->
+        <TextBlock HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="70" Margin="840,50,0,0" FontWeight="Bold" FontStyle="Italic" Effect="{DynamicResource DropShadowBrush}"><Run Language="pl-pl" Text="Next ANC 2"/></TextBlock>
+        <TextBox Name="NextANC11" HorizontalAlignment="Left" Height="20" Margin="835,75,0,0" VerticalAlignment="Top" Width="75" TextWrapping="Wrap" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper" GotFocus="TextBox_GotFocus" TabIndex="62">
+            <TextBox.Text>
+                <Binding Path="ANCList[0].NextANC2" Mode="TwoWay" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True" ValidatesOnDataErrors="True" NotifyOnSourceUpdated="True" >
+                    <Binding.ValidationRules>
+                        <local:Length_Validation Min="0" Max="9" ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+            <TextBox.Visibility>
+                <Binding Path="Visible[0]"/>
+            </TextBox.Visibility>
+        </TextBox>
+        <TextBox Name="NextANC12" HorizontalAlignment="Left" Height="20" Margin="835,105,0,0" VerticalAlignment="Top" Width="75" TextWrapping="Wrap" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper" GotFocus="TextBox_GotFocus" TabIndex="64">
+            <TextBox.Text>
+                <Binding Path="ANCList[1].NextANC2" Mode="TwoWay" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True" ValidatesOnDataErrors="True" NotifyOnSourceUpdated="True" >
+                    <Binding.ValidationRules>
+                        <local:Length_Validation Min="0" Max="9" ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+            <TextBox.Visibility>
+                <Binding Path="Visible[1]"/>
+            </TextBox.Visibility>
+        </TextBox>
+        <TextBox Name="NextANC13" HorizontalAlignment="Left" Height="20" Margin="835,135,0,0" VerticalAlignment="Top" Width="75" TextWrapping="Wrap" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper" GotFocus="TextBox_GotFocus" TabIndex="66">
+            <TextBox.Text>
+                <Binding Path="ANCList[2].NextANC2" Mode="TwoWay" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True" ValidatesOnDataErrors="True" NotifyOnSourceUpdated="True" >
+                    <Binding.ValidationRules>
+                        <local:Length_Validation Min="0" Max="9" ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+            <TextBox.Visibility>
+                <Binding Path="Visible[2]"/>
+            </TextBox.Visibility>
+        </TextBox>
+        <TextBox Name="NextANC14" HorizontalAlignment="Left" Height="20" Margin="835,165,0,0" VerticalAlignment="Top" Width="75" TextWrapping="Wrap" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper" GotFocus="TextBox_GotFocus" TabIndex="68">
+            <TextBox.Text>
+                <Binding Path="ANCList[3].NextANC2" Mode="TwoWay" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True" ValidatesOnDataErrors="True" NotifyOnSourceUpdated="True" >
+                    <Binding.ValidationRules>
+                        <local:Length_Validation Min="0" Max="9" ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+            <TextBox.Visibility>
+                <Binding Path="Visible[3]"/>
+            </TextBox.Visibility>
+        </TextBox>
+        <TextBox Name="NextANC15" HorizontalAlignment="Left" Height="20" Margin="835,195,0,0" VerticalAlignment="Top" Width="75" TextWrapping="Wrap" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper" GotFocus="TextBox_GotFocus" TabIndex="70">
+            <TextBox.Text>
+                <Binding Path="ANCList[4].NextANC2" Mode="TwoWay" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True" ValidatesOnDataErrors="True" NotifyOnSourceUpdated="True" >
+                    <Binding.ValidationRules>
+                        <local:Length_Validation Min="0" Max="9" ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+            <TextBox.Visibility>
+                <Binding Path="Visible[4]"/>
+            </TextBox.Visibility>
+        </TextBox>
+        <TextBox Name="NextANC16" HorizontalAlignment="Left" Height="20" Margin="835,225,0,0" VerticalAlignment="Top" Width="75" TextWrapping="Wrap" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper" GotFocus="TextBox_GotFocus" TabIndex="72">
+            <TextBox.Text>
+                <Binding Path="ANCList[5].NextANC2" Mode="TwoWay" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True" ValidatesOnDataErrors="True" NotifyOnSourceUpdated="True" >
+                    <Binding.ValidationRules>
+                        <local:Length_Validation Min="0" Max="9" ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+            <TextBox.Visibility>
+                <Binding Path="Visible[5]"/>
+            </TextBox.Visibility>
+        </TextBox>
+        <TextBox Name="NextANC17" HorizontalAlignment="Left" Height="20" Margin="835,255,0,0" VerticalAlignment="Top" Width="75" TextWrapping="Wrap" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper" GotFocus="TextBox_GotFocus" TabIndex="74">
+            <TextBox.Text>
+                <Binding Path="ANCList[6].NextANC2" Mode="TwoWay" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True" ValidatesOnDataErrors="True" NotifyOnSourceUpdated="True" >
+                    <Binding.ValidationRules>
+                        <local:Length_Validation Min="0" Max="9" ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+            <TextBox.Visibility>
+                <Binding Path="Visible[6]"/>
+            </TextBox.Visibility>
+        </TextBox>
+        <TextBox Name="NextANC18" HorizontalAlignment="Left" Height="20" Margin="835,285,0,0" VerticalAlignment="Top" Width="75" TextWrapping="Wrap" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper" GotFocus="TextBox_GotFocus" TabIndex="76">
+            <TextBox.Text>
+                <Binding Path="ANCList[7].NextANC2" Mode="TwoWay" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True" ValidatesOnDataErrors="True" NotifyOnSourceUpdated="True" >
+                    <Binding.ValidationRules>
+                        <local:Length_Validation Min="0" Max="9" ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+            <TextBox.Visibility>
+                <Binding Path="Visible[7]"/>
+            </TextBox.Visibility>
+        </TextBox>
+        <TextBox Name="NextANC19" HorizontalAlignment="Left" Height="20" Margin="835,315,0,0" VerticalAlignment="Top" Width="75" TextWrapping="Wrap" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper" GotFocus="TextBox_GotFocus" TabIndex="78">
+            <TextBox.Text>
+                <Binding Path="ANCList[8].NextANC2" Mode="TwoWay" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True" ValidatesOnDataErrors="True" NotifyOnSourceUpdated="True" >
+                    <Binding.ValidationRules>
+                        <local:Length_Validation Min="0" Max="9" ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+            <TextBox.Visibility>
+                <Binding Path="Visible[8]"/>
+            </TextBox.Visibility>
+        </TextBox>
+        <TextBox Name="NextANC20" HorizontalAlignment="Left" Height="20" Margin="835,345,0,0" VerticalAlignment="Top" Width="75" TextWrapping="Wrap" KeyDown="ANC_KeyDown" MaxLength="9" CharacterCasing="Upper" GotFocus="TextBox_GotFocus" TabIndex="80">
+            <TextBox.Text>
+                <Binding Path="ANCList[9].NextANC2" Mode="TwoWay" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True" ValidatesOnDataErrors="True" NotifyOnSourceUpdated="True" >
+                    <Binding.ValidationRules>
+                        <local:Length_Validation Min="0" Max="9" ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+            <TextBox.Visibility>
+                <Binding Path="Visible[9]"/>
+            </TextBox.Visibility>
+        </TextBox>
+
     </Grid>
 </UserControl>

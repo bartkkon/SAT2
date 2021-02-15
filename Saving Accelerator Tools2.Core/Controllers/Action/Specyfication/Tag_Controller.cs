@@ -9,17 +9,13 @@ namespace Saving_Accelerator_Tools2.Core.Controllers.Action.Specyfication
 {
     public class Tag_Controller
     {
-        public static Dictionary<int,string> LoadTagToAction(decimal Year)
+        public static List<Tag_DB> LoadTagToAction(decimal Year)
         {
-            var TagList = new Dictionary<int, string>();
             var context = new DataBaseConnetionContext();
-            List<Tag_DB> TagDataBase;
-            TagDataBase = context.Tag.Where(u => u.Start <= Year && u.Finish >= Year).ToList();
-            foreach(var Tag in TagDataBase) {
-                TagList.Add(Tag.ID, Tag.Name);
-            }
 
-            return TagList;
+            var TagDataBase = context.Tag.Where(u => u.Start <= Year && u.Finish >= Year).ToList();
+
+            return TagDataBase;
         }
 
         public static ICollection<Tag_DB> Load_Year (decimal Year)
@@ -27,6 +23,13 @@ namespace Saving_Accelerator_Tools2.Core.Controllers.Action.Specyfication
             var context = new DataBaseConnetionContext();
 
             return context.Tag.Where(u => u.Start <= Year && u.Finish >= Year).ToList();
+        }
+
+        public static Tag_DB LoadByName (string TagName)
+        {
+            var context = new DataBaseConnetionContext();
+
+            return context.Tag.Where(u => u.Name == TagName).FirstOrDefault();
         }
     }
 }

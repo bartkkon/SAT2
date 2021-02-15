@@ -17,6 +17,9 @@ namespace Saving_Accelerator_Tools2.TemplateSelectors.Validation
 
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
+            if(value == null)
+                return ValidationResult.ValidResult;
+
             if (value.ToString().Length < Max && value.ToString().Length > Min)
             {
                 return new ValidationResult(false, $"To short");

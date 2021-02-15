@@ -4,10 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Saving_Accelerator_Tools2.Views.Action"
+             xmlns:model="clr-namespace:Saving_Accelerator_Tools2.ViewModels.Action"
              xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="Saving_Accelerator_Tools2.Views.Action.General_Information"
     
              mc:Ignorable="d" 
              d:DesignHeight="200" d:DesignWidth="640" MinWidth="640" MinHeight="200" MaxWidth="640" MaxHeight="200" IsEnabled="{Binding Path=View_Enabled}">
+    <UserControl.DataContext>
+        <model:GenrealInformationViewModel/>
+    </UserControl.DataContext>
 
     <Grid>
         <TextBlock HorizontalAlignment="Left" Height="20" Text="Action Name:" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Margin="15,15,0,0"/>
@@ -21,14 +25,14 @@
         <TextBlock HorizontalAlignment="Left" Height="20" Text="Start Month:" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Margin="435,70,0,0"/>
         <TextBlock HorizontalAlignment="Left" Height="20" Text="Devision:" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Margin="435,100,0,0"/>
         <TextBlock HorizontalAlignment="Left" Height="20" Text="Plant:" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Margin="435,130,0,0"/>
-        <TextBox x:Name="ActionID_TextBox" HorizontalAlignment="Left" Height="0" Margin="520,5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Text="{Binding Path=TEST, Mode=TwoWay}"/>
+        <TextBox x:Name="ActionID_TextBox" HorizontalAlignment="Left" Height="0" Margin="520,5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Text="{Binding Path=ActionID, Mode=TwoWay}" IsEnabled="{Binding Path=ActionID_Enabled}"/>
         <mah:NumericUpDown x:Name="ActionStartYear_numeric" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="100" Margin="520,35,0,0" Value="{Binding Path=StartYear, Mode=TwoWay}"/>
-        <ComboBox x:Name="Devision_Combobox" HorizontalAlignment="Left" Height="10" Margin="520,95,0,0" VerticalAlignment="Top" Width="100" ItemsSource="{Binding Path=Devision}" DisplayMemberPath="Value" SelectedValuePath="Key" SelectedValue="{Binding Path=Devisions_SelectedItem, Mode=TwoWay}" SelectedIndex="{Binding Path=Devision_SelectedIndex}"/>
-        <ComboBox x:Name="Factory_Combobox" HorizontalAlignment="Left" Height="20" Margin="520,125,0,0" VerticalAlignment="Top" Width="100" ItemsSource="{Binding Path=Plants}" DisplayMemberPath="Value" SelectedValuePath="Key" SelectedValue="{Binding Path=Plants_SelectedItem, Mode=TwoWay}" SelectedIndex="{Binding Path=Plant_SelectedIndex}"/>
+        <ComboBox x:Name="Devision_Combobox" HorizontalAlignment="Left" Height="10" Margin="520,95,0,0" VerticalAlignment="Top" Width="100" ItemsSource="{Binding Path=Devision}" DisplayMemberPath="Devision" SelectedValuePath="Key" SelectedItem="{Binding Path=Devisions_SelectedItem, Mode=TwoWay}" SelectedIndex="{Binding Path=Devision_SelectedIndex}"/>
+        <ComboBox x:Name="Factory_Combobox" HorizontalAlignment="Left" Height="20" Margin="520,125,0,0" VerticalAlignment="Top" Width="100" ItemsSource="{Binding Path=Plants}" DisplayMemberPath="Plant" SelectedValuePath="Key" SelectedItem="{Binding Path=Plants_SelectedItem, Mode=TwoWay}" SelectedIndex="{Binding Path=Plant_SelectedIndex}"/>
         <TextBlock HorizontalAlignment="Left" Height="20" Text="Tag:" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" Margin="10,165,0,0"/>
-        <ComboBox HorizontalAlignment="Left" Height="15" Margin="35,159,0,0" VerticalAlignment="Top" Width="140" ItemsSource="{Binding Path=Tags}" DisplayMemberPath="Value" SelectedIndex="{Binding Path=Tags_SelectedItem, Mode=TwoWay}"/>
+        <ComboBox HorizontalAlignment="Left" Height="15" Margin="35,159,0,0" VerticalAlignment="Top" Width="140" ItemsSource="{Binding Path=Tags}" DisplayMemberPath="Name" SelectedIndex="{Binding Path=Tags_SelectedItem, Mode=TwoWay}" SelectedItem="{Binding Path=Tags_SelectedItem, Mode=TwoWay}"/>
         <TextBlock HorizontalAlignment="Left" Height="20" Text="Leader:" TextWrapping="Wrap" VerticalAlignment="Top" Width="45" Margin="370,165,0,0"/>
-        <ComboBox x:Name="ActionLeader_Combobox" HorizontalAlignment="Left" Height="15" Margin="415,160,0,0" VerticalAlignment="Top" Width="205" ItemsSource="{Binding Path=Leaders}" DisplayMemberPath="Value" SelectedValuePath="Key" SelectedValue="{Binding Path=Leaders_SelectedItem, Mode=TwoWay}"/>
+        <ComboBox x:Name="ActionLeader_Combobox" HorizontalAlignment="Left" Height="15" Margin="415,160,0,0" VerticalAlignment="Top" Width="205" ItemsSource="{Binding Path=Leaders}" DisplayMemberPath="FullName" SelectedValuePath="Key" SelectedItem="{Binding Path=Leaders_SelectedItem, Mode=TwoWay}" SelectedIndex="{Binding Path=Leader_SelectedIndex}"/>
         <ComboBox x:Name="Month_Combobox" HorizontalAlignment="Left" Height="10" Margin="520,65,0,0" VerticalAlignment="Top" Width="100" SelectedIndex="{Binding Path=StartMonth, Mode=TwoWay}">
             <ComboBoxItem Content="January"/>
             <ComboBoxItem Content="February"/>
@@ -45,6 +49,8 @@
         </ComboBox>
         <CheckBox x:Name="Active_CheckBox" Content="Active Action" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="95" Margin="225,145,0,0" IsChecked="{Binding Path=Active, Mode=TwoWay}" Checked="Active_CheckBox_Checked" Unchecked="Active_CheckBox_UnChecked"/>
         <CheckBox x:Name="Idea_CheckBox" Content="Idea Action" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="90" Margin="225,170,0,0" IsChecked="{Binding Path=Idea, Mode=TwoWay}" Checked="Idea_CheckBox_Checked" Unchecked="Idea_CheckBox_Unchecked"/>
+        <Label Content="#" HorizontalAlignment="Left" Height="20" Margin="0,-5,0,0" VerticalAlignment="Top" Width="15" FontSize="8"/>
+        <Label Content="{Binding Path=ID}" HorizontalAlignment="Left" Height="20" Margin="5,-5,0,0" VerticalAlignment="Top" Width="90" FontSize="8"/>
 
     </Grid>
 </UserControl>

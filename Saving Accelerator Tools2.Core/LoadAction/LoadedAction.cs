@@ -22,7 +22,7 @@ namespace Saving_Accelerator_Tools2.Core.LoadAction
                     lock (syncRoot) {
                         if (_instance == null) {
                             _instance = new LoadedAction();
-                            Action_Controller.Load(1,ref _instance);
+                            Action_Controller.Load(1);
                         }
                     }
                 }
@@ -40,7 +40,7 @@ namespace Saving_Accelerator_Tools2.Core.LoadAction
         }
         public static void Load(int ActionID)
         {
-            Action_Controller.Load(ActionID,ref _instance);
+            Action_Controller.Load(ActionID);
             //OnPropoertyChange("Name");
         }
 

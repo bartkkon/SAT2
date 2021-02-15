@@ -24,6 +24,7 @@ namespace Saving_Accelerator_Tools2.Core.Data
         public DbSet<PageVisibility_DB> Page { get; set; }
         public DbSet<Role_DB> Role { get; set; }
         public DbSet<ActionLeader_DB> ActionLeader { get; set; }
+        public DbSet<ANCChange_DB> ANCChange { get; set; }
 
         //Dane
         public DbSet<MonthlyANC_DB> ANC_Monthly { get; set; }
@@ -81,6 +82,42 @@ namespace Saving_Accelerator_Tools2.Core.Data
                 .HasOne(bc => bc.Plant)
                 .WithMany(b => b.Action_Plant)
                 .HasForeignKey(bc => bc.PlantID);
+
+            //Many to Many Action <<=>> Leader
+            modelBuilder.Entity<Action_Leader_InterTable>()
+                .HasKey(bc => new { bc.ActionID, bc.LeaderID });
+            modelBuilder.Entity<Action_Leader_InterTable>()
+                .HasOne(bc => bc.Action)
+                .WithMany(b => b.Action_Leader)
+                .HasForeignKey(bc => bc.ActionID);
+            modelBuilder.Entity<Action_Leader_InterTable>()
+                .HasOne(bc => bc.Leader)
+                .WithMany(b => b.Action_Leader)
+                .HasForeignKey(bc => bc.LeaderID);
+
+            //Many to Many Action <<=>> Tag
+            modelBuilder.Entity<Action_Tag_InterTable>()
+                .HasKey(bc => new { bc.ActionID, bc.TagID });
+            modelBuilder.Entity<Action_Tag_InterTable>()
+                .HasOne(bc => bc.Action)
+                .WithMany(b => b.Action_Tag)
+                .HasForeignKey(bc => bc.ActionID);
+            modelBuilder.Entity<Action_Tag_InterTable>()
+                .HasOne(bc => bc.Tag)
+                .WithMany(b => b.Action_Tag)
+                .HasForeignKey(bc => bc.TagID);
+
+            //Many to Many Action <<=>> ANCChange 
+            modelBuilder.Entity<Action_ANCChage_InterTable>()
+                .HasKey(bc => new { bc.ActionID, bc.ANCChangeID });
+            modelBuilder.Entity<Action_ANCChage_InterTable>()
+                .HasOne(bc => bc.Action)
+                .WithMany(b => b.Action_ANCChange)
+                .HasForeignKey(bc => bc.ActionID);
+            modelBuilder.Entity<Action_ANCChage_InterTable>()
+                .HasOne(bc => bc.ANCChange)
+                .WithMany(b => b.Action_ANCChange)
+                .HasForeignKey(bc => bc.ANCChangeID);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

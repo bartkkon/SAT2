@@ -33,7 +33,6 @@ namespace Saving_Accelerator_Tools2.Views.Action
         public General_Information()
         {
             InitializeComponent();
-            DataContext = new GenrealInformationViewModel();
         }
 
         private void ActionName_TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -48,22 +47,26 @@ namespace Saving_Accelerator_Tools2.Views.Action
 
         private void Idea_CheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            Active_CheckBox.IsChecked = false;
+            if (Active_CheckBox != null)
+                Active_CheckBox.IsChecked = false;
         }
 
         private void Active_CheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            Idea_CheckBox.IsChecked = false;
+            if (Idea_CheckBox != null)
+                Idea_CheckBox.IsChecked = false;
         }
 
         private void Active_CheckBox_UnChecked(object sender, RoutedEventArgs e)
         {
-            Idea_CheckBox.IsChecked = true;
+            if (Idea_CheckBox != null)
+                Idea_CheckBox.IsChecked = true;
         }
 
         private void Idea_CheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            Active_CheckBox.IsChecked = true;
+            if (Active_CheckBox != null)
+                Active_CheckBox.IsChecked = true;
         }
     }
 }

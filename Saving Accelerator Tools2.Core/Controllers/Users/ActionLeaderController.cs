@@ -20,7 +20,7 @@ namespace Saving_Accelerator_Tools2.Core.Controllers.Users
             var context = new DataBaseConnetionContext();
             ActionList.Add("All");
 
-            if(Electronic) {
+            if (Electronic) {
                 Devisions.Add(context.Devision.Where(u => u.DevisionID == 1 && u.Active == true).FirstOrDefault());
             }
             if (Mechanic) {
@@ -30,23 +30,23 @@ namespace Saving_Accelerator_Tools2.Core.Controllers.Users
                 Devisions.Add(context.Devision.Where(u => u.DevisionID == 3 && u.Active == true).FirstOrDefault());
             }
 
-            if(PLV) {
+            if (PLV) {
                 Factory.Add(context.Plant.Where(u => u.PlantID == 1 && u.Active == true).FirstOrDefault());
             }
             if (ZM) {
                 Factory.Add(context.Plant.Where(u => u.PlantID == 2 && u.Active == true).FirstOrDefault());
             }
 
-            foreach(var Devision in Devisions) {
-                foreach(var Plant in Factory) {
+            foreach (var Devision in Devisions) {
+                foreach (var Plant in Factory) {
                     var Leaders = context.ActionLeader
                         .Where(u => u.Leader_Devision.Any(c => c.DevisionID == Devision.DevisionID)
                         && u.Leader_Plant.Any(c => c.FactoryID == Plant.PlantID)
                         && u.Active == true)
                         .ToList();
 
-                    foreach(var Leader in Leaders) {
-                        if(!ActionList.Any(w => w == Leader.FullName)) {
+                    foreach (var Leader in Leaders) {
+                        if (!ActionList.Any(w => w == Leader.FullName)) {
                             ActionList.Add(Leader.FullName);
                         }
                     }
@@ -55,17 +55,21 @@ namespace Saving_Accelerator_Tools2.Core.Controllers.Users
             return ActionList;
         }
 
-        public static Dictionary<int, string> ActionLoad(int DevisionKey, int PlantKey)
+        public static List<ActionLeader_DB> ActionLoad(Devision_DB DevisionKey, Plant_DB PlantKey)
         {
             var context = new DataBaseConnetionContext();
-            var LeadersList = new Dictionary<int, string>();
 
-            var LeadersBase = context.ActionLeader.Where(c => c.Leader_Devision.Any(u => u.DevisionID == DevisionKey) && c.Leader_Plant.Any(u => u.FactoryID == PlantKey) && c.Active == true).ToList();
-            foreach(var Leader in LeadersBase) {
-                LeadersList.Add(Leader.LeaderID, Leader.FullName);
-            }
+            if (DevisionKey == null || PlantKey == null)
+                return null;
 
-            return LeadersList;
+            var LeadersBase = context.ActionLeader.Where(c => c.Leader_Devision.Any(u => u.DevisionID == DevisionKey.DevisionID) && c.Leader_Plant.Any(u => u.FactoryID == PlantKey.PlantID) && c.Active == true)
+                .Include(u => u.Leader_Devision)
+                    .ThenInclude(b => b.Devision)
+                .Include(u => u.Leader_Plant)
+                    .ThenInclude(b => b.Factory)
+                    .ToList();
+
+            return LeadersBase;
         }
 
         public static ICollection<ActionLeader_DB> ActionLeader_LeadAll()
@@ -118,8 +122,8 @@ namespace Saving_Accelerator_Tools2.Core.Controllers.Users
                         && u.Leader_Plant.Any(c => c.FactoryID == plant.PlantID)
                         && u.Active == true)
                         .ToList();
-                    foreach(var Leader in Leaders) {
-                        if(!LoadList.Any(u => u.FullName == Leader.FullName)) {
+                    foreach (var Leader in Leaders) {
+                        if (!LoadList.Any(u => u.FullName == Leader.FullName)) {
                             LoadList.Add(Leader);
                         }
                     }

@@ -53,15 +53,15 @@ namespace Saving_Accelerator_Tools2.Views.Action
         {
             if (e.Key == Key.Tab)
                 return;
-            if (e.Key != Key.OemComma && e.Key != Key.Decimal && !(e.Key >= Key.D0 && e.Key <= Key.D9) && !(e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9))
+            if (e.Key != Key.OemPeriod && e.Key != Key.Decimal && !(e.Key >= Key.D0 && e.Key <= Key.D9) && !(e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9))
             {
                 e.Handled = true;
             }
-            else if ((e.Key == Key.OemComma || e.Key == Key.Decimal) && (e.Source as TextBox).Text.Count(f => f == ',') != 0)
+            else if ((e.Key == Key.OemPeriod || e.Key == Key.Decimal) && (e.Source as TextBox).Text.Count(f => f == ',') != 0)
             {
                 e.Handled = true;
             }
-            else if ((e.Key == Key.OemComma || e.Key == Key.Decimal) && (e.Source as TextBox).SelectionStart == 0)
+            else if ((e.Key == Key.OemPeriod || e.Key == Key.Decimal) && (e.Source as TextBox).SelectionStart == 0)
             {
                 (e.Source as TextBox).Text = "0" + (e.Source as TextBox).Text;
                 (e.Source as TextBox).SelectionStart = 1;
@@ -70,7 +70,8 @@ namespace Saving_Accelerator_Tools2.Views.Action
 
         private void Color_TargetUpdated(object sender, DataTransferEventArgs e)
         {
-            (sender as TextBlock).Foreground = default;
+            (sender as TextBlock).Foreground = Brushes.Black;
+            (sender as TextBlock).Text = (sender as TextBlock).Text.Replace(".", ",");
             if (decimal.TryParse((sender as TextBlock).Text, out decimal result))
             {
                 if (result > 0)
@@ -84,7 +85,7 @@ namespace Saving_Accelerator_Tools2.Views.Action
         {
             if (e.Key == Key.Tab)
                 return;
-            if (e.Key != Key.OemComma &&
+            if (e.Key != Key.OemPeriod &&
                 e.Key != Key.Decimal &&
                 e.Key != Key.OemMinus &&
                 e.Key != Key.Subtract &&
@@ -93,7 +94,7 @@ namespace Saving_Accelerator_Tools2.Views.Action
             {
                 e.Handled = true;
             }
-            else if ((e.Key == Key.OemComma || e.Key == Key.Decimal) && (e.Source as TextBox).Text.Count(f => f == ',') != 0)
+            else if ((e.Key == Key.OemPeriod || e.Key == Key.Decimal) && (e.Source as TextBox).Text.Count(f => f == '.') != 0)
             {
                 e.Handled = true;
             }
@@ -101,7 +102,7 @@ namespace Saving_Accelerator_Tools2.Views.Action
             {
                 e.Handled = true;
             }
-            else if ((e.Key == Key.OemComma || e.Key == Key.Decimal) && (e.Source as TextBox).SelectionStart == 0)
+            else if ((e.Key == Key.OemPeriod || e.Key == Key.Decimal) && (e.Source as TextBox).SelectionStart == 0)
             {
                 (e.Source as TextBox).Text = "0" + (e.Source as TextBox).Text;
                 (e.Source as TextBox).SelectionStart = 1;
@@ -143,6 +144,12 @@ namespace Saving_Accelerator_Tools2.Views.Action
         {
             //SumEstymationAll();
             //GeneretedCalculationValue();
+        }
+
+        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            (sender as TextBox).SelectionStart = (sender as TextBox).Text.Length;
+            (sender as TextBox).SelectAll();
         }
     }
 }

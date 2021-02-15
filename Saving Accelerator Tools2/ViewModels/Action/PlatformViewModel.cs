@@ -1,4 +1,5 @@
 ﻿using Saving_Accelerator_Tools2.Contracts.Services;
+using Saving_Accelerator_Tools2.Models.Action;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,8 +8,21 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
 {
     public class PlatformViewModel : INotifyProperty
     {
-        public PlatformViewModel() { }
+        #region Constructors
+        public PlatformViewModel()
+        {
+            Mediator.Mediator.Register("SetPlatform", SetData);
+            Mediator.Mediator.Register("GetPlatform", GetData);
+        }
 
+        ~PlatformViewModel()
+        {
+            Mediator.Mediator.Unregister("SetPlatform", SetData);
+            Mediator.Mediator.Unregister("GetPlatform", GetData);
+        }
+        #endregion
+
+        #region Private Variables
         private bool _DMD = false;
         private bool _D45 = false;
         private bool _FS = false;
@@ -16,7 +30,9 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
         private bool _BI = false;
         private bool _BU = false;
         private bool _FSBU = false;
+        #endregion
 
+        #region Public Variables
         public bool DMD
         {
             get { return _DMD; }
@@ -26,7 +42,6 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
                 RisePropoertyChanged();
             }
         }
-
         public bool D45
         {
             get { return _D45; }
@@ -36,7 +51,6 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
                 RisePropoertyChanged();
             }
         }
-
         public bool FS
         {
             get { return _FS; }
@@ -46,7 +60,6 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
                 RisePropoertyChanged();
             }
         }
-
         public bool FI
         {
             get { return _FI; }
@@ -56,7 +69,6 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
                 RisePropoertyChanged();
             }
         }
-
         public bool BI
         {
             get { return _BI; }
@@ -66,7 +78,6 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
                 RisePropoertyChanged();
             }
         }
-
         public bool BU
         {
             get { return _BU; }
@@ -76,7 +87,6 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
                 RisePropoertyChanged();
             }
         }
-
         public bool FSBU
         {
             get { return _FSBU; }
@@ -86,5 +96,33 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
                 RisePropoertyChanged();
             }
         }
+        #endregion
+
+        #region Mediator Function
+        private void SetData(object obj)
+        {
+            var SetData = obj as PlatformModel;
+            DMD = SetData.DMD;
+            D45 = SetData.D45;
+            FS = SetData.FS;
+            FI = SetData.FI;
+            BI = SetData.BI;
+            FSBU = SetData.FSBU;
+        }
+
+        private void GetData(object obj)
+        {
+            var GetData = new PlatformModel()
+            {
+                DMD = _DMD,
+                D45 = _D45,
+                FS = _FS,
+                FI = _FI,
+                BI = _BI,
+                FSBU = _FSBU,
+            };
+            Mediator.Mediator.NotifyColleagues("Set_Platform", GetData);
+        }
+        #endregion
     }
 }

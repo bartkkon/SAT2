@@ -9,12 +9,12 @@ namespace Saving_Accelerator_Tools2.Core.Controllers
 {
     public class PlantController
     {
-        public static Dictionary<int, string> LoadForAction()
+        public static List<Plant_DB> LoadForAction()
         {
-            var PlantList = new Dictionary<int, string>();
+            var PlantList = new List<Plant_DB>();
 
             foreach (var UserPlant in User.User.Logged.User_Plant) {
-                PlantList.Add(UserPlant.PlantID, UserPlant.Plant.Plant);
+                PlantList.Add(UserPlant.Plant);
             }
 
             return PlantList;
@@ -24,6 +24,12 @@ namespace Saving_Accelerator_Tools2.Core.Controllers
         {
             var context = new DataBaseConnetionContext();
             return context.Plant.Where(u => u.Active == true).ToList();
+        }
+
+        public static Plant_DB LoadByName(string PlantName)
+        {
+            var context = new DataBaseConnetionContext();
+            return context.Plant.Where(u => u.Active == true && u.Plant == PlantName).FirstOrDefault();
         }
     }
 }

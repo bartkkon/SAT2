@@ -29,8 +29,38 @@ namespace Saving_Accelerator_Tools2.Core.Migrations
                     b.Property<int>("ActionID")
                         .HasColumnType("int");
 
+                    b.Property<bool>("Active")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("BI")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("D45")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("DMD")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Description")
                         .HasColumnType("varchar(1000)");
+
+                    b.Property<bool>("ECCC")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("ECCCSpec")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("ECCCValue")
+                        .HasColumnType("decimal(5,1)");
+
+                    b.Property<bool>("FI")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("FS")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("FSBU")
+                        .HasColumnType("bit");
 
                     b.Property<int>("Month")
                         .HasColumnType("int");
@@ -38,12 +68,30 @@ namespace Saving_Accelerator_Tools2.Core.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("varchar(100)");
 
+                    b.Property<decimal>("QEstymation")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<decimal>("StartYear")
                         .HasColumnType("decimal(4,0)");
 
                     b.HasKey("ID");
 
                     b.ToTable("Action");
+                });
+
+            modelBuilder.Entity("Saving_Accelerator_Tools2.Core.Models.Action.InterTable.Action_ANCChage_InterTable", b =>
+                {
+                    b.Property<int>("ActionID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ANCChangeID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ActionID", "ANCChangeID");
+
+                    b.HasIndex("ANCChangeID");
+
+                    b.ToTable("Action_ANCChage_InterTable");
                 });
 
             modelBuilder.Entity("Saving_Accelerator_Tools2.Core.Models.Action.InterTable.Action_Devision_InterTable", b =>
@@ -61,6 +109,21 @@ namespace Saving_Accelerator_Tools2.Core.Migrations
                     b.ToTable("Action_Devision_InterTable");
                 });
 
+            modelBuilder.Entity("Saving_Accelerator_Tools2.Core.Models.Action.InterTable.Action_Leader_InterTable", b =>
+                {
+                    b.Property<int>("ActionID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("LeaderID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ActionID", "LeaderID");
+
+                    b.HasIndex("LeaderID");
+
+                    b.ToTable("Action_Leader_InterTable");
+                });
+
             modelBuilder.Entity("Saving_Accelerator_Tools2.Core.Models.Action.InterTable.Action_Plant_InterTable", b =>
                 {
                     b.Property<int>("ActionID")
@@ -74,6 +137,69 @@ namespace Saving_Accelerator_Tools2.Core.Migrations
                     b.HasIndex("PlantID");
 
                     b.ToTable("Action_Plant_InterTable");
+                });
+
+            modelBuilder.Entity("Saving_Accelerator_Tools2.Core.Models.Action.InterTable.Action_Tag_InterTable", b =>
+                {
+                    b.Property<int>("ActionID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TagID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ActionID", "TagID");
+
+                    b.HasIndex("TagID");
+
+                    b.ToTable("Action_Tag_InterTable");
+                });
+
+            modelBuilder.Entity("Saving_Accelerator_Tools2.Core.Models.Action.Specification.ANCChange_DB", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<decimal>("Delta")
+                        .HasColumnType("decimal(8,4)");
+
+                    b.Property<decimal>("Estymacja")
+                        .HasColumnType("decimal(8,4)");
+
+                    b.Property<string>("NewANC")
+                        .HasColumnType("varchar(9)");
+
+                    b.Property<decimal>("NewANCQuantity")
+                        .HasColumnType("decimal(8,4)");
+
+                    b.Property<decimal>("NewSTK")
+                        .HasColumnType("decimal(8,4)");
+
+                    b.Property<string>("NextANC1")
+                        .HasColumnType("varchar(9)");
+
+                    b.Property<string>("NextANC2")
+                        .HasColumnType("varchar(9)");
+
+                    b.Property<string>("OldANC")
+                        .HasColumnType("varchar(9)");
+
+                    b.Property<decimal>("OldANCQuantity")
+                        .HasColumnType("decimal(8,4)");
+
+                    b.Property<decimal>("OldSTK")
+                        .HasColumnType("decimal(8,4)");
+
+                    b.Property<decimal>("Percent")
+                        .HasColumnType("decimal(8,4)");
+
+                    b.Property<decimal>("UserEstymacja")
+                        .HasColumnType("decimal(8,4)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("ANCChange");
                 });
 
             modelBuilder.Entity("Saving_Accelerator_Tools2.Core.Models.Action.Specification.Tag_DB", b =>
@@ -388,7 +514,7 @@ namespace Saving_Accelerator_Tools2.Core.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("STD")
-                        .HasColumnType("decimal(8,4)");
+                        .HasColumnType("decimal(12,4)");
 
                     b.Property<decimal>("Year")
                         .HasColumnType("decimal(4,0)");
@@ -548,6 +674,25 @@ namespace Saving_Accelerator_Tools2.Core.Migrations
                     b.ToTable("User");
                 });
 
+            modelBuilder.Entity("Saving_Accelerator_Tools2.Core.Models.Action.InterTable.Action_ANCChage_InterTable", b =>
+                {
+                    b.HasOne("Saving_Accelerator_Tools2.Core.Models.Action.Specification.ANCChange_DB", "ANCChange")
+                        .WithMany("Action_ANCChange")
+                        .HasForeignKey("ANCChangeID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Saving_Accelerator_Tools2.Core.Models.Action.Action_DB", "Action")
+                        .WithMany("Action_ANCChange")
+                        .HasForeignKey("ActionID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Action");
+
+                    b.Navigation("ANCChange");
+                });
+
             modelBuilder.Entity("Saving_Accelerator_Tools2.Core.Models.Action.InterTable.Action_Devision_InterTable", b =>
                 {
                     b.HasOne("Saving_Accelerator_Tools2.Core.Models.Action.Action_DB", "Action")
@@ -567,6 +712,25 @@ namespace Saving_Accelerator_Tools2.Core.Migrations
                     b.Navigation("Devision");
                 });
 
+            modelBuilder.Entity("Saving_Accelerator_Tools2.Core.Models.Action.InterTable.Action_Leader_InterTable", b =>
+                {
+                    b.HasOne("Saving_Accelerator_Tools2.Core.Models.Action.Action_DB", "Action")
+                        .WithMany("Action_Leader")
+                        .HasForeignKey("ActionID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Saving_Accelerator_Tools2.Core.Models.Other.ActionLeader_DB", "Leader")
+                        .WithMany("Action_Leader")
+                        .HasForeignKey("LeaderID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Action");
+
+                    b.Navigation("Leader");
+                });
+
             modelBuilder.Entity("Saving_Accelerator_Tools2.Core.Models.Action.InterTable.Action_Plant_InterTable", b =>
                 {
                     b.HasOne("Saving_Accelerator_Tools2.Core.Models.Action.Action_DB", "Action")
@@ -584,6 +748,25 @@ namespace Saving_Accelerator_Tools2.Core.Migrations
                     b.Navigation("Action");
 
                     b.Navigation("Plant");
+                });
+
+            modelBuilder.Entity("Saving_Accelerator_Tools2.Core.Models.Action.InterTable.Action_Tag_InterTable", b =>
+                {
+                    b.HasOne("Saving_Accelerator_Tools2.Core.Models.Action.Action_DB", "Action")
+                        .WithMany("Action_Tag")
+                        .HasForeignKey("ActionID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Saving_Accelerator_Tools2.Core.Models.Action.Specification.Tag_DB", "Tag")
+                        .WithMany("Action_Tag")
+                        .HasForeignKey("TagID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Action");
+
+                    b.Navigation("Tag");
                 });
 
             modelBuilder.Entity("Saving_Accelerator_Tools2.Core.Models.Other.InterTable.ActionLeader_Devision_DB", b =>
@@ -702,13 +885,31 @@ namespace Saving_Accelerator_Tools2.Core.Migrations
 
             modelBuilder.Entity("Saving_Accelerator_Tools2.Core.Models.Action.Action_DB", b =>
                 {
+                    b.Navigation("Action_ANCChange");
+
                     b.Navigation("Action_Devision");
 
+                    b.Navigation("Action_Leader");
+
                     b.Navigation("Action_Plant");
+
+                    b.Navigation("Action_Tag");
+                });
+
+            modelBuilder.Entity("Saving_Accelerator_Tools2.Core.Models.Action.Specification.ANCChange_DB", b =>
+                {
+                    b.Navigation("Action_ANCChange");
+                });
+
+            modelBuilder.Entity("Saving_Accelerator_Tools2.Core.Models.Action.Specification.Tag_DB", b =>
+                {
+                    b.Navigation("Action_Tag");
                 });
 
             modelBuilder.Entity("Saving_Accelerator_Tools2.Core.Models.Other.ActionLeader_DB", b =>
                 {
+                    b.Navigation("Action_Leader");
+
                     b.Navigation("Leader_Devision");
 
                     b.Navigation("Leader_Plant");

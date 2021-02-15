@@ -7,7 +7,7 @@
     xmlns:Action="clr-namespace:Saving_Accelerator_Tools2.Views.Action"
     x:Class="Saving_Accelerator_Tools2.Views.ActionPage"
     Style="{DynamicResource MahApps.Styles.Page}"
-    mc:Ignorable="d" d:DesignWidth="1200" d:Height="800">
+    mc:Ignorable="d" d:DesignWidth="1600" d:Height="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="330"/>
@@ -28,11 +28,9 @@
                 <ColumnDefinition Width="330"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Action:MainFilter Margin="1,0,5,10"/>
+            <Action:MainFilter HorizontalAlignment="Left" VerticalAlignment="Top" Width="187" Margin="0,0,0,0"/>
 
             <!--
-            <Action:MainFilter HorizontalAlignment="Left" Margin="0,5,0,0" Width="320" Height="742" VerticalAlignment="Top"/>
-            
             The Mahapps Gray10 color represents where you should place your content.
             Place your content here.
             -->
@@ -40,8 +38,8 @@
         <Action:General_Information Grid.Column="1" HorizontalAlignment="Left" Height="200" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="640"/>
         <Action:PlatformView Grid.Column="1" HorizontalAlignment="Left" Height="100" Margin="640,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="100"/>
         <Action:ANCChange Grid.Column="1" HorizontalAlignment="Left" Height="5" Margin="0,200,0,0" Grid.Row="1" VerticalAlignment="Top" Width="5"/>
-        <!--
-        <Action:General_Information Grid.Column="1" HorizontalAlignment="Left" Height="90" Margin="250,2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="135"/>
-        -->
+        <Action:NavigationButton Margin="760,0,0,695" Grid.Row="1" Grid.Column="1" Height="50" VerticalAlignment="Top" HorizontalAlignment="Right" Width="100"/>
+        <Action:ECCC Grid.Column="1" HorizontalAlignment="Left" Height="85" Margin="740,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="130"/>
+        <Action:QuantityEstymation Grid.Column="1" HorizontalAlignment="Left" Height="65" Margin="740,110,0,0" Grid.Row="1" VerticalAlignment="Top" Width="130" RenderTransformOrigin="0.5,0.5"/>
     </Grid>
 </Page>

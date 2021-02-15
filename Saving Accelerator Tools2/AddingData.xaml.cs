@@ -164,7 +164,7 @@ namespace Saving_Accelerator_Tools2
 
                 if (Status)
                 {
-
+                    this.Close();
                 }
                 else
                 {

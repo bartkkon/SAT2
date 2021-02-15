@@ -1,5 +1,4 @@
-﻿
-using Saving_Accelerator_Tools2.Core.Models.Action.InterTable;
+﻿using Saving_Accelerator_Tools2.Core.Models.Action.InterTable;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,14 +17,38 @@ namespace Saving_Accelerator_Tools2.Core.Models.Action
         public int ActionID { get; set; }
         [Column(TypeName = "varchar(100)")]
         public string Name { get; set; }
-        [Column(TypeName ="varchar(1000)")]
+        [Column(TypeName = "varchar(1000)")]
         public string Description { get; set; }
-        [Column(TypeName ="decimal(4,0)")]
+        [Column(TypeName = "decimal(4,0)")]
         public decimal StartYear { get; set; }
         public int Month { get; set; }
+        public bool Active { get; set; }
+
+        #region Platform
+        public bool DMD { get; set; }
+        public bool D45 { get; set; }
+        public bool FS { get; set; }
+        public bool FI { get; set; }
+        public bool BI { get; set; }
+        public bool FSBU { get; set; }
+        #endregion
+
+        #region ECCC
+        public bool ECCC { get; set; }
+        public bool ECCCSpec { get; set; }
+        [Column(TypeName = "decimal(5,1)")]
+        public decimal ECCCValue { get; set; }
+        #endregion
+
+        #region Quantity Estymation
+        [Column(TypeName = "decimal(8,4")]
+        public decimal QEstymation { get; set; }
+        #endregion
 
         public virtual List<Action_Devision_InterTable> Action_Devision { get; set; } = new List<Action_Devision_InterTable>();
         public virtual List<Action_Plant_InterTable> Action_Plant { get; set; } = new List<Action_Plant_InterTable>();
-
+        public virtual List<Action_Leader_InterTable> Action_Leader { get; set; } = new List<Action_Leader_InterTable>();
+        public virtual List<Action_Tag_InterTable> Action_Tag { get; set; } = new List<Action_Tag_InterTable>();
+        public virtual List<Action_ANCChage_InterTable> Action_ANCChange { get; set; } = new List<Action_ANCChage_InterTable>();
     }
 }

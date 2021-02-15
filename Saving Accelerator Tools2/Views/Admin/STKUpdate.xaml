@@ -18,5 +18,6 @@
         <Label Content="Year:" HorizontalAlignment="Left" Margin="11,61,0,0" VerticalAlignment="Top"/>
         <Button x:Name="STK_Manual_Buttom" Content="STK Manual" HorizontalAlignment="Left" Height="30" Margin="28,100,0,0" VerticalAlignment="Top" Width="85" Command="{Binding Path=Manual}"/>
         <Button x:Name="STK_Deleted_Buttom" Content="Delete" HorizontalAlignment="Left" Height="30" Margin="143,100,0,0" VerticalAlignment="Top" Width="85" Command="{Binding Path=DelateYear}"/>
+        <Path Data="M5,50 L245,50" Fill="#FFF4F4F5" HorizontalAlignment="Center" Height="1" Margin="5,52,5,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="241"/>
     </Grid>
 </UserControl>
