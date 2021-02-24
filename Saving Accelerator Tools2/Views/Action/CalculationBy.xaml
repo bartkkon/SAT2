@@ -5,12 +5,18 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Saving_Accelerator_Tools2.Views.Action"
              xmlns:model="clr-namespace:Saving_Accelerator_Tools2.ViewModels.Action"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             mc:Ignorable="d" Width="225" Height="140" MinHeight="140" MaxHeight="140" MinWidth="225" MaxWidth="225">
     <UserControl.DataContext>
         <model:CalculationByViewModel/>
     </UserControl.DataContext>
     <Grid>
-            
+        <CheckBox x:Name="ANC" Content="ANC" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="15,10,0,0" IsChecked="{Binding Path=ANC, Mode=TwoWay}" Checked="ANC_Checked"/>
+        <CheckBox x:Name="ANCS" Content="ANC Special" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="15,40,0,0" IsChecked="{Binding Path=ANCSpecial, Mode=TwoWay}" Checked="ANCS_Checked"/>
+        <CheckBox x:Name="PNC" Content="PNC" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="15,70,0,0" IsChecked="{Binding Path=PNC, Mode=TwoWay}" Checked="PNC_Checked"/>
+        <CheckBox x:Name="PNCS" Content="PNC Special" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="15,100,0,0" IsChecked="{Binding Path=PNCSpecial, Mode=TwoWay}" Checked="PNCS_Checked"/>
+        <Button Content="Add PNC" HorizontalAlignment="Left" Height="30" Margin="130,70,0,0" VerticalAlignment="Top" Width="85" IsEnabled="{Binding Path=PNC, Mode=TwoWay}" Command="{Binding PNCQuantity}"/>
+        <Button Content="Add PNC Spec" HorizontalAlignment="Left" Height="30" Margin="130,100,0,0" VerticalAlignment="Top" Width="85" IsEnabled="{Binding Path=PNCSpecial, Mode=TwoWay}" Command="{Binding PNCSQuantity}"/>
+        <Rectangle HorizontalAlignment="Center" Height="140" Stroke="Black" VerticalAlignment="Center" Width="225"/>
+
     </Grid>
 </UserControl>

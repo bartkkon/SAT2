@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="Saving_Accelerator_Tools2.Views.Action.PNC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Saving_Accelerator_Tools2.Views.Action"
+             xmlns:model="clr-namespace:Saving_Accelerator_Tools2.ViewModels.Action"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="100" MinWidth="100" MaxWidth="100">
+    <UserControl.DataContext>
+        <model:PNCViewModel/>
+    </UserControl.DataContext>
+
+    <Grid Visibility="{Binding Path=PNCVisible, Mode=TwoWay}">
+        <DataGrid Margin="5,5,5,0" ItemsSource="{Binding PNCList}" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="PNC List:" Binding="{Binding PNC}" Width="90"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</UserControl>

@@ -7,6 +7,7 @@ using System.Text;
 using Saving_Accelerator_Tools2.Mediator;
 using System.Windows.Input;
 using System.Windows;
+using Saving_Accelerator_Tools2.ViewModels.Action;
 
 namespace Saving_Accelerator_Tools2.Tasks
 {
@@ -18,6 +19,7 @@ namespace Saving_Accelerator_Tools2.Tasks
         private PlatformModel Platform = new PlatformModel();
         private List<ANCChangeModel> ANCChange = new List<ANCChangeModel>();
         private ECCCModel ECCCValue = new ECCCModel();
+        private List<PNCListData> PNCList = new List<PNCListData>();
 
         public LoadAction(int ActionID)
         {
@@ -42,6 +44,7 @@ namespace Saving_Accelerator_Tools2.Tasks
             Prepare_Platform();
             Preapre_ANCChange();
             Prepare_ECCC();
+            Prepare_Calculation();
 
             #endregion
 
@@ -51,11 +54,28 @@ namespace Saving_Accelerator_Tools2.Tasks
             Mediator.Mediator.NotifyColleagues("Set_ANCChange", ANCChange);
             Mediator.Mediator.NotifyColleagues("Set_ECCC", ECCCValue);
             Mediator.Mediator.NotifyColleagues("Set_QuantityEstymation", ActionDataBase.QEstymation);
+            Mediator.Mediator.NotifyColleagues("Set_Calc", ActionDataBase.Calculation);
+            Mediator.Mediator.NotifyColleagues("Set_PNC_Data", PNCList);
 
             #endregion
             Mouse.OverrideCursor = null;
         }
 
+        private void Prepare_Calculation()
+        {
+            if(ActionDataBase.Calculation ==3)
+            {
+                foreach(var PNCRow in ActionDataBase.Action_PNC)
+                {
+                    var NewRecord = new PNCListData()
+                    {
+                        ID = PNCRow.PNCID,
+                        PNC = PNCRow.List.PNC,
+                    };
+                    PNCList.Add(NewRecord);
+                }
+            }
+        }
         private void PrepareGeneral_Information()
         {
             GeneralInformation.ID = ActionDataBase.ID;

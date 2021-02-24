@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="Saving_Accelerator_Tools2.Views.Admin.PlaftormCalculation"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:model="clr-namespace:Saving_Accelerator_Tools2.ViewModels.Admin" 
+             mc:Ignorable="d" Width="215" Height="265" MinWidth="215" MaxWidth="215" MinHeight="265" MaxHeight="265">
+    <UserControl.DataContext>
+        <model:PlatformCalculationViewModel/>
+    </UserControl.DataContext>
+    
+    <Grid>
+        <Label Content="ANC Special - Platform Avalibity:" HorizontalAlignment="Left" Height="30" Margin="10,10,0,0" VerticalAlignment="Top" Width="220" FontWeight="Bold"/>
+        <ComboBox HorizontalAlignment="Left" Height="10" Margin="10,45,0,0" VerticalAlignment="Top" Width="180" ItemsSource="{Binding Path=PlatformList}" SelectedIndex="{Binding Path=SelectedIndex}" SelectedItem="{Binding Path=SelectedItem, Mode=TwoWay}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0} {1}">
+                                <Binding Path="Platform"/>
+                                <Binding Path="Installation"/>
+                            </MultiBinding>            
+                        </TextBlock.Text>
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <CheckBox Content="Active" HorizontalAlignment="Left" Height="20" Margin="10,75,0,0" VerticalAlignment="Top" Width="80" IsChecked="{Binding Path=ActioveSearch, Mode=TwoWay}"/>
+        <TextBox HorizontalAlignment="Left" Height="25" Margin="80,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="125" Text="{Binding Path=Platform, Mode=TwoWay}"/>
+        <TextBox HorizontalAlignment="Left" Height="25" Margin="80,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="125" Text="{Binding Path=Installation, Mode=TwoWay}"/>
+        <CheckBox Content="Active" HorizontalAlignment="Left" Height="20" Margin="80,185,0,0" VerticalAlignment="Top" Width="85" IsChecked="{Binding Path=Active, Mode=TwoWay}"/>
+        <Label Content="Platform:" HorizontalAlignment="Left" Height="30" Margin="10,120,0,0" VerticalAlignment="Top" Width="60" RenderTransformOrigin="0.5,0.5"/>
+        <Label Content="Installation:" HorizontalAlignment="Left" Height="30" Margin="10,150,0,0" VerticalAlignment="Top" Width="70" RenderTransformOrigin="0.5,0.5"/>
+        <Button Content="Add" HorizontalAlignment="Left" Height="30" Margin="110,225,0,0" VerticalAlignment="Top" Width="90" Command="{Binding AddVale}"/>
+        <Rectangle HorizontalAlignment="Center" Height="265" Stroke="Black" VerticalAlignment="Center" Width="215"/>
+    </Grid>
+</UserControl>

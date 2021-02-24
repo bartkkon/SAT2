@@ -16,6 +16,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Saving_Accelerator_Tools2.Core.Models.ProductionData;
+using Microsoft.Win32;
+using System.IO;
+using Saving_Accelerator_Tools2.ViewModels.Action;
+using System.Threading;
+using System.Collections.ObjectModel;
 
 namespace Saving_Accelerator_Tools2
 {
@@ -32,6 +37,7 @@ namespace Saving_Accelerator_Tools2
         private readonly string _configuration;
         private int _DeletedRecord;
         private int _NewRecord;
+        private int _DuplicateRecord;
         private bool ErrorConditions = false;
         private bool STKAdd = false;
         private List<MonthlyANC_DB> ANCMonthly;
@@ -39,6 +45,8 @@ namespace Saving_Accelerator_Tools2
         private List<RevisionANC_DB> ANCRevision;
         private List<RevisionPNC_DB> PNCRevision;
         private List<PNCTotality_DB> PNCTotal;
+        private List<PNCListData> PNCExist;
+        public Visibility TemplateButtonVisibility = Visibility.Hidden;
 
 
         public AddingData(decimal Year)
@@ -123,7 +131,7 @@ namespace Saving_Accelerator_Tools2
                 this.Title = "Adding Revision " + Revision + " Data => ANC";
                 InstructionBlock_Text.Text = "----------------------------------------------------------------------" + Environment.NewLine +
                     "ANC <space> Quantity1 <space> Quantity2 <space> ... <space> Quantity12" + Environment.NewLine +
-                    "--------------------------";
+                    "----------------------------------------------------------------------";
             }
             else if (Configuration == "PNC")
             {
@@ -134,6 +142,46 @@ namespace Saving_Accelerator_Tools2
             }
         }
 
+        public AddingData(string Configuration)
+        {
+            InitializeComponent();
+            Mediator.Mediator.Register("AddingPNCList", NewList);
+            _configuration = Configuration;
+            TemplateButtonVisibility = Visibility.Visible;
+
+            Mediator.Mediator.NotifyColleagues("Get_PNC_Data_Updated", null);
+            do
+            {
+                Thread.Sleep(100);
+            }
+            while (PNCExist == null);
+
+            Mediator.Mediator.Unregister("AddingPNCList", NewList);
+
+            this.Title = "Adding PNC List";
+            InstructionBlock_Text.Text = "---" + Environment.NewLine +
+                "PNC" + Environment.NewLine +
+                "---";
+
+        }
+
+        public AddingData()
+        {
+            if (_configuration == "PNCSpecial_ActionList")
+            {
+                this.Title = "Adding PNC List";
+                InstructionBlock_Text.Text = "-----------------" + Environment.NewLine +
+                "Use Template Copy" + Environment.NewLine +
+                "-----------------";
+            }
+        }
+
+        private void NewList(object NewList)
+        {
+            PNCExist = new List<PNCListData>();
+            PNCExist = (NewList as ObservableCollection<PNCListData>).ToList();
+        }
+
         private void Cancel_Button_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -141,6 +189,27 @@ namespace Saving_Accelerator_Tools2
 
         private void Save_Button_Click(object sender, RoutedEventArgs e)
         {
+            if (_configuration == "PNC_ActionList")
+            {
+                Mouse.OverrideCursor = Cursors.Wait;
+                AddPNCToActionList();
+                Mouse.OverrideCursor = null;
+
+                if (_DuplicateRecord != 0 || _NewRecord != 0)
+                    MessageBox.Show("Completed:" + Environment.NewLine +
+                        "Duplicated Record:    " + _DuplicateRecord.ToString() + Environment.NewLine +
+                        "New Record:          " + _NewRecord.ToString(),
+                        "Updated completed!");
+
+                this.Close();
+                return;
+            }
+            else if (_configuration == "PNCSpecial_ActionList")
+            {
+                Mouse.OverrideCursor = Cursors.Wait;
+
+                Mouse.OverrideCursor = null;
+            }
             if (!STKAdd)
             {
                 Mouse.OverrideCursor = Cursors.Wait;
@@ -171,6 +240,49 @@ namespace Saving_Accelerator_Tools2
                     return;
                 }
             }
+        }
+
+        private void AddPNCToActionList()
+        {
+            string[] PNCList = New_Data_TextBox.Text.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+            
+            if((PNCList[0].Trim()).Length !=9 || PNCList[0].Remove(3) != "911")
+            {
+                MessageBox.Show("Something is wrong with Data", "Error!");
+                return;
+            }
+
+            if(PNCExist.Count() != 0)
+            {
+                var results = MessageBox.Show("Do you want replace all PNC List?", "Warning!", MessageBoxButton.YesNo);
+                if(results == MessageBoxResult.Yes)
+                {
+                    PNCExist.Clear();
+                }
+            }
+            foreach(var PNCNew in PNCList)
+            {
+                string PNCtoAdd = PNCNew.Trim();
+                if (PNCtoAdd.Length == 9)
+                {
+                    if (PNCExist.Any(c => c.PNC == PNCtoAdd))
+                    {
+                        _DuplicateRecord++;
+                    }
+                    else
+                    {
+                        var NewRow = new PNCListData()
+                        {
+                            ID = 0,
+                            PNC = PNCtoAdd,
+                        };
+                        PNCExist.Add(NewRow);
+                        _NewRecord++;
+                    }
+                }
+            }
+
+            Mediator.Mediator.NotifyColleagues("Set_PNC_Data", PNCExist);
         }
 
         private bool AddSTKManualy()
@@ -216,7 +328,7 @@ namespace Saving_Accelerator_Tools2
 
                     if (decimal.TryParse(RecordToAdd.Last(), out decimal STDRecults))
                     {
-                        NewBaseRecord.STD = Math.Round(STDRecults,4, MidpointRounding.AwayFromZero);
+                        NewBaseRecord.STD = Math.Round(STDRecults, 4, MidpointRounding.AwayFromZero);
                     }
                     int RowLength = RecordToAdd.Length;
 
@@ -661,6 +773,30 @@ namespace Saving_Accelerator_Tools2
 
             return false;
 
+        }
+
+        private void TemplateButton_Click(object sender, RoutedEventArgs e)
+        {
+            string Template = @"\\PLWS4031\Project\CAD\Work\bartkkon\EC_Accelerator_Data\PNCSpec_Template.xlsm";
+
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                FileName = "PNCSpec_Template",
+                DefaultExt = "Xlsm",
+                Filter = "Excel Files (*.xlsm)|*xlsm",
+                FilterIndex = 1,
+                RestoreDirectory = true
+            };
+
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                if (File.Exists(saveFileDialog.FileName))
+                {
+                    File.Delete(saveFileDialog.FileName);
+                }
+
+                File.Copy(Template, saveFileDialog.FileName);
+            }
         }
     }
 }

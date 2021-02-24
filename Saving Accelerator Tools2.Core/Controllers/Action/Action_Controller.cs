@@ -22,6 +22,7 @@ namespace Saving_Accelerator_Tools2.Core.Controllers.Action
                 .Include(c => c.Action_Plant).ThenInclude(b => b.Plant)
                 .Include(c => c.Action_Tag).ThenInclude(b => b.Tag)
                 .Include(c => c.Action_ANCChange).ThenInclude(b => b.ANCChange)
+                .Include(c => c.Action_PNC).ThenInclude(b => b.List)
                 .FirstOrDefault();
 
 
@@ -39,6 +40,7 @@ namespace Saving_Accelerator_Tools2.Core.Controllers.Action
                 .Include(c => c.Action_Plant).ThenInclude(b => b.Plant)
                 .Include(c => c.Action_Tag).ThenInclude(b => b.Tag)
                 .Include(c => c.Action_ANCChange).ThenInclude(b => b.ANCChange)
+                .Include(c => c.Action_PNC).ThenInclude(b => b.List)
                 .FirstOrDefault();
 
 

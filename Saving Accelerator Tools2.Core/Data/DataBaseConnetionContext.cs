@@ -25,6 +25,7 @@ namespace Saving_Accelerator_Tools2.Core.Data
         public DbSet<Role_DB> Role { get; set; }
         public DbSet<ActionLeader_DB> ActionLeader { get; set; }
         public DbSet<ANCChange_DB> ANCChange { get; set; }
+        public DbSet<CalcByPNC> PNCList { get; set; }
 
         //Dane
         public DbSet<MonthlyANC_DB> ANC_Monthly { get; set; }
@@ -44,6 +45,8 @@ namespace Saving_Accelerator_Tools2.Core.Data
 
         //Action Dodatki
         public DbSet<Tag_DB> Tag { get; set; }
+        public DbSet<PlatformCalc_DB> PlatformCalcs { get; set; }
+        public DbSet<ANCSpecial_ByItems_DB> ANCSpecial_Item { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -118,6 +121,42 @@ namespace Saving_Accelerator_Tools2.Core.Data
                 .HasOne(bc => bc.ANCChange)
                 .WithMany(b => b.Action_ANCChange)
                 .HasForeignKey(bc => bc.ANCChangeID);
+
+            //Many to Many Action <<=>> CalcByPNC -->> List PNC do danej akcji jesli będzie wybrane liczenie po PNC 
+            modelBuilder.Entity<Action_PNC_InterTable>()
+                .HasKey(bc => new { bc.ActionID, bc.PNCID });
+            modelBuilder.Entity<Action_PNC_InterTable>()
+                .HasOne(bc => bc.Action)
+                .WithMany(b => b.Action_PNC)
+                .HasForeignKey(bc => bc.ActionID);
+            modelBuilder.Entity<Action_PNC_InterTable>()
+                .HasOne(bc => bc.List)
+                .WithMany(b => b.Action_PNC)
+                .HasForeignKey(bc => bc.PNCID);
+
+            //Many to Many Action <<=>> ANCChange dla Platform 
+            modelBuilder.Entity<Action_ANCChangePlatform_InterTable>()
+                .HasKey(bc => new { bc.ActionID, bc.ChangeID });
+            modelBuilder.Entity<Action_ANCChangePlatform_InterTable>()
+                .HasOne(bc => bc.Action)
+                .WithMany(b => b.Action_ANCChange_Platform)
+                .HasForeignKey(bc => bc.ActionID);
+            modelBuilder.Entity<Action_ANCChangePlatform_InterTable>()
+                .HasOne(bc => bc.Platform)
+                .WithMany(b => b.Action_ANCChange_Platform)
+                .HasForeignKey(bc => bc.ChangeID);
+
+            //Many to Many Action <<=>> ANCChange dla Itemów dodatnich i ujemnych 
+            modelBuilder.Entity<Action_ANCChange_Items_InterTable>()
+                .HasKey(bc => new { bc.ActionID, bc.ItemID });
+            modelBuilder.Entity<Action_ANCChange_Items_InterTable>()
+                .HasOne(bc => bc.Action)
+                .WithMany(b => b.Action_ANCChange_Items)
+                .HasForeignKey(bc => bc.ActionID);
+            modelBuilder.Entity<Action_ANCChange_Items_InterTable>()
+                .HasOne(bc => bc.Item)
+                .WithMany(b => b.Action_ANCChange_Items)
+                .HasForeignKey(bc => bc.ItemID);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

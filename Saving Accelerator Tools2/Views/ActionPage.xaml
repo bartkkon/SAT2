@@ -28,7 +28,7 @@
                 <ColumnDefinition Width="330"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Action:MainFilter HorizontalAlignment="Left" VerticalAlignment="Top" Width="187" Margin="0,0,0,0"/>
+            <Action:MainFilter HorizontalAlignment="Left" Margin="0,0,0,0" />
 
             <!--
             The Mahapps Gray10 color represents where you should place your content.
@@ -41,5 +41,8 @@
         <Action:NavigationButton Margin="760,0,0,695" Grid.Row="1" Grid.Column="1" Height="50" VerticalAlignment="Top" HorizontalAlignment="Right" Width="100"/>
         <Action:ECCC Grid.Column="1" HorizontalAlignment="Left" Height="85" Margin="740,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="130"/>
         <Action:QuantityEstymation Grid.Column="1" HorizontalAlignment="Left" Height="65" Margin="740,110,0,0" Grid.Row="1" VerticalAlignment="Top" Width="130" RenderTransformOrigin="0.5,0.5"/>
+        <Action:CalculationBy Grid.Column="1" HorizontalAlignment="Left" Height="140" Margin="870,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="225"/>
+        <Action:PNC Grid.Column="1" HorizontalAlignment="Left" Margin="1070,142,0,0" Grid.Row="1" Width="60"/>
+        <Action:ANCSpecial Grid.Column="1" HorizontalAlignment="Left" Height="13" Margin="982,162,0,0" Grid.Row="1" VerticalAlignment="Top" Width="2"/>
     </Grid>
 </Page>

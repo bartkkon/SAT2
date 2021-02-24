@@ -15,6 +15,7 @@
             <Button x:Name="Cancel_Button" Content="Cancel" Height="29" Margin="0,50,15,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="55" Click="Cancel_Button_Click"/>
             <TextBlock x:Name="InstructionBlock_Text" HorizontalAlignment="Left" Height="50" TextWrapping="Wrap" VerticalAlignment="Top" Width="455" Margin="10,25,0,0" Foreground="{DynamicResource MahApps.Brushes.ThemeForeground}"/>
             <Path Data="M5,99.04 L595,99.04" Fill="#FFF4F4F5" HorizontalAlignment="Stretch" Height="1" Margin="10,99,10,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="573"/>
+            <Button Content="Template" HorizontalAlignment="Left" Height="5" Margin="400,64,0,0" VerticalAlignment="Top" Width="90" Visibility="{Binding Path=TemplateButtonVisibility}" Click="TemplateButton_Click"/>
         </Grid>
         <TextBox x:Name="New_Data_TextBox" Margin="0,100,0,0" TextWrapping="Wrap" HorizontalScrollBarVisibility="Hidden" Grid.ColumnSpan="2" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
 

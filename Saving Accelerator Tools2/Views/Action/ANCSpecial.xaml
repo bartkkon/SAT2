@@ -1,0 +1,41 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Saving_Accelerator_Tools2.Views.Action"
+             xmlns:model="clr-namespace:Saving_Accelerator_Tools2.ViewModels.Action"
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="Saving_Accelerator_Tools2.Views.Action.ANCSpecial"
+             mc:Ignorable="d" Height="285" Width="370" MinHeight="285" MaxHeight="285" MinWidth="370" MaxWidth="370" Visibility="{Binding Path=UserControlEnabled,Mode=TwoWay}">
+    <UserControl.DataContext>
+        <model:ANCSpecialViewModel/>
+    </UserControl.DataContext>
+    <Grid>
+        <CheckBox Content="ANC/PNC" HorizontalAlignment="Left" Height="20" Margin="149,20,0,0" VerticalAlignment="Top" Width="85" IsChecked="{Binding Path=PlusMinu,Mode=TwoWay}"/>
+        <CheckBox Content="Platform" HorizontalAlignment="Left" Height="20" Margin="65,20,0,0" VerticalAlignment="Top" Width="85" mah:ToggleButtonHelper.ContentDirection="RightToLeft" IsChecked="{Binding Path=Platform,Mode=TwoWay}"/>
+        <Grid HorizontalAlignment="Left" Height="140" Margin="5,45,0,0" VerticalAlignment="Top" Width="146" IsEnabled="{Binding Path=Platform}">
+            <CheckBox Content="All" HorizontalAlignment="Left" Height="20" Margin="5,5,0,0" VerticalAlignment="Top" Width="80" IsChecked="{Binding Path=All, Mode=TwoWay}"/>
+            <CheckBox Content="DMD" HorizontalAlignment="Left" Height="25" Margin="15,30,0,0" VerticalAlignment="Top" Width="80" IsChecked="{Binding Path=DMD, Mode=TwoWay}" IsEnabled="{Binding Path=DMD_Enabled, Mode=TwoWay}"/>
+            <CheckBox Content="D45" HorizontalAlignment="Left" Height="25" Margin="80,30,0,0" VerticalAlignment="Top" Width="80" IsChecked="{Binding Path=D45, Mode=TwoWay}" IsEnabled="{Binding Path=D45_Enabled, Mode=TwoWay}"/>
+            <CheckBox Content="FS" HorizontalAlignment="Left" Height="20" Margin="25,55,0,0" VerticalAlignment="Top" Width="80" IsChecked="{Binding Path=DMD_FS, Mode=TwoWay}" IsEnabled="{Binding Path=DMD_Ins_Enabled, Mode=TwoWay}"/>
+            <CheckBox Content="FI" HorizontalAlignment="Left" Height="20" Margin="25,75,0,0" VerticalAlignment="Top" Width="80" IsChecked="{Binding Path=DMD_FI, Mode=TwoWay}" IsEnabled="{Binding Path=DMD_Ins_Enabled, Mode=TwoWay}"/>
+            <CheckBox Content="BI" HorizontalAlignment="Left" Height="20" Margin="25,95,0,0" VerticalAlignment="Top" Width="80" IsChecked="{Binding Path=DMD_BI, Mode=TwoWay}" IsEnabled="{Binding Path=DMD_Ins_Enabled, Mode=TwoWay}"/>
+            <CheckBox Content="FSBU" HorizontalAlignment="Left" Height="20" Margin="25,115,0,0" VerticalAlignment="Top" Width="80" IsChecked="{Binding Path=DMD_FSBU, Mode=TwoWay}" IsEnabled="{Binding Path=DMD_Ins_Enabled, Mode=TwoWay}"/>
+            <CheckBox Content="FS" HorizontalAlignment="Left" Height="20" Margin="90,55,0,0" VerticalAlignment="Top" Width="80" IsChecked="{Binding Path=D45_FS, Mode=TwoWay}" IsEnabled="{Binding Path=D45_Ins_Enabled, Mode=TwoWay}"/>
+            <CheckBox Content="FI" HorizontalAlignment="Left" Height="20" Margin="90,75,0,0" VerticalAlignment="Top" Width="80" IsChecked="{Binding Path=D45_FI, Mode=TwoWay}" IsEnabled="{Binding Path=D45_Ins_Enabled, Mode=TwoWay}"/>
+            <CheckBox Content="BI" HorizontalAlignment="Left" Height="20" Margin="90,95,0,0" VerticalAlignment="Top" Width="80" IsChecked="{Binding Path=D45_BI, Mode=TwoWay}" IsEnabled="{Binding Path=D45_Ins_Enabled, Mode=TwoWay}"/>
+            <CheckBox Content="FSBU" HorizontalAlignment="Left" Height="20" Margin="90,115,0,0" VerticalAlignment="Top" Width="80" IsChecked="{Binding Path=D45_FSBU, Mode=TwoWay}" IsEnabled="{Binding Path=D45_Ins_Enabled, Mode=TwoWay}"/>
+            <Rectangle Margin="0,0,0,0" Stroke="Black"/>
+        </Grid>
+        <Grid HorizontalAlignment="Left" Height="240" Margin="150,45,0,0" VerticalAlignment="Top" Width="220" IsEnabled="{Binding Path=PlusMinu}">
+            <TextBox HorizontalAlignment="Left" Margin="5,20,0,5" TextWrapping="Wrap" Width="100" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Text="{Binding Path=Plus, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox HorizontalAlignment="Left" Margin="115,20,0,5" TextWrapping="Wrap" Width="100" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Text="{Binding Path=Minus, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock HorizontalAlignment="Left" Height="15" Margin="5,5,0,0" Text="Plus:" TextWrapping="Wrap" VerticalAlignment="Top" Width="70"/>
+            <TextBlock Height="15" Margin="115,4,35,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Minus:" RenderTransformOrigin="0.5,0.4"/>
+            <Rectangle Margin="0,0,0,0" Stroke="Black"/>
+        </Grid>
+
+
+
+    </Grid>
+</UserControl>

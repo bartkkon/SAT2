@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Saving_Accelerator_Tools2.Core.Data;
 
 namespace Saving_Accelerator_Tools2.Core.Migrations
 {
     [DbContext(typeof(DataBaseConnetionContext))]
-    partial class DataBaseConnetionContextModelSnapshot : ModelSnapshot
+    [Migration("20210222131916_Update")]
+    partial class Update
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -95,36 +97,6 @@ namespace Saving_Accelerator_Tools2.Core.Migrations
                     b.HasIndex("ANCChangeID");
 
                     b.ToTable("Action_ANCChage_InterTable");
-                });
-
-            modelBuilder.Entity("Saving_Accelerator_Tools2.Core.Models.Action.InterTable.Action_ANCChangePlatform_InterTable", b =>
-                {
-                    b.Property<int>("ActionID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ChangeID")
-                        .HasColumnType("int");
-
-                    b.HasKey("ActionID", "ChangeID");
-
-                    b.HasIndex("ChangeID");
-
-                    b.ToTable("Action_ANCChangePlatform_InterTable");
-                });
-
-            modelBuilder.Entity("Saving_Accelerator_Tools2.Core.Models.Action.InterTable.Action_ANCChange_Items_InterTable", b =>
-                {
-                    b.Property<int>("ActionID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ItemID")
-                        .HasColumnType("int");
-
-                    b.HasKey("ActionID", "ItemID");
-
-                    b.HasIndex("ItemID");
-
-                    b.ToTable("Action_ANCChange_Items_InterTable");
                 });
 
             modelBuilder.Entity("Saving_Accelerator_Tools2.Core.Models.Action.InterTable.Action_Devision_InterTable", b =>
@@ -248,27 +220,6 @@ namespace Saving_Accelerator_Tools2.Core.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("ANCChange");
-                });
-
-            modelBuilder.Entity("Saving_Accelerator_Tools2.Core.Models.Action.Specification.ANCSpecial_ByItems_DB", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<string>("Item")
-                        .HasColumnType("char(9)");
-
-                    b.Property<bool>("Minus")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("Plus")
-                        .HasColumnType("bit");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("ANCSpecial_Item");
                 });
 
             modelBuilder.Entity("Saving_Accelerator_Tools2.Core.Models.Action.Specification.CalcByPNC", b =>
@@ -798,44 +749,6 @@ namespace Saving_Accelerator_Tools2.Core.Migrations
                     b.Navigation("ANCChange");
                 });
 
-            modelBuilder.Entity("Saving_Accelerator_Tools2.Core.Models.Action.InterTable.Action_ANCChangePlatform_InterTable", b =>
-                {
-                    b.HasOne("Saving_Accelerator_Tools2.Core.Models.Action.Action_DB", "Action")
-                        .WithMany("Action_ANCChange_Platform")
-                        .HasForeignKey("ActionID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Saving_Accelerator_Tools2.Core.Models.Other.PlatformCalc_DB", "Platform")
-                        .WithMany("Action_ANCChange_Platform")
-                        .HasForeignKey("ChangeID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Action");
-
-                    b.Navigation("Platform");
-                });
-
-            modelBuilder.Entity("Saving_Accelerator_Tools2.Core.Models.Action.InterTable.Action_ANCChange_Items_InterTable", b =>
-                {
-                    b.HasOne("Saving_Accelerator_Tools2.Core.Models.Action.Action_DB", "Action")
-                        .WithMany("Action_ANCChange_Items")
-                        .HasForeignKey("ActionID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Saving_Accelerator_Tools2.Core.Models.Action.Specification.ANCSpecial_ByItems_DB", "Item")
-                        .WithMany("Action_ANCChange_Items")
-                        .HasForeignKey("ItemID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Action");
-
-                    b.Navigation("Item");
-                });
-
             modelBuilder.Entity("Saving_Accelerator_Tools2.Core.Models.Action.InterTable.Action_Devision_InterTable", b =>
                 {
                     b.HasOne("Saving_Accelerator_Tools2.Core.Models.Action.Action_DB", "Action")
@@ -1049,10 +962,6 @@ namespace Saving_Accelerator_Tools2.Core.Migrations
                 {
                     b.Navigation("Action_ANCChange");
 
-                    b.Navigation("Action_ANCChange_Items");
-
-                    b.Navigation("Action_ANCChange_Platform");
-
                     b.Navigation("Action_Devision");
 
                     b.Navigation("Action_Leader");
@@ -1067,11 +976,6 @@ namespace Saving_Accelerator_Tools2.Core.Migrations
             modelBuilder.Entity("Saving_Accelerator_Tools2.Core.Models.Action.Specification.ANCChange_DB", b =>
                 {
                     b.Navigation("Action_ANCChange");
-                });
-
-            modelBuilder.Entity("Saving_Accelerator_Tools2.Core.Models.Action.Specification.ANCSpecial_ByItems_DB", b =>
-                {
-                    b.Navigation("Action_ANCChange_Items");
                 });
 
             modelBuilder.Entity("Saving_Accelerator_Tools2.Core.Models.Action.Specification.CalcByPNC", b =>
@@ -1109,11 +1013,6 @@ namespace Saving_Accelerator_Tools2.Core.Migrations
                     b.Navigation("Leader_Plant");
 
                     b.Navigation("User_Plant");
-                });
-
-            modelBuilder.Entity("Saving_Accelerator_Tools2.Core.Models.Other.PlatformCalc_DB", b =>
-                {
-                    b.Navigation("Action_ANCChange_Platform");
                 });
 
             modelBuilder.Entity("Saving_Accelerator_Tools2.Core.Models.Users.PageVisibility_DB", b =>

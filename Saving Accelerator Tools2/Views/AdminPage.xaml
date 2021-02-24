@@ -8,7 +8,7 @@
     xmlns:Admin="clr-namespace:Saving_Accelerator_Tools2.Views.Admin"
     x:Class="Saving_Accelerator_Tools2.Views.AdminPage"
     Style="{DynamicResource MahApps.Styles.Page}"
-    mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="800">
+    mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="48" />
@@ -31,6 +31,7 @@
                         <Admin:Quantity Margin="0,0 ,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                         <Admin:Approval Margin="205,295,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                         <Admin:Tag Margin="510,205,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                        <Admin:PlaftormCalculation HorizontalAlignment="Left" Height="263" Margin="820,0,0,0" VerticalAlignment="Top" Width="290"/>
                     </Grid>
                 </TabItem>
                 <TabItem FontSize="8" Header="Users">
@@ -50,6 +51,7 @@
             Place your content here.
             -->
         </Grid>
+        
 
     </Grid>
 </Page>

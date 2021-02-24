@@ -5,6 +5,7 @@ using Saving_Accelerator_Tools2.Core.Models.Action;
 using Saving_Accelerator_Tools2.Core.Models.Action.InterTable;
 using Saving_Accelerator_Tools2.Core.Models.Action.Specification;
 using Saving_Accelerator_Tools2.Models.Action;
+using Saving_Accelerator_Tools2.ViewModels.Action;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,8 @@ namespace Saving_Accelerator_Tools2.Tasks
         private DataBaseConnetionContext context;
         private ECCCModel _ECCC;
         private decimal QEstymation_Value;
+        private int CalculationGroup;
+        private List<PNCListData> PNCList;
 
         public SaveAction()
         {
@@ -31,6 +34,8 @@ namespace Saving_Accelerator_Tools2.Tasks
             Mediator.Mediator.Register("Set_ANCList", SetANCList);
             Mediator.Mediator.Register("ECCC_Save", ECCC_ActionData);
             Mediator.Mediator.Register("Q_Estymation_Save", QEstymation);
+            Mediator.Mediator.Register("Set_CalcGroupForSave", CalcGroup);
+            Mediator.Mediator.Register("Set_PNCList_Save", CalcGroup);
         }
 
         ~SaveAction()
@@ -40,6 +45,8 @@ namespace Saving_Accelerator_Tools2.Tasks
             Mediator.Mediator.Unregister("Set_ANCList", SetANCList);
             Mediator.Mediator.Unregister("ECCC_Save", ECCC_ActionData);
             Mediator.Mediator.Unregister("Q_Estymation_Save", QEstymation);
+            Mediator.Mediator.Unregister("Set_CalcGroupForSave", CalcGroup);
+            Mediator.Mediator.Unregister("Set_PNCList_Save", CalcGroup);
         }
 
         public bool Save()
@@ -52,12 +59,15 @@ namespace Saving_Accelerator_Tools2.Tasks
                 Mediator.Mediator.NotifyColleagues("Get_ANCChange", null);
                 Mediator.Mediator.NotifyColleagues("Get_ECCC", null);
                 Mediator.Mediator.NotifyColleagues("Get_QuantityEstimation", null);
+                Mediator.Mediator.NotifyColleagues("Get_Calc", null);
+                Mediator.Mediator.NotifyColleagues("Get_PNC_Data", null);
                 Thread.Sleep(1000);
             } while (_GeneralInformation == null
             && _Platform == null
             && _ANCList == null
             && _ECCC == null
-            && QEstymation_Value == 0);
+            && QEstymation_Value == 0
+            && CalculationGroup != 0);
 
             if (_GeneralInformation.ID == 0)
             {
@@ -88,6 +98,7 @@ namespace Saving_Accelerator_Tools2.Tasks
             SaveToAction.ECCCSpec = _ECCC.ECCCSpecial;
             SaveToAction.ECCCValue = _ECCC.ECCC_Value;
             SaveToAction.QEstymation = QEstymation_Value;
+            SaveToAction.Calculation = CalculationGroup;
 
             //Zapis Akcji aby dostać ID potrzebne przy InterTable
             Action_Controller.NewAction(SaveToAction);
@@ -121,7 +132,7 @@ namespace Saving_Accelerator_Tools2.Tasks
             };
             SaveToAction.Action_Tag.Add(NewTag);
 
-            foreach(var ANC in _ANCList)
+            foreach (var ANC in _ANCList)
             {
                 var newRecordANC = new ANCChange_DB()
                 {
@@ -145,6 +156,24 @@ namespace Saving_Accelerator_Tools2.Tasks
                     ANCChange = newRecordANC,
                 };
                 SaveToAction.Action_ANCChange.Add(NewRecord);
+            }
+
+            if (CalculationGroup == 3)
+            {
+                foreach (var PNCRow in PNCList)
+                {
+                    var NewRecordPNC = new CalcByPNC()
+                    {
+                        ID = PNCRow.ID,
+                        PNC = PNCRow.PNC,
+                    };
+                    var NewRecord = new Action_PNC_InterTable()
+                    {
+                        ActionID = SaveToAction.ID,
+                        List = NewRecordPNC,
+                    };
+                    SaveToAction.Action_PNC.Add(NewRecord);
+                }
             }
 
             Action_Controller.UpdateAction(SaveToAction);
@@ -229,9 +258,27 @@ namespace Saving_Accelerator_Tools2.Tasks
                 SaveToAction.ECCCValue = _ECCC.ECCC_Value;
                 AnyUpdated = true;
             }
-            if(SaveToAction.QEstymation != QEstymation_Value)
+            if (SaveToAction.QEstymation != QEstymation_Value)
             {
                 SaveToAction.QEstymation = QEstymation_Value;
+                AnyUpdated = true;
+            }
+            if (SaveToAction.Calculation != CalculationGroup)
+            {
+                if (SaveToAction.Calculation == 4)
+                {
+
+                }
+                else if (SaveToAction.Calculation == 3)
+                {
+                    RemovePNCList();
+                }
+                else if (SaveToAction.Calculation == 2)
+                {
+
+
+                }
+                SaveToAction.Calculation = CalculationGroup;
                 AnyUpdated = true;
             }
 
@@ -381,6 +428,41 @@ namespace Saving_Accelerator_Tools2.Tasks
 
             ANCChange_Controller.Update(ActionNewList, ref SaveToAction, ref context);
         }
+        private void PNCUpdate()
+        {
+            foreach (var PNCRecord in PNCList)
+            {
+                if (!SaveToAction.Action_PNC.Any(c => c.List.PNC == PNCRecord.PNC))
+                {
+                    var NewRecordPNC = new CalcByPNC()
+                    {
+                        ID = 0,
+                        PNC = PNCRecord.PNC,
+                    };
+                    var NewRecord = new Action_PNC_InterTable()
+                    {
+                        ActionID = SaveToAction.ID,
+                        List = NewRecordPNC,
+                    };
+                    SaveToAction.Action_PNC.Add(NewRecord);
+                }
+            }
+            foreach (var PNCCheck in SaveToAction.Action_PNC)
+            {
+                if (!PNCList.Any(c => c.PNC == PNCCheck.List.PNC))
+                {
+
+                }
+            }
+        }
+        private void RemovePNCList()
+        {
+            foreach (var PNCRecord in SaveToAction.Action_PNC)
+            {
+                context.Remove(PNCRecord);
+            }
+            context.SaveChanges();
+        }
 
         #region Mediators Services
         private void GeneralInformation(object sent)
@@ -402,6 +484,10 @@ namespace Saving_Accelerator_Tools2.Tasks
         private void QEstymation(object sent)
         {
             QEstymation_Value = (decimal)sent;
+        }
+        private void CalcGroup(object sent)
+        {
+            CalculationGroup = (int)sent;
         }
         #endregion
     }
