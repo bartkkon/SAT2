@@ -13,7 +13,7 @@ namespace Saving_Accelerator_Tools2.Core.Controllers.Action
     {
         public static Action_DB Load(int ID)
         {
-            Action_DB LoadedAction = new Action_DB();
+            var LoadedAction = new Action_DB();
             var context = new DataBaseConnetionContext();
 
             LoadedAction = context.Action.Where(u => u.ActionID == ID)
@@ -23,6 +23,8 @@ namespace Saving_Accelerator_Tools2.Core.Controllers.Action
                 .Include(c => c.Action_Tag).ThenInclude(b => b.Tag)
                 .Include(c => c.Action_ANCChange).ThenInclude(b => b.ANCChange)
                 .Include(c => c.Action_PNC).ThenInclude(b => b.List)
+                .Include(c => c.Action_ANCChange_Platform).ThenInclude(b=>b.Platform)
+                .Include(c => c.Action_ANCChange_Items).ThenInclude(b=>b.Item)
                 .FirstOrDefault();
 
 
@@ -31,7 +33,7 @@ namespace Saving_Accelerator_Tools2.Core.Controllers.Action
 
         public static Action_DB Load(int ID, DataBaseConnetionContext context)
         {
-            Action_DB LoadedAction = new Action_DB();
+            var LoadedAction = new Action_DB();
             //var context = new DataBaseConnetionContext();
 
             LoadedAction = context.Action.Where(u => u.ActionID == ID)
@@ -41,6 +43,8 @@ namespace Saving_Accelerator_Tools2.Core.Controllers.Action
                 .Include(c => c.Action_Tag).ThenInclude(b => b.Tag)
                 .Include(c => c.Action_ANCChange).ThenInclude(b => b.ANCChange)
                 .Include(c => c.Action_PNC).ThenInclude(b => b.List)
+                .Include(c => c.Action_ANCChange_Platform).ThenInclude(b => b.Platform)
+                .Include(c => c.Action_ANCChange_Items).ThenInclude(b => b.Item)
                 .FirstOrDefault();
 
 

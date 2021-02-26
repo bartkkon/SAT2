@@ -1,5 +1,6 @@
 ﻿using Saving_Accelerator_Tools2.Contracts.Services;
 using Saving_Accelerator_Tools2.Core.Models.Other;
+using Saving_Accelerator_Tools2.Models.Action;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,16 +16,24 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
         {
             Mediator.Mediator.Register("ANCSpecial_Visibility", Set_Visibility);
             Mediator.Mediator.Register("Set_ANCSpecial_Platform", Load_Platform);
+            Mediator.Mediator.Register("Set_ANCSpecial_PLusMinus", Load_Items);
+            Mediator.Mediator.Register("Get_ANCSpecial_Platform", Save_Platform);
+            Mediator.Mediator.Register("Get_ANCSpecial_PLusMinus", Save_Items);
         }
         ~ANCSpecialViewModel()
         {
             Mediator.Mediator.Unregister("ANCSpecial_Visibility", Set_Visibility);
             Mediator.Mediator.Unregister("Set_ANCSpecial_Platform", Load_Platform);
+            Mediator.Mediator.Unregister("Set_ANCSpecial_PLusMinus", Load_Items);
+            Mediator.Mediator.Unregister("Get_ANCSpecial_Platform", Save_Platform);
+            Mediator.Mediator.Unregister("Get_ANCSpecial_PLusMinus", Save_Items);
         }
         #endregion
 
         #region Privates Variables
         private Visibility _UserControlEnabled = Visibility.Hidden;
+        private List<PlusMinusModel> Items = new List<PlusMinusModel>();
+        private List<ANCSpecialModels> Platforms = new List<ANCSpecialModels>();
         private bool _Platform = true;
         private bool _PlusMinus = false;
         private bool _All;
@@ -257,7 +266,7 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
         #region Functions
         private void AllCheck(bool Value)
         {
-            if(Value)
+            if (Value)
             {
                 DMD = false;
                 D45 = false;
@@ -284,7 +293,7 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
         }
         private void StructureCheck_DMD(bool Value)
         {
-            if(Value)
+            if (Value)
             {
                 DMD_FS = false;
                 DMD_FI = false;
@@ -314,7 +323,7 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
         }
         private void DMD_CheckIfAll()
         {
-            if(_DMD_FS && _DMD_FI && _DMD_BI && _DMD_FSBU)
+            if (_DMD_FS && _DMD_FI && _DMD_BI && _DMD_FSBU)
             {
                 DMD = true;
             }
@@ -328,7 +337,7 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
         }
         private void PlatformCheckAll()
         {
-            if(_DMD &&_D45)
+            if (_DMD && _D45)
             {
                 All = true;
             }
@@ -361,47 +370,155 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
         }
         private void Load_Platform(object NewData)
         {
-            List<PlatformCalc_DB> Platform = NewData as List<PlatformCalc_DB>;
-            if(Platform.Count >0)
+            Platforms = NewData as List<ANCSpecialModels>;
+            if (Platforms.Count > 0)
             {
-                if( Platform.Any(b => b.Platform == "All"))
+                Platform = true;
+                if (Platforms.Any(b => b.Platform == "All"))
                 {
                     All = true;
                 }
                 else
                 {
                     All = false;
-                    if(Platform.Any(b => b.Platform == "DMD" && b.Installation == string.Empty))
+                    if (Platforms.Any(b => b.Platform == "DMD" && b.Installation == string.Empty))
                     {
                         DMD = true;
                     }
                     else
                     {
                         DMD = false;
-                        _ = Platform.Any(b => b.Platform == "DMD" && b.Installation == "FS") ? DMD_FS = true : DMD_FS = false;
-                        _ = Platform.Any(b => b.Platform == "DMD" && b.Installation == "FI") ? DMD_FI = true : DMD_FI = false;
-                        _ = Platform.Any(b => b.Platform == "DMD" && b.Installation == "BI") ? DMD_BI = true : DMD_BI = false;
-                        _ = Platform.Any(b => b.Platform == "DMD" && b.Installation == "FSBU") ? DMD_FSBU = true : DMD_FSBU = false;
+                        _ = Platforms.Any(b => b.Platform == "DMD" && b.Installation == "FS") ? DMD_FS = true : DMD_FS = false;
+                        _ = Platforms.Any(b => b.Platform == "DMD" && b.Installation == "FI") ? DMD_FI = true : DMD_FI = false;
+                        _ = Platforms.Any(b => b.Platform == "DMD" && b.Installation == "BI") ? DMD_BI = true : DMD_BI = false;
+                        _ = Platforms.Any(b => b.Platform == "DMD" && b.Installation == "FSBU") ? DMD_FSBU = true : DMD_FSBU = false;
                     }
-                    if (Platform.Any(b => b.Platform == "D45" && b.Installation == string.Empty))
+                    if (Platforms.Any(b => b.Platform == "D45" && b.Installation == string.Empty))
                     {
                         D45 = true;
                     }
                     else
                     {
                         D45 = false;
-                        _ = Platform.Any(b => b.Platform == "D45" && b.Installation == "FS") ? D45_FS = true : D45_FS = false;
-                        _ = Platform.Any(b => b.Platform == "D45" && b.Installation == "FI") ? D45_FI = true : D45_FI = false;
-                        _ = Platform.Any(b => b.Platform == "D45" && b.Installation == "BI") ? D45_BI = true : D45_BI = false;
-                        _ = Platform.Any(b => b.Platform == "D45" && b.Installation == "FSBU") ? D45_FSBU = true : D45_FSBU = false;
+                        _ = Platforms.Any(b => b.Platform == "D45" && b.Installation == "FS") ? D45_FS = true : D45_FS = false;
+                        _ = Platforms.Any(b => b.Platform == "D45" && b.Installation == "FI") ? D45_FI = true : D45_FI = false;
+                        _ = Platforms.Any(b => b.Platform == "D45" && b.Installation == "BI") ? D45_BI = true : D45_BI = false;
+                        _ = Platforms.Any(b => b.Platform == "D45" && b.Installation == "FSBU") ? D45_FSBU = true : D45_FSBU = false;
                     }
                 }
             }
         }
-        private void Load_PlusMinus(object NewData)
+        private void Load_Items(object BaseItems)
         {
+            Items.Clear();
+            string NewPlus = string.Empty;
+            string NewMinus = string.Empty;
 
+            if ((BaseItems as List<PlusMinusModel>).Count > 0)
+            {
+                PlusMinu = true;
+                foreach (var NewItem in BaseItems as List<PlusMinusModel>)
+                {
+                    Items.Add(NewItem);
+                    _ = NewItem.Plus ? NewPlus += NewItem.Item + Environment.NewLine : NewMinus += NewItem.Item + Environment.NewLine;
+                }
+                Plus = NewPlus;
+                Minus = NewMinus;
+            }
+        }
+        private void Save_Platform(object obj)
+        {
+            List<int> NewTable = new List<int>();
+            if(_All)
+            {
+                NewTable.Add(1);
+            }
+            else
+            {
+                if(_DMD)
+                {
+                    NewTable.Add(3);
+                }
+                else
+                {
+                    if (_DMD_FS)
+                        NewTable.Add(4);
+                    if (_DMD_FI)
+                        NewTable.Add(5);
+                    if (_DMD_BI)
+                        NewTable.Add(6);
+                    if (_DMD_FSBU)
+                        NewTable.Add(7);
+                }
+                if(_D45)
+                {
+                    NewTable.Add(2);
+                }
+                else
+                {
+                    if (_D45_FS)
+                        NewTable.Add(8);
+                    if (_D45_FI)
+                        NewTable.Add(9);
+                    if (_D45_BI)
+                        NewTable.Add(10);
+                    if (_D45_FSBU)
+                        NewTable.Add(11);
+                }
+            }
+            Mediator.Mediator.NotifyColleagues("", NewTable);
+        }
+        private void Save_Items(object obj)
+        {
+            string[] PlusValue = _Plus.Split(Environment.NewLine);
+            string[] MinusValue = _Minus.Split(Environment.NewLine);
+
+            foreach(var PlusRecord in PlusValue)
+            {
+                if(!Items.Any(b => b.Item == PlusRecord && b.Plus == true))
+                {
+                    var NewRecord = new PlusMinusModel()
+                    {
+                        ID = 0,
+                        Item = PlusRecord,
+                        Plus = true,
+                        Minus = false,
+                        Active = true,
+                    };
+                    Items.Add(NewRecord);
+                }
+                else
+                {
+                    var Item = Items.Where(b => b.Item == PlusRecord && b.Plus == true).FirstOrDefault();
+                    Item.Active = true;
+                }
+            }
+
+            foreach(var MinusRecord in MinusValue)
+            {
+                if(!Items.Any(b => b.Item == MinusRecord && b.Minus == true))
+                {
+                    var newRecord = new PlusMinusModel()
+                    {
+                        ID = 0,
+                        Item = MinusRecord,
+                        Plus = false,
+                        Minus = true,
+                        Active = true,
+                    };
+                    Items.Add(newRecord);
+                }
+                else
+                {
+                    var Item = Items.Where(b => b.Item == MinusRecord && b.Minus == true).FirstOrDefault();
+                    Item.Active = true;
+                }
+            }
+
+            Mediator.Mediator.NotifyColleagues("ANCChange_Items", Items);
         }
         #endregion
     }
+
+
 }

@@ -20,6 +20,8 @@ namespace Saving_Accelerator_Tools2.Tasks
         private List<ANCChangeModel> ANCChange = new List<ANCChangeModel>();
         private ECCCModel ECCCValue = new ECCCModel();
         private List<PNCListData> PNCList = new List<PNCListData>();
+        private List<PlusMinusModel> ANCSpecialPlusMinus = new List<PlusMinusModel>();
+        private List<ANCSpecialModels> ANCSpecialPlatform = new List<ANCSpecialModels>();
 
         public LoadAction(int ActionID)
         {
@@ -45,6 +47,7 @@ namespace Saving_Accelerator_Tools2.Tasks
             Preapre_ANCChange();
             Prepare_ECCC();
             Prepare_Calculation();
+            Prepare_PlusMinus_ANCSpecial();
 
             #endregion
 
@@ -56,6 +59,8 @@ namespace Saving_Accelerator_Tools2.Tasks
             Mediator.Mediator.NotifyColleagues("Set_QuantityEstymation", ActionDataBase.QEstymation);
             Mediator.Mediator.NotifyColleagues("Set_Calc", ActionDataBase.Calculation);
             Mediator.Mediator.NotifyColleagues("Set_PNC_Data", PNCList);
+            Mediator.Mediator.NotifyColleagues("Set_ANCSpecial_PLusMinus", ANCSpecialPlusMinus);
+            Mediator.Mediator.NotifyColleagues("Set_ANCSpecial_Platform", ANCSpecialPlatform);
 
             #endregion
             Mouse.OverrideCursor = null;
@@ -132,6 +137,33 @@ namespace Saving_Accelerator_Tools2.Tasks
             ECCCValue.ECCC = ActionDataBase.ECCC;
             ECCCValue.ECCCSpecial = ActionDataBase.ECCCSpec;
             ECCCValue.ECCC_Value = ActionDataBase.ECCCValue;
+        }
+        private void Prepare_PlusMinus_ANCSpecial()
+        {
+            foreach(var Record in ActionDataBase.Action_ANCChange_Items)
+            {
+                var NewItem = new PlusMinusModel()
+                {
+                    ID = Record.Item.ID,
+                    Item = Record.Item.Item,
+                    Plus = Record.Item.Plus,
+                    Minus = Record.Item.Minus,
+                };
+                ANCSpecialPlusMinus.Add(NewItem);
+            }
+        }
+        private void Prepare_Platform_ANCSpecial()
+        {
+            foreach(var record in ActionDataBase.Action_ANCChange_Platform)
+            {
+                var NewItem = new ANCSpecialModels()
+                {
+                    ID = record.Platform.ID,
+                    Platform = record.Platform.Platform,
+                    Installation = record.Platform.Installation,
+                };
+                ANCSpecialPlatform.Add(NewItem);
+            }
         }
     }
 }

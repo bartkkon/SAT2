@@ -26,6 +26,8 @@ namespace Saving_Accelerator_Tools2.Tasks
         private decimal QEstymation_Value;
         private int CalculationGroup;
         private List<PNCListData> PNCList;
+        private List<PlusMinusModel> ItemsList_ANCChange;
+        private List<int> PlatformList_AnCSpecial;
 
         public SaveAction()
         {
@@ -36,6 +38,8 @@ namespace Saving_Accelerator_Tools2.Tasks
             Mediator.Mediator.Register("Q_Estymation_Save", QEstymation);
             Mediator.Mediator.Register("Set_CalcGroupForSave", CalcGroup);
             Mediator.Mediator.Register("Set_PNCList_Save", CalcGroup);
+            Mediator.Mediator.Register("ANCChange_Items", ANCChange_Items);
+            Mediator.Mediator.Register("ANCSpecial_Platform", ANCSpecial_Platforms);
         }
 
         ~SaveAction()
@@ -47,6 +51,8 @@ namespace Saving_Accelerator_Tools2.Tasks
             Mediator.Mediator.Unregister("Q_Estymation_Save", QEstymation);
             Mediator.Mediator.Unregister("Set_CalcGroupForSave", CalcGroup);
             Mediator.Mediator.Unregister("Set_PNCList_Save", CalcGroup);
+            Mediator.Mediator.Unregister("ANCChange_Items", ANCChange_Items);
+            Mediator.Mediator.Unregister("ANCSpecial_Platform", ANCSpecial_Platforms);
         }
 
         public bool Save()
@@ -61,13 +67,15 @@ namespace Saving_Accelerator_Tools2.Tasks
                 Mediator.Mediator.NotifyColleagues("Get_QuantityEstimation", null);
                 Mediator.Mediator.NotifyColleagues("Get_Calc", null);
                 Mediator.Mediator.NotifyColleagues("Get_PNC_Data", null);
+                Mediator.Mediator.NotifyColleagues("Get_ANCSpecial_PLusMinus", null);
                 Thread.Sleep(1000);
             } while (_GeneralInformation == null
             && _Platform == null
             && _ANCList == null
             && _ECCC == null
             && QEstymation_Value == 0
-            && CalculationGroup != 0);
+            && CalculationGroup != 0
+            && ItemsList_ANCChange == null);
 
             if (_GeneralInformation.ID == 0)
             {
@@ -176,6 +184,34 @@ namespace Saving_Accelerator_Tools2.Tasks
                 }
             }
 
+            //ANCSpecial plus i minus elementy
+            foreach(var Item in ItemsList_ANCChange)
+            {
+                var NewObject = new ANCSpecial_ByItems_DB()
+                {
+                    Item = Item.Item,
+                    Plus = Item.Plus,
+                    Minus = Item.Minus,
+                };
+                var NewRecord = new Action_ANCChange_Items_InterTable()
+                {
+                    ActionID = SaveToAction.ID,
+                    Item = NewObject,
+                };
+                SaveToAction.Action_ANCChange_Items.Add(NewRecord);
+            }
+
+            //ANCSpecial platformy dodawanie
+            foreach(var Record in PlatformList_AnCSpecial)
+            {
+                var NewRecord = new Action_ANCChangePlatform_InterTable()
+                {
+                    ActionID = SaveToAction.ID,
+                    ChangeID = Record,
+                };
+                SaveToAction.Action_ANCChange_Platform.Add(NewRecord);
+            }
+
             Action_Controller.UpdateAction(SaveToAction);
         }
 
@@ -275,7 +311,7 @@ namespace Saving_Accelerator_Tools2.Tasks
                 }
                 else if (SaveToAction.Calculation == 2)
                 {
-
+                    //Usuniećie liste elementów i list platform do kalkulacji
 
                 }
                 SaveToAction.Calculation = CalculationGroup;
@@ -396,9 +432,71 @@ namespace Saving_Accelerator_Tools2.Tasks
 
             ANCPrepare();
 
+            ANCSpecial_Item_Prepare();
+
+            ANCSpecial_PlatformPrepare();
+
             if (AnyUpdated)
             {
                 Action_Controller.UpdateAction(SaveToAction);
+            }
+        }
+
+        private void ANCSpecial_PlatformPrepare()
+        {
+            foreach(var Record in PlatformList_AnCSpecial)
+            {
+                if(!SaveToAction.Action_ANCChange_Platform.Any(c => c.ChangeID == Record))
+                {
+                    var NewRecord = new Action_ANCChangePlatform_InterTable()
+                    {
+                        ActionID = SaveToAction.ID,
+                        ChangeID = Record,
+                    };
+                    SaveToAction.Action_ANCChange_Platform.Add(NewRecord);
+                }
+            }
+            List<int> ToDeleted = new List<int>();
+            foreach(var Record in SaveToAction.Action_ANCChange_Platform)
+            {
+                if(!PlatformList_AnCSpecial.Any(c => c == Record.ChangeID))
+                {
+                    ToDeleted.Add(Record.ChangeID);
+                }
+            }
+            foreach(var Record in ToDeleted)
+            {
+                SaveToAction.Action_ANCChange_Platform.Remove(SaveToAction.Action_ANCChange_Platform.Where(b => b.ChangeID == Record).First());
+            }
+        }
+
+        private void ANCSpecial_Item_Prepare()
+        {
+            foreach(var Record in ItemsList_ANCChange)
+            {
+                if (Record.ID == 0)
+                {
+                    var NewObject = new ANCSpecial_ByItems_DB()
+                    {
+                        Item = Record.Item,
+                        Plus = Record.Plus,
+                        Minus = Record.Minus,
+                    };
+                    var NewRecord = new Action_ANCChange_Items_InterTable()
+                    {
+                        ActionID = SaveToAction.ID,
+                        Item = NewObject,
+                    };
+                    SaveToAction.Action_ANCChange_Items.Add(NewRecord);
+                }
+                else if(Record.Active ==false)
+                {
+                    var Deletedrecord = SaveToAction.Action_ANCChange_Items.Where(c => c.ItemID == Record.ID).FirstOrDefault();
+                    if(Deletedrecord != null)
+                    {
+                        SaveToAction.Action_ANCChange_Items.Remove(Deletedrecord);
+                    }
+                }
             }
         }
 
@@ -488,6 +586,14 @@ namespace Saving_Accelerator_Tools2.Tasks
         private void CalcGroup(object sent)
         {
             CalculationGroup = (int)sent;
+        }
+        private void ANCChange_Items(object sent)
+        {
+            ItemsList_ANCChange = sent as List<PlusMinusModel>;
+        }
+        private void ANCSpecial_Platforms (object sent)
+        {
+            PlatformList_AnCSpecial = sent as List<int>;
         }
         #endregion
     }
