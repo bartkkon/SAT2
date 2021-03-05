@@ -7,7 +7,7 @@
     xmlns:Action="clr-namespace:Saving_Accelerator_Tools2.Views.Action"
     x:Class="Saving_Accelerator_Tools2.Views.ActionPage"
     Style="{DynamicResource MahApps.Styles.Page}"
-    mc:Ignorable="d" d:DesignWidth="1600" d:Height="800">
+    mc:Ignorable="d" d:DesignWidth="1900" d:Height="800" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="330"/>
@@ -44,5 +44,6 @@
         <Action:CalculationBy Grid.Column="1" HorizontalAlignment="Left" Height="140" Margin="870,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="225"/>
         <Action:PNC Grid.Column="1" HorizontalAlignment="Left" Margin="1070,142,0,0" Grid.Row="1" Width="60"/>
         <Action:ANCSpecial Grid.Column="1" HorizontalAlignment="Left" Height="13" Margin="982,162,0,0" Grid.Row="1" VerticalAlignment="Top" Width="2"/>
+        <Action:PNCSpecial Grid.Column="1" HorizontalAlignment="Left" Margin="920,125,0,0" Grid.Row="1" Width="540"/>
     </Grid>
 </Page>

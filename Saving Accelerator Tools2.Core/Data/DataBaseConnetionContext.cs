@@ -3,6 +3,7 @@ using Saving_Accelerator_Tools2.Connection;
 using Saving_Accelerator_Tools2.Core.Models.Action;
 using Saving_Accelerator_Tools2.Core.Models.Action.InterTable;
 using Saving_Accelerator_Tools2.Core.Models.Action.Specification;
+using Saving_Accelerator_Tools2.Core.Models.Action.Specification.InterTable;
 using Saving_Accelerator_Tools2.Core.Models.Other;
 using Saving_Accelerator_Tools2.Core.Models.Other.Data;
 using Saving_Accelerator_Tools2.Core.Models.Other.InterTable;
@@ -26,6 +27,9 @@ namespace Saving_Accelerator_Tools2.Core.Data
         public DbSet<ActionLeader_DB> ActionLeader { get; set; }
         public DbSet<ANCChange_DB> ANCChange { get; set; }
         public DbSet<CalcByPNC> PNCList { get; set; }
+        //PNCSPecual
+        public DbSet<PNCSpecial_PNC_DB> PNCSpecial_PNC { get; set; }
+        public DbSet<PNCSpecial_ANC_DB> PNCSpecial_ANC { get; set; }
 
         //Dane
         public DbSet<MonthlyANC_DB> ANC_Monthly { get; set; }
@@ -58,6 +62,9 @@ namespace Saving_Accelerator_Tools2.Core.Data
 
             //Tworzenie modelu dla Akcji 
             ActionModelBuilder(modelBuilder);
+
+            //Tworzenie powiązania między PNC a ANC dla PNCSpecial
+            PNCSpecalBuilder(modelBuilder);
         }
 
         private void ActionModelBuilder(ModelBuilder modelBuilder)
@@ -157,6 +164,18 @@ namespace Saving_Accelerator_Tools2.Core.Data
                 .HasOne(bc => bc.Item)
                 .WithMany(b => b.Action_ANCChange_Items)
                 .HasForeignKey(bc => bc.ItemID);
+
+            //Many to Many Action <<=>> PNCSpecial 
+            modelBuilder.Entity<Action_PNCSpecial_InterTable>()
+                .HasKey(bc => new { bc.ActionID, bc.PNCSpecID });
+            modelBuilder.Entity<Action_PNCSpecial_InterTable>()
+                .HasOne(bc => bc.Action)
+                .WithMany(b => b.Action_PNCSpecial)
+                .HasForeignKey(bc => bc.ActionID);
+            modelBuilder.Entity<Action_PNCSpecial_InterTable>()
+                .HasOne(bc => bc.PNCSpecial)
+                .WithMany(b => b.Action_PNCSpecial)
+                .HasForeignKey(bc => bc.PNCSpecID);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -240,6 +259,21 @@ namespace Saving_Accelerator_Tools2.Core.Data
                 .HasOne(bc => bc.Role)
                 .WithMany(b => b.User_Role)
                 .HasForeignKey(bc => bc.RoleID);
+        }
+
+        protected void PNCSpecalBuilder(ModelBuilder modelBuilder)
+        {
+            //Many to many PNCSPecial_PNC <=> PNCSpecial_ANC
+            modelBuilder.Entity<PNCSPecial_PNC_ANC_InterTable>()
+                .HasKey(bc => new { bc.PNC_ID, bc.ANC_ID });
+            modelBuilder.Entity<PNCSPecial_PNC_ANC_InterTable>()
+                .HasOne(bc => bc.PNCChange)
+                .WithMany(b => b.PNC_ANC_Special)
+                .HasForeignKey(bc => bc.PNC_ID);
+            modelBuilder.Entity<PNCSPecial_PNC_ANC_InterTable>()
+                .HasOne(bc => bc.ANCChange)
+                .WithMany(b => b.PNC_ANC_Special)
+                .HasForeignKey(bc => bc.ANC_ID);
         }
     }
 }

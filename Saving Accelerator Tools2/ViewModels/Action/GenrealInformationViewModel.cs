@@ -26,6 +26,7 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
             Mediator.Mediator.Register("General_Information_Load", Load);
             Mediator.Mediator.Register("General_Information_Save", Save);
             Mediator.Mediator.Register("Get_Year", Get_Year);
+            Mediator.Mediator.Register("Get_Year_ForPNCSPecial", Get_Year_ForPNCSPecial);
         }
 
         ~GenrealInformationViewModel()
@@ -33,6 +34,7 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
             Mediator.Mediator.Unregister("General_Information_Load", Load);
             Mediator.Mediator.Unregister("General_Information_Save", Save);
             Mediator.Mediator.Unregister("Get_Year", Get_Year);
+            Mediator.Mediator.Unregister("Get_Year_ForPNCSPecial", Get_Year_ForPNCSPecial);
         }
         #endregion
 
@@ -344,6 +346,10 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
         public void Get_Year(object show)
         {
             Mediator.Mediator.NotifyColleagues("Set_NewYear", _StartYear);
+        }
+        public void Get_Year_ForPNCSPecial(object show)
+        {
+            Mediator.Mediator.NotifyColleagues("Set_Year_ForPNCSPecial", _StartYear);
         }
         #endregion
     }

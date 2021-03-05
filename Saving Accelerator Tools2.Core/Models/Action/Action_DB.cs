@@ -54,6 +54,6 @@ namespace Saving_Accelerator_Tools2.Core.Models.Action
         public virtual List<Action_PNC_InterTable> Action_PNC { get; set; } = new List<Action_PNC_InterTable>();
         public virtual List<Action_ANCChangePlatform_InterTable> Action_ANCChange_Platform { get; set; } = new List<Action_ANCChangePlatform_InterTable>();
         public virtual List<Action_ANCChange_Items_InterTable> Action_ANCChange_Items { get; set; } = new List<Action_ANCChange_Items_InterTable>();
-
+        public virtual List<Action_PNCSpecial_InterTable> Action_PNCSpecial { get; set; } = new List<Action_PNCSpecial_InterTable>();
     }
 }

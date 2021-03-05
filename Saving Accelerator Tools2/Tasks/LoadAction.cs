@@ -22,6 +22,7 @@ namespace Saving_Accelerator_Tools2.Tasks
         private List<PNCListData> PNCList = new List<PNCListData>();
         private List<PlusMinusModel> ANCSpecialPlusMinus = new List<PlusMinusModel>();
         private List<ANCSpecialModels> ANCSpecialPlatform = new List<ANCSpecialModels>();
+        private List<PNCSpecialModel> PNCSpecial = new List<PNCSpecialModel>();
 
         public LoadAction(int ActionID)
         {
@@ -48,6 +49,8 @@ namespace Saving_Accelerator_Tools2.Tasks
             Prepare_ECCC();
             Prepare_Calculation();
             Prepare_PlusMinus_ANCSpecial();
+            Prepare_Platform_ANCSpecial();
+            Prepare_PNCSpecial();
 
             #endregion
 
@@ -61,6 +64,7 @@ namespace Saving_Accelerator_Tools2.Tasks
             Mediator.Mediator.NotifyColleagues("Set_PNC_Data", PNCList);
             Mediator.Mediator.NotifyColleagues("Set_ANCSpecial_PLusMinus", ANCSpecialPlusMinus);
             Mediator.Mediator.NotifyColleagues("Set_ANCSpecial_Platform", ANCSpecialPlatform);
+            Mediator.Mediator.NotifyColleagues("PNCSpecial_Load", PNCSpecial);
 
             #endregion
             Mouse.OverrideCursor = null;
@@ -68,9 +72,9 @@ namespace Saving_Accelerator_Tools2.Tasks
 
         private void Prepare_Calculation()
         {
-            if(ActionDataBase.Calculation ==3)
+            if (ActionDataBase.Calculation == 3)
             {
-                foreach(var PNCRow in ActionDataBase.Action_PNC)
+                foreach (var PNCRow in ActionDataBase.Action_PNC)
                 {
                     var NewRecord = new PNCListData()
                     {
@@ -106,7 +110,7 @@ namespace Saving_Accelerator_Tools2.Tasks
         }
         private void Preapre_ANCChange()
         {
-            foreach(var ANCRow in ActionDataBase.Action_ANCChange)
+            foreach (var ANCRow in ActionDataBase.Action_ANCChange)
             {
                 var NewRow = new ANCChangeModel()
                 {
@@ -140,7 +144,7 @@ namespace Saving_Accelerator_Tools2.Tasks
         }
         private void Prepare_PlusMinus_ANCSpecial()
         {
-            foreach(var Record in ActionDataBase.Action_ANCChange_Items)
+            foreach (var Record in ActionDataBase.Action_ANCChange_Items)
             {
                 var NewItem = new PlusMinusModel()
                 {
@@ -154,7 +158,7 @@ namespace Saving_Accelerator_Tools2.Tasks
         }
         private void Prepare_Platform_ANCSpecial()
         {
-            foreach(var record in ActionDataBase.Action_ANCChange_Platform)
+            foreach (var record in ActionDataBase.Action_ANCChange_Platform)
             {
                 var NewItem = new ANCSpecialModels()
                 {
@@ -163,6 +167,37 @@ namespace Saving_Accelerator_Tools2.Tasks
                     Installation = record.Platform.Installation,
                 };
                 ANCSpecialPlatform.Add(NewItem);
+            }
+        }
+        private void Prepare_PNCSpecial()
+        {
+            foreach (var PNCSpecial_Record in ActionDataBase.Action_PNCSpecial)
+            {
+                var PNCNewRecord = new PNCSpecialModel()
+                {
+                    ID = PNCSpecial_Record.PNCSpecID,
+                    PNC = PNCSpecial_Record.PNCSpecial.PNC,
+                    ECCC = PNCSpecial_Record.PNCSpecial.ECCC,
+                    Old_STK = PNCSpecial_Record.PNCSpecial.Old_STK,
+                    New_STK = PNCSpecial_Record.PNCSpecial.New_STK,
+                    Delta = PNCSpecial_Record.PNCSpecial.Delta,
+                };
+                foreach (var ANCSpecial_Record in PNCSpecial_Record.PNCSpecial.PNC_ANC_Special)
+                {
+                    var ANCNewRecord = new PNCSPecial_ANCChangeModel()
+                    {
+                        ID = ANCSpecial_Record.ANC_ID,
+                        Old_ANC = ANCSpecial_Record.ANCChange.Old_ANC,
+                        Old_Q = ANCSpecial_Record.ANCChange.Old_Q,
+                        Old_STK = ANCSpecial_Record.ANCChange.Old_STK,
+                        New_ANC = ANCSpecial_Record.ANCChange.New_ANC,
+                        New_Q = ANCSpecial_Record.ANCChange.New_Q,
+                        New_STK = ANCSpecial_Record.ANCChange.New_STK,
+                        Delta = ANCSpecial_Record.ANCChange.Delta,
+                    };
+                    PNCNewRecord.ANCChange.Add(ANCNewRecord);
+                }
+                PNCSpecial.Add(PNCNewRecord);
             }
         }
     }

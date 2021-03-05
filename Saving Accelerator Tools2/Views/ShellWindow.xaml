@@ -12,7 +12,7 @@
     mc:Ignorable="d"
     MinWidth="500"
     MinHeight="350"
-    Title="Saving Accelerator Tools ver.2" NonActiveWindowTitleBrush="Gray" WindowTitleBrush="{DynamicResource {x:Static SystemColors.DesktopBrushKey}}" Background="{DynamicResource {x:Static SystemColors.DesktopBrushKey}}" TitleCharacterCasing="Normal" ScrollViewer.HorizontalScrollBarVisibility="Auto" WindowState="Maximized">
+    Title="Saving Accelerator Tools ver.2" NonActiveWindowTitleBrush="Gray" WindowTitleBrush="{DynamicResource {x:Static SystemColors.DesktopBrushKey}}" Background="{DynamicResource {x:Static SystemColors.DesktopBrushKey}}" TitleCharacterCasing="Normal" ScrollViewer.HorizontalScrollBarVisibility="Auto" WindowState="Maximized" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadedCommand}" />

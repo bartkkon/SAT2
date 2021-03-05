@@ -68,6 +68,7 @@ namespace Saving_Accelerator_Tools2.Tasks
                 Mediator.Mediator.NotifyColleagues("Get_Calc", null);
                 Mediator.Mediator.NotifyColleagues("Get_PNC_Data", null);
                 Mediator.Mediator.NotifyColleagues("Get_ANCSpecial_PLusMinus", null);
+                Mediator.Mediator.NotifyColleagues("Get_ANCSpecial_Platform", null);
                 Thread.Sleep(1000);
             } while (_GeneralInformation == null
             && _Platform == null
@@ -75,7 +76,8 @@ namespace Saving_Accelerator_Tools2.Tasks
             && _ECCC == null
             && QEstymation_Value == 0
             && CalculationGroup != 0
-            && ItemsList_ANCChange == null);
+            && ItemsList_ANCChange == null
+            && PlatformList_AnCSpecial == null);
 
             if (_GeneralInformation.ID == 0)
             {

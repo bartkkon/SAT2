@@ -1,5 +1,6 @@
 ﻿using Saving_Accelerator_Tools2.Contracts.Services;
 using Saving_Accelerator_Tools2.Helpers;
+using Saving_Accelerator_Tools2.Windows.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,7 +9,7 @@ using System.Windows.Input;
 
 namespace Saving_Accelerator_Tools2.ViewModels.Action
 {
-    public class CalculationByViewModel: INotifyProperty
+    public class CalculationByViewModel : INotifyProperty
     {
         #region Constructors
         public CalculationByViewModel()
@@ -45,12 +46,14 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
                 {
                     Mediator.Mediator.NotifyColleagues("PNC_Visibilit", Visibility.Hidden);
                     Mediator.Mediator.NotifyColleagues("ANCSpecial_Visibility", Visibility.Hidden);
+                    Mediator.Mediator.NotifyColleagues("Set_Visibility_PNCSpecial", Visibility.Hidden);
                 }
                 RisePropoertyChanged();
             }
         }
         public bool ANCSpecial
-        { get { return _ANCS; }
+        {
+            get { return _ANCS; }
             set
             {
                 _ANCS = value;
@@ -58,6 +61,7 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
                 {
                     Mediator.Mediator.NotifyColleagues("PNC_Visibilit", Visibility.Hidden);
                     Mediator.Mediator.NotifyColleagues("ANCSpecial_Visibility", Visibility.Visible);
+                    Mediator.Mediator.NotifyColleagues("Set_Visibility_PNCSpecial", Visibility.Hidden);
                 }
                 RisePropoertyChanged();
             }
@@ -72,12 +76,14 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
                 {
                     Mediator.Mediator.NotifyColleagues("PNC_Visibilit", Visibility.Visible);
                     Mediator.Mediator.NotifyColleagues("ANCSpecial_Visibility", Visibility.Hidden);
+                    Mediator.Mediator.NotifyColleagues("Set_Visibility_PNCSpecial", Visibility.Hidden);
                 }
                 RisePropoertyChanged();
             }
         }
         public bool PNCSpecial
-        { get { return _PNCS; }
+        {
+            get { return _PNCS; }
             set
             {
                 _PNCS = value;
@@ -85,6 +91,7 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
                 {
                     Mediator.Mediator.NotifyColleagues("PNC_Visibilit", Visibility.Hidden);
                     Mediator.Mediator.NotifyColleagues("ANCSpecial_Visibility", Visibility.Hidden);
+                    Mediator.Mediator.NotifyColleagues("Set_Visibility_PNCSpecial", Visibility.Visible);
                 }
                 RisePropoertyChanged();
             }
@@ -108,7 +115,8 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
         }
         private void AddPNCSpecial(object obj)
         {
-
+            var PNCSpecialWindow = new PNCSpecialNewData();
+            PNCSpecialWindow.Show();
         }
         #endregion
 

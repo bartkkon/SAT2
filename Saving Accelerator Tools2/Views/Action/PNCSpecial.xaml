@@ -1,0 +1,106 @@
+﻿<UserControl x:Class="Saving_Accelerator_Tools2.Views.Action.PNCSpecial"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Saving_Accelerator_Tools2.Views.Action"
+             xmlns:model="clr-namespace:Saving_Accelerator_Tools2.ViewModels.Action"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" Width="635" MaxWidth="635" MinWidth="635" Visibility="{Binding ControlVisibility}">
+    <UserControl.DataContext>
+        <model:PNCSpecialViewModel/>
+    </UserControl.DataContext>
+    <Grid Margin="0,0,0,0">
+        <CheckBox Content="Collapsed" HorizontalAlignment="Left" Height="20" Margin="425,5,0,0" VerticalAlignment="Top" Width="85" IsChecked="{Binding Path=Collapsed, Mode=TwoWay}"/>
+        <CheckBox Content="Expanded" HorizontalAlignment="Left" Height="20" Margin="510,5,0,0" VerticalAlignment="Top" Width="85" IsChecked="{Binding Path=Expanded, Mode=TwoWay}"/>
+        <DataGrid Margin="0,40,0,10" ItemsSource="{Binding TableData}" AutoGenerateColumns="False">
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Style.Setters>
+                        <Setter Property="Background" Value="LightBlue" />
+                        <Setter Property="FontWeight" Value="Bold"/>
+                    </Style.Setters>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding PNC}" Value="{x:Null}">
+                            <Setter Property="Background" Value="White"/>
+                            <Setter Property="FontWeight" Value="Normal"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="PNC" Binding="{Binding PNC}" FontWeight="Bold" Width="75">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="ECCC" Binding="{Binding ECCC, StringFormat=0.000;;#}" Width="50">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                            <Setter Property="TextBlock.FontWeight" Value="Normal"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Old ANC" Binding="{Binding Old_ANC}" Foreground="Red" Width="75">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                            <Setter Property="TextBlock.FontWeight" Value="Normal"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Old Q" Binding="{Binding Old_Q, StringFormat=0.000;;#}" Foreground="Red" Width="65">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                            <Setter Property="TextBlock.FontWeight" Value="Normal"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="New ANC" Binding="{Binding New_ANC}" Foreground="Green" Width="75">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                            <Setter Property="TextBlock.FontWeight" Value="Normal"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="New Q" Binding="{Binding New_Q, StringFormat=0.000;;#}" Foreground="Green" Width="65">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                            <Setter Property="TextBlock.FontWeight" Value="Normal"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Old STK" Binding="{Binding Old_STK, StringFormat=0.000;;#}" Foreground="Red" Width="75">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="New STK" Binding="{Binding New_STK, StringFormat=0.000;;#}" Foreground="Green" Width="75">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Delta" Binding="{Binding Delta}" Width="65">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+
+    </Grid>
+</UserControl>

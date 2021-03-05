@@ -1,10 +1,8 @@
 ﻿using Saving_Accelerator_Tools2.Contracts.Services;
-using Saving_Accelerator_Tools2.Core.Models.Other;
 using Saving_Accelerator_Tools2.Models.Action;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Windows;
 
 namespace Saving_Accelerator_Tools2.ViewModels.Action
@@ -77,6 +75,11 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
                     PlusMinu = false;
                     PlusMinus_Clear();
                 }
+                else if(_PlusMinus == false)
+                {
+                    PlusMinu = true;
+                    Checkbox_Clear();
+                }
                 RisePropoertyChanged();
             }
         }
@@ -90,6 +93,11 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
                 {
                     Platform = false;
                     Checkbox_Clear();
+                }
+                else if (_Platform == false)
+                {
+                    Platform = true;
+                    PlusMinus_Clear();
                 }
                 RisePropoertyChanged();
             }
@@ -466,7 +474,7 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
                         NewTable.Add(11);
                 }
             }
-            Mediator.Mediator.NotifyColleagues("", NewTable);
+            Mediator.Mediator.NotifyColleagues("ANCSpecial_Platform", NewTable);
         }
         private void Save_Items(object obj)
         {
@@ -519,6 +527,4 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
         }
         #endregion
     }
-
-
 }
