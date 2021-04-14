@@ -20,7 +20,7 @@
         <TextBlock HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="10,75,0,0"><Run Language="pl-pl" Text="New Month Quantity:"/></TextBlock>
         <mah:NumericUpDown x:Name="Month_Numeric" HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="90" Margin="95,100,0,0" Value="{Binding Path=Month_Num, Mode=TwoWay}" TextAlignment="Center" Minimum="0" Maximum="12"/>
         <TextBlock HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Margin="10,105,0,0"><Run Language="pl-pl" Text="Month:"/></TextBlock>
-        <Button x:Name="Month_Button" Content="Add Month Quantity" HorizontalAlignment="Left" Height="30" Margin="75,140,0,0" VerticalAlignment="Top" Width="110" FontSize="8" Click="Month_Button_Click"/>
+        <Button x:Name="Month_Button" Content="Add Month Quantity" HorizontalAlignment="Left" Height="30" Margin="75,140,0,0" VerticalAlignment="Top" Width="110" FontSize="8" Command="{Binding Month_Button}"/>
         <CheckBox x:Name="ANC_CheckBox" Content="ANC" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="60" Margin="65,45,0,0" IsChecked="{Binding Path=ANC_CheckBox, Mode=TwoWay}" Checked="ANC_CheckBox_Checked"/>
         <CheckBox x:Name="PNC_CheckBox" Content="PNC" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="60" Margin="125,45,0,0" IsChecked="{Binding Path=PNC_CheckBox, Mode=TwoWay}" Checked="PNC_CheckBox_Checked"/>
         <Path Data="M10,40 L190,40" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="1" Margin="10,185,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="180"/>
@@ -32,7 +32,7 @@
             <ComboBoxItem Content="EA2"/>
             <ComboBoxItem Content="EA3"/>
         </ComboBox>
-        <Button x:Name="Revision_Button_Copy" Content="Add Revision Quantity" HorizontalAlignment="Left" Height="30" Margin="75,250,0,0" VerticalAlignment="Top" Width="110" FontSize="7" Click="Revision_Button_Click"/>
+        <Button x:Name="Revision_Button_Copy" Content="Add Revision Quantity" HorizontalAlignment="Left" Height="30" Margin="75,250,0,0" VerticalAlignment="Top" Width="110" FontSize="7" Command="{Binding Revision_Button}"/>
         
     </Grid>
 </UserControl>

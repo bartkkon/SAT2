@@ -28,6 +28,9 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
             Mediator.Mediator.Register("Get_ANCChange", GetList);
             Mediator.Mediator.Register("Set_SumVisible", SetSumVisible);
             Mediator.Mediator.Register("CalcSum", CalculationSumAllValue);
+            Mediator.Mediator.Register("Get_DetltaSum", DeltaSumANC);
+            Mediator.Mediator.Register("Get_ANCChange_Object", GetObject);
+
 
             //Obsługa przycisków
             PlusButton = new RelayCommand<object>(Plus_VisibeOneMoreANC);
@@ -41,7 +44,9 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
             Mediator.Mediator.Unregister("Set_ANCChange", SetNewList);
             Mediator.Mediator.Unregister("Get_ANCChange", GetList);
             Mediator.Mediator.Unregister("Set_SumVisible", SetSumVisible);
-            Mediator.Mediator.Unregister("CalcSum", CalculationSumAllValue);
+            Mediator.Mediator.Unregister("CalcSum", CalculationSumAllValue); 
+            Mediator.Mediator.Unregister("Get_DetltaSum", DeltaSumANC);
+            Mediator.Mediator.Unregister("Get_ANCChange_Object", GetObject);
         }
         #endregion
 
@@ -230,7 +235,7 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
             List<ANCChangeModel> FinalList = new List<ANCChangeModel>();
             foreach (var OneRow in ANCList)
             {
-                if (OneRow.OldANC != string.Empty || OneRow.NewANC != string.Empty)
+                if (!string.IsNullOrEmpty(OneRow.OldANC) && !string.IsNullOrEmpty(OneRow.NewANC))
                 {
                     FinalList.Add(OneRow);
                 }
@@ -270,6 +275,21 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
             DeltaSum = _DeltaSum;
             EstimationSum = _EstimationSum;
             CalculationSum = _CalculationSum;
+        }
+        private void DeltaSumANC(object obj)
+        {
+            (obj as List<decimal>).Add(_DeltaSum);
+            (obj as List<decimal>).Add(_CalculationSum);
+        }
+        private void GetObject(object Data)
+        {
+            foreach (var OneRow in ANCList)
+            {
+                if (!string.IsNullOrEmpty(OneRow.OldANC) && !string.IsNullOrEmpty(OneRow.NewANC))
+                {
+                    (Data as List<ANCChangeModel>).Add(OneRow);
+                }
+            }
         }
         #endregion
     }

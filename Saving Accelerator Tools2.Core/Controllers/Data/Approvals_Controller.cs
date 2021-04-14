@@ -24,6 +24,16 @@ namespace Saving_Accelerator_Tools2.Core.Controllers.Data
             return YearList;
         }
 
+        public static ICollection<Approvals_DB> LoadOpenYears()
+        {
+            ICollection<Approvals_DB> OpenYears;
+            var context = new DataBaseConnetionContext();
+
+            OpenYears = context.Approvals.Where(u => u.Status == 1).ToList();
+
+            return OpenYears;
+        }
+
         public static void NewYear(DataBaseConnetionContext context, decimal Year)
         {
             var BU = new Approvals_DB() { Year = Year, Revision = "BU", Month = null, Devision = null, Status = 0 };

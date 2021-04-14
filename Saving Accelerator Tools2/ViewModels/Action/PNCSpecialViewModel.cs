@@ -2,6 +2,7 @@
 using Saving_Accelerator_Tools2.Core.Controllers.Data;
 using Saving_Accelerator_Tools2.Core.Models.ProductionData;
 using Saving_Accelerator_Tools2.Models.Action;
+using Saving_Accelerator_Tools2.Tasks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,7 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
             Mediator.Mediator.Register("Set_Visibility_PNCSpecial", Set_Visibility);
             Mediator.Mediator.Register("PNCSpecial_Load", LoadData);
             Mediator.Mediator.Register("PNCSpecial_Save", SaveData);
+            Mediator.Mediator.Register("PNCSpecial_Save_Object", SaveData2);
         }
         ~PNCSpecialViewModel()
         {
@@ -30,6 +32,7 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
             Mediator.Mediator.Unregister("Set_Visibility_PNCSpecial", Set_Visibility);
             Mediator.Mediator.Unregister("PNCSpecial_Load", LoadData);
             Mediator.Mediator.Unregister("PNCSpecial_Save", SaveData);
+            Mediator.Mediator.Unregister("PNCSpecial_Save_Object", SaveData2);
         }
         #endregion
 
@@ -52,7 +55,7 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
                 if (value == Visibility.Hidden)
                 {
                     TableData = new List<PNCSpecialTable>();
-                    if(_DataModel != null)
+                    if (_DataModel != null)
                         _DataModel.Clear();
                 }
                 RisePropoertyChanged();
@@ -110,7 +113,7 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
         {
             var NewTableData = new List<PNCSpecialTable>();
 
-            foreach(var DataModelRecord in _DataModel)
+            foreach (var DataModelRecord in _DataModel)
             {
                 var NewPNCRecord = new PNCSpecialTable()
                 {
@@ -121,9 +124,9 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
                     Delta = DataModelRecord.Delta,
                 };
                 NewTableData.Add(NewPNCRecord);
-                if(_Expanded)
+                if (_Expanded)
                 {
-                    foreach( var DataModelRecordANC in DataModelRecord.ANCChange)
+                    foreach (var DataModelRecordANC in DataModelRecord.ANCChange)
                     {
                         var NewANCRecord = new PNCSpecialTable()
                         {
@@ -155,25 +158,25 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
                 while (_Year == 0);
             }
 
-            foreach(var PNCRecord in _DataModel)
+            foreach (var PNCRecord in _DataModel)
             {
-                foreach(var ANCRecord in PNCRecord.ANCChange)
+                foreach (var ANCRecord in PNCRecord.ANCChange)
                 {
                     //ładowanie STK dla OLD ANC
-                    if(ANCRecord.Old_ANC != string.Empty)
+                    if (ANCRecord.Old_ANC != string.Empty)
                     {
-                        if(LoadedSTK.Any(c => c.ANC == ANCRecord.Old_ANC))
+                        if (LoadedSTK.Any(c => c.ANC == ANCRecord.Old_ANC))
                         {
-                            ANCRecord.Old_STK =Math.Round(LoadedSTK.Where(c => c.ANC == ANCRecord.Old_ANC).First().STD,4, MidpointRounding.AwayFromZero);
+                            ANCRecord.Old_STK = Math.Round(LoadedSTK.Where(c => c.ANC == ANCRecord.Old_ANC).First().STD * ANCRecord.Old_Q, 4, MidpointRounding.AwayFromZero);
                             PNCRecord.Old_STK += ANCRecord.Old_STK;
                         }
                         else
                         {
                             var LoadSTK = STK_Controller.FindItem(ANCRecord.Old_ANC, _Year);
-                            if(LoadSTK != null)
+                            if (LoadSTK != null)
                             {
                                 LoadedSTK.Add(LoadSTK);
-                                ANCRecord.Old_STK =Math.Round(LoadSTK.STD * ANCRecord.Old_Q, 4, MidpointRounding.AwayFromZero);
+                                ANCRecord.Old_STK = Math.Round(LoadSTK.STD * ANCRecord.Old_Q, 4, MidpointRounding.AwayFromZero);
                                 PNCRecord.Old_STK += ANCRecord.Old_STK;
                             }
                             else
@@ -187,7 +190,7 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
                     {
                         if (LoadedSTK.Any(c => c.ANC == ANCRecord.New_ANC))
                         {
-                            ANCRecord.New_STK =Math.Round(LoadedSTK.Where(c => c.ANC == ANCRecord.New_ANC).First().STD * ANCRecord.New_Q, 4, MidpointRounding.AwayFromZero);
+                            ANCRecord.New_STK = Math.Round(LoadedSTK.Where(c => c.ANC == ANCRecord.New_ANC).First().STD * ANCRecord.New_Q, 4, MidpointRounding.AwayFromZero);
                             PNCRecord.New_STK += ANCRecord.New_STK;
                         }
                         else
@@ -228,22 +231,22 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
 
             Mouse.OverrideCursor = Cursors.Wait;
 
-            if(_DataModel != null)
+            if (_DataModel != null)
             {
                 var ResultReplaceData = MessageBox.Show("Do you want replace data?", "Warning!", MessageBoxButton.YesNo);
-                if(ResultReplaceData == MessageBoxResult.Yes)
+                if (ResultReplaceData == MessageBoxResult.Yes)
                 {
                     _DataModel = NewData;
                     NewRecord = NewData.Count();
                 }
-                else if(ResultReplaceData == MessageBoxResult.No)
+                else if (ResultReplaceData == MessageBoxResult.No)
                 {
                     var ResultAddData = MessageBox.Show("Do you want add new data to exist data?", "Warning!", MessageBoxButton.YesNo);
-                    if(ResultAddData == MessageBoxResult.Yes)
+                    if (ResultAddData == MessageBoxResult.Yes)
                     {
-                        foreach(var NewDataRecord in NewData)
+                        foreach (var NewDataRecord in NewData)
                         {
-                            if(!_DataModel.Any(c => c.PNC == NewDataRecord.PNC))
+                            if (!_DataModel.Any(c => c.PNC == NewDataRecord.PNC))
                             {
                                 //NewRecord
                                 NewRecord++;
@@ -260,6 +263,7 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
             }
             LoadSTK();
             PrepareDataforDataGrid();
+            _ = new Calculation_ActionView();
             MessageBox.Show("Add " + NewRecord.ToString() + " Records", "Notification", MessageBoxButton.OK);
 
             Mouse.OverrideCursor = null;
@@ -279,8 +283,16 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
         }
         private void SaveData(object obj)
         {
-            Mediator.Mediator.NotifyColleagues("", _DataModel);
+            Mediator.Mediator.NotifyColleagues("PNCSpecial_Items", _DataModel);
         }
+        private void SaveData2(object Data)
+        {
+            foreach (var DataItem in _DataModel)
+            {
+                (Data as List<PNCSpecialModel>).Add(DataItem);
+            }
+        }
+
         #endregion
     }
 

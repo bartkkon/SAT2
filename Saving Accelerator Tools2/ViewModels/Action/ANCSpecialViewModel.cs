@@ -1,5 +1,6 @@
 ﻿using Saving_Accelerator_Tools2.Contracts.Services;
 using Saving_Accelerator_Tools2.Models.Action;
+using Saving_Accelerator_Tools2.Tasks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,8 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
             Mediator.Mediator.Register("Set_ANCSpecial_PLusMinus", Load_Items);
             Mediator.Mediator.Register("Get_ANCSpecial_Platform", Save_Platform);
             Mediator.Mediator.Register("Get_ANCSpecial_PLusMinus", Save_Items);
+            Mediator.Mediator.Register("ANCSpecial_Platform", PlatformSave);
+            Mediator.Mediator.Register("ANCSpecial_PlusMinus", PlusMinusSave);
         }
         ~ANCSpecialViewModel()
         {
@@ -25,6 +28,8 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
             Mediator.Mediator.Unregister("Set_ANCSpecial_PLusMinus", Load_Items);
             Mediator.Mediator.Unregister("Get_ANCSpecial_Platform", Save_Platform);
             Mediator.Mediator.Unregister("Get_ANCSpecial_PLusMinus", Save_Items);
+            Mediator.Mediator.Unregister("ANCSpecial_Platform", PlatformSave);
+            Mediator.Mediator.Unregister("ANCSpecial_PlusMinus", PlusMinusSave);
         }
         #endregion
 
@@ -110,6 +115,7 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
                 _All = value;
                 AllCheck(value);
                 RisePropoertyChanged();
+                _ = new Calculation_ActionView();
             }
         }
         public bool DMD
@@ -121,6 +127,7 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
                 StructureCheck_DMD(value);
                 PlatformCheckAll();
                 RisePropoertyChanged();
+                _ = new Calculation_ActionView();
             }
         }
         public bool D45
@@ -132,6 +139,7 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
                 StructureCheck_D45(value);
                 PlatformCheckAll();
                 RisePropoertyChanged();
+                _ = new Calculation_ActionView();
             }
         }
         public bool DMD_FS
@@ -142,6 +150,7 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
                 _DMD_FS = value;
                 DMD_CheckIfAll();
                 RisePropoertyChanged();
+                _ = new Calculation_ActionView();
             }
         }
         public bool DMD_FI
@@ -152,6 +161,7 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
                 _DMD_FI = value;
                 DMD_CheckIfAll();
                 RisePropoertyChanged();
+                _ = new Calculation_ActionView();
             }
         }
         public bool DMD_BI
@@ -162,6 +172,7 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
                 _DMD_BI = value;
                 DMD_CheckIfAll();
                 RisePropoertyChanged();
+                _ = new Calculation_ActionView();
             }
         }
         public bool DMD_FSBU
@@ -172,6 +183,7 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
                 _DMD_FSBU = value;
                 DMD_CheckIfAll();
                 RisePropoertyChanged();
+                _ = new Calculation_ActionView();
             }
         }
         public bool D45_FS
@@ -182,6 +194,7 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
                 _D45_FS = value;
                 D45_CheckIfAll();
                 RisePropoertyChanged();
+                _ = new Calculation_ActionView();
             }
         }
         public bool D45_FI
@@ -192,6 +205,7 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
                 _D45_FI = value;
                 D45_CheckIfAll();
                 RisePropoertyChanged();
+                _ = new Calculation_ActionView();
             }
         }
         public bool D45_BI
@@ -202,6 +216,7 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
                 _D45_BI = value;
                 D45_CheckIfAll();
                 RisePropoertyChanged();
+                _ = new Calculation_ActionView();
             }
         }
         public bool D45_FSBU
@@ -212,6 +227,7 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
                 _D45_FSBU = value;
                 D45_CheckIfAll();
                 RisePropoertyChanged();
+                _ = new Calculation_ActionView();
             }
         }
         public bool DMD_Enabled
@@ -258,6 +274,7 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
             {
                 _Plus = value;
                 RisePropoertyChanged();
+                _ = new Calculation_ActionView();
             }
         }
         public string Minus
@@ -267,6 +284,7 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
             {
                 _Minus = value;
                 RisePropoertyChanged();
+                _ = new Calculation_ActionView();
             }
         }
         #endregion
@@ -478,52 +496,140 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
         }
         private void Save_Items(object obj)
         {
-            string[] PlusValue = _Plus.Split(Environment.NewLine);
-            string[] MinusValue = _Minus.Split(Environment.NewLine);
+            string[] PlusValue = _Plus?.Split(Environment.NewLine);
+            string[] MinusValue = _Minus?.Split(Environment.NewLine);
 
-            foreach(var PlusRecord in PlusValue)
+            if (PlusValue != null)
             {
-                if(!Items.Any(b => b.Item == PlusRecord && b.Plus == true))
+                foreach (var PlusRecord in PlusValue)
                 {
-                    var NewRecord = new PlusMinusModel()
+                    if (!Items.Any(b => b.Item == PlusRecord && b.Plus == true))
                     {
-                        ID = 0,
-                        Item = PlusRecord,
-                        Plus = true,
-                        Minus = false,
-                        Active = true,
-                    };
-                    Items.Add(NewRecord);
-                }
-                else
-                {
-                    var Item = Items.Where(b => b.Item == PlusRecord && b.Plus == true).FirstOrDefault();
-                    Item.Active = true;
+                        var NewRecord = new PlusMinusModel()
+                        {
+                            ID = 0,
+                            Item = PlusRecord,
+                            Plus = true,
+                            Minus = false,
+                            Active = true,
+                        };
+                        Items.Add(NewRecord);
+                    }
+                    else
+                    {
+                        var Item = Items.Where(b => b.Item == PlusRecord && b.Plus == true).FirstOrDefault();
+                        Item.Active = true;
+                    }
                 }
             }
 
-            foreach(var MinusRecord in MinusValue)
+            if (Minus != null)
             {
-                if(!Items.Any(b => b.Item == MinusRecord && b.Minus == true))
+                foreach (var MinusRecord in MinusValue)
                 {
-                    var newRecord = new PlusMinusModel()
+                    if (!Items.Any(b => b.Item == MinusRecord && b.Minus == true))
                     {
-                        ID = 0,
-                        Item = MinusRecord,
-                        Plus = false,
-                        Minus = true,
-                        Active = true,
-                    };
-                    Items.Add(newRecord);
-                }
-                else
-                {
-                    var Item = Items.Where(b => b.Item == MinusRecord && b.Minus == true).FirstOrDefault();
-                    Item.Active = true;
+                        var newRecord = new PlusMinusModel()
+                        {
+                            ID = 0,
+                            Item = MinusRecord,
+                            Plus = false,
+                            Minus = true,
+                            Active = true,
+                        };
+                        Items.Add(newRecord);
+                    }
+                    else
+                    {
+                        var Item = Items.Where(b => b.Item == MinusRecord && b.Minus == true).FirstOrDefault();
+                        Item.Active = true;
+                    }
                 }
             }
-
             Mediator.Mediator.NotifyColleagues("ANCChange_Items", Items);
+        }
+        private void PlatformSave (object PlatformData)
+        {
+            if (_All)
+            {
+                (PlatformData as List<int>).Add(1);
+            }
+            else
+            {
+                if (_DMD)
+                {
+                    (PlatformData as List<int>).Add(3);
+                }
+                else
+                {
+                    if (_DMD_FS)
+                        (PlatformData as List<int>).Add(4);
+                    if (_DMD_FI)
+                        (PlatformData as List<int>).Add(5);
+                    if (_DMD_BI)
+                        (PlatformData as List<int>).Add(6);
+                    if (_DMD_FSBU)
+                        (PlatformData as List<int>).Add(7);
+                }
+                if (_D45)
+                {
+                    (PlatformData as List<int>).Add(2);
+                }
+                else
+                {
+                    if (_D45_FS)
+                        (PlatformData as List<int>).Add(8);
+                    if (_D45_FI)
+                        (PlatformData as List<int>).Add(9);
+                    if (_D45_BI)
+                        (PlatformData as List<int>).Add(10);
+                    if (_D45_FSBU)
+                        (PlatformData as List<int>).Add(11);
+                }
+            }
+        }
+        private void PlusMinusSave(object Data)
+        {
+            string[] PlusValue = _Plus?.Split(Environment.NewLine);
+            string[] MinusValue = _Minus?.Split(Environment.NewLine);
+
+            if (PlusValue != null)
+            {
+                foreach (var PlusRecord in PlusValue)
+                {
+                    if (PlusRecord != string.Empty && PlusRecord.Length == 9)
+                    {
+                        var NewRecord = new PlusMinusModel()
+                        {
+                            ID = 0,
+                            Item = PlusRecord,
+                            Plus = true,
+                            Minus = false,
+                            Active = true,
+                        };
+                        (Data as List<PlusMinusModel>).Add(NewRecord);
+                    }
+                }
+            }
+
+            if (Minus != null)
+            {
+                foreach (var MinusRecord in MinusValue)
+                {
+                    if (MinusRecord != string.Empty && MinusRecord.Length == 9)
+                    {
+                        var newRecord = new PlusMinusModel()
+                        {
+                            ID = 0,
+                            Item = MinusRecord,
+                            Plus = false,
+                            Minus = true,
+                            Active = true,
+                        };
+                        (Data as List<PlusMinusModel>).Add(newRecord);
+                    }
+                }
+            }
         }
         #endregion
     }

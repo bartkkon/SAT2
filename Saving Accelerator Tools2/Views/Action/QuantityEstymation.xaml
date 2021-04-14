@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="90" d:DesignWidth="120" Width="120" MinWidth="120" MaxWidth="120" Height="90" MinHeight="90" MaxHeight="90">
     <UserControl.DataContext>
-        <model:ANCChangeViewModel/>
+        <model:QuantityEstymationModelView/>
     </UserControl.DataContext>
     <Grid>
         <TextBox HorizontalAlignment="Left" Height="20" Margin="10,39,0,0" Text="{Binding Path=Value, Mode=TwoWay}" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" KeyDown="TextBox_KeyDown"/>

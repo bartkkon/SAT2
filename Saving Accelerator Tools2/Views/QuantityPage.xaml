@@ -13,6 +13,12 @@
     <Page.DataContext>
         <model:QuantityViewModel/>
     </Page.DataContext>
+    <!--<Page.Resources>
+        <Style x:Key="CenterGrigHeaderStyle" TargetType="DataGridColumnHeader">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="TextBlock.FontWeight" Value="Bold"/>
+        </Style>
+    </Page.Resources>-->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="48" />
@@ -42,7 +48,110 @@
             <mah:NumericUpDown HorizontalAlignment="Left" Height="26" Margin="356,106,0,0" VerticalAlignment="Top" Width="90" Minimum="2018" Maximum="2100" Value="{Binding Path=Year, Mode=TwoWay}"/>
             <Button Content="Search" HorizontalAlignment="Left" Height="45" Margin="506,22,0,0" VerticalAlignment="Top" Width="110" Command="{Binding Search}"/>
             <Button Content="Clear" HorizontalAlignment="Left" Height="30" Margin="506,82,0,0" VerticalAlignment="Top" Width="80" Command="{Binding Clear}"/>
-            <DataGrid Grid.Column="0" Margin="20,145,20,5" ItemsSource="{Binding Path=ItemList}" AutoGenerateColumns="True" IsReadOnly="True" CanUserAddRows="False" />
+            <DataGrid Grid.Column="0" Margin="20,145,20,5" ItemsSource="{Binding ItemList}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserSortColumns="False" CanUserReorderColumns="False" ColumnHeaderStyle="{DynamicResource MahApps.Styles.DataGridColumnHeader}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Item" Binding="{Binding Item}">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style>
+                                <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                                <Setter Property="TextBlock.FontWeight" Value="Bold"/>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="I" Binding="{Binding I, StringFormat=0.###;;0}" MinWidth="40">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style>
+                                <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="II" Binding="{Binding II, StringFormat=0.###;;0}" MinWidth="40">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style>
+                                <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="III" Binding="{Binding III, StringFormat=0.###;;0}" MinWidth="40">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style>
+                                <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="IV" Binding="{Binding IV, StringFormat=0.###;;0}" MinWidth="40">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style>
+                                <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="V" Binding="{Binding V, StringFormat=0.###;;0}" MinWidth="40">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style>
+                                <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="VI" Binding="{Binding VI, StringFormat=0.###;;0}" MinWidth="40">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style>
+                                <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="VII" Binding="{Binding VII, StringFormat=0.###;;0}" MinWidth="40">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style>
+                                <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="VIII" Binding="{Binding VIII, StringFormat=0.###;;0}" MinWidth="40">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style>
+                                <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="IX" Binding="{Binding IX, StringFormat=0.###;;0}" MinWidth="40">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style>
+                                <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="X" Binding="{Binding X, StringFormat=0.###;;0}" MinWidth="40">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style>
+                                <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="XI" Binding="{Binding XI, StringFormat=0.###;;0}" MinWidth="40">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style>
+                                <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="XII" Binding="{Binding XII, StringFormat=0.###;;0}" MinWidth="40">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style>
+                                <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="SUM" Binding="{Binding Sum, StringFormat=0.###;;0}" MinWidth="50">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style>
+                                <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                                <Setter Property="TextBlock.FontWeight" Value="Bold"/>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
             <Path Grid.Column="1" Data="M711,12 L711,372" Fill="#FFF4F4F5" HorizontalAlignment="Left" Margin="0,20,0,20" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="1"/>
             <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="20" Margin="75,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="115" MaxLength="9" KeyDown="TextBox_KeyDown" CharacterCasing="Upper">
                 <TextBox.Text>

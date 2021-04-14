@@ -15,6 +15,7 @@ using System.Text;
 using Saving_Accelerator_Tools2.Core.User;
 using Saving_Accelerator_Tools2.Core.Models.Other;
 using Saving_Accelerator_Tools2.Core.Models.Action.Specification;
+using Saving_Accelerator_Tools2.Tasks.Calculation_Transfer_Class;
 
 namespace Saving_Accelerator_Tools2.ViewModels.Action
 {
@@ -27,6 +28,11 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
             Mediator.Mediator.Register("General_Information_Save", Save);
             Mediator.Mediator.Register("Get_Year", Get_Year);
             Mediator.Mediator.Register("Get_Year_ForPNCSPecial", Get_Year_ForPNCSPecial);
+            Mediator.Mediator.Register("Get_Year_Month", Get_Year_Month);
+
+            //New Mediators
+            Mediator.Mediator.Register("Get_Calc", CalcValue);
+
         }
 
         ~GenrealInformationViewModel()
@@ -35,6 +41,10 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
             Mediator.Mediator.Unregister("General_Information_Save", Save);
             Mediator.Mediator.Unregister("Get_Year", Get_Year);
             Mediator.Mediator.Unregister("Get_Year_ForPNCSPecial", Get_Year_ForPNCSPecial);
+            Mediator.Mediator.Unregister("Get_Year_Month", Get_Year_Month);
+
+            //New Mediators
+            Mediator.Mediator.Unregister("Get_Calc", CalcValue);
         }
         #endregion
 
@@ -44,7 +54,7 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
         private string _Name = string.Empty;
         private string _Description = string.Empty;
         private string _ActionID = string.Empty;
-        private bool _ActionID_Enabled = User.Logged.User_Role.Any(b => b.RoleID == 5) ? true : false;
+        private bool _ActionID_Enabled = User.Logged.User_Role.Any(b => b.RoleID == 5);
         private decimal _StartYear = DateTime.UtcNow.Year;
         private decimal _StartMonth = DateTime.UtcNow.Month - 1;
         private List<Tag_DB> _Tags = Tag_Controller.LoadTagToAction(DateTime.UtcNow.Year);
@@ -350,6 +360,24 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
         public void Get_Year_ForPNCSPecial(object show)
         {
             Mediator.Mediator.NotifyColleagues("Set_Year_ForPNCSPecial", _StartYear);
+        }
+        public void Get_Year_Month(object show)
+        {
+            List<decimal> DataToSent = new List<decimal>
+            {
+                _StartYear,
+                _StartMonth,
+                _Active ? 1 : 0,
+                Devisions_SelectedItem.DevisionID
+            };
+            Mediator.Mediator.NotifyColleagues("Set_Year_Month", DataToSent);
+        }
+        private void CalcValue(object Value)
+        {
+            (Value as GeneralInformation_TransferClass).Year = _StartYear;
+            (Value as GeneralInformation_TransferClass).Month = _StartMonth+1;
+            (Value as GeneralInformation_TransferClass).Active = _Active;
+            (Value as GeneralInformation_TransferClass).Devision = _Devisions_SelectedItem.Devision;
         }
         #endregion
     }
