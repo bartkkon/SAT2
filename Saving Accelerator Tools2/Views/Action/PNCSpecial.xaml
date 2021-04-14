@@ -5,19 +5,15 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Saving_Accelerator_Tools2.Views.Action"
              xmlns:model="clr-namespace:Saving_Accelerator_Tools2.ViewModels.Action"
-             xmlns:convert="clr-namespace:Saving_Accelerator_Tools2.TemplateSelectors"
              mc:Ignorable="d" 
-             d:Visibility="Visible" d:DesignHeight="450" Width="635" MaxWidth="635" MinWidth="635" Visibility="{Binding ControlVisibility}">
+             d:DesignHeight="450" Width="635" MaxWidth="635" MinWidth="635" Visibility="{Binding ControlVisibility}">
     <UserControl.DataContext>
         <model:PNCSpecialViewModel/>
     </UserControl.DataContext>
-    <UserControl.Resources>
-        <convert:GreatorLessValue x:Key="GreatOrLessValue"/>
-    </UserControl.Resources>
     <Grid Margin="0,0,0,0">
         <CheckBox Content="Collapsed" HorizontalAlignment="Left" Height="20" Margin="425,5,0,0" VerticalAlignment="Top" Width="85" IsChecked="{Binding Path=Collapsed, Mode=TwoWay}"/>
         <CheckBox Content="Expanded" HorizontalAlignment="Left" Height="20" Margin="510,5,0,0" VerticalAlignment="Top" Width="85" IsChecked="{Binding Path=Expanded, Mode=TwoWay}"/>
-        <DataGrid Margin="0,40,0,10" ItemsSource="{Binding TableData}" AutoGenerateColumns="False" CanUserSortColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False">
+        <DataGrid Margin="0,40,0,10" ItemsSource="{Binding TableData}" AutoGenerateColumns="False">
             <DataGrid.RowStyle>
                 <Style TargetType="DataGridRow">
                     <Style.Setters>
@@ -33,14 +29,14 @@
                 </Style>
             </DataGrid.RowStyle>
             <DataGrid.Columns>
-                <DataGridTextColumn Header="PNC" Binding="{Binding PNC}" FontWeight="Bold" Width="75" Foreground="Black">
+                <DataGridTextColumn Header="PNC" Binding="{Binding PNC}" FontWeight="Bold" Width="75">
                     <DataGridTextColumn.ElementStyle>
                         <Style>
                             <Setter Property="TextBlock.TextAlignment" Value="Center"/>
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="ECCC" Binding="{Binding ECCC, StringFormat=0.000;;#}" Width="50" Foreground="Black">
+                <DataGridTextColumn Header="ECCC" Binding="{Binding ECCC, StringFormat=0.000;;#}" Width="50">
                     <DataGridTextColumn.ElementStyle>
                         <Style>
                             <Setter Property="TextBlock.TextAlignment" Value="Center"/>
@@ -56,7 +52,7 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Old Q" Binding="{Binding Old_Q, StringFormat=0.###;;#}" Foreground="Red" Width="65">
+                <DataGridTextColumn Header="Old Q" Binding="{Binding Old_Q, StringFormat=0.000;;#}" Foreground="Red" Width="65">
                     <DataGridTextColumn.ElementStyle>
                         <Style>
                             <Setter Property="TextBlock.TextAlignment" Value="Center"/>
@@ -72,7 +68,7 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="New Q" Binding="{Binding New_Q, StringFormat=0.###;;#}" Foreground="Green" Width="65">
+                <DataGridTextColumn Header="New Q" Binding="{Binding New_Q, StringFormat=0.000;;#}" Foreground="Green" Width="65">
                     <DataGridTextColumn.ElementStyle>
                         <Style>
                             <Setter Property="TextBlock.TextAlignment" Value="Center"/>
@@ -80,44 +76,26 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Old STK" Binding="{Binding Old_STK, StringFormat=0.####;;#}" Foreground="Red" Width="75">
+                <DataGridTextColumn Header="Old STK" Binding="{Binding Old_STK, StringFormat=0.000;;#}" Foreground="Red" Width="75">
                     <DataGridTextColumn.ElementStyle>
                         <Style>
                             <Setter Property="TextBlock.TextAlignment" Value="Center"/>
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="New STK" Binding="{Binding New_STK, StringFormat=0.####;;#}" Foreground="Green" Width="75">
+                <DataGridTextColumn Header="New STK" Binding="{Binding New_STK, StringFormat=0.000;;#}" Foreground="Green" Width="75">
                     <DataGridTextColumn.ElementStyle>
                         <Style>
                             <Setter Property="TextBlock.TextAlignment" Value="Center"/>
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Delta" Binding="{Binding Delta, StringFormat=0.####;;#}" Width="65">
+                <DataGridTextColumn Header="Delta" Binding="{Binding Delta}" Width="65">
                     <DataGridTextColumn.ElementStyle>
                         <Style>
                             <Setter Property="TextBlock.TextAlignment" Value="Center"/>
                         </Style>
                     </DataGridTextColumn.ElementStyle>
-                    <DataGridTextColumn.CellStyle>
-                        <Style TargetType="DataGridCell">
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding Delta, Converter={StaticResource GreatOrLessValue}}" Value="GREEN">
-                                    <Setter Property="Foreground" Value="Green"/>
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding Delta, Converter={StaticResource GreatOrLessValue}}" Value="RED">
-                                    <Setter Property="Foreground" Value="Red"/>
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding Delta, Converter={StaticResource GreatOrLessValue}}" Value="BLACK">
-                                    <Setter Property="Foreground" Value="Black"/>
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding Delta, Converter={StaticResource GreatOrLessValue}}" Value="EMPTY">
-                                    <Setter Property="Foreground" Value="Black"/>
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </DataGridTextColumn.CellStyle>
                 </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>

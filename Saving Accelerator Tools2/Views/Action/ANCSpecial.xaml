@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Saving_Accelerator_Tools2.Views.Action"
              xmlns:model="clr-namespace:Saving_Accelerator_Tools2.ViewModels.Action"
              xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="Saving_Accelerator_Tools2.Views.Action.ANCSpecial"
-             mc:Ignorable="d" Height="285" Width="370" MinHeight="285" MaxHeight="285" MinWidth="370" MaxWidth="370" Visibility="{Binding Path=UserControlEnabled,Mode=TwoWay}" d:Visibility="Visible">
+             mc:Ignorable="d" Height="285" Width="370" MinHeight="285" MaxHeight="285" MinWidth="370" MaxWidth="370" Visibility="{Binding Path=UserControlEnabled,Mode=TwoWay}">
     <UserControl.DataContext>
         <model:ANCSpecialViewModel/>
     </UserControl.DataContext>
@@ -28,8 +28,8 @@
             <Rectangle Margin="0,0,0,0" Stroke="Black"/>
         </Grid>
         <Grid HorizontalAlignment="Left" Height="240" Margin="150,45,0,0" VerticalAlignment="Top" Width="220" IsEnabled="{Binding Path=PlusMinu}">
-            <TextBox HorizontalAlignment="Left" Margin="5,20,0,5" TextWrapping="Wrap" Width="100" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Text="{Binding Path=Plus, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
-            <TextBox HorizontalAlignment="Left" Margin="115,20,0,5" TextWrapping="Wrap" Width="100" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Text="{Binding Path=Minus, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
+            <TextBox HorizontalAlignment="Left" Margin="5,20,0,5" TextWrapping="Wrap" Width="100" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Text="{Binding Path=Plus, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox HorizontalAlignment="Left" Margin="115,20,0,5" TextWrapping="Wrap" Width="100" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Text="{Binding Path=Minus, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             <TextBlock HorizontalAlignment="Left" Height="15" Margin="5,5,0,0" Text="Plus:" TextWrapping="Wrap" VerticalAlignment="Top" Width="70"/>
             <TextBlock Height="15" Margin="115,4,35,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Minus:" RenderTransformOrigin="0.5,0.4"/>
             <Rectangle Margin="0,0,0,0" Stroke="Black"/>

@@ -59,23 +59,6 @@ namespace Saving_Accelerator_Tools2.Core.Controllers.Data
             return PNCListFinal;
         }
 
-        public static IEnumerable<RevisionPNC_DB> Search(List<string> ListPNC, decimal Year, string Revision)
-        {
-            var context = new DataBaseConnetionContext();
-            var PNCListFinal = new List<RevisionPNC_DB>();
-
-
-            foreach (string PNC in ListPNC) {
-                IEnumerable<RevisionPNC_DB> PNCList;
-                PNCList = context.PNC_Revision.Where(b => b.PNC == PNC && b.Year == Year && b.Revision == Revision).ToList();
-                foreach (var PNCBase in PNCList) {
-                    PNCListFinal.Add(PNCBase);
-                }
-            }
-
-            return PNCListFinal;
-        }
-
         public static ICollection<QuantitySum> LoadSum_Data(decimal Year)
         {
             List<QuantitySum> Quantity;

@@ -421,33 +421,6 @@ namespace Saving_Accelerator_Tools2.Core.Migrations
                     b.ToTable("ActionLeader");
                 });
 
-            modelBuilder.Entity("Saving_Accelerator_Tools2.Core.Models.Other.Data.ANC_DB", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<string>("Item")
-                        .HasColumnType("varchar(9)");
-
-                    b.Property<int>("Month")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("Quantity")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("Revision")
-                        .HasColumnType("varchar(3)");
-
-                    b.Property<decimal>("Year")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("ANC_Quantity");
-                });
-
             modelBuilder.Entity("Saving_Accelerator_Tools2.Core.Models.Other.Data.MonthlyANC_DB", b =>
                 {
                     b.Property<int>("ID")
@@ -524,33 +497,6 @@ namespace Saving_Accelerator_Tools2.Core.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("PNC_Totality");
-                });
-
-            modelBuilder.Entity("Saving_Accelerator_Tools2.Core.Models.Other.Data.PNC_DB", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<string>("Item")
-                        .HasColumnType("varchar(9)");
-
-                    b.Property<int>("Month")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("Quantity")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("Revision")
-                        .HasColumnType("varchar(3)");
-
-                    b.Property<decimal>("Year")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("PNC_Quantity");
                 });
 
             modelBuilder.Entity("Saving_Accelerator_Tools2.Core.Models.Other.Data.RevisionANC_DB", b =>

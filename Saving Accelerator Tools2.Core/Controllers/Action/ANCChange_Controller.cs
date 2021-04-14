@@ -51,15 +51,5 @@ namespace Saving_Accelerator_Tools2.Core.Controllers.Action
             return true;
         }
 
-        public static void Update (List<ANCChange_DB> UpdatList)
-        {
-            var context = new DataBaseConnetionContext();
-
-            foreach(var UpdateItem in UpdatList) {
-                context.ANCChange.Update(UpdateItem);
-            }
-            context.SaveChanges();
-        }
-
     }
 }

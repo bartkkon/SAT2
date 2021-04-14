@@ -45,15 +45,5 @@ namespace Saving_Accelerator_Tools2.Core.Controllers.Data
 
             context.SaveChanges();
         }
-
-        public static IEnumerable<PNCTotality_DB> SearchList (decimal year, string revision, int startMonth, int finishMonth)
-        {
-            var context = new DataBaseConnetionContext();
-            var List = new List<PNCTotality_DB>();
-
-            List = context.PNC_Totality.Where(item => item.Year == year && item.Revision == revision && item.Month >= startMonth && item.Month <= finishMonth).ToList();
-
-            return List;
-        }
     }
 }

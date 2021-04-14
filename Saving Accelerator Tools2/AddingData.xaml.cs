@@ -21,7 +21,6 @@ using System.IO;
 using Saving_Accelerator_Tools2.ViewModels.Action;
 using System.Threading;
 using System.Collections.ObjectModel;
-using Saving_Accelerator_Tools2.Tasks;
 
 namespace Saving_Accelerator_Tools2
 {
@@ -284,7 +283,6 @@ namespace Saving_Accelerator_Tools2
             }
 
             Mediator.Mediator.NotifyColleagues("Set_PNC_Data", PNCExist);
-            _ = new Calculation_ActionView();
         }
 
         private bool AddSTKManualy()

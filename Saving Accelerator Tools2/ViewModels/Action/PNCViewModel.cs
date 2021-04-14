@@ -16,7 +16,6 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
             Mediator.Mediator.Register("Set_PNC_Data", SetNewData);
             Mediator.Mediator.Register("Get_PNC_Data_Updated", GetData_Updated);
             Mediator.Mediator.Register("Get_PNC_Data", GetData);
-            Mediator.Mediator.Register("PNC_Models", GetModels);
         }
         ~PNCViewModel()
         {
@@ -24,7 +23,6 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
             Mediator.Mediator.Unregister("Set_PNC_Data", SetNewData);
             Mediator.Mediator.Unregister("Get_PNC_Data_Updated", GetData_Updated);
             Mediator.Mediator.Unregister("Get_PNC_Data", GetData);
-            Mediator.Mediator.Unregister("PNC_Models", GetModels);
         }
         #endregion
 
@@ -71,13 +69,6 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
         private void GetData(object obj)
         {
             Mediator.Mediator.NotifyColleagues("Set_PNCList_Save", PNCList);
-        }
-        private void GetModels(object PNCData)
-        {
-            foreach(var PNCItem in _PNCList)
-            {
-                (PNCData as List<PNCListData>).Add(PNCItem);
-            }
         }
         #endregion
 

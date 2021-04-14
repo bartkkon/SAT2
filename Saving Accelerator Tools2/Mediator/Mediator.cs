@@ -6,7 +6,7 @@ namespace Saving_Accelerator_Tools2.Mediator
 {
     static public class Mediator
     {
-        private static IDictionary<string, List<Action<object>>> pl_dict = new Dictionary<string, List<Action<object>>>();
+        static IDictionary<string, List<Action<object>>> pl_dict = new Dictionary<string, List<Action<object>>>();
  
         static public void Register(string token, Action<object> callback)
         {
@@ -34,13 +34,6 @@ namespace Saving_Accelerator_Tools2.Mediator
         }
  
         static public void NotifyColleagues(string token, object args)
-        {
-            if (pl_dict.ContainsKey(token))
-                foreach (var callback in pl_dict[token])
-                    callback(args);
-        }
-
-        static public void Notify<T>(string token, ref T args)
         {
             if (pl_dict.ContainsKey(token))
                 foreach (var callback in pl_dict[token])

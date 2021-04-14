@@ -1,6 +1,5 @@
 ﻿using Saving_Accelerator_Tools2.Contracts.Services;
 using Saving_Accelerator_Tools2.Core.Controllers.Data;
-using Saving_Accelerator_Tools2.Tasks;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -220,7 +219,6 @@ namespace Saving_Accelerator_Tools2.Models.Action
                     NewSTK = 0;
                 }
             }
-            _ = new Calculation_ActionView();
         }
         private void CalcDelta()
         {

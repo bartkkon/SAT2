@@ -195,9 +195,8 @@ namespace Saving_Accelerator_Tools2.ViewModels.Statistic
         private void LoadNewData(object obj)
         {
             ObservableCollection<QuantityObject> NewTable = new ObservableCollection<QuantityObject>();
-            List<string> DataToFind = new List<string>();
             string revision = string.Empty;
-
+            string[] Data;
             if (searchText == string.Empty)
                 return;
 
@@ -222,60 +221,97 @@ namespace Saving_Accelerator_Tools2.ViewModels.Statistic
                 return;
             }
 
-
-            foreach (var datarecord in searchText.Split(Environment.NewLine))
-            {
-                if(!string.IsNullOrEmpty(datarecord) && !string.IsNullOrWhiteSpace(datarecord))
-                {
-                    DataToFind.Add(datarecord);
-                }
-            }
+            Data = SearchText.Split(Environment.NewLine);
 
             if (pnc)
             {
-
-                List<PNC_DB> PNClist = PNC_Controller.SearchList(DataToFind, Year, revision, 0).ToList();
-
-                foreach (string SinglePNC in DataToFind)
+                if (ea4)
                 {
-                    IEnumerable<PNC_DB> SinglePNCBase = PNClist.Where(b => b.Item == SinglePNC).ToList();
+                    IEnumerable<MonthlyPNC_DB> PNClist = PNCMonthly_Controller.Search(Data, Year);
 
-                    QuantityObject NewRecord = new QuantityObject()
+                    foreach (string SinglePNC in Data)
                     {
-                        Item = SinglePNC,
-                    };
+                        IEnumerable<MonthlyPNC_DB> SinglePNCBase = PNClist.Where(b => b.PNC == SinglePNC).ToList();
 
-                    foreach (var PNCMonthly in SinglePNCBase)
-                    {
-                        AddQuantity(ref NewRecord, PNCMonthly.Month, PNCMonthly.Quantity);
+                        QuantityObject NewRecord = new QuantityObject()
+                        {
+                            Item = SinglePNC,
+                        };
+
+                        foreach (var PNCMonthly in SinglePNCBase)
+                        {
+                            AddQuantity(ref NewRecord, PNCMonthly.Month, PNCMonthly.Quantity);
+                        }
+
+                        NewTable.Add(NewRecord);
                     }
-
-                    NewTable.Add(NewRecord);
                 }
+                else
+                {
+                    IEnumerable<RevisionPNC_DB> PNClist = RevisonPNC_Controller.Search(Data, Year, revision);
 
+                    foreach (string SinglePNC in Data)
+                    {
+                        IEnumerable<RevisionPNC_DB> SinglePNCBase = PNClist.Where(b => b.PNC == SinglePNC).ToList();
+
+                        QuantityObject NewRecord = new QuantityObject()
+                        {
+                            Item = SinglePNC,
+                        };
+
+                        foreach (var PNCMonthly in SinglePNCBase)
+                        {
+                            AddQuantity(ref NewRecord, PNCMonthly.Month, PNCMonthly.Quantity);
+                        }
+
+                        NewTable.Add(NewRecord);
+                    }
+                }
             }
-            else if (anc)
+            else
             {
-
-                List<ANC_DB> ANClist = ANC_Controller.SearchList(DataToFind, Year, revision, 0).ToList();
-
-                foreach (string SingleANC in DataToFind)
+                if (ea4)
                 {
-                    IEnumerable<ANC_DB> SingleANCBase = ANClist.Where(b => b.Item == SingleANC).ToList();
+                    IEnumerable<MonthlyANC_DB> ANClist = ANCMonthly_Controller.Search(Data, Year);
 
-                    QuantityObject NewRecord = new QuantityObject()
+                    foreach (string SingleANC in Data)
                     {
-                        Item = SingleANC,
-                    };
+                        IEnumerable<MonthlyANC_DB> SingleANCBase = ANClist.Where(b => b.ANC == SingleANC).ToList();
 
-                    foreach (var ANCMonthly in SingleANCBase)
-                    {
-                        AddQuantity(ref NewRecord, ANCMonthly.Month, ANCMonthly.Quantity);
+                        QuantityObject NewRecord = new QuantityObject()
+                        {
+                            Item = SingleANC,
+                        };
+
+                        foreach (var ANCMonthly in SingleANCBase)
+                        {
+                            AddQuantity(ref NewRecord, ANCMonthly.Month, ANCMonthly.Quantity);
+                        }
+
+                        NewTable.Add(NewRecord);
                     }
-
-                    NewTable.Add(NewRecord);
                 }
+                else
+                {
+                    IEnumerable<RevisionANC_DB> ANClist = RevisionANC_Controller.Search(Data, Year, revision);
 
+                    foreach (string SingleANC in Data)
+                    {
+                        IEnumerable<RevisionANC_DB> SingleANCBase = ANClist.Where(b => b.ANC == SingleANC).ToList();
+
+                        QuantityObject NewRecord = new QuantityObject()
+                        {
+                            Item = SingleANC,
+                        };
+
+                        foreach (var ANCMonthly in SingleANCBase)
+                        {
+                            AddQuantity(ref NewRecord, ANCMonthly.Month, ANCMonthly.Quantity);
+                        }
+
+                        NewTable.Add(NewRecord);
+                    }
+                }
             }
             ItemList = NewTable;
         }

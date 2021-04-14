@@ -57,20 +57,5 @@ namespace Saving_Accelerator_Tools2.Core.Controllers.Data
 
             return ANCListFinal;
         }
-
-        public static IEnumerable<MonthlyANC_DB> Search(List<string> ListANC, decimal Year)
-        {
-            var context = new DataBaseConnetionContext();
-            var ANCListFinal = new List<MonthlyANC_DB>();
-
-            foreach(string ANC in ListANC) {
-                var ANCList = context.ANC_Monthly.Where(b => b.ANC == ANC && b.Year == Year).ToList();
-                foreach(var ANCBase in ANCList) {
-                    ANCListFinal.Add(ANCBase);
-                }
-            }
-
-            return ANCListFinal;
-        }
     }
 }

@@ -38,5 +38,37 @@ namespace Saving_Accelerator_Tools2.Views.Admin
             if (ANC_CheckBox.IsChecked == true)
                 ANC_CheckBox.IsChecked = false;
         }
+
+        private void Month_Button_Click(object sender, RoutedEventArgs e)
+        {
+            string _calculation = string.Empty;
+
+            if (ANC_CheckBox.IsChecked == true)
+                _calculation = "ANC";
+            else if (PNC_CheckBox.IsChecked == true)
+                _calculation = "PNC";
+
+            if(_calculation != string.Empty)
+            {
+                var AddDataWindow = new AddingData(_calculation, (decimal)Year_numeric.Value, (int)Month_Numeric.Value);
+                AddDataWindow.Show();
+            }
+        }
+
+        private void Revision_Button_Click(object sender, RoutedEventArgs e)
+        {
+            string _calculation = string.Empty;
+
+            if (ANC_CheckBox.IsChecked == true)
+                _calculation = "ANC";
+            else if (PNC_CheckBox.IsChecked == true)
+                _calculation = "PNC";
+
+            if (_calculation != string.Empty)
+            {
+                var AddDataWindow = new AddingData(_calculation, (decimal)Year_numeric.Value, ((ComboBoxItem)Revision_Combobox.SelectedItem).Content.ToString());
+                AddDataWindow.Show();
+            }
+        }
     }
 }

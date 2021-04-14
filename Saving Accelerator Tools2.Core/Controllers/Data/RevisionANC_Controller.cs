@@ -57,19 +57,5 @@ namespace Saving_Accelerator_Tools2.Core.Controllers.Data
 
             return ANCListFinal;
         }
-        public static IEnumerable<RevisionANC_DB> Search(List<string> ListANC, decimal Year, string Revision)
-        {
-            var context = new DataBaseConnetionContext();
-            var ANCListFinal = new List<RevisionANC_DB>();
-
-            foreach(var ANC in ListANC) {
-                var ANCList = context.ANC_Revision.Where(b => b.ANC == ANC && b.Year == Year && b.Revision == Revision).ToList();
-                foreach(var ANCBase in ANCList) {
-                    ANCListFinal.Add(ANCBase);
-                }
-            }
-
-            return ANCListFinal;
-        }
     }
 }

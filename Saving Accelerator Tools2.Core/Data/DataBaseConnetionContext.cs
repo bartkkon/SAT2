@@ -27,7 +27,7 @@ namespace Saving_Accelerator_Tools2.Core.Data
         public DbSet<ActionLeader_DB> ActionLeader { get; set; }
         public DbSet<ANCChange_DB> ANCChange { get; set; }
         public DbSet<CalcByPNC> PNCList { get; set; }
-        //PNCSpecial
+        //PNCSPecual
         public DbSet<PNCSpecial_PNC_DB> PNCSpecial_PNC { get; set; }
         public DbSet<PNCSpecial_ANC_DB> PNCSpecial_ANC { get; set; }
 
@@ -37,9 +37,6 @@ namespace Saving_Accelerator_Tools2.Core.Data
         public DbSet<RevisionANC_DB> ANC_Revision { get; set; }
         public DbSet<RevisionPNC_DB> PNC_Revision { get; set; }
         public DbSet<PNCTotality_DB> PNC_Totality { get; set; }
-
-        public DbSet<ANC_DB> ANC_Quantity { get; set; }
-        public DbSet<PNC_DB> PNC_Quantity { get; set; }
 
         //Dodatkowe
         public DbSet<Currency_DB> Currency { get; set; }
