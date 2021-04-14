@@ -1,5 +1,6 @@
 ﻿using Saving_Accelerator_Tools2.Contracts.Services;
 using Saving_Accelerator_Tools2.Helpers;
+using Saving_Accelerator_Tools2.Tasks.Calculation_Transfer_Class;
 using Saving_Accelerator_Tools2.Windows.Views;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
         {
             Mediator.Mediator.Register("Set_Calc", Set_Value);
             Mediator.Mediator.Register("Get_Calc", Get_Value);
+            Mediator.Mediator.Register("Get_Class", Get_Class);
 
             PNCQuantity = new RelayCommand<object>(AddPNC);
             PNCSQuantity = new RelayCommand<object>(AddPNCSpecial);
@@ -25,6 +27,7 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
         {
             Mediator.Mediator.Unregister("Set_Calc", Set_Value);
             Mediator.Mediator.Unregister("Get_Calc", Get_Value);
+            Mediator.Mediator.Unregister("Get_Class", Get_Class);
         }
         #endregion
 
@@ -47,6 +50,7 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
                     Mediator.Mediator.NotifyColleagues("PNC_Visibilit", Visibility.Hidden);
                     Mediator.Mediator.NotifyColleagues("ANCSpecial_Visibility", Visibility.Hidden);
                     Mediator.Mediator.NotifyColleagues("Set_Visibility_PNCSpecial", Visibility.Hidden);
+                    Mediator.Mediator.NotifyColleagues("ECCCSpec", false);
                 }
                 RisePropoertyChanged();
             }
@@ -62,6 +66,7 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
                     Mediator.Mediator.NotifyColleagues("PNC_Visibilit", Visibility.Hidden);
                     Mediator.Mediator.NotifyColleagues("ANCSpecial_Visibility", Visibility.Visible);
                     Mediator.Mediator.NotifyColleagues("Set_Visibility_PNCSpecial", Visibility.Hidden);
+                    Mediator.Mediator.NotifyColleagues("ECCCSpec", false);
                 }
                 RisePropoertyChanged();
             }
@@ -77,6 +82,7 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
                     Mediator.Mediator.NotifyColleagues("PNC_Visibilit", Visibility.Visible);
                     Mediator.Mediator.NotifyColleagues("ANCSpecial_Visibility", Visibility.Hidden);
                     Mediator.Mediator.NotifyColleagues("Set_Visibility_PNCSpecial", Visibility.Hidden);
+                    Mediator.Mediator.NotifyColleagues("ECCCSpec", false);
                 }
                 RisePropoertyChanged();
             }
@@ -92,6 +98,7 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
                     Mediator.Mediator.NotifyColleagues("PNC_Visibilit", Visibility.Hidden);
                     Mediator.Mediator.NotifyColleagues("ANCSpecial_Visibility", Visibility.Hidden);
                     Mediator.Mediator.NotifyColleagues("Set_Visibility_PNCSpecial", Visibility.Visible);
+                    Mediator.Mediator.NotifyColleagues("ECCCSpec", true);
                 }
                 RisePropoertyChanged();
             }
@@ -145,7 +152,20 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
             else if (_PNCS)
                 grup = 4;
 
-            Mediator.Mediator.NotifyColleagues("", grup);
+            Mediator.Mediator.NotifyColleagues("Set_CalcGroupForSave", grup);
+        }
+        private void Get_Class(object Group)
+        {
+            if (_ANC)
+                (Group as CalculationBy_TransferClass).Grup = 1;
+            else if (_ANCS)
+                (Group as CalculationBy_TransferClass).Grup = 2;
+            else if (_PNC)
+                (Group as CalculationBy_TransferClass).Grup = 3;
+            else if (_PNCS)
+                (Group as CalculationBy_TransferClass).Grup = 4;
+            else
+                (Group as CalculationBy_TransferClass).Grup = 0;
         }
         #endregion
     }

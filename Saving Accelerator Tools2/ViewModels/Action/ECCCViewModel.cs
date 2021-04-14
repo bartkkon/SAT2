@@ -14,12 +14,14 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
         {
             Mediator.Mediator.Register("Set_ECCC", Set_ECCC);
             Mediator.Mediator.Register("Get_ECCC", Get_ECCC);
+            Mediator.Mediator.Register("Get_ECCCModel", Get_ECCCModel);
             Mediator.Mediator.Register("ECCCSpec", ECCC_Spec_Toggle);
         }
         ~ECCCViewModel()
         {
             Mediator.Mediator.Unregister("Set_ECCC", Set_ECCC);
             Mediator.Mediator.Unregister("Get_ECCC", Get_ECCC);
+            Mediator.Mediator.Unregister("Get_ECCCModel", Get_ECCCModel);
             Mediator.Mediator.Unregister("ECCCSpec", ECCC_Spec_Toggle);
         }
         #endregion
@@ -134,6 +136,12 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
             {
                 ECCC_Spec_Visibility = Visibility.Hidden;
             }
+        }
+        private void Get_ECCCModel(object obj)
+        {
+            (obj as ECCCModel).ECCC = ECCC;
+            (obj as ECCCModel).ECCCSpecial = ECCC_Spec;
+            (obj as ECCCModel).ECCC_Value = ECCC_Value;
         }
         #endregion
     }

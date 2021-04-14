@@ -57,5 +57,19 @@ namespace Saving_Accelerator_Tools2.Core.Controllers.Data
 
             return PNCListFinal;
         }
+
+        public static IEnumerable<MonthlyPNC_DB> Search (List<string> ListPNC, decimal Year)
+        {
+            var context = new DataBaseConnetionContext();
+            var PNCListFinal = new List<MonthlyPNC_DB>();
+
+            foreach(var PNC in ListPNC) {
+                var PNCList = context.PNC_Monthly.Where(b => b.PNC == PNC && b.Year == Year).ToList();
+                foreach(var PNCBase in PNCList) {
+                    PNCListFinal.Add(PNCBase);
+                }
+            }
+            return PNCListFinal;
+        }
     }
 }

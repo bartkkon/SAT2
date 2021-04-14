@@ -22,7 +22,7 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
 
         private void Save(object obj)
         {
-            var Save = new SaveAction();
+            var Save = new SaveAction2();
             Save.Save();
         }
     }

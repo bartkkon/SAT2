@@ -133,8 +133,8 @@ namespace Saving_Accelerator_Tools2.Windows.ViewModels
                                     New_ANC = NewData[NewComponents],
 
                                 };
-                                _ = decimal.TryParse(NewData[OldComponents + 1], out decimal OldValue) ? NewANC.Old_Q = OldValue : NewANC.Old_Q = 1;
-                                _ = decimal.TryParse(NewData[NewComponents + 1], out decimal NewValue) ? NewANC.New_Q = NewValue : NewANC.New_Q = 1;
+                                NewANC.Old_Q = decimal.TryParse(NewData[OldComponents + 1], out decimal OldValue) ? OldValue : 0;
+                                NewANC.New_Q = decimal.TryParse(NewData[NewComponents + 1], out decimal NewValue) ? NewValue : 0;
                                 NewPNCRecord.ANCChange.Add(NewANC);
                             }
                         }
