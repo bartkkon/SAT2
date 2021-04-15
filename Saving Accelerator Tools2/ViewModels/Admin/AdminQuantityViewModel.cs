@@ -93,11 +93,11 @@ namespace Saving_Accelerator_Tools2.ViewModels.Admin
             AddDataWindow.Show();
 
         }
-        private void ButtonMonth2(object obj)
-        {
-            var AddDataWindow = anc ? new AddingData("ANC", year, (int)month) : new AddingData("PNC", year, (int)month);
-            AddDataWindow.Show();
-        }
+        //private void ButtonMonth2(object obj)
+        //{
+        //    var AddDataWindow = anc ? new AddingData("ANC", year, (int)month) : new AddingData("PNC", year, (int)month);
+        //    AddDataWindow.Show();
+        //}
         private void ButtonRevision(object obj)
         {
             string revison = revisionSelect switch
