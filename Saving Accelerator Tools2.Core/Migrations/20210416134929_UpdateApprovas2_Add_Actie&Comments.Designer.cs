@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Saving_Accelerator_Tools2.Core.Data;
 
 namespace Saving_Accelerator_Tools2.Core.Migrations
 {
     [DbContext(typeof(DataBaseConnetionContext))]
-    partial class DataBaseConnetionContextModelSnapshot : ModelSnapshot
+    [Migration("20210416134929_UpdateApprovas2_Add_Actie&Comments")]
+    partial class UpdateApprovas2_Add_ActieComments
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -40,6 +40,8 @@ namespace Saving_Accelerator_Tools2.Core.Models.ProductionData
         public bool Status { get; set; }
         public string By { get; set; }
         public DateTime Date { get; set; }
+        public bool Active { get; set; }
+        public string Comment { get; set; }
 
         public virtual List<Approvals_IT> Devisions { get; set; } = new List<Approvals_IT>();
     }
