@@ -4,6 +4,7 @@ using Saving_Accelerator_Tools2.Core.Models.Other.Data;
 using Saving_Accelerator_Tools2.Helpers;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Input;
@@ -159,7 +160,14 @@ namespace Saving_Accelerator_Tools2.Windows.ViewModels
                     {
                         if (!PNC_Controller.RemoveRange(year, "EA4", month))
                         {
-                            MessageBox.Show("Is not possible to remove data from DataBase", "Removing Problem", MessageBoxButton.OK);
+                            MessageBox.Show("Is not possible to remove data from DataBase (PNC Quantity)", "Removing Problem", MessageBoxButton.OK);
+                        }
+                        if(PNCTotally_Controler.CheckIfExist(Year, "EA4", month))
+                        {
+                            if(!PNCTotally_Controler.RemoveRange(year, "EA4", month))
+                            {
+                                MessageBox.Show("Is not possible to remove data from DataBase (PNC Totality)", "Removing Problem", MessageBoxButton.OK);
+                            }
                         }
                     }
                     else
@@ -168,6 +176,9 @@ namespace Saving_Accelerator_Tools2.Windows.ViewModels
                     }
                 }
                 var NewList = new List<PNC_DB>();
+                var NewTotalyList = new List<PNCTotality_DB>();
+                PNCTotalityRecords(NewTotalyList);
+
                 foreach (var Record in DataGridCheck)
                 {
                     var NewRecord = new PNC_DB()
@@ -179,9 +190,10 @@ namespace Saving_Accelerator_Tools2.Windows.ViewModels
                         Year = year,
                     };
                     NewList.Add(NewRecord);
+                    PNCTotalityAdd(NewTotalyList, Record.Item, Record.Quantity);
                 }
 
-                if (PNC_Controller.AddRange(NewList))
+                if (PNC_Controller.AddRange(NewList) && PNCTotally_Controler.AddRange(NewTotalyList))
                 {
                     MessageBox.Show("Updeted DataBase Finish with Succesfull!", "Data Updated!", MessageBoxButton.OK);
                 }
@@ -257,6 +269,55 @@ namespace Saving_Accelerator_Tools2.Windows.ViewModels
                 MessageBox.Show(WrongData, "Problematic Details", MessageBoxButton.OK);
             }
             TableData = DataGridCheck;
+        }
+
+        private void PNCTotalityRecords(List<PNCTotality_DB> List)
+        {
+            List.Add(new PNCTotality_DB() { Revision = "EA4", Year = year, Month = month, Structure = "DMD", Instalation = "FS" });
+            List.Add(new PNCTotality_DB() { Revision = "EA4", Year = year, Month = month, Structure = "DMD", Instalation = "FI" });
+            List.Add(new PNCTotality_DB() { Revision = "EA4", Year = year, Month = month, Structure = "DMD", Instalation = "BI" });
+            List.Add(new PNCTotality_DB() { Revision = "EA4", Year = year, Month = month, Structure = "DMD", Instalation = "FSBU" });
+            List.Add(new PNCTotality_DB() { Revision = "EA4", Year = year, Month = month, Structure = "D45", Instalation = "FS" });
+            List.Add(new PNCTotality_DB() { Revision = "EA4", Year = year, Month = month, Structure = "D45", Instalation = "FI" });
+            List.Add(new PNCTotality_DB() { Revision = "EA4", Year = year, Month = month, Structure = "D45", Instalation = "BI" });
+            List.Add(new PNCTotality_DB() { Revision = "EA4", Year = year, Month = month, Structure = "D45", Instalation = "FSBU" });
+            List.Add(new PNCTotality_DB() { Revision = "EA4", Year = year, Month = month, Structure = "Proxy", Instalation = null });
+        }
+
+        private void PNCTotalityAdd(List<PNCTotality_DB> List, string PNC, decimal Value)
+        {
+            string Structure = PNC.Remove(3) == "999" ? "Proxy" : PNC.Remove(4).Remove(0, 3) == "5" ? "DMD" : PNC.Remove(4).Remove(0, 3) == "0" ? "D45" : string.Empty;
+            string Installation = string.Empty;
+
+            if(Structure == "DMD")
+            {
+                Installation = PNC.Remove(5).Remove(0, 4) switch
+                {
+                    "1" => "FS",
+                    "2" => "BI",
+                    "3" => "FI",
+                    "4" => "FSBU",
+                    _ => "Empty",
+                };
+            }
+            else if (Structure == "D45")
+            {
+                Installation = PNC.Remove(5).Remove(0, 4) switch
+                {
+                    "5" => "FS",
+                    "6" => "BI",
+                    "7" => "FI",
+                    "8" => "FSBU",
+                    _ => "Empty",
+                };
+            }
+
+
+            var ListRecord = Structure == "Proxy" ? List.Where(record => record.Structure == Structure).FirstOrDefault() : List.Where(record => record.Structure == Structure && record.Instalation == Installation).FirstOrDefault();
+            if(ListRecord != null)
+            {
+                ListRecord.Quantity += Value;
+            }
         }
         #endregion
     }
