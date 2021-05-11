@@ -11,7 +11,5 @@ namespace Saving_Accelerator_Tools2.Views
             InitializeComponent();
             DataContext = viewModel;
         }
-
-
     }
 }
