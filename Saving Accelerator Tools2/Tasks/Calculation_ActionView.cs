@@ -23,8 +23,8 @@ namespace Saving_Accelerator_Tools2.Tasks
         #endregion
 
         #region Variables
-        private List<Approvals_DB> Revisions = new List<Approvals_DB>();
-        private List<Approvals_DB> Months = new List<Approvals_DB>();
+        private List<Approvals2_DB> Revisions = new List<Approvals2_DB>();
+        private List<Approvals2_DB> Months = new List<Approvals2_DB>();
         private List<Approvals_DB> Devisions = new List<Approvals_DB>();
 
         private List<CalculationModels> Calculations = new List<CalculationModels>();
@@ -34,71 +34,63 @@ namespace Saving_Accelerator_Tools2.Tasks
         private string _Devision;
         private Estimation_Percent_Transfer _Percent = new Estimation_Percent_Transfer();
         private CalculationBy_TransferClass _Group = new CalculationBy_TransferClass();
-        private bool _Estymation; 
+        private bool _Estymation;
 
         #endregion
 
         #region Function
         private void Calculation()
         {
-            var LoadApprovals = new Approvals();
+            var LoadApprovals = new Approvals(_Devision, "PLV", _Year);
 
             GeneralInformation();
             EstimationAction();
 
-            Devisions = LoadApprovals.Check_Devisions(_Devision, _Year).ToList();
+            Revisions = LoadApprovals.RevisionOpen();
+            Months = LoadApprovals.MonthOpen();
 
-            if (_Active)
+            if (_Active && (Revisions.Count() > 0 || Months.Count() > 0))
             {
-                if (Devisions.Count != 0)
+                Mediator.Mediator.NotifyColleagues("Tables_Model", Calculations);
+                Mediator.Mediator.NotifyColleagues("Get_Class", _Group);
+                Mediator.Mediator.NotifyColleagues("QuantityPercent_Model", _Percent);
+
+                List<ItemModel> ItemList = _Group.Grup switch
                 {
-                    Revisions = LoadApprovals.Check_Revisions(_Year).ToList();
-                    Months = LoadApprovals.Check_Month(_Year).ToList();
+                    1 => new Calc_ANC().ItemList(_Estymation).ToList(),
+                    2 => new Calc_ANCSpec().ItemList().ToList(),
+                    3 => new Calc_PNC().ItemList().ToList(),
+                    4 => new Calc_PNCSpec().ItemList().ToList(),
+                    _ => new List<ItemModel>(),
+                };
+
+                if (ItemList.Count == 0)
+                {
+                    return;
                 }
 
-                if (Revisions.Count() > 0 || Months.Count() > 0)
+                var Calculate = new Calculation(ItemList, true, Calculations, _Year);
+                if (Revisions.Count > 0)
                 {
-                    Mediator.Mediator.NotifyColleagues("Tables_Model", Calculations);
-                    Mediator.Mediator.NotifyColleagues("Get_Class", _Group);
-                    Mediator.Mediator.NotifyColleagues("QuantityPercent_Model", _Percent);
-
-                    List<ItemModel> ItemList = _Group.Grup switch
+                    foreach (var Revision in Revisions)
                     {
-                        1 => new Calc_ANC().ItemList(_Estymation).ToList(),
-                        2 => new Calc_ANCSpec().ItemList().ToList(),
-                        3 => new Calc_PNC().ItemList().ToList(),
-                        4 => new Calc_PNCSpec().ItemList().ToList(),
-                        _ => new List<ItemModel>(),
-                    };
-
-                    if(ItemList.Count == 0)
-                    {
-                        return;
+                        var MonthCalc = new MonthCalc(_Year, _Month, Revision);
+                        Calculate.Range(Revision, MonthCalc.Start(), MonthCalc.Finish(), _Percent.Percent);
                     }
-
-                    var Calculate = new Calculation(ItemList, true, Calculations, _Year);
-                    if (Revisions.Count > 0)
-                    {
-                        foreach (var Revision in Revisions)
-                        {
-                            var MonthCalc = new MonthCalc(_Year, _Month, Revision);
-                            Calculate.Range(Revision, MonthCalc.Start(), MonthCalc.Finish(), _Percent.Percent);
-                        }
-                    }
-                    if (Months.Count > 0)
-                    {
-                        foreach (var Month in Months)
-                        {
-                            Month.Revision = "EA4";
-                            var MonthCalc = new MonthCalc(_Year, _Month, Month);
-                            Calculate.Range(Month, MonthCalc.Start(), MonthCalc.Finish(), 100);
-                        }
-                    }
-
-                    Calculations = Calculate.ReturnCalculation();
-
-                    Mediator.Mediator.NotifyColleagues("Tabels_LoadData", Calculations);
                 }
+                if (Months.Count > 0)
+                {
+                    foreach (var Month in Months)
+                    {
+                        Month.Revision = "EA4";
+                        var MonthCalc = new MonthCalc(_Year, _Month, Month);
+                        Calculate.Range(Month, MonthCalc.Start(), MonthCalc.Finish(), 100);
+                    }
+                }
+
+                Calculations = Calculate.ReturnCalculation();
+
+                Mediator.Mediator.NotifyColleagues("Tabels_LoadData", Calculations);
             }
         }
 
@@ -114,14 +106,14 @@ namespace Saving_Accelerator_Tools2.Tasks
         }
         private void EstimationAction()
         {
-            if(_Year > DateTime.UtcNow.Year)
+            if (_Year > DateTime.UtcNow.Year)
             {
                 _Estymation = true;
                 return;
             }
-            else if( _Year == DateTime.UtcNow.Year)
+            else if (_Year == DateTime.UtcNow.Year)
             {
-                if(_Month > DateTime.UtcNow.Month)
+                if (_Month > DateTime.UtcNow.Month)
                 {
                     _Estymation = true;
                 }

@@ -43,7 +43,7 @@ namespace Saving_Accelerator_Tools2.Tasks.Calculation_Function
             }
         }
 
-        public void Range(Approvals_DB Revision, int StartMonth, int FinishMonth, decimal QuantityPercent)
+        public void Range(Approvals2_DB Revision, int StartMonth, int FinishMonth, decimal QuantityPercent)
         {
             List<PNC_DB> PNCQuantity = new List<PNC_DB>();
             List<ANC_DB> ANCQuantity = new List<ANC_DB>();
