@@ -27,15 +27,13 @@ namespace Saving_Accelerator_Tools2.Core.Data
         public DbSet<ActionLeader_DB> ActionLeader { get; set; }
         public DbSet<ANCChange_DB> ANCChange { get; set; }
         public DbSet<CalcByPNC> PNCList { get; set; }
+        public DbSet<Calculation_DB> Results { get; set; }
+
         //PNCSpecial
         public DbSet<PNCSpecial_PNC_DB> PNCSpecial_PNC { get; set; }
         public DbSet<PNCSpecial_ANC_DB> PNCSpecial_ANC { get; set; }
 
         //Dane
-        //public DbSet<MonthlyANC_DB> ANC_Monthly { get; set; }
-        //public DbSet<MonthlyPNC_DB> PNC_Monthly { get; set; }
-        //public DbSet<RevisionANC_DB> ANC_Revision { get; set; }
-        //public DbSet<RevisionPNC_DB> PNC_Revision { get; set; }
         public DbSet<PNCTotality_DB> PNC_Totality { get; set; }
 
         public DbSet<ANC_DB> ANC_Quantity { get; set; }
@@ -199,6 +197,18 @@ namespace Saving_Accelerator_Tools2.Core.Data
                 .HasOne(bc => bc.PNCSpecial)
                 .WithMany(b => b.Action_PNCSpecial)
                 .HasForeignKey(bc => bc.PNCSpecID);
+
+            //Many to Many Action <<==>> Results
+            modelBuilder.Entity<Action_Results_InterTable>()
+                .HasKey(bc => new { bc.ActionID, bc.ResultID });
+            modelBuilder.Entity<Action_Results_InterTable>()
+                .HasOne(bc => bc.Action)
+                .WithMany(b => b.Action_Results)
+                .HasForeignKey(bc => bc.ActionID);
+            modelBuilder.Entity<Action_Results_InterTable>()
+                .HasOne(bc => bc.Result)
+                .WithMany(b => b.Action_Results)
+                .HasForeignKey(bc => bc.ResultID);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

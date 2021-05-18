@@ -44,7 +44,7 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
             Mediator.Mediator.Unregister("Set_ANCChange", SetNewList);
             Mediator.Mediator.Unregister("Get_ANCChange", GetList);
             Mediator.Mediator.Unregister("Set_SumVisible", SetSumVisible);
-            Mediator.Mediator.Unregister("CalcSum", CalculationSumAllValue); 
+            Mediator.Mediator.Unregister("CalcSum", CalculationSumAllValue);
             Mediator.Mediator.Unregister("Get_DetltaSum", DeltaSumANC);
             Mediator.Mediator.Unregister("Get_ANCChange_Object", GetObject);
         }
@@ -215,7 +215,7 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
         private void SetNewList(object obj)
         {
             ANCList.Clear();
-            foreach(var Row in (obj as List<ANCChangeModel>))
+            foreach (var Row in (obj as List<ANCChangeModel>))
             {
                 ANCList.Add(Row);
             }
@@ -232,7 +232,7 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
         }
         private void GetList(object obj)
         {
-            List<ANCChangeModel> FinalList = new List<ANCChangeModel>();
+            var FinalList = obj as List<ANCChangeModel>;
             foreach (var OneRow in ANCList)
             {
                 if (!string.IsNullOrEmpty(OneRow.OldANC) && !string.IsNullOrEmpty(OneRow.NewANC))
@@ -240,12 +240,10 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
                     FinalList.Add(OneRow);
                 }
             }
-
-            Mediator.Mediator.NotifyColleagues("Set_ANCList", FinalList);
         }
         private void SetSumVisible(object obj)
         {
-            if((bool)obj)
+            if ((bool)obj)
             {
                 SumVisible = Visibility.Visible;
             }
@@ -261,7 +259,7 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
             _DeltaSum = 0;
             EstimationSum = 0;
             _CalculationSum = 0;
-            foreach(var ANC in _ANCList)
+            foreach (var ANC in _ANCList)
             {
                 _OldSum += ANC.OldSTK;
                 _NewSum += ANC.NewSTK;

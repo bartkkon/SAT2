@@ -13,8 +13,8 @@ namespace Saving_Accelerator_Tools2.Windows.ViewModels
     {
         public ActionCommentViewModel()
         {
-            var LoadApprovals = new Approvals();
-            var DevisionCheck = LoadApprovals.Check_Devisions(devision, actionYear);
+            //var LoadApprovals = new Approvals();
+            //var DevisionCheck = LoadApprovals.Check_Devisions(devision, actionYear);
             //if()
         }
 

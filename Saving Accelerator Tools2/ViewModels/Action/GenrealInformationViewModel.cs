@@ -329,7 +329,7 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
             else
                 Idea = !LoadData.Active;
         }
-        public void Save(object show)
+        public void Save(object SaveModel)
         {
             int IDAction = 0;
             if (_ActionID != string.Empty)
@@ -337,21 +337,18 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
                 IDAction = int.Parse(_ActionID);
             }
 
-            General_Information_Model SaveAction = new General_Information_Model()
-            {
-                ID = ID,
-                Name = _Name,
-                ActionID = IDAction,
-                Description = _Description,
-                StartYear = _StartYear,
-                Month = Decimal.ToInt32(_StartMonth) + 1,
-                Devision = Devisions_SelectedItem,
-                Plant = Plants_SelectedItem,
-                Leader = Leaders_SelectedItem,
-                Tag = Tags_SelectedItem,
-                Active = Active,
-            };
-            Mediator.Mediator.NotifyColleagues("Set_GeneralInformation", SaveAction);
+            (SaveModel as General_Information_Model).ID = ID;
+            (SaveModel as General_Information_Model).Name = _Name;
+            (SaveModel as General_Information_Model).ActionID = IDAction;
+            (SaveModel as General_Information_Model).Description = _Description;
+            (SaveModel as General_Information_Model).StartYear = _StartYear;
+            (SaveModel as General_Information_Model).Month = Decimal.ToInt32(_StartMonth) + 1;
+            (SaveModel as General_Information_Model).Devision = Devisions_SelectedItem;
+            (SaveModel as General_Information_Model).Plant = Plants_SelectedItem;
+            (SaveModel as General_Information_Model).Leader = Leaders_SelectedItem;
+            (SaveModel as General_Information_Model).Tag = Tags_SelectedItem;
+            (SaveModel as General_Information_Model).Active = Active;
+
         }
         public void Get_Year(object show)
         {

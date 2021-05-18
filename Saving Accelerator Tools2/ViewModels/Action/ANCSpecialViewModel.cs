@@ -546,7 +546,11 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
                     }
                 }
             }
-            Mediator.Mediator.NotifyColleagues("ANCChange_Items", Items);
+
+            foreach(var item in Items)
+            {
+                (obj as List<PlusMinusModel>).Add(item);
+            }
         }
         private void PlatformSave (object PlatformData)
         {
