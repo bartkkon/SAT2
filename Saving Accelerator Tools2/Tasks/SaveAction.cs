@@ -11,7 +11,9 @@ using Saving_Accelerator_Tools2.ViewModels.Action;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Saving_Accelerator_Tools2.Tasks
@@ -24,24 +26,24 @@ namespace Saving_Accelerator_Tools2.Tasks
 
         //Model Akcji do zapisu
         private Action_DB UpdatedAction;
-        private Action_DB OryginalAction;
+        private Action_DB OryginalAction = new Action_DB();
 
         //USerControls Respond
-        private General_Information_Model _GeneralInformation = null;
-        private PlatformModel _Platform = null;
+        private General_Information_Model _GeneralInformation = new General_Information_Model();
+        private PlatformModel _Platform = new PlatformModel();
         private List<ANCChangeModel> _ANCList = new List<ANCChangeModel>();
         //private DataBaseConnetionContext context;
-        private ECCCModel _ECCC = null;
-        private Estimation_Percent_Transfer _QEstimation = null;
-        private CalculationBy_TransferClass CalculationGroup = null;
-        private List<PNCListData> PNCList = null;
-        private List<PlusMinusModel> ItemsList_ANCChange = null;
-        private List<int> PlatformList_ANCSpecial;
-        private List<PNCSpecialModel> PNCSpecialItems;
-        private List<CalculationModels> FinalCalculation;
+        private ECCCModel _ECCC = new ECCCModel();
+        private Estimation_Percent_Transfer _QEstimation = new Estimation_Percent_Transfer();
+        private CalculationBy_TransferClass CalculationGroup = new CalculationBy_TransferClass();
+        private List<PNCListData> PNCList = new List<PNCListData>();
+        private List<PlusMinusModel> ItemsList_ANCChange = new List<PlusMinusModel>();
+        private List<int> PlatformList_ANCSpecial = new List<int>();
+        private List<PNCSpecialModel> PNCSpecialItems = new List<PNCSpecialModel>();
+        private List<CalculationModels> FinalCalculation = new List<CalculationModels>();
         #endregion
 
-        public bool Save()
+        public void Save()
         {
             Mouse.OverrideCursor = Cursors.Wait;
 
@@ -51,10 +53,21 @@ namespace Saving_Accelerator_Tools2.Tasks
             Mediator.Mediator.NotifyColleagues("Get_ECCC", _ECCC);
             Mediator.Mediator.NotifyColleagues("QuantityPercent_Model", _QEstimation);
             Mediator.Mediator.NotifyColleagues("Get_Class", CalculationGroup);
-            Mediator.Mediator.NotifyColleagues("PNC_Models", PNCList);
-            Mediator.Mediator.NotifyColleagues("Get_ANCSpecial_PLusMinus", ItemsList_ANCChange);
-            Mediator.Mediator.NotifyColleagues("ANCSpecial_Platform", PlatformList_ANCSpecial);
-            Mediator.Mediator.NotifyColleagues("PNCSpecial_Save_Object", PNCSpecialItems);
+            switch (CalculationGroup.Grup)
+            {
+                case 2:
+                    Mediator.Mediator.NotifyColleagues("Get_ANCSpecial_PLusMinus", ItemsList_ANCChange);
+                    Mediator.Mediator.NotifyColleagues("ANCSpecial_Platform", PlatformList_ANCSpecial);
+                    break;
+                case 3:
+                    Mediator.Mediator.NotifyColleagues("PNC_Models", PNCList);
+                    break;
+                case 4:
+                    Mediator.Mediator.NotifyColleagues("PNCSpecial_Save_Object", PNCSpecialItems);
+                    break;
+                default:
+                    break;
+            }
             Mediator.Mediator.NotifyColleagues("Tables_Model", FinalCalculation);
 
 
@@ -64,15 +77,23 @@ namespace Saving_Accelerator_Tools2.Tasks
             }
             else
             {
-                OryginalAction = Action_Controller.Load(_GeneralInformation.ActionID);
+                OryginalAction = Action_Controller.Load_Active(_GeneralInformation.ActionID);
                 OryginalAction.ActiveAction = false;
             }
 
             UpdatedAction = new Action_DB();
             Prepare();
 
+            if (Action_Controller.Save(UpdatedAction, OryginalAction))
+            {
+                Mediator.Mediator.NotifyColleagues("MainFilter_Reload", true);
+                new LoadAction(UpdatedAction.ActionID);
+            }
+            else
+            {
+                ErrorMassage();
+            }
             Mouse.OverrideCursor = null;
-            return true;
         }
 
         private void Prepare()
@@ -87,7 +108,7 @@ namespace Saving_Accelerator_Tools2.Tasks
 
             ANCChange_Update();
 
-            switch(CalculationGroup.Grup)
+            switch (CalculationGroup.Grup)
             {
                 case 2:
                     ANCSpecial_Update();
@@ -111,7 +132,7 @@ namespace Saving_Accelerator_Tools2.Tasks
         private void Results_Update()
         {
             var FinalCalc_Good = FinalCalculation.Where(b => b.Update == true).ToList();
-            foreach(var Record in FinalCalc_Good)
+            foreach (var Record in FinalCalc_Good)
             {
                 var NewRecord = new Calculation_DB()
                 {
@@ -129,6 +150,16 @@ namespace Saving_Accelerator_Tools2.Tasks
                     Action = UpdatedAction,
                     Result = NewRecord,
                 };
+
+                if (NewRecord.ID == 0)
+                {
+                    NewConnection.Result = NewRecord;
+                }
+                else
+                {
+                    NewConnection.ResultID = NewRecord.ID;
+                }
+
                 UpdatedAction.Action_Results.Add(NewConnection);
             }
         }
@@ -139,6 +170,7 @@ namespace Saving_Accelerator_Tools2.Tasks
             {
                 var NewPNCRecord = new PNCSpecial_PNC_DB()
                 {
+                    ID = PNCRecord.ID,
                     PNC = PNCRecord.PNC,
                     ECCC = PNCRecord.ECCC,
                     Old_STK = PNCRecord.Old_STK,
@@ -149,6 +181,7 @@ namespace Saving_Accelerator_Tools2.Tasks
                 {
                     var NewANCRecord = new PNCSpecial_ANC_DB()
                     {
+                        ID = ANCRecord.ID,
                         Old_ANC = ANCRecord.Old_ANC,
                         Old_Q = ANCRecord.Old_Q,
                         Old_STK = ANCRecord.Old_STK,
@@ -158,18 +191,41 @@ namespace Saving_Accelerator_Tools2.Tasks
                         Delta = ANCRecord.Delta,
                     };
 
-                    var NewPNCANCInter = new PNCSPecial_PNC_ANC_InterTable()
+                    var NewPNCANCInter = new PNCSPecial_PNC_ANC_InterTable() { };
+
+                    if(NewANCRecord.ID == 0)
                     {
-                        PNCChange = NewPNCRecord,
-                        ANCChange = NewANCRecord,
-                    };
+                        NewPNCANCInter.ANCChange = NewANCRecord;
+                    }
+                    else
+                    {
+                        NewPNCANCInter.ANC_ID = NewANCRecord.ID;
+                    }
+
+                    if(NewPNCRecord.ID == 0)
+                    {
+                        NewPNCANCInter.PNCChange = NewPNCRecord;
+                    }
+                    else
+                    {
+                        NewPNCANCInter.PNC_ID = NewPNCRecord.ID;
+                    }
+                    
                     NewPNCRecord.PNC_ANC_Special.Add(NewPNCANCInter);
                 }
                 var NewPNCInterTable = new Action_PNCSpecial_InterTable()
                 {
                     Action = UpdatedAction,
-                    PNCSpecial = NewPNCRecord,
                 };
+
+                if(NewPNCRecord.ID == 0)
+                {
+                    NewPNCInterTable.PNCSpecial = NewPNCRecord;
+                }
+                else
+                {
+                    NewPNCInterTable.PNCSpecID = NewPNCRecord.ID;
+                }
                 UpdatedAction.Action_PNCSpecial.Add(NewPNCInterTable);
             }
         }
@@ -186,18 +242,26 @@ namespace Saving_Accelerator_Tools2.Tasks
                 var NewRecord = new Action_PNC_InterTable()
                 {
                     Action = UpdatedAction,
-                    List = NewRecordPNC,
                 };
+                if (NewRecordPNC.ID != 0)
+                {
+                    NewRecord.PNCID = NewRecordPNC.ID;
+                }
+                else
+                {
+                    NewRecord.List = NewRecordPNC;
+                }
                 UpdatedAction.Action_PNC.Add(NewRecord);
             }
         }
 
         private void ANCSpecial_Update()
         {
-            foreach(var Item in ItemsList_ANCChange)
+            foreach (var Item in ItemsList_ANCChange)
             {
                 var NewObject = new ANCSpecial_ByItems_DB()
                 {
+                    ID = Item.ID,
                     Item = Item.Item,
                     Plus = Item.Plus,
                     Minus = Item.Minus,
@@ -207,10 +271,19 @@ namespace Saving_Accelerator_Tools2.Tasks
                     Action = UpdatedAction,
                     Item = NewObject,
                 };
+                if(NewObject.ID == 0)
+                {
+                    NewObjectInter.Item = NewObject;
+                }
+                else
+                {
+                    NewObjectInter.ItemID = NewObject.ID;
+                }
+
                 UpdatedAction.Action_ANCChange_Items.Add(NewObjectInter);
             }
 
-            foreach(var Record in PlatformList_ANCSpecial)
+            foreach (var Record in PlatformList_ANCSpecial)
             {
                 var NewRecord = new Action_ANCChangePlatform_InterTable()
                 {
@@ -223,11 +296,12 @@ namespace Saving_Accelerator_Tools2.Tasks
 
         private void ANCChange_Update()
         {
-            var ANCChangeList = new List<ANCChange_DB>();
+            //var ANCChangeList = new List<ANCChange_DB>();
             foreach (var ANC in _ANCList)
             {
                 var NewRecord = new ANCChange_DB()
                 {
+                    ID = ANC.ID,
                     OldANC = ANC.OldANC,
                     OldANCQuantity = ANC.OldANCQuantity,
                     OldSTK = ANC.OldSTK,
@@ -244,8 +318,15 @@ namespace Saving_Accelerator_Tools2.Tasks
                 var NewInterRecord = new Action_ANCChage_InterTable
                 {
                     Action = UpdatedAction,
-                    ANCChange = NewRecord,
                 };
+                if (NewRecord.ID == 0)
+                {
+                    NewInterRecord.ANCChange = NewRecord;
+                }
+                else
+                {
+                    NewInterRecord.ANCChangeID = NewRecord.ID;
+                }
                 UpdatedAction.Action_ANCChange.Add(NewInterRecord);
             }
         }
@@ -306,7 +387,7 @@ namespace Saving_Accelerator_Tools2.Tasks
             UpdatedAction.ActionID = _GeneralInformation.ActionID;
             UpdatedAction.Name = _GeneralInformation.Name;
             UpdatedAction.Description = _GeneralInformation.Description;
-            UpdatedAction.StartYear = _GeneralInformation.Month;
+            UpdatedAction.StartYear = _GeneralInformation.StartYear;
             UpdatedAction.Month = _GeneralInformation.Month;
             UpdatedAction.Active = _GeneralInformation.Active;
             UpdatedAction.ECCC = _ECCC.ECCC;
@@ -316,5 +397,21 @@ namespace Saving_Accelerator_Tools2.Tasks
             UpdatedAction.Calculation = CalculationGroup.Grup;
         }
 
+        #region ErrorMessage
+        private void ErrorMassage()
+        {
+            var Error = new StringBuilder();
+            Error.Append("Is not possible Save changes!");
+            Error.Append(Environment.NewLine);
+            Error.Append("Please check:");
+            Error.Append(Environment.NewLine);
+            Error.Append("*    Internet connection,");
+            Error.Append(Environment.NewLine);
+            Error.Append("*    Anira connection - if needed");
+            Error.Append(Environment.NewLine);
+            Error.Append("And try again.");
+            MessageBox.Show(Error.ToString(), "Something goes wrong!", MessageBoxButton.OK);
+        }
+        #endregion
     }
 }

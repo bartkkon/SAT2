@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Saving_Accelerator_Tools2.Views.Action"
              xmlns:models="clr-namespace:Saving_Accelerator_Tools2.ViewModels.Action"
              mc:Ignorable="d" 
-             d:DesignHeight="440" d:DesignWidth="840" MinHeight="420" MaxHeight="420" MinWidth="840" MaxWidth="840">
+             d:DesignHeight="420" d:DesignWidth="840" MinHeight="420" MaxHeight="420" MinWidth="840" MaxWidth="840">
     <UserControl.DataContext>
         <models:TargetsViewModel/>
     </UserControl.DataContext>

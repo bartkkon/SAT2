@@ -41,9 +41,10 @@ namespace Saving_Accelerator_Tools2.Tasks
         #region Function
         private void Calculation()
         {
+            GeneralInformation();
+
             var LoadApprovals = new Approvals(_Devision, "PLV", _Year);
 
-            GeneralInformation();
             EstimationAction();
 
             Revisions = LoadApprovals.RevisionOpen();

@@ -15,9 +15,9 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        <CheckBox x:Name="ActiveAction_CB" Content="Active Action" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="100" Margin="20,15,0,0" IsChecked="{Binding Path=Active, Mode=TwoWay}" Checked="ActiveAction_CB_Checked"/>
-        <CheckBox x:Name="IdeaAction_CB" Content="Idea Action" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="99" Margin="20,35,0,0" IsChecked="{Binding Path=Idea, Mode=TwoWay}" Checked="IdeaAction_CB_Checked"/>
-        <Button x:Name="NewAction_Button" Content="New Action" HorizontalAlignment="Left" Height="44" Margin="140,10,0,0" VerticalAlignment="Top" Width="171" Click="NewAction_Button_Click"/>
+        <CheckBox x:Name="ActiveAction_CB" Content="Active Action" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="100" Margin="20,15,0,0" IsChecked="{Binding Path=Active, Mode=TwoWay}"/>
+        <CheckBox x:Name="IdeaAction_CB" Content="Idea Action" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="99" Margin="20,35,0,0" IsChecked="{Binding Path=Idea, Mode=TwoWay}"/>
+        <Button x:Name="NewAction_Button" Content="New Action" HorizontalAlignment="Left" Height="44" Margin="140,10,0,0" VerticalAlignment="Top" Width="171" Command="{Binding NewAction}"/>
         <mah:NumericUpDown x:Name="Year_MainFilter_Num" HorizontalAlignment="Left" Height="10" VerticalAlignment="Top" Width="82" Margin="20,120,0,0" NumericInputMode="Decimal" Maximum="2100" Minimum="2018" Value="{Binding Path=Year}"/>
         <ComboBox x:Name="LeaderAction_MainFilter_CB" HorizontalAlignment="Left" Height="31" Margin="20,190,0,0" VerticalAlignment="Top" Width="273" ItemsSource="{Binding Path=Leaders, Mode=OneWay}" SelectedIndex="{Binding Path=LeaderSelectedIndex, Mode=TwoWay}"/>
         <TextBlock HorizontalAlignment="Left" Height="24" TextWrapping="Wrap" VerticalAlignment="Top" Width="68" Margin="20,100,0,0"><Run Language="pl-pl" Text="Year:"/></TextBlock>

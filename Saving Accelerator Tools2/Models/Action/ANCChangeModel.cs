@@ -196,6 +196,10 @@ namespace Saving_Accelerator_Tools2.Models.Action
         #region Provates Function
         private void FindSTK(bool OldCalc)
         {// true when calculate for OldANc -> false when for New ANC
+            if(!Permission.Permission.Check.ReCalculation_Open)
+            {
+                return;
+            }
             if (OldCalc)
             {
                 var STK = STK_Controller.FindItem(_OldANC, _Year);

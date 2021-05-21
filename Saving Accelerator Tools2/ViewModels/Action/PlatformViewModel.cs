@@ -112,14 +112,12 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
 
         private void GetData(object SaveModel)
         {
-            var GetData = SaveModel as PlatformModel;
-
-            GetData.DMD = _DMD;
-            GetData.D45 = _D45;
-            GetData.FS = _FS;
-            GetData.FI = _FI;
-            GetData.BI = _BI;
-            GetData.FSBU = _FSBU;
+            (SaveModel as PlatformModel).DMD = _DMD;
+            (SaveModel as PlatformModel).D45 = _D45;
+            (SaveModel as PlatformModel).FS = _FS;
+            (SaveModel as PlatformModel).FI = _FI;
+            (SaveModel as PlatformModel).BI = _BI;
+            (SaveModel as PlatformModel).FSBU = _FSBU;
 
         }
         #endregion

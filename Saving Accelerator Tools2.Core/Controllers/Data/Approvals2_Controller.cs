@@ -65,7 +65,8 @@ namespace Saving_Accelerator_Tools2.Core.Controllers.Data
             //Wyszukuje dla raoku akcji plis rok +1 jako Carry Over
             var context = new DataBaseConnetionContext();
             var Final = new List<Approvals2_DB>();
-            var FindYear = context.Approvals2.Where(item => (item.Year == Year || item.Year == Year+1) && item.Plant == Plant).Include(subitem => subitem.Devisions).ThenInclude(subitem => subitem.Devision.Active == true).ToList();
+            var FindYear = context.Approvals2.Where(item => (item.Year == Year || item.Year == Year + 1) && item.Plant == Plant)
+                .Include(subitem => subitem.Devisions.Where(b => b.Devision.Active == true)).ThenInclude(subitem => subitem.Devision).ToList();
 
             foreach(var CheckYear in FindYear) {
                 if(!CheckYear.Devisions.Any(item => item.Devision.Devision == ActionDevision)) {

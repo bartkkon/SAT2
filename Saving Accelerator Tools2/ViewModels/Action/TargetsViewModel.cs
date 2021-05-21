@@ -1,5 +1,6 @@
 ﻿using Saving_Accelerator_Tools2.Contracts.Services;
 using Saving_Accelerator_Tools2.Models.Action;
+using Saving_Accelerator_Tools2.Tasks.Calculation_Transfer_Class;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,12 +16,14 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
             Mediator.Mediator.Register("Tabels_LoadData", LoadData);
             Mediator.Mediator.Register("Tables_SaveData", SaveData);
             Mediator.Mediator.Register("Tables_Model", SentModels);
+            Mediator.Mediator.Register("Tables_ChangeDisplay", ChangeDisplay);
         }
         ~TargetsViewModel()
         {
             Mediator.Mediator.Unregister("Tabels_LoadData", LoadData);
             Mediator.Mediator.Unregister("Tables_SaveData", SaveData);
             Mediator.Mediator.Unregister("Tables_Model", SentModels);
+            Mediator.Mediator.Unregister("Tables_ChangeDisplay", ChangeDisplay);
         }
         #endregion
 
@@ -30,6 +33,8 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
         private List<TargetsModels> _ECCCTables = PrepareEmptyTables();
         private List<CalculationModels> Data = new List<CalculationModels>();
         private bool _CarryOver = false;
+
+        private bool AutoCheckCarryOver = true;
         #endregion
 
         #region Public Variables
@@ -84,6 +89,14 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
         {
             Data = NewData as List<CalculationModels>;
 
+            if (AutoCheckCarryOver)
+            {
+                GeneralInformation_TransferClass CheckYear = new GeneralInformation_TransferClass();
+                Mediator.Mediator.NotifyColleagues("Get_Calc", CheckYear);
+
+                _CarryOver = CheckYear.Year >= DateTime.UtcNow.Year ? false : true;
+            }
+
             _SavingTables = PrepareEmptyTables();
             _QuantityTables = PrepareEmptyTables();
             _ECCCTables = PrepareEmptyTables();
@@ -105,10 +118,17 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
         }
         private void SentModels(object Tables)
         {
-            foreach(var DataItem in Data)
+            foreach (var DataItem in Data)
             {
                 (Tables as List<CalculationModels>).Add(DataItem);
             }
+        }
+        private void ChangeDisplay(object CarryOver)
+        {
+            AutoCheckCarryOver = false;
+            _CarryOver = (bool)CarryOver;
+            LoadData(Data);
+            AutoCheckCarryOver = true;
         }
         #endregion
 

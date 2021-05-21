@@ -40,53 +40,5 @@ namespace Saving_Accelerator_Tools2.Views.Action
         {
             InitializeComponent();
         }
-
-        private void ActiveAction_CB_Checked(object sender, RoutedEventArgs e)
-        {
-            //IdeaAction_CB.IsChecked = false;
-        }
-
-        private void IdeaAction_CB_Checked(object sender, RoutedEventArgs e)
-        {
-            //ActiveAction_CB.IsChecked = false;
-        }
-
-        private void NewAction_Button_Click(object sender, RoutedEventArgs e)
-        {
-            if (count == 0)
-            {
-                var NewModel = new General_Information_Model()
-                {
-                    ID = 0,
-                    ActionID = 1,
-                    Name = "to jest inna nowa akcja",
-                    Description = "Jakiś opis dodany",
-                    StartYear = 2020,
-                    Month = 6,
-                    Devision = DevisionController.LoadByName("NVR"),
-                    Plant = PlantController.LoadByName("ZM"),
-                    Leader = ActionLeaderController.LoadSingle("Konrad Bartkowiak"),
-                    Tag = Tag_Controller.LoadByName("Quality"),
-                    Active = false,
-                };
-                Mediator.Mediator.NotifyColleagues("General_Information_Load", NewModel);
-                count++;
-            }
-            else if (count ==1)
-            {
-                var Save = new SaveAction();
-                Save.Save();
-            }
-        }
-
-        private void TreeViewItem_Selected(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        private void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
-        {
-
-        }
     }
 }

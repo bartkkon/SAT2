@@ -14,7 +14,7 @@ namespace Saving_Accelerator_Tools2.Tasks
     public class LoadAction
     {
         private int _ActionID;
-        private Action_DB ActionDataBase;
+        private Action_DB ActionDataBase = new Action_DB();
         private General_Information_Model GeneralInformation = new General_Information_Model();
         private PlatformModel Platform = new PlatformModel();
         private List<ANCChangeModel> ANCChange = new List<ANCChangeModel>();
@@ -23,69 +23,94 @@ namespace Saving_Accelerator_Tools2.Tasks
         private List<PlusMinusModel> ANCSpecialPlusMinus = new List<PlusMinusModel>();
         private List<ANCSpecialModels> ANCSpecialPlatform = new List<ANCSpecialModels>();
         private List<PNCSpecialModel> PNCSpecial = new List<PNCSpecialModel>();
+        private List<CalculationModels> ResultsModel = new List<CalculationModels>();
 
         public LoadAction(int ActionID)
         {
-            _ActionID = ActionID;
-            LoadModels();
-        }
-
-        private void LoadModels()
-        {
-            Mouse.OverrideCursor = Cursors.Wait;
-
-            ActionDataBase = Action_Controller.Load(_ActionID);
-
-            if (ActionDataBase == null)
+            if(ActionID == 0)
             {
-                Mouse.OverrideCursor = null;
-                MessageBox.Show("Please select actions again.", "Something go wrong!");
                 return;
             }
-            #region Prepare Models to sent
-            PrepareGeneral_Information();
-            Prepare_Platform();
-            Preapre_ANCChange();
-            Prepare_ECCC();
-            Prepare_Calculation();
-            Prepare_PlusMinus_ANCSpecial();
-            Prepare_Platform_ANCSpecial();
-            Prepare_PNCSpecial();
 
-            #endregion
+            Mouse.OverrideCursor = Cursors.Wait;
+            Permission.Permission.Check.ReCalculation_Open = false;
 
-            #region Sent information to mediator    
-            Mediator.Mediator.NotifyColleagues("General_Information_Load", GeneralInformation);
-            Mediator.Mediator.NotifyColleagues("SetPlatform", Platform);
-            Mediator.Mediator.NotifyColleagues("Set_ANCChange", ANCChange);
-            Mediator.Mediator.NotifyColleagues("Set_ECCC", ECCCValue);
-            Mediator.Mediator.NotifyColleagues("Set_QuantityEstymation", ActionDataBase.QEstymation);
-            Mediator.Mediator.NotifyColleagues("Set_Calc", ActionDataBase.Calculation);
-            Mediator.Mediator.NotifyColleagues("Set_PNC_Data", PNCList);
-            Mediator.Mediator.NotifyColleagues("Set_ANCSpecial_PLusMinus", ANCSpecialPlusMinus);
-            Mediator.Mediator.NotifyColleagues("Set_ANCSpecial_Platform", ANCSpecialPlatform);
-            Mediator.Mediator.NotifyColleagues("PNCSpecial_Load", PNCSpecial);
+            _ActionID = ActionID;
+            if (LoadModels())
+            {
+                Prepare();
+            }
 
-            #endregion
+            Permission.Permission.Check.ReCalculation_Open = true;
             Mouse.OverrideCursor = null;
         }
 
-        private void Prepare_Calculation()
+        public LoadAction(bool NewAction)
         {
-            if (ActionDataBase.Calculation == 3)
+            if(!NewAction)
             {
-                foreach (var PNCRow in ActionDataBase.Action_PNC)
-                {
-                    var NewRecord = new PNCListData()
-                    {
-                        ID = PNCRow.PNCID,
-                        PNC = PNCRow.List.PNC,
-                    };
-                    PNCList.Add(NewRecord);
-                }
+                return;
             }
+
+            Mouse.OverrideCursor = Cursors.Wait;
+            Permission.Permission.Check.ReCalculation_Open = false;
+
+            _ActionID = 0;
+            DataForNewAction();
+            Prepare();
+
+            Permission.Permission.Check.ReCalculation_Open = true;
+            Mouse.OverrideCursor = null;
         }
-        private void PrepareGeneral_Information()
+
+        private bool LoadModels()
+        {
+            ActionDataBase = Action_Controller.Load_Active(_ActionID);
+
+            if (ActionDataBase.ActionID != _ActionID)
+            {
+                Mouse.OverrideCursor = null;
+                MessageBox.Show("Please select actions again.", "Something go wrong!");
+                return false;
+            }
+
+            return true;
+        }
+
+        private void DataForNewAction()
+        {
+            ActionDataBase.StartYear = DateTime.UtcNow.Year;
+            ActionDataBase.Month = DateTime.UtcNow.Month;
+            ActionDataBase.QEstymation = 100;
+            ActionDataBase.Active = true;
+            ActionDataBase.Calculation = 1;
+        }
+
+        private void Prepare()
+        {
+            Prepare_General_Information();
+            Prepare_Platform();
+            Preapre_ANCChange();
+            Prepare_ECCC();
+            switch (ActionDataBase.Calculation)
+            {
+                case 2:
+                    Prepare_PlusMinus_ANCSpecial();
+                    Prepare_Platform_ANCSpecial();
+                    break;
+                case 3:
+                    Prepare_PNC();
+                    break;
+                case 4:
+                    Prepare_PNCSpecial();
+                    break;
+                default:
+                    break;
+            }
+            Prepare_Results();
+        }
+
+        private void Prepare_General_Information()
         {
             GeneralInformation.ID = ActionDataBase.ID;
             GeneralInformation.ActionID = ActionDataBase.ActionID;
@@ -94,10 +119,14 @@ namespace Saving_Accelerator_Tools2.Tasks
             GeneralInformation.Active = ActionDataBase.Active;
             GeneralInformation.StartYear = ActionDataBase.StartYear;
             GeneralInformation.Month = ActionDataBase.Month;
-            GeneralInformation.Devision = ActionDataBase.Action_Devision[0].Devision;
-            GeneralInformation.Plant = ActionDataBase.Action_Plant[0].Plant;
-            GeneralInformation.Leader = ActionDataBase.Action_Leader[0].Leader;
-            GeneralInformation.Tag = ActionDataBase.Action_Tag[0].Tag;
+            GeneralInformation.Devision = ActionDataBase.Action_Devision.Count == 0 ? null : ActionDataBase.Action_Devision[0].Devision;
+            GeneralInformation.Plant = ActionDataBase.Action_Plant.Count == 0 ? null : ActionDataBase.Action_Plant[0].Plant;
+            GeneralInformation.Leader =  ActionDataBase.Action_Leader.Count == 0 ? null : ActionDataBase.Action_Leader[0].Leader;
+            GeneralInformation.Tag =  ActionDataBase.Action_Tag.Count == 0 ? null : ActionDataBase.Action_Tag[0].Tag;
+
+            Mediator.Mediator.NotifyColleagues("General_Information_Load", GeneralInformation);
+            Mediator.Mediator.NotifyColleagues("Set_QuantityEstymation", ActionDataBase.QEstymation);
+            Mediator.Mediator.NotifyColleagues("Set_Calc", ActionDataBase.Calculation);
         }
         private void Prepare_Platform()
         {
@@ -107,6 +136,8 @@ namespace Saving_Accelerator_Tools2.Tasks
             Platform.FI = ActionDataBase.FI;
             Platform.BI = ActionDataBase.BI;
             Platform.FSBU = ActionDataBase.FSBU;
+
+            Mediator.Mediator.NotifyColleagues("SetPlatform", Platform);
         }
         private void Preapre_ANCChange()
         {
@@ -135,12 +166,15 @@ namespace Saving_Accelerator_Tools2.Tasks
             {
                 ANCChange.Add(new ANCChangeModel());
             }
+            Mediator.Mediator.NotifyColleagues("Set_ANCChange", ANCChange);
         }
         private void Prepare_ECCC()
         {
             ECCCValue.ECCC = ActionDataBase.ECCC;
             ECCCValue.ECCCSpecial = ActionDataBase.ECCCSpec;
             ECCCValue.ECCC_Value = ActionDataBase.ECCCValue;
+
+            Mediator.Mediator.NotifyColleagues("Set_ECCC", ECCCValue);
         }
         private void Prepare_PlusMinus_ANCSpecial()
         {
@@ -155,6 +189,7 @@ namespace Saving_Accelerator_Tools2.Tasks
                 };
                 ANCSpecialPlusMinus.Add(NewItem);
             }
+            Mediator.Mediator.NotifyColleagues("Set_ANCSpecial_PLusMinus", ANCSpecialPlusMinus);
         }
         private void Prepare_Platform_ANCSpecial()
         {
@@ -168,6 +203,7 @@ namespace Saving_Accelerator_Tools2.Tasks
                 };
                 ANCSpecialPlatform.Add(NewItem);
             }
+            Mediator.Mediator.NotifyColleagues("Set_ANCSpecial_Platform", ANCSpecialPlatform);
         }
         private void Prepare_PNCSpecial()
         {
@@ -198,6 +234,47 @@ namespace Saving_Accelerator_Tools2.Tasks
                     PNCNewRecord.ANCChange.Add(ANCNewRecord);
                 }
                 PNCSpecial.Add(PNCNewRecord);
+            }
+            Mediator.Mediator.NotifyColleagues("PNCSpecial_Load", PNCSpecial);
+        }
+        private void Prepare_PNC()
+        {
+            if (ActionDataBase.Action_PNC.Count != 0)
+            {
+                foreach (var Record in ActionDataBase.Action_PNC)
+                {
+                    var NewRecord = new PNCListData()
+                    {
+                        ID = Record.PNCID,
+                        PNC = Record.List.PNC,
+                    };
+                    PNCList.Add(NewRecord);
+                }
+                Mediator.Mediator.NotifyColleagues("Set_PNC_Data", PNCList);
+            }
+        }
+        private void Prepare_Results()
+        {
+            if(ActionDataBase.Action_Results.Count !=0)
+            {
+                foreach(var Record in ActionDataBase.Action_Results)
+                {
+                    var PrepareRecord = new CalculationModels()
+                    {
+                        ID = Record.ResultID,
+                        Item = Record.Result.Item,
+                        Revision = Record.Result.Revision,
+                        Month = Record.Result.Month,
+                        CarryOver = Record.Result.CarryOver,
+                        Quantity = Record.Result.Quantity,
+                        Savings = Record.Result.Savings,
+                        ECCC = Record.Result.ECCC,
+                        Update = false,
+                        ToRemove = false,
+                    };
+                    ResultsModel.Add(PrepareRecord);
+                }
+                Mediator.Mediator.NotifyColleagues("Tabels_LoadData", ResultsModel);
             }
         }
     }
