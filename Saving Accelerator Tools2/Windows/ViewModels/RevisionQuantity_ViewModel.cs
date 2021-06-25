@@ -1,17 +1,15 @@
-﻿using Saving_Accelerator_Tools2.Contracts.Services;
-using Saving_Accelerator_Tools2.Core.Controllers.Data;
+﻿using Saving_Accelerator_Tools2.Core.Controllers.Data;
 using Saving_Accelerator_Tools2.Core.Models.Other.Data;
-using Saving_Accelerator_Tools2.Helpers;
+using Saving_Accelerator_Tools2.ViewModel.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Input;
 
 namespace Saving_Accelerator_Tools2.Windows.ViewModels
 {
-    public class RevisionQuantity_ViewModel : INotifyProperty
+    public class RevisionQuantity_ViewModel //: INotifyProperty
     {
         #region Constructors
         public RevisionQuantity_ViewModel()
@@ -73,7 +71,7 @@ namespace Saving_Accelerator_Tools2.Windows.ViewModels
             set
             {
                 title = value;
-                RisePropoertyChanged();
+                //RisePropoertyChanged();
             }
         }
         public string TextBoxData
@@ -83,7 +81,7 @@ namespace Saving_Accelerator_Tools2.Windows.ViewModels
             {
                 textBoxData = value;
                 ConvertData();
-                RisePropoertyChanged();
+                //RisePropoertyChanged();
             }
         }
         public List<ItemList> TableData
@@ -92,7 +90,7 @@ namespace Saving_Accelerator_Tools2.Windows.ViewModels
             set
             {
                 tables = value;
-                RisePropoertyChanged();
+                //RisePropoertyChanged();
             }
         }
 

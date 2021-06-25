@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <RootNamespace>Saving_Accelerator_Tools2.DataBaseIServices</RootNamespace>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Saving Accelerator Tool2.Model\Saving Accelerator Tools2.Model.csproj" />
+  </ItemGroup>
+
+</Project>

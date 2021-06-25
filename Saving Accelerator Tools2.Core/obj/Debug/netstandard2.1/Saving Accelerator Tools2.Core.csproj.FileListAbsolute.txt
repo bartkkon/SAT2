@@ -1,7 +1,7 @@
 C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.Core\bin\Debug\netstandard2.1\Saving Accelerator Tools2.Core.deps.json
 C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.Core\bin\Debug\netstandard2.1\Saving Accelerator Tools2.Core.dll
 C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.Core\bin\Debug\netstandard2.1\Saving Accelerator Tools2.Core.pdb
-C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.Core\obj\Debug\netstandard2.1\Saving Accelerator Tools2.Core.csprojAssemblyReference.cache
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.Core\obj\Debug\netstandard2.1\Saving Accelerator Tools2.Core.csproj.AssemblyReference.cache
 C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.Core\obj\Debug\netstandard2.1\Saving Accelerator Tools2.Core.AssemblyInfoInputs.cache
 C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.Core\obj\Debug\netstandard2.1\Saving Accelerator Tools2.Core.AssemblyInfo.cs
 C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.Core\obj\Debug\netstandard2.1\Saving Accelerator Tools2.Core.csproj.CoreCompileInputs.cache

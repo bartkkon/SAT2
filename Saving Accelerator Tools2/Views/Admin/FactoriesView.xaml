@@ -1,0 +1,143 @@
+﻿<Page x:Class="Saving_Accelerator_Tools2.Views.Admin.FacotriesView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Saving_Accelerator_Tools2.Views.Admin"
+      DataContext="{Binding Source={StaticResource Locator}, Path=FactoriesViewModel}"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="FacotriesView">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="5"/>
+        </Grid.ColumnDefinitions>
+        <Border BorderBrush="LightGray"
+                BorderThickness="1"
+                Grid.Column="0"
+                Grid.Row ="0"
+                Grid.RowSpan="5"
+                Grid.ColumnSpan="5"
+                CornerRadius="20"/>
+        <Label Content="Factories" 
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Stretch"
+                   FontSize="20"
+                   FontWeight="Bold"
+                   Grid.Row="1" 
+                   Grid.Column="1" 
+                   Grid.ColumnSpan="3"
+                   Padding="0">
+        </Label>
+        <ListBox
+            Grid.Row="3"
+            Grid.Column="1"
+            ItemsSource="{Binding Factories}"
+            SelectedItem="{Binding FactoriesSelected}"
+            BorderBrush="LightGray"
+            BorderThickness="1">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <DockPanel >
+                        <Border Background="LightBlue"
+                                    HorizontalAlignment="Left"
+                                    DockPanel.Dock="Left"
+                                    Width="30"
+                                    Margin="0 2">
+                            <Image Source="{StaticResource FactoryLogo}"
+                                           Width="15"
+                                           VerticalAlignment="Center"
+                                   HorizontalAlignment="Left"
+                                           Margin="5"/>
+                            <Border.Clip>
+                                <RectangleGeometry
+                                        RadiusX="50"
+                                        RadiusY="50"
+                                     Rect="0 0 25 25"/>
+                            </Border.Clip>
+                        </Border>
+                        <TextBlock Text="{Binding Path=Plant}"
+                                       VerticalAlignment="Center"
+                                       FontSize="12"
+                                       FontStyle="Italic"/>
+                    </DockPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <DockPanel Grid.Column="3"
+                   Grid.Row="3">
+            <DockPanel DockPanel.Dock="Top"
+                       Height="40"
+                       Margin="5">
+                <CheckBox Content="Only Active"
+                          DockPanel.Dock="Left"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Top"
+                          FontStyle="Italic"
+                          IsChecked="{Binding OnlyActive, Mode=TwoWay}"/>
+                <Button Height="30" 
+                        Width="30"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Background="LightGray"
+                        Command="{Binding New}"
+                        ToolTip="Add new Factory">
+                    <Image Source="{StaticResource PlusImage}"/>
+                </Button>
+            </DockPanel>
+            <Border Margin="5 0 0 0"
+                    BorderBrush="LightGray"
+                    BorderThickness="1"
+                    CornerRadius="20">
+                <StackPanel Margin="10">
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="ID:"
+                               FontWeight="Bold"/>
+                        <Label Content="{Binding FactoriesSelected.ID}"/>
+                    </StackPanel>
+                    <Label Content="Name:"
+                           FontWeight="Bold"/>
+                    <TextBox Text="{Binding FactoriesSelected.Plant}"
+                                 IsEnabled="{Binding Enabled_change}"/>
+                    <CheckBox Content="Active" 
+                                  IsChecked="{Binding FactoriesSelected.Active}"
+                                  Margin="5"
+                                  IsEnabled="{Binding Enabled_change}"/>
+                    <Button Content="Add"
+                            Background="LightGray"
+                            Foreground="White"
+                            HorizontalAlignment="Right"
+                            Width="50"
+                            Height="30"
+                            Visibility="{Binding AddButtonVisibility}"
+                            Command="{Binding Add}"
+                            IsEnabled="{Binding Enabled_change}"
+                                ToolTip="Create new Facotry"/>
+                    <Button Content="Update"
+                            Background="LightGray"
+                            Foreground="White"
+                            HorizontalAlignment="Right"
+                            Width="50"
+                            Height="30"
+                            Visibility="{Binding UpdateButtonVisibility}"
+                            Command="{Binding Update}"
+                                IsEnabled="{Binding Enabled_change}"
+                                ToolTip="Update selected Facotry"/>
+                </StackPanel>
+            </Border>
+        </DockPanel>
+
+    </Grid>
+</Page>

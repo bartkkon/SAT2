@@ -213,7 +213,7 @@ namespace Saving_Accelerator_Tools2.Core.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(ConnectionString.connectionString);
+            //optionsBuilder.UseSqlServer(ConnectionString.connectionString);
         }
 
         protected void ActionLeaderModelBuilder(ModelBuilder modelBuilder)

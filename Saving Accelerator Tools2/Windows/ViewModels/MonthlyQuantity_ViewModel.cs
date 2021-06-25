@@ -1,7 +1,6 @@
-﻿using Saving_Accelerator_Tools2.Contracts.Services;
-using Saving_Accelerator_Tools2.Core.Controllers.Data;
+﻿using Saving_Accelerator_Tools2.Core.Controllers.Data;
 using Saving_Accelerator_Tools2.Core.Models.Other.Data;
-using Saving_Accelerator_Tools2.Helpers;
+using Saving_Accelerator_Tools2.ViewModel.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +10,7 @@ using System.Windows.Input;
 
 namespace Saving_Accelerator_Tools2.Windows.ViewModels
 {
-    public class MonthlyQuantity_ViewModel : INotifyProperty
+    public class MonthlyQuantity_ViewModel //: INotifyProperty
     {
         #region Constructors
         public MonthlyQuantity_ViewModel()
@@ -65,7 +64,7 @@ namespace Saving_Accelerator_Tools2.Windows.ViewModels
             set
             {
                 windowsTitle = value;
-                RisePropoertyChanged();
+                //RisePropoertyChanged();
             }
         }
         public string Tips
@@ -74,7 +73,7 @@ namespace Saving_Accelerator_Tools2.Windows.ViewModels
             set
             {
                 tips = $"Data Sequence: <{value}> TAB <Quantity>";
-                RisePropoertyChanged();
+                //RisePropoertyChanged();
             }
         }
         public string LoadData
@@ -84,7 +83,7 @@ namespace Saving_Accelerator_Tools2.Windows.ViewModels
             {
                 AddDataValue = value;
                 ConvertData();
-                RisePropoertyChanged();
+                //RisePropoertyChanged();
             }
         }
         public List<PNCList> TableData
@@ -93,7 +92,7 @@ namespace Saving_Accelerator_Tools2.Windows.ViewModels
             set
             {
                 DataGridCheck = value;
-                RisePropoertyChanged();
+                //RisePropoertyChanged();
             }
         }
         #endregion

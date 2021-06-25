@@ -1,7 +1,7 @@
 ﻿using Saving_Accelerator_Tools2.Contracts.Services;
 using Saving_Accelerator_Tools2.Core.Controllers.Data;
 using Saving_Accelerator_Tools2.Core.Update;
-using Saving_Accelerator_Tools2.Helpers;
+using Saving_Accelerator_Tools2.ViewModel.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Text;

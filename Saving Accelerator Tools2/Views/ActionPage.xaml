@@ -36,7 +36,7 @@
             Place your content here.
             -->
         </Grid>
-        <Action:General_Information Grid.Column="1" HorizontalAlignment="Left" Height="200" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="640"/>
+        <!--<Action:General_Information Grid.Column="1" HorizontalAlignment="Left" Height="200" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="640"/>
         <Action:PlatformView Grid.Column="1" HorizontalAlignment="Left" Height="100" Margin="640,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="100"/>
         <Action:ANCChange Grid.Column="1" HorizontalAlignment="Left" Height="5" Margin="0,185,0,0" Grid.Row="1" VerticalAlignment="Top" Width="5"/>
         <Action:NavigationButton Margin="760,0,0,695" Grid.Row="1" Grid.Column="1" Height="50" VerticalAlignment="Top" HorizontalAlignment="Right" Width="100"/>
@@ -47,6 +47,6 @@
         <Action:ANCSpecial Grid.Column="1" HorizontalAlignment="Left" Height="13" Margin="982,162,0,0" Grid.Row="1" VerticalAlignment="Top" Width="2"/>
         <Action:PNCSpecial Grid.Column="1" HorizontalAlignment="Left" Margin="920,135,0,0" Grid.Row="1" Width="540"/>
         <Action:Tables Grid.Column="1" HorizontalAlignment="Left" Height="185" Margin="0,555,0,0" Grid.Row="1" VerticalAlignment="Top" Width="840"/>
-        <Action:GlobalComment Grid.Column="1" HorizontalAlignment="Left" Height="140" Margin="1095,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="350"/>
+        <Action:GlobalComment Grid.Column="1" HorizontalAlignment="Left" Height="140" Margin="1095,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="350"/>-->
     </Grid>
 </Page>

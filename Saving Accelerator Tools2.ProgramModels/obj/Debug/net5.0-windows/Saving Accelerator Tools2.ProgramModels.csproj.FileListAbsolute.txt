@@ -1,0 +1,11 @@
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.ProgramModels\bin\Debug\net5.0-windows\Saving Accelerator Tools2.ProgramModels.deps.json
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.ProgramModels\bin\Debug\net5.0-windows\Saving Accelerator Tools2.ProgramModels.dll
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.ProgramModels\bin\Debug\net5.0-windows\ref\Saving Accelerator Tools2.ProgramModels.dll
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.ProgramModels\bin\Debug\net5.0-windows\Saving Accelerator Tools2.ProgramModels.pdb
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.ProgramModels\obj\Debug\net5.0-windows\Saving Accelerator Tools2.ProgramModels.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.ProgramModels\obj\Debug\net5.0-windows\Saving Accelerator Tools2.ProgramModels.AssemblyInfoInputs.cache
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.ProgramModels\obj\Debug\net5.0-windows\Saving Accelerator Tools2.ProgramModels.AssemblyInfo.cs
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.ProgramModels\obj\Debug\net5.0-windows\Saving Accelerator Tools2.ProgramModels.csproj.CoreCompileInputs.cache
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.ProgramModels\obj\Debug\net5.0-windows\Saving Accelerator Tools2.ProgramModels.dll
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.ProgramModels\obj\Debug\net5.0-windows\ref\Saving Accelerator Tools2.ProgramModels.dll
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.ProgramModels\obj\Debug\net5.0-windows\Saving Accelerator Tools2.ProgramModels.pdb

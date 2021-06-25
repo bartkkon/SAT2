@@ -2,8 +2,8 @@
 using Saving_Accelerator_Tools2.Core.Controllers.Action;
 using Saving_Accelerator_Tools2.Core.Controllers.Users;
 using Saving_Accelerator_Tools2.Core.User;
-using Saving_Accelerator_Tools2.Helpers;
 using Saving_Accelerator_Tools2.Tasks;
+using Saving_Accelerator_Tools2.ViewModel.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

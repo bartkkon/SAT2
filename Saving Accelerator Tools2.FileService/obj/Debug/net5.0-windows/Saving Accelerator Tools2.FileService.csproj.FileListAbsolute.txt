@@ -1,0 +1,17 @@
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.FileService\bin\Debug\net5.0-windows\Saving Accelerator Tools2.FileServices.deps.json
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.FileService\bin\Debug\net5.0-windows\Saving Accelerator Tools2.FileServices.dll
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.FileService\bin\Debug\net5.0-windows\ref\Saving Accelerator Tools2.FileServices.dll
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.FileService\bin\Debug\net5.0-windows\Saving Accelerator Tools2.FileServices.pdb
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.FileService\bin\Debug\net5.0-windows\Saving Accelerator Tools2.IServices.dll
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.FileService\bin\Debug\net5.0-windows\SavingAcceleratorTools2.ProjectModels.dll
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.FileService\bin\Debug\net5.0-windows\Saving Accelerator Tools2.IServices.pdb
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.FileService\bin\Debug\net5.0-windows\SavingAcceleratorTools2.ProjectModels.pdb
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.FileService\obj\Debug\net5.0-windows\Saving Accelerator Tools2.FileService.csproj.AssemblyReference.cache
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.FileService\obj\Debug\net5.0-windows\Saving Accelerator Tools2.FileService.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.FileService\obj\Debug\net5.0-windows\Saving Accelerator Tools2.FileService.AssemblyInfoInputs.cache
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.FileService\obj\Debug\net5.0-windows\Saving Accelerator Tools2.FileService.AssemblyInfo.cs
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.FileService\obj\Debug\net5.0-windows\Saving Accelerator Tools2.FileService.csproj.CoreCompileInputs.cache
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.FileService\obj\Debug\net5.0-windows\Saving Accelerator Tools2.FileService.csproj.CopyComplete
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.FileService\obj\Debug\net5.0-windows\Saving Accelerator Tools2.FileServices.dll
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.FileService\obj\Debug\net5.0-windows\ref\Saving Accelerator Tools2.FileServices.dll
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.FileService\obj\Debug\net5.0-windows\Saving Accelerator Tools2.FileServices.pdb

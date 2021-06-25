@@ -1,6 +1,6 @@
 ﻿using Saving_Accelerator_Tools2.Contracts.Services;
-using Saving_Accelerator_Tools2.Helpers;
 using Saving_Accelerator_Tools2.Tasks.Calculation_Transfer_Class;
+using Saving_Accelerator_Tools2.ViewModel.Helpers;
 using Saving_Accelerator_Tools2.Windows.Views;
 using System;
 using System.Collections.Generic;

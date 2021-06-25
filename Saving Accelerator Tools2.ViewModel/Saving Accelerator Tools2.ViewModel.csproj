@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <RootNamespace>Saving_Accelerator_Tools2.ViewModel</RootNamespace>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MahApps.Metro" Version="2.4.6" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Saving Accelerator Tool2.Model\Saving Accelerator Tools2.Model.csproj" />
+    <ProjectReference Include="..\Saving Accelerator Tools2.DataBaseIServices\Saving Accelerator Tools2.DataBaseIServices.csproj" />
+    <ProjectReference Include="..\Saving Accelerator Tools2.IServices\Saving Accelerator Tools2.IServices.csproj" />
+    <ProjectReference Include="..\SavingAcceleratorTools2.ProjectModels\SavingAcceleratorTools2.ProjectModels.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

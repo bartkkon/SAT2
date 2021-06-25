@@ -1,7 +1,4 @@
-﻿using Saving_Accelerator_Tools2.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Saving_Accelerator_Tools2.ViewModel.Helpers;
 using System.Windows.Input;
 
 namespace Saving_Accelerator_Tools2.ViewModels.Action

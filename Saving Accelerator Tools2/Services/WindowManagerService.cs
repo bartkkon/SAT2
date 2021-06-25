@@ -4,10 +4,9 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 
 using MahApps.Metro.Controls;
-
-using Saving_Accelerator_Tools2.Contracts.Services;
-using Saving_Accelerator_Tools2.Contracts.ViewModels;
-using Saving_Accelerator_Tools2.Contracts.Views;
+using Saving_Accelerator_Tools2.IServices.Base;
+using Saving_Accelerator_Tools2.IServices.Base.ViewModel;
+using Saving_Accelerator_Tools2.IServices.Base.Views;
 
 namespace Saving_Accelerator_Tools2.Services
 {

@@ -1,0 +1,214 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\bartkkon\\OneDrive - Electrolux\\Visual Studio\\Saving Accelerator Tool2\\Saving Accelerator Tools2.ProgramSerives\\Saving Accelerator Tools2.ProgramSerives.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\bartkkon\\OneDrive - Electrolux\\Visual Studio\\Saving Accelerator Tool2\\Saving Accelerator Tools2.IServices\\Saving Accelerator Tools2.IServices.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\bartkkon\\OneDrive - Electrolux\\Visual Studio\\Saving Accelerator Tool2\\Saving Accelerator Tools2.IServices\\Saving Accelerator Tools2.IServices.csproj",
+        "projectName": "Saving Accelerator Tools2.IServices",
+        "projectPath": "C:\\Users\\bartkkon\\OneDrive - Electrolux\\Visual Studio\\Saving Accelerator Tool2\\Saving Accelerator Tools2.IServices\\Saving Accelerator Tools2.IServices.csproj",
+        "packagesPath": "C:\\Users\\bartkkon\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\bartkkon\\OneDrive - Electrolux\\Visual Studio\\Saving Accelerator Tool2\\Saving Accelerator Tools2.IServices\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\bartkkon\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0-windows7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0-windows7.0": {
+            "targetAlias": "net5.0-windows",
+            "projectReferences": {
+              "C:\\Users\\bartkkon\\OneDrive - Electrolux\\Visual Studio\\Saving Accelerator Tool2\\Saving Accelerator Tools2.ProgramModels\\Saving Accelerator Tools2.ProgramModels.csproj": {
+                "projectPath": "C:\\Users\\bartkkon\\OneDrive - Electrolux\\Visual Studio\\Saving Accelerator Tool2\\Saving Accelerator Tools2.ProgramModels\\Saving Accelerator Tools2.ProgramModels.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0-windows7.0": {
+          "targetAlias": "net5.0-windows",
+          "dependencies": {
+            "Prism.Core": {
+              "target": "Package",
+              "version": "[8.1.97, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\bartkkon\\OneDrive - Electrolux\\Visual Studio\\Saving Accelerator Tool2\\Saving Accelerator Tools2.ProgramModels\\Saving Accelerator Tools2.ProgramModels.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\bartkkon\\OneDrive - Electrolux\\Visual Studio\\Saving Accelerator Tool2\\Saving Accelerator Tools2.ProgramModels\\Saving Accelerator Tools2.ProgramModels.csproj",
+        "projectName": "Saving Accelerator Tools2.ProgramModels",
+        "projectPath": "C:\\Users\\bartkkon\\OneDrive - Electrolux\\Visual Studio\\Saving Accelerator Tool2\\Saving Accelerator Tools2.ProgramModels\\Saving Accelerator Tools2.ProgramModels.csproj",
+        "packagesPath": "C:\\Users\\bartkkon\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\bartkkon\\OneDrive - Electrolux\\Visual Studio\\Saving Accelerator Tool2\\Saving Accelerator Tools2.ProgramModels\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\bartkkon\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0-windows7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0-windows7.0": {
+            "targetAlias": "net5.0-windows",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0-windows7.0": {
+          "targetAlias": "net5.0-windows",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\bartkkon\\OneDrive - Electrolux\\Visual Studio\\Saving Accelerator Tool2\\Saving Accelerator Tools2.ProgramSerives\\Saving Accelerator Tools2.ProgramSerives.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\bartkkon\\OneDrive - Electrolux\\Visual Studio\\Saving Accelerator Tool2\\Saving Accelerator Tools2.ProgramSerives\\Saving Accelerator Tools2.ProgramSerives.csproj",
+        "projectName": "Saving Accelerator Tools2.ProgramSerives",
+        "projectPath": "C:\\Users\\bartkkon\\OneDrive - Electrolux\\Visual Studio\\Saving Accelerator Tool2\\Saving Accelerator Tools2.ProgramSerives\\Saving Accelerator Tools2.ProgramSerives.csproj",
+        "packagesPath": "C:\\Users\\bartkkon\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\bartkkon\\OneDrive - Electrolux\\Visual Studio\\Saving Accelerator Tool2\\Saving Accelerator Tools2.ProgramSerives\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\bartkkon\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0-windows7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0-windows7.0": {
+            "targetAlias": "net5.0-windows",
+            "projectReferences": {
+              "C:\\Users\\bartkkon\\OneDrive - Electrolux\\Visual Studio\\Saving Accelerator Tool2\\Saving Accelerator Tools2.IServices\\Saving Accelerator Tools2.IServices.csproj": {
+                "projectPath": "C:\\Users\\bartkkon\\OneDrive - Electrolux\\Visual Studio\\Saving Accelerator Tool2\\Saving Accelerator Tools2.IServices\\Saving Accelerator Tools2.IServices.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0-windows7.0": {
+          "targetAlias": "net5.0-windows",
+          "dependencies": {
+            "Microsoft.Extensions.Hosting": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

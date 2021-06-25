@@ -1,5 +1,4 @@
-﻿using Saving_Accelerator_Tools2.Contracts.Services;
-using Saving_Accelerator_Tools2.Core.Models.Other;
+﻿using Saving_Accelerator_Tools2.Core.Models.Other;
 using Saving_Accelerator_Tools2.Core.Models.ProductionData;
 using Saving_Accelerator_Tools2.Tasks.Calculation_Function;
 using System;
@@ -9,7 +8,7 @@ using System.Text;
 
 namespace Saving_Accelerator_Tools2.Windows.ViewModels
 {
-    public class ActionCommentViewModel:INotifyProperty
+    public class ActionCommentViewModel
     {
         public ActionCommentViewModel()
         {
@@ -43,7 +42,7 @@ namespace Saving_Accelerator_Tools2.Windows.ViewModels
             {
                 show_FirstYear = value;
                 PrepareShowData();
-                RisePropoertyChanged();
+                //RisePropoertyChanged();
             }
         }
         public bool Show_SecondYear
@@ -53,7 +52,7 @@ namespace Saving_Accelerator_Tools2.Windows.ViewModels
             {
                 show_SecondYear = value;
                 PrepareShowData();
-                RisePropoertyChanged();
+                //RisePropoertyChanged();
             }
         }
         public bool Show_Revision
@@ -63,7 +62,7 @@ namespace Saving_Accelerator_Tools2.Windows.ViewModels
             {
                 show_Revision = value;
                 PrepareShowData();
-                RisePropoertyChanged();
+                //RisePropoertyChanged();
             }
         }
         public bool Show_Months
@@ -73,7 +72,7 @@ namespace Saving_Accelerator_Tools2.Windows.ViewModels
             {
                 show_Months = value;
                 PrepareShowData();
-                RisePropoertyChanged();
+                //RisePropoertyChanged();
             }
         }
         public string CommentList_ToShow
@@ -82,7 +81,7 @@ namespace Saving_Accelerator_Tools2.Windows.ViewModels
             set
             {
                 commentsList_ToShow = value;
-                RisePropoertyChanged();
+                //RisePropoertyChanged();
             }
         }
         public bool NewComment_Eabled
@@ -91,7 +90,7 @@ namespace Saving_Accelerator_Tools2.Windows.ViewModels
             set
             {
                 newComment_Enabled = value;
-                RisePropoertyChanged();
+                //RisePropoertyChanged();
             }
         }
         #endregion

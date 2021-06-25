@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "uRvldq2FPg2b+jXl6TyukmZho/wwdkvfx+luVsvagctH1FQprp7zBGY1Crnb+Yvkhk6vz+uNWG52UTlGWWHntA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\bartkkon\\OneDrive - Electrolux\\Visual Studio\\Saving Accelerator Tool2\\Saving Accelerator Tools2.IServices\\Saving Accelerator Tools2.IServices.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\bartkkon\\.nuget\\packages\\prism.core\\8.1.97\\prism.core.8.1.97.nupkg.sha512"
+  ],
+  "logs": []
+}

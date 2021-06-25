@@ -1,7 +1,6 @@
 ﻿using Microsoft.Win32;
-using Saving_Accelerator_Tools2.Contracts.Services;
-using Saving_Accelerator_Tools2.Helpers;
 using Saving_Accelerator_Tools2.Models.Action;
+using Saving_Accelerator_Tools2.ViewModel.Helpers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,7 +10,7 @@ using System.Windows.Input;
 
 namespace Saving_Accelerator_Tools2.Windows.ViewModels
 {
-    public class PNCSpecialNewDataViewModel : INotifyProperty
+    public class PNCSpecialNewDataViewModel //: INotifyProperty
     {
         #region Constructors
         public PNCSpecialNewDataViewModel()
@@ -34,7 +33,7 @@ namespace Saving_Accelerator_Tools2.Windows.ViewModels
             set
             {
                 _Data = value;
-                RisePropoertyChanged();
+                //RisePropoertyChanged();
             }
         }
         #endregion

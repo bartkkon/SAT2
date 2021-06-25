@@ -1,19 +1,11 @@
-﻿using MahApps.Metro.Controls;
-using Saving_Accelerator_Tools2.Contracts.Services;
-using Saving_Accelerator_Tools2.Core.Controllers.Action;
-using Saving_Accelerator_Tools2.Core.Models.Action.Specification;
-using Saving_Accelerator_Tools2.Helpers;
+﻿using Saving_Accelerator_Tools2.Contracts.Services;
 using Saving_Accelerator_Tools2.Models.Action;
-using Saving_Accelerator_Tools2.Views.Action;
-using System;
+using Saving_Accelerator_Tools2.ViewModel.Helpers;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Windows;
-using System.Windows.Data;
 using System.Windows.Input;
 
 namespace Saving_Accelerator_Tools2.ViewModels.Action
