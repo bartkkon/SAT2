@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <RootNamespace>Saving_Accelerator_Tools2.Model</RootNamespace>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>Saving Accelerator Tools2.Model</AssemblyName>
+  </PropertyGroup>
+
+</Project>

@@ -15,8 +15,7 @@
         <CheckBox x:Name="All" Content="All" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="65" Margin="10,75,0,0" RenderTransformOrigin="0.538,-0.5" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
         <CheckBox x:Name="FS" Content="FS" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="65" Margin="25,95,0,0" IsChecked="{Binding Path=FS, Mode=TwoWay}" Checked="CheckIfAll" Unchecked="CheckIfAll"/>
         <CheckBox x:Name="FI" Content="FI" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="65" Margin="25,115,0,0" IsChecked="{Binding Path=FI, Mode=TwoWay}" Checked="CheckIfAll" Unchecked="CheckIfAll"/>
-        <CheckBox x:Name="BI" Content="BI" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="65" Margin="25,135,0,0" IsChecked="{Binding Path=BI, Mode=TwoWay}" Checked="CheckIfAll" Unchecked="CheckIfAll"/>
-        <CheckBox x:Name="FSBU" Content="FSBU" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="65" Margin="25,175,0,0" IsChecked="{Binding Path=BU, Mode=TwoWay}" Checked="CheckIfAll" Unchecked="CheckIfAll"/>
-        <CheckBox x:Name="BU" Content="BU" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="65" Margin="25,155,0,0" IsChecked="{Binding Path=FSBU, Mode=TwoWay}" Checked="CheckIfAll" Unchecked="CheckIfAll"/>
+        <CheckBox x:Name="BI" Content="BI/BU" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="65" Margin="25,135,0,0" IsChecked="{Binding Path=BI, Mode=TwoWay}" Checked="CheckIfAll" Unchecked="CheckIfAll"/>
+        <CheckBox x:Name="FSBU" Content="FSBU" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="65" Margin="25,155,0,0" IsChecked="{Binding Path=FSBU, Mode=TwoWay}" Checked="CheckIfAll" Unchecked="CheckIfAll"/>
     </Grid>
 </UserControl>

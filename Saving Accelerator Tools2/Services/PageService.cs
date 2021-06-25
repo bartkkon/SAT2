@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Controls;
-
-using Saving_Accelerator_Tools2.Contracts.Services;
-using Saving_Accelerator_Tools2.Helpers;
+using Saving_Accelerator_Tools2.IServices.Base;
 using Saving_Accelerator_Tools2.ViewModels;
+using Saving_Accelerator_Tools2.ViewModels.BaseOriginProgram;
+using Saving_Accelerator_Tools2.ViewModels.Helpers;
 using Saving_Accelerator_Tools2.Views;
 
 namespace Saving_Accelerator_Tools2.Services

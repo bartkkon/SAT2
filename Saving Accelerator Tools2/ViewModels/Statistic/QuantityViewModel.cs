@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 using Saving_Accelerator_Tools2.Contracts.Services;
-using Saving_Accelerator_Tools2.Helpers;
 using System.Windows;
 using System.Linq;
 using System.Windows.Input;
@@ -10,6 +9,8 @@ using Saving_Accelerator_Tools2.Core.Models.Other.Data;
 using Saving_Accelerator_Tools2.Core.Controllers.Data;
 using System.Collections.ObjectModel;
 using Saving_Accelerator_Tools2.Core.Models.ProductionData;
+using Saving_Accelerator_Tools2.ViewModel.Helpers;
+using Saving_Accelerator_Tools2.ViewModels.Helpers;
 
 namespace Saving_Accelerator_Tools2.ViewModels.Statistic
 {

@@ -2,8 +2,9 @@
 using System.Windows.Controls;
 using System.Windows.Navigation;
 
-using Saving_Accelerator_Tools2.Contracts.Services;
-using Saving_Accelerator_Tools2.Contracts.ViewModels;
+using Saving_Accelerator_Tools2.IServices.Base;
+
+using Saving_Accelerator_Tools2.IServices.Base.ViewModel;
 
 namespace Saving_Accelerator_Tools2.Services
 {
@@ -44,7 +45,7 @@ namespace Saving_Accelerator_Tools2.Services
         {
             var pageType = _pageService.GetPageType(pageKey);
 
-            if (_frame.Content?.GetType() != pageType || (parameter != null && !parameter.Equals(_lastParameterUsed)))
+            if (_frame.Content?.GetType() != pageType || parameter != null && !parameter.Equals(_lastParameterUsed))
             {
                 _frame.Tag = clearNavigation;
                 var page = _pageService.GetPage(pageKey);

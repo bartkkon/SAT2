@@ -1,16 +1,15 @@
-﻿using Saving_Accelerator_Tools2.Contracts.Services;
-using Saving_Accelerator_Tools2.Core.Controllers.Data;
+﻿using Saving_Accelerator_Tools2.Core.Controllers.Data;
 using Saving_Accelerator_Tools2.Core.Models.Other.Data;
-using Saving_Accelerator_Tools2.Helpers;
+using Saving_Accelerator_Tools2.ViewModel.Helpers;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 
 namespace Saving_Accelerator_Tools2.Windows.ViewModels
 {
-    public class RevisionQuantity_ViewModel : INotifyProperty
+    public class RevisionQuantity_ViewModel //: INotifyProperty
     {
         #region Constructors
         public RevisionQuantity_ViewModel()
@@ -72,7 +71,7 @@ namespace Saving_Accelerator_Tools2.Windows.ViewModels
             set
             {
                 title = value;
-                RisePropoertyChanged();
+                //RisePropoertyChanged();
             }
         }
         public string TextBoxData
@@ -82,7 +81,7 @@ namespace Saving_Accelerator_Tools2.Windows.ViewModels
             {
                 textBoxData = value;
                 ConvertData();
-                RisePropoertyChanged();
+                //RisePropoertyChanged();
             }
         }
         public List<ItemList> TableData
@@ -91,7 +90,7 @@ namespace Saving_Accelerator_Tools2.Windows.ViewModels
             set
             {
                 tables = value;
-                RisePropoertyChanged();
+                //RisePropoertyChanged();
             }
         }
 
@@ -237,9 +236,16 @@ namespace Saving_Accelerator_Tools2.Windows.ViewModels
                     var MessageResults = MessageBox.Show($"Do you want replace current data for {month}/{year}", "Warining", MessageBoxButton.YesNo);
                     if (MessageResults == MessageBoxResult.Yes)
                     {
-                        if (!ANC_Controller.RemoveRange(year, Revision, 0))
+                        if (!PNC_Controller.RemoveRange(year, Revision, 0))
                         {
                             MessageBox.Show("Is not possible to remove data from DataBase", "Removing Problem", MessageBoxButton.OK);
+                        }
+                        if (PNCTotally_Controler.CheckIfExist(Year, Revision, 0))
+                        {
+                            if (!PNCTotally_Controler.RemoveRange(year, Revision, 0))
+                            {
+                                MessageBox.Show("Is not possible to remove data from DataBase (PNC Totality)", "Removing Problem", MessageBoxButton.OK);
+                            }
                         }
                     }
                     else
@@ -248,6 +254,9 @@ namespace Saving_Accelerator_Tools2.Windows.ViewModels
                     }
                 }
                 var NewList = new List<PNC_DB>();
+                var NewTotalyList = new List<PNCTotality_DB>();
+                PNCTotalityRecords(NewTotalyList);
+
                 foreach (var Line in tables)
                 {
                     for (int counter = monthstart; counter <= 12; counter++)
@@ -263,11 +272,14 @@ namespace Saving_Accelerator_Tools2.Windows.ViewModels
                         NewRecord.Quantity = (decimal)MonthName.GetValue(Line);
 
                         if (NewRecord.Quantity != 0)
+                        {
                             NewList.Add(NewRecord);
+                            PNCTotalityAdd(NewTotalyList, NewRecord.Item, NewRecord.Quantity, NewRecord.Month);
+                        }
                     }
                 }
 
-                if (PNC_Controller.AddRange(NewList))
+                if (PNC_Controller.AddRange(NewList) && PNCTotally_Controler.AddRange(NewTotalyList))
                 {
                     MessageBox.Show("Updeted DataBase Finish with Succesfull!", "Data Updated!", MessageBoxButton.OK);
                 }
@@ -278,6 +290,65 @@ namespace Saving_Accelerator_Tools2.Windows.ViewModels
                 }
             }
             windows.Close();
+        }
+        private void PNCTotalityRecords(List<PNCTotality_DB> List)
+        {
+            int StartMonth = revision switch
+            {
+                "BU" => 1,
+                "EA1" => 3,
+                "EA2" => 6,
+                "EA3" => 9,
+                _ => 13,
+            };
+
+
+            for (int monthFor = StartMonth; monthFor <= 12; monthFor++)
+            {
+                List.Add(new PNCTotality_DB() { Revision = revision, Year = year, Month = monthFor, Structure = "DMD", Instalation = "FS" });
+                List.Add(new PNCTotality_DB() { Revision = revision, Year = year, Month = monthFor, Structure = "DMD", Instalation = "FI" });
+                List.Add(new PNCTotality_DB() { Revision = revision, Year = year, Month = monthFor, Structure = "DMD", Instalation = "BI" });
+                List.Add(new PNCTotality_DB() { Revision = revision, Year = year, Month = monthFor, Structure = "DMD", Instalation = "FSBU" });
+                List.Add(new PNCTotality_DB() { Revision = revision, Year = year, Month = monthFor, Structure = "D45", Instalation = "FS" });
+                List.Add(new PNCTotality_DB() { Revision = revision, Year = year, Month = monthFor, Structure = "D45", Instalation = "FI" });
+                List.Add(new PNCTotality_DB() { Revision = revision, Year = year, Month = monthFor, Structure = "D45", Instalation = "BI" });
+                List.Add(new PNCTotality_DB() { Revision = revision, Year = year, Month = monthFor, Structure = "D45", Instalation = "FSBU" });
+                List.Add(new PNCTotality_DB() { Revision = revision, Year = year, Month = monthFor, Structure = "Proxy", Instalation = null }); 
+            }
+        }
+        private void PNCTotalityAdd(List<PNCTotality_DB> List, string PNC, decimal Value, int monthAdd)
+        {
+            string Structure = PNC.Remove(3) == "999" ? "Proxy" : PNC.Remove(4).Remove(0, 3) == "5" ? "DMD" : PNC.Remove(4).Remove(0, 3) == "0" ? "D45" : string.Empty;
+            string Installation = string.Empty;
+
+            if (Structure == "DMD")
+            {
+                Installation = PNC.Remove(5).Remove(0, 4) switch
+                {
+                    "1" => "FS",
+                    "2" => "BI",
+                    "3" => "FI",
+                    "4" => "FSBU",
+                    _ => "Empty",
+                };
+            }
+            else if (Structure == "D45")
+            {
+                Installation = PNC.Remove(5).Remove(0, 4) switch
+                {
+                    "5" => "FS",
+                    "6" => "BI",
+                    "7" => "FI",
+                    "8" => "FSBU",
+                    _ => "Empty",
+                };
+            }
+
+            var ListRecord = Structure == "Proxy" ? List.Where(record => record.Structure == Structure && record.Month == monthAdd).FirstOrDefault() : List.Where(record => record.Structure == Structure && record.Instalation == Installation && record.Month == monthAdd).FirstOrDefault();
+            if (ListRecord != null)
+            {
+                ListRecord.Quantity += Value;
+            }
         }
         #endregion
     }

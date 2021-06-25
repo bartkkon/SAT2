@@ -17,11 +17,11 @@ namespace Saving_Accelerator_Tools2.Tasks.Calculation_Function
         private bool _CarryOver;
         private readonly decimal _ActionYear;
         private readonly decimal _ActionMonthStart;
-        private readonly Approvals_DB _Calculation;
+        private readonly Approvals2_DB _Calculation;
         #endregion
 
         #region Constructors
-        public MonthCalc(decimal ActionYear, decimal ActionMonthStart, Approvals_DB CalcRequest)
+        public MonthCalc(decimal ActionYear, decimal ActionMonthStart, Approvals2_DB CalcRequest)
         {
             _ActionYear = ActionYear;
             _ActionMonthStart = ActionMonthStart;

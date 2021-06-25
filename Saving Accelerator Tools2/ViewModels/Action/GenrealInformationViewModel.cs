@@ -6,7 +6,7 @@ using Saving_Accelerator_Tools2.Core.Controllers.Users;
 using Saving_Accelerator_Tools2.Core.Models.Users.InterTable;
 using Saving_Accelerator_Tools2.Models.Action;
 using Saving_Accelerator_Tools2.Views.Admin;
-using Saving_Accelerator_Tools2.Mediator;
+using Saving_Accelerator_Tools2.Permission;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -16,6 +16,7 @@ using Saving_Accelerator_Tools2.Core.User;
 using Saving_Accelerator_Tools2.Core.Models.Other;
 using Saving_Accelerator_Tools2.Core.Models.Action.Specification;
 using Saving_Accelerator_Tools2.Tasks.Calculation_Transfer_Class;
+using Saving_Accelerator_Tools2.Tasks;
 
 namespace Saving_Accelerator_Tools2.ViewModels.Action
 {
@@ -59,16 +60,21 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
         private decimal _StartMonth = DateTime.UtcNow.Month - 1;
         private List<Tag_DB> _Tags = Tag_Controller.LoadTagToAction(DateTime.UtcNow.Year);
         private Tag_DB _Tags_SelectedItem;
+        private int _Tags_SelectedIndex;
         private List<Devision_DB> _Devisions = DevisionController.LoadForAction().ToList();
         private Devision_DB _Devisions_SelectedItem;
-        private readonly int _Devisions_SelectedIndex = 0;
+        private int _Devisions_SelectedIndex = 0;
         private List<Plant_DB> _Plants = PlantController.LoadForAction();
         private Plant_DB _Plants_SelectedItem;
-        private readonly int _Plants_SelectedIndex = 0;
+        private int _Plants_SelectedIndex = 0;
         private List<ActionLeader_DB> _Leaders = new List<ActionLeader_DB>();
+        private int _Leaders_SelectedIndex = 0;
         private ActionLeader_DB _Leaders_SelectedItem;
         private bool _Active = true;
         private bool _Idea = false;
+
+        //Bool do ładowania nowej akcji
+        private bool LoadAction = false;
         #endregion
 
         #region Public Variables
@@ -135,7 +141,8 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
             {
                 _StartYear = value;
                 Tags = Tag_Controller.LoadTagToAction(value);
-                Mediator.Mediator.NotifyColleagues("Set_NewYear", _StartYear);
+                if (Permission.Permission.Check.ReCalculation_Open)
+                    Mediator.Mediator.NotifyColleagues("Set_NewYear", _StartYear);
                 RisePropoertyChanged();
             }
             get { return _StartYear; }
@@ -145,6 +152,8 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
             set
             {
                 _StartMonth = value;
+                if (Permission.Permission.Check.ReCalculation_Open)
+                    _ = new Calculation_ActionView();
                 RisePropoertyChanged();
             }
             get
@@ -218,6 +227,15 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
                 return _Tags_SelectedItem;
             }
         }
+        public int Tags_SelectedIndex
+        {
+            get { return _Tags_SelectedIndex; }
+            set
+            {
+                _Tags_SelectedIndex = value;
+                RisePropoertyChanged();
+            }
+        }
         public Devision_DB Devisions_SelectedItem
         {
             set
@@ -236,6 +254,7 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
         {
             set
             {
+                _Devisions_SelectedIndex = value;
                 RisePropoertyChanged();
             }
             get
@@ -255,6 +274,7 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
         {
             set
             {
+                _Plants_SelectedIndex = value;
                 RisePropoertyChanged();
             }
             get
@@ -276,6 +296,7 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
         {
             set
             {
+                _Leaders_SelectedIndex = value;
                 RisePropoertyChanged();
             }
             get { return _Devisions_SelectedIndex; }
@@ -312,6 +333,8 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
         #region Mediator Function
         public void Load(object show)
         {
+            LoadAction = true;
+
             var LoadData = show as General_Information_Model;
             Name = LoadData.Name;
             ID = LoadData.ID;
@@ -319,17 +342,47 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
             Description = LoadData.Description;
             StartYear = LoadData.StartYear;
             StartMonth = LoadData.Month - 1;
-            Devisions_SelectedItem = LoadData.Devision;
-            Plants_SelectedItem = LoadData.Plant;
-            Leaders_SelectedItem = LoadData.Leader;
-            Tags_SelectedItem = LoadData.Tag;
+            if (LoadData.Devision == null)
+            {
+                Devision_SelectedIndex = 0;
+            }
+            else
+            {
+                Devisions_SelectedItem = LoadData.Devision;
+            }
+            if (LoadData.Plant == null)
+            {
+                Plant_SelectedIndex = 0;
+            }
+            else
+            {
+                Plants_SelectedItem = LoadData.Plant;
+            }
+            if (LoadData.Leader == null)
+            {
+                Leader_SelectedIndex = 0;
+            }
+            else
+            {
+                Leaders_SelectedItem = LoadData.Leader;
+            }
+            if (LoadData.Tag == null)
+            {
+                Tags_SelectedIndex = 0;
+            }
+            else
+            {
+                Tags_SelectedItem = LoadData.Tag;
+            }
 
             if (LoadData.Active)
                 Active = LoadData.Active;
             else
                 Idea = !LoadData.Active;
+
+            LoadAction = false;
         }
-        public void Save(object show)
+        public void Save(object SaveModel)
         {
             int IDAction = 0;
             if (_ActionID != string.Empty)
@@ -337,21 +390,18 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
                 IDAction = int.Parse(_ActionID);
             }
 
-            General_Information_Model SaveAction = new General_Information_Model()
-            {
-                ID = ID,
-                Name = _Name,
-                ActionID = IDAction,
-                Description = _Description,
-                StartYear = _StartYear,
-                Month = Decimal.ToInt32(_StartMonth) + 1,
-                Devision = Devisions_SelectedItem,
-                Plant = Plants_SelectedItem,
-                Leader = Leaders_SelectedItem,
-                Tag = Tags_SelectedItem,
-                Active = Active,
-            };
-            Mediator.Mediator.NotifyColleagues("Set_GeneralInformation", SaveAction);
+            (SaveModel as General_Information_Model).ID = ID;
+            (SaveModel as General_Information_Model).Name = _Name;
+            (SaveModel as General_Information_Model).ActionID = IDAction;
+            (SaveModel as General_Information_Model).Description = _Description;
+            (SaveModel as General_Information_Model).StartYear = _StartYear;
+            (SaveModel as General_Information_Model).Month = Decimal.ToInt32(_StartMonth) + 1;
+            (SaveModel as General_Information_Model).Devision = Devisions_SelectedItem;
+            (SaveModel as General_Information_Model).Plant = Plants_SelectedItem;
+            (SaveModel as General_Information_Model).Leader = Leaders_SelectedItem;
+            (SaveModel as General_Information_Model).Tag = Tags_SelectedItem;
+            (SaveModel as General_Information_Model).Active = Active;
+
         }
         public void Get_Year(object show)
         {
@@ -375,10 +425,11 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
         private void CalcValue(object Value)
         {
             (Value as GeneralInformation_TransferClass).Year = _StartYear;
-            (Value as GeneralInformation_TransferClass).Month = _StartMonth+1;
+            (Value as GeneralInformation_TransferClass).Month = _StartMonth + 1;
             (Value as GeneralInformation_TransferClass).Active = _Active;
             (Value as GeneralInformation_TransferClass).Devision = _Devisions_SelectedItem.Devision;
         }
+
         #endregion
     }
 }

@@ -6,15 +6,15 @@ using System.Windows.Threading;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
-using Saving_Accelerator_Tools2.Contracts.Services;
-using Saving_Accelerator_Tools2.Contracts.Views;
-using Saving_Accelerator_Tools2.Core.Contracts.Services;
-using Saving_Accelerator_Tools2.Core.Services;
-using Saving_Accelerator_Tools2.Models;
+using Saving_Accelerator_Tools2.FileServices.Files;
+using Saving_Accelerator_Tools2.IServices.Base;
+using Saving_Accelerator_Tools2.IServices.Base.Views;
+using Saving_Accelerator_Tools2.IServices.File;
+using Saving_Accelerator_Tools2.ProgramSerivces;
 using Saving_Accelerator_Tools2.Services;
-using Saving_Accelerator_Tools2.ViewModels;
+using Saving_Accelerator_Tools2.ViewModels.BaseOriginProgram;
 using Saving_Accelerator_Tools2.Views;
+using SavingAcceleratorTools2.ProjectModels;
 
 namespace Saving_Accelerator_Tools2
 {

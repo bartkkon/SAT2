@@ -30,7 +30,6 @@ namespace Saving_Accelerator_Tools2.Views.Action
             FS.IsChecked = true;
             FI.IsChecked = true;
             BI.IsChecked = true;
-            BU.IsChecked = true;
             FSBU.IsChecked = true;
         }
 
@@ -39,13 +38,12 @@ namespace Saving_Accelerator_Tools2.Views.Action
             FS.IsChecked = false;
             FI.IsChecked = false;
             BI.IsChecked = false;
-            BU.IsChecked = false;
             FSBU.IsChecked = false;
         }
 
         private void CheckIfAll(object sender, RoutedEventArgs e)
         {
-            if(FS.IsChecked == true && FI.IsChecked == true && BI.IsChecked == true && BU.IsChecked == true && FSBU.IsChecked == true)
+            if(FS.IsChecked == true && FI.IsChecked == true && BI.IsChecked == true && FSBU.IsChecked == true)
             {
                 All.IsChecked = true;
             }

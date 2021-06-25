@@ -1,28 +1,44 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0-windows</TargetFramework>
     <RootNamespace>Saving_Accelerator_Tools2</RootNamespace>
     <UseWPF>true</UseWPF>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="Image\arrow.png" />
+    <None Remove="Assets\Add-New.png" />
+    <None Remove="Assets\dog.png" />
+    <None Remove="Assets\Factory.png" />
+    <None Remove="Assets\letter-t-512.png" />
+    <None Remove="Assets\User.png" />
     <None Remove="Views\Action\pobrane.png" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="MahApps.Metro" Version="2.3.4" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.0">
+    <PackageReference Include="Autofac" Version="6.2.0" />
+    <PackageReference Include="MahApps.Metro" Version="2.4.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.5">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
-    <PackageReference Include="Prism.Core" Version="8.0.0.1909" />
+    <PackageReference Include="Prism.Core" Version="8.1.97" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Saving Accelerator Tools2.Core\Saving Accelerator Tools2.Core.csproj" />
+    <ProjectReference Include="..\Saving Accelerator Tools2.DataBaseIServices\Saving Accelerator Tools2.DataBaseIServices.csproj" />
+    <ProjectReference Include="..\Saving Accelerator Tools2.DataBaseServices\Saving Accelerator Tools2.DataBaseServices.csproj" />
+    <ProjectReference Include="..\Saving Accelerator Tools2.FileService\Saving Accelerator Tools2.FileService.csproj" />
+    <ProjectReference Include="..\Saving Accelerator Tools2.ProgramSerives\Saving Accelerator Tools2.ProgramSerivces.csproj" />
+    <ProjectReference Include="..\Saving Accelerator Tools2.ViewModel\Saving Accelerator Tools2.ViewModel.csproj" />
+    <ProjectReference Include="..\SavingAcceleratorTools2.ProjectModels\SavingAcceleratorTools2.ProjectModels.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Assets\Add-New.png" />
+    <Resource Include="Assets\dog.png" />
+    <Resource Include="Assets\Factory.png" />
+    <Resource Include="Assets\letter-t-512.png" />
+    <Resource Include="Assets\User.png" />
     <Resource Include="Views\Action\pobrane.png" />
   </ItemGroup>
 
@@ -57,6 +73,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Image\" />
+    <Folder Include="Services\Views\" />
   </ItemGroup>
 </Project>

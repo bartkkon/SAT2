@@ -46,6 +46,13 @@ namespace Saving_Accelerator_Tools2.Core.Models.Action
         public decimal QEstymation { get; set; }
         #endregion
 
+        #region Created By
+        public string CreateBy { get; set; }
+        public DateTime DateBy { get; set; }
+        public bool ActiveAction { get; set; }
+        #endregion
+
+        #region InterTables
         public virtual List<Action_Devision_InterTable> Action_Devision { get; set; } = new List<Action_Devision_InterTable>();
         public virtual List<Action_Plant_InterTable> Action_Plant { get; set; } = new List<Action_Plant_InterTable>();
         public virtual List<Action_Leader_InterTable> Action_Leader { get; set; } = new List<Action_Leader_InterTable>();
@@ -55,5 +62,7 @@ namespace Saving_Accelerator_Tools2.Core.Models.Action
         public virtual List<Action_ANCChangePlatform_InterTable> Action_ANCChange_Platform { get; set; } = new List<Action_ANCChangePlatform_InterTable>();
         public virtual List<Action_ANCChange_Items_InterTable> Action_ANCChange_Items { get; set; } = new List<Action_ANCChange_Items_InterTable>();
         public virtual List<Action_PNCSpecial_InterTable> Action_PNCSpecial { get; set; } = new List<Action_PNCSpecial_InterTable>();
+        public virtual List<Action_Results_InterTable> Action_Results { get; set; } = new List<Action_Results_InterTable>();
+        #endregion
     }
 }

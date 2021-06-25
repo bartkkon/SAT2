@@ -118,13 +118,11 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
         }
         private void Get_ECCC(object obj)
         {
-            ECCCModel OutModel = new ECCCModel()
-            {
-                ECCC = ECCC,
-                ECCCSpecial = ECCC_Spec,
-                ECCC_Value = ECCC_Value,
-            };
-            Mediator.Mediator.NotifyColleagues("ECCC_Save", OutModel);
+            var OutModel = obj as ECCCModel;
+
+            OutModel.ECCC = ECCC;
+            OutModel.ECCCSpecial = ECCC_Spec;
+            OutModel.ECCC_Value = ECCC_Value;
         }
         private void ECCC_Spec_Toggle(object obj)
         {

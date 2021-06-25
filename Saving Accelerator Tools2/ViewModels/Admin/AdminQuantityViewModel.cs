@@ -1,5 +1,5 @@
 ﻿using Saving_Accelerator_Tools2.Contracts.Services;
-using Saving_Accelerator_Tools2.Helpers;
+using Saving_Accelerator_Tools2.ViewModel.Helpers;
 using Saving_Accelerator_Tools2.Windows.Views;
 using System;
 using System.Collections.Generic;
@@ -93,22 +93,25 @@ namespace Saving_Accelerator_Tools2.ViewModels.Admin
             AddDataWindow.Show();
 
         }
-        private void ButtonMonth2(object obj)
-        {
-            var AddDataWindow = anc ? new AddingData("ANC", year, (int)month) : new AddingData("PNC", year, (int)month);
-            AddDataWindow.Show();
-        }
+
         private void ButtonRevision(object obj)
         {
-            string revison = revisionSelect switch
+            string revision = revisionSelect switch
             {
                 0 => "BU",
                 1 => "EA1",
                 2 => "EA3",
                 3 => "EA4",
+                _ => string.Empty,
             };
 
-            var AddDatawindow = new RevisionQuantity("PNC", year, revison, Convert.ToInt32(month));
+            if(revision == string.Empty)
+            {
+                return;
+            }
+            
+
+            var AddDatawindow = new RevisionQuantity("PNC", year, revision, Convert.ToInt32(month));
             AddDatawindow.Show();
 
         }

@@ -1,0 +1,42 @@
+﻿<Window x:Class="Saving_Accelerator_Tools2.Windows.Views.ActionComment"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Saving_Accelerator_Tools2.Windows.Views"
+        xmlns:model="clr-namespace:Saving_Accelerator_Tools2.Windows.ViewModels"
+        mc:Ignorable="d"
+        Title="Approval Raport Comments" Height="450" Width="800">
+    <Window.DataContext>
+        <model:ActionCommentViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="28"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="28"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="335*"/>
+            <RowDefinition Height="5"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="67*"/>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="69*"/>
+            <ColumnDefinition Width="5"/>
+        </Grid.ColumnDefinitions>
+        <CheckBox Content="First Year" Grid.Column="1" HorizontalAlignment="Left" Height="20" Margin="10,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="85" IsChecked="{Binding Show_FirstYear, Mode=TwoWay}"/>
+        <CheckBox Content="Carry Over" Grid.Column="1" HorizontalAlignment="Left" Height="20" Margin="105,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="85" IsChecked="{Binding Show_SecondYear, Mode=TwoWay}"/>
+        <CheckBox Content="Revisions" Grid.Column="1" HorizontalAlignment="Left" Height="20" Margin="10,0,0,0" Grid.Row="3" VerticalAlignment="Top" Width="85" IsChecked="{Binding Show_Revision, Mode=TwoWay}"/>
+        <CheckBox Content="Months" Grid.Column="1" HorizontalAlignment="Left" Height="20" Margin="105,0,0,0" Grid.Row="3" VerticalAlignment="Top" Width="85" IsChecked="{Binding Show_Months, Mode=TwoWay}"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Stretch"  Margin="0,0,0,0" Grid.Row="5" Text="{Binding CommentList_ToShow, Mode=OneWay}" TextWrapping="Wrap" VerticalAlignment="Stretch" AcceptsReturn="True" AcceptsTab="True" IsEnabled="False" HorizontalScrollBarVisibility="Auto"/>
+        <ComboBox Grid.Column="3" HorizontalAlignment="Left" Height="25" Margin="71,0,0,0" VerticalAlignment="Top" Width="90"  Grid.Row="1" IsEnabled="{Binding NewComment_Eabled, Mode=TwoWay}"/>
+        <ComboBox Grid.Column="3" HorizontalAlignment="Left" Height="25" Margin="71,0,0,0" VerticalAlignment="Center" Width="90" Grid.Row="3" IsEnabled="{Binding NewComment_Eabled, Mode=TwoWay}"/>
+        <Button Content="Add" Grid.Column="3" HorizontalAlignment="Right" Height="55" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="105" Grid.RowSpan="3" IsEnabled="{Binding NewComment_Eabled, Mode=TwoWay}"/>
+        <Label Content="Revision:" Grid.Column="3" HorizontalAlignment="Left" Height="30" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Stretch" Width="60"/>
+        <Label Content="Month:" Grid.Column="3" HorizontalAlignment="Left" Height="30" Margin="0,0,0,0" Grid.Row="3" VerticalAlignment="Stretch" Width="50"/>
+        <TextBox Grid.Column="3" HorizontalAlignment="Stretch" Margin="0,0,0,0" Grid.Row="5" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Stretch" IsEnabled="{Binding NewComment_Eabled, Mode=TwoWay}" AcceptsReturn="True" AcceptsTab="True" HorizontalScrollBarVisibility="Auto"/>
+    </Grid>
+</Window>

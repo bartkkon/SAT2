@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <RootNamespace>Saving_Accelerator_Tools2.FileServices</RootNamespace>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>Saving Accelerator Tools2.FileServices</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Saving Accelerator Tools2.IServices\Saving Accelerator Tools2.IServices.csproj" />
+  </ItemGroup>
+
+</Project>

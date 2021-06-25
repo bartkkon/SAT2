@@ -110,18 +110,15 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
             FSBU = SetData.FSBU;
         }
 
-        private void GetData(object obj)
+        private void GetData(object SaveModel)
         {
-            var GetData = new PlatformModel()
-            {
-                DMD = _DMD,
-                D45 = _D45,
-                FS = _FS,
-                FI = _FI,
-                BI = _BI,
-                FSBU = _FSBU,
-            };
-            Mediator.Mediator.NotifyColleagues("Set_Platform", GetData);
+            (SaveModel as PlatformModel).DMD = _DMD;
+            (SaveModel as PlatformModel).D45 = _D45;
+            (SaveModel as PlatformModel).FS = _FS;
+            (SaveModel as PlatformModel).FI = _FI;
+            (SaveModel as PlatformModel).BI = _BI;
+            (SaveModel as PlatformModel).FSBU = _FSBU;
+
         }
         #endregion
     }

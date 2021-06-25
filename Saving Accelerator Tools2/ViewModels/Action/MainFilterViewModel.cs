@@ -2,8 +2,8 @@
 using Saving_Accelerator_Tools2.Core.Controllers.Action;
 using Saving_Accelerator_Tools2.Core.Controllers.Users;
 using Saving_Accelerator_Tools2.Core.User;
-using Saving_Accelerator_Tools2.Helpers;
 using Saving_Accelerator_Tools2.Tasks;
+using Saving_Accelerator_Tools2.ViewModel.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -17,9 +17,15 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
         #region Constructor
         public MainFilterViewModel()
         {
+            Mediator.Mediator.Register("MainFilter_Reload", Reload);
+
             Leaders = LoadActionLeader();
             NewAction = new RelayCommand<object>(LoadNewAction);
             LoadTree();
+        }
+        ~MainFilterViewModel()
+        {
+            Mediator.Mediator.Unregister("MainFilter_Reload", Reload);
         }
         #endregion
 
@@ -283,7 +289,17 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
         }
         public void LoadNewAction(object obj)
         {
-            new LoadAction(0);
+            new LoadAction(true);
+        }
+        #endregion
+
+        #region Mediator Functions
+        private void Reload(object obj)
+        {
+            if ((bool)obj)
+            {
+                LoadTree();
+            }
         }
         #endregion
     }

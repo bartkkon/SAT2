@@ -1,6 +1,6 @@
 ﻿using Saving_Accelerator_Tools2.Contracts.Services;
-using Saving_Accelerator_Tools2.Helpers;
 using Saving_Accelerator_Tools2.Tasks;
+using Saving_Accelerator_Tools2.ViewModel.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -22,7 +22,7 @@ namespace Saving_Accelerator_Tools2.ViewModels.Action
 
         private void Save(object obj)
         {
-            var Save = new SaveAction2();
+            var Save = new SaveAction();
             Save.Save();
         }
     }

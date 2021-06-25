@@ -55,5 +55,52 @@ namespace Saving_Accelerator_Tools2.Core.Controllers.Data
 
             return List;
         }
+
+        public static bool CheckIfExist(decimal year, string revision, int month)
+        {
+            bool Status = false;
+            var context = new DataBaseConnetionContext();
+
+            Status = month != 0 ?
+                context.PNC_Totality.Any(record => record.Year == year && record.Revision == revision && record.Month == month)
+                :
+                context.PNC_Totality.Any(record => record.Year == year && record.Revision == revision);
+
+            return Status;
+        }
+
+        public static bool RemoveRange( decimal year, string revision, int month)
+        {
+            IEnumerable<PNCTotality_DB> DataBase;
+            var context = new DataBaseConnetionContext();
+
+            DataBase = month != 0 ?
+                context.PNC_Totality.Where(record => record.Year == year && record.Revision == revision && record.Month == month).ToList()
+                :
+                context.PNC_Totality.Where(record => record.Year == year && record.Revision == revision).ToList();
+
+            context.PNC_Totality.RemoveRange(DataBase);
+            try {
+                context.SaveChanges();
+                return true;
+            }
+            catch {
+                return false;
+            }
+        }
+
+        public static bool AddRange(IEnumerable<PNCTotality_DB> List)
+        {
+            var context = new DataBaseConnetionContext();
+
+            context.PNC_Totality.AddRange(List);
+            try {
+                context.SaveChanges();
+                return true;
+            }
+            catch {
+                return false;
+            }
+        }
     }
 }

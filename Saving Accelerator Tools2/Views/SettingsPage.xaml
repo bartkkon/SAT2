@@ -6,13 +6,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:converters="clr-namespace:Saving_Accelerator_Tools2.Converters"
-    xmlns:models="clr-namespace:Saving_Accelerator_Tools2.Models"
     xmlns:properties="clr-namespace:Saving_Accelerator_Tools2.Properties"
+    xmlns:models="clr-namespace:SavingAcceleratorTools2.ProjectModels;assembly=SavingAcceleratorTools2.ProjectModels"
     xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
     mc:Ignorable="d"
     d:DesignHeight="450" d:DesignWidth="800">
     <Page.Resources>
-        <converters:EnumToBooleanConverter x:Key="EnumToBooleanConverter" EnumType="models:AppTheme" />
+        <converters:EnumToBooleanConverter x:Key="EnumToBooleanConverter" EnumType="models:AppTheme"/>
     </Page.Resources>
     <ScrollViewer>
         <Grid Margin="{StaticResource SmallTopBottomMargin}">
