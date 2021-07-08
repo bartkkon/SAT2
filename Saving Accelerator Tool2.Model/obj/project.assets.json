@@ -1,11 +1,33 @@
 {
   "version": 3,
   "targets": {
-    "net5.0-windows7.0": {}
+    "net5.0-windows7.0": {
+      "SavingAcceleratorTools2.ProjectModels/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/SavingAcceleratorTools2.ProjectModels.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SavingAcceleratorTools2.ProjectModels.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "SavingAcceleratorTools2.ProjectModels/1.0.0": {
+      "type": "project",
+      "path": "../SavingAcceleratorTools2.ProjectModels/SavingAcceleratorTools2.ProjectModels.csproj",
+      "msbuildProject": "../SavingAcceleratorTools2.ProjectModels/SavingAcceleratorTools2.ProjectModels.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net5.0-windows7.0": []
+    "net5.0-windows7.0": [
+      "SavingAcceleratorTools2.ProjectModels >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\bartkkon\\.nuget\\packages\\": {},
@@ -40,7 +62,11 @@
       "frameworks": {
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\bartkkon\\OneDrive - Electrolux\\Visual Studio\\Saving Accelerator Tool2\\SavingAcceleratorTools2.ProjectModels\\SavingAcceleratorTools2.ProjectModels.csproj": {
+              "projectPath": "C:\\Users\\bartkkon\\OneDrive - Electrolux\\Visual Studio\\Saving Accelerator Tool2\\SavingAcceleratorTools2.ProjectModels\\SavingAcceleratorTools2.ProjectModels.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

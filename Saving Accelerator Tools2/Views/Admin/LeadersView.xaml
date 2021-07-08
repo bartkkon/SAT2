@@ -1,66 +1,66 @@
 ﻿<Page x:Class="Saving_Accelerator_Tools2.Views.Admin.LeadersView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:Saving_Accelerator_Tools2.Views.Admin"
       DataContext="{Binding Source={StaticResource Locator}, Path=LeadersViewModel}"
-      mc:Ignorable="d" 
-      d:DesignHeight="350" d:DesignWidth="800"
+      mc:Ignorable="d"
+      d:DesignHeight="350"
+      d:DesignWidth="800"
       Title="LeadersView">
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="5"/>
-            <RowDefinition Height="25"/>
-            <RowDefinition Height="5"/>
-            <RowDefinition/>
-            <RowDefinition Height="10"/>
+            <RowDefinition Height="5" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="5" />
+            <RowDefinition />
+            <RowDefinition Height="10" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="10"/>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="5"/>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition />
+            <ColumnDefinition Width="5" />
         </Grid.ColumnDefinitions>
         <Border BorderBrush="LightGray"
                 BorderThickness="1"
                 Grid.Column="0"
-                Grid.Row ="0"
+                Grid.Row="0"
                 Grid.RowSpan="5"
                 Grid.ColumnSpan="5"
-                CornerRadius="20"/>
-        <Label Content="Leaders" 
-                   HorizontalAlignment="Center" 
-                   VerticalAlignment="Stretch"
-                   FontSize="20"
-                   FontWeight="Bold"
-                   Grid.Row="1" 
-                   Grid.Column="1" 
-                   Grid.ColumnSpan="3"
-                   Padding="0">
+                CornerRadius="20" />
+        <Label Content="Leaders"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Stretch"
+               FontSize="20"
+               FontWeight="Bold"
+               Grid.Row="1"
+               Grid.Column="1"
+               Grid.ColumnSpan="3"
+               Padding="0">
         </Label>
-        <DockPanel
-            Grid.Row="3"
-            Grid.Column="1">
+        <DockPanel Grid.Row="3"
+                   Grid.Column="1">
             <DockPanel DockPanel.Dock="Top"
                        Height="80">
                 <StackPanel DockPanel.Dock="Top"
                             Orientation="Horizontal">
-                <StackPanel MinWidth="100">
-                    <Label Content="Devision:"/>
-                    <ComboBox ItemsSource="{Binding FilteredDevisions}" 
-                              SelectedItem="{Binding FilteredDevision}"
-                              DisplayMemberPath="DisplayName"/>
-                </StackPanel>
-                <StackPanel MinWidth="100"
-                            Margin="5 0">
-                    <Label Content="Plant:"/>
-                    <ComboBox ItemsSource="{Binding FilteredFactories}"
-                              SelectedItem="{Binding FilteredFactory}"
-                              DisplayMemberPath="Plant"/>
-                </StackPanel>
+                    <StackPanel MinWidth="100">
+                        <Label Content="Devision:" />
+                        <ComboBox ItemsSource="{Binding FilteredDevisions}"
+                                  SelectedItem="{Binding FilteredDevision}"
+                                  DisplayMemberPath="DisplayName" />
+                    </StackPanel>
+                    <StackPanel MinWidth="100"
+                                Margin="5 0">
+                        <Label Content="Plant:" />
+                        <ComboBox ItemsSource="{Binding FilteredFactories}"
+                                  SelectedItem="{Binding FilteredFactory}"
+                                  DisplayMemberPath="Plant" />
+                    </StackPanel>
                 </StackPanel>
                 <CheckBox Content="Only Active"
                           DockPanel.Dock="Left"
@@ -68,38 +68,36 @@
                           VerticalAlignment="Top"
                           FontStyle="Italic"
                           Margin="5"
-                          IsChecked="{Binding OnlyActive, Mode=TwoWay}"/>
+                          IsChecked="{Binding OnlyActive, Mode=TwoWay}" />
             </DockPanel>
-            <ListBox
-            ItemsSource="{Binding Leaders}"
-            SelectedItem="{Binding LeadersSelected}"
-            BorderBrush="LightGray"
-            BorderThickness="1"
-                ScrollViewer.HorizontalScrollBarVisibility="Auto">
+            <ListBox ItemsSource="{Binding Leaders}"
+                     SelectedItem="{Binding LeadersSelected}"
+                     BorderBrush="LightGray"
+                     BorderThickness="1"
+                     ScrollViewer.HorizontalScrollBarVisibility="Auto">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <DockPanel >
+                        <DockPanel>
                             <Border Background="LightBlue"
                                     HorizontalAlignment="Left"
                                     DockPanel.Dock="Left"
                                     Width="30"
                                     Margin="0 2">
                                 <Image Source="{StaticResource UserImage}"
-                                           Width="15"
-                                           VerticalAlignment="Center"
-                                   HorizontalAlignment="Left"
-                                   Margin="5"/>
+                                       Width="15"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Left"
+                                       Margin="5" />
                                 <Border.Clip>
-                                    <RectangleGeometry
-                                        RadiusX="25"
-                                        RadiusY="25"
-                                     Rect="0 0 25 25"/>
+                                    <RectangleGeometry RadiusX="25"
+                                                       RadiusY="25"
+                                                       Rect="0 0 25 25" />
                                 </Border.Clip>
                             </Border>
                             <TextBlock Text="{Binding Path=FullName}"
                                        VerticalAlignment="Center"
                                        FontSize="12"
-                                       FontStyle="Italic"/>
+                                       FontStyle="Italic" />
                         </DockPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
@@ -110,7 +108,7 @@
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Right"
                         DockPanel.Dock="Top">
-                <Button Height="30" 
+                <Button Height="30"
                         Width="30"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Center"
@@ -118,7 +116,7 @@
                         Command="{Binding New}"
                         ToolTip="New Leader"
                         Margin="5">
-                    <Image Source="{StaticResource PlusImage}"/>
+                    <Image Source="{StaticResource PlusImage}" />
                 </Button>
             </StackPanel>
             <Border Margin="5 0 0 0"
@@ -128,49 +126,45 @@
                 <StackPanel Margin="10">
                     <StackPanel Orientation="Horizontal">
                         <Label Content="ID:"
-                               FontWeight="Bold"/>
-                        <Label Content="{Binding LeadersSelected.ID}"/>
+                               FontWeight="Bold" />
+                        <Label Content="{Binding LeadersSelected.ID}" />
                     </StackPanel>
                     <Label Content="Name:"
-                           FontWeight="Bold"/>
+                           FontWeight="Bold" />
                     <TextBox Text="{Binding LeadersSelected.Name}"
-                             IsEnabled="{Binding Enabled_change}"/>
+                             IsEnabled="{Binding Enabled_change}" />
                     <Label Content="Surname:"
-                           FontWeight="Bold"/>
+                           FontWeight="Bold" />
                     <TextBox Text="{Binding LeadersSelected.Surname}"
-                             IsEnabled="{Binding Enabled_change}"/>
+                             IsEnabled="{Binding Enabled_change}" />
 
                     <Label Content="Devisions:"
-                               FontWeight="Bold"/>
+                           FontWeight="Bold" />
                     <ComboBox ItemsSource="{Binding Devisions}"
-                                  SelectedItem="{Binding LeadersSelected.Devision}"
-                                  IsEnabled="{Binding Enabled_change}"
-                                  DisplayMemberPath="DisplayName"/>
+                              SelectedItem="{Binding LeadersSelected.Devision}"
+                              IsEnabled="{Binding Enabled_change}"
+                              DisplayMemberPath="DisplayName" />
 
-                    <CheckBox Content="Active" 
+                    <CheckBox Content="Active"
                               IsChecked="{Binding LeadersSelected.Active}"
                               Margin="5"
-                              IsEnabled="{Binding Enabled_change}"/>
+                              IsEnabled="{Binding Enabled_change}" />
                     <Button Content="Add"
-                            Background="LightGray"
-                            Foreground="White"
                             HorizontalAlignment="Right"
                             Width="50"
                             Height="30"
                             Visibility="{Binding AddButtonVisibility}"
                             Command="{Binding Add}"
                             IsEnabled="{Binding Enabled_change}"
-                            ToolTip="Create new Leader"/>
+                            ToolTip="Create new Leader" />
                     <Button Content="Update"
-                            Background="LightGray"
-                            Foreground="White"
                             HorizontalAlignment="Right"
                             Width="50"
                             Height="30"
                             Visibility="{Binding UpdateButtonVisibility}"
                             Command="{Binding Update}"
                             IsEnabled="{Binding Enabled_change}"
-                            ToolTip="Update selected Leader"/>
+                            ToolTip="Update selected Leader" />
                 </StackPanel>
             </Border>
         </DockPanel>

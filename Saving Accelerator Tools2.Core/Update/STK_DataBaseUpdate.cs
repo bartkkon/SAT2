@@ -60,7 +60,7 @@ namespace Saving_Accelerator_Tools2.Core.Update
                 Line = Line.Remove(0, 2);
                 var Day = int.Parse(Line.Remove(2));
                 Line = Line.Remove(0, 2);
-                var STK = Math.Round(decimal.Parse(Line.Remove(9)) / 10000,4,MidpointRounding.AwayFromZero);
+                var STK = Math.Round(decimal.Parse(Line.Remove(9)) / 10000, 4, MidpointRounding.AwayFromZero);
                 Line = Line.Remove(0, 154);
                 var Description = Line.Remove(30).Trim();
                 Line = Line.Remove(0, 31);

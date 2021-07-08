@@ -12,8 +12,16 @@
         }
       },
       "Saving Accelerator Tools2.Model/1.0.0": {
+        "dependencies": {
+          "SavingAcceleratorTools2.ProjectModels": "1.0.0"
+        },
         "runtime": {
           "Saving Accelerator Tools2.Model.dll": {}
+        }
+      },
+      "SavingAcceleratorTools2.ProjectModels/1.0.0": {
+        "runtime": {
+          "SavingAcceleratorTools2.ProjectModels.dll": {}
         }
       }
     }
@@ -25,6 +33,11 @@
       "sha512": ""
     },
     "Saving Accelerator Tools2.Model/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SavingAcceleratorTools2.ProjectModels/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

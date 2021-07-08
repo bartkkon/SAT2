@@ -20,6 +20,16 @@ namespace Saving_Accelerator_Tools2.FileServices.Files
             return default;
         }
 
+        public string[] Read(string path)
+        {
+            if(File.Exists(path))
+            {
+                return File.ReadAllLines(path);
+            }
+
+            return null;
+        }
+
         public void Save<T>(string folderPath, string fileName, T content)
         {
             if (!Directory.Exists(folderPath))

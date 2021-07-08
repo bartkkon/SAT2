@@ -1,0 +1,185 @@
+﻿<Page x:Class="Saving_Accelerator_Tools2.Views.Admin.AccountView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:Saving_Accelerator_Tools2.Views.Admin"
+      DataContext="{Binding Source={StaticResource Locator}, Path=AccountViewModel}"
+      mc:Ignorable="d"
+      d:DesignHeight="700"
+      d:DesignWidth="800"
+      Title="AccountView">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="5" />
+        </Grid.ColumnDefinitions>
+        <Border BorderBrush="LightGray"
+                BorderThickness="1"
+                Grid.ColumnSpan="5"
+                Grid.RowSpan="4"
+                CornerRadius="20"/>
+        <Label Content="Accounts"
+               Grid.Row="1"
+               Grid.Column="1"
+               Grid.ColumnSpan="3"
+               HorizontalContentAlignment="Center" 
+               FontSize="18"
+               FontWeight="Bold"/>
+        <StackPanel Orientation="Horizontal"
+                    Grid.Row="1"
+                    Grid.Column="1">
+            <Label Content="Search:" 
+                   VerticalAlignment="Center"
+                   FontWeight="Bold"/>
+            <TextBox Text="{Binding SearchString, UpdateSourceTrigger=PropertyChanged}" 
+                     MinWidth="200"
+                     Height="20"/>
+            <CheckBox Content="Active" 
+                      Margin="5"
+                      IsChecked="{Binding SearchActive}"/>
+        </StackPanel>
+        <ListBox ItemsSource="{Binding UserList}"
+                 SelectedItem="{Binding SelectedUser}"
+                 BorderBrush="LightGray"
+                 BorderThickness="1"
+                 ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                 Grid.Row="2"
+                 Grid.Column="1"
+                 Margin="5 0 0 5 ">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <DockPanel>
+                        <Border Background="LightBlue"
+                                HorizontalAlignment="Left"
+                                DockPanel.Dock="Left"
+                                Width="30"
+                                Margin="0 2">
+                            <Image Source="{StaticResource UserImage}"
+                                   Width="15"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Left"
+                                   Margin="5" />
+                            <Border.Clip>
+                                <RectangleGeometry RadiusX="25"
+                                                   RadiusY="25"
+                                                   Rect="0 0 25 25" />
+                            </Border.Clip>
+                        </Border>
+                        <TextBlock Text="{Binding Path=FullName}"
+                                   Margin="5"
+                                   VerticalAlignment="Center" />
+                    </DockPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button Height="50"
+                Width="50"
+                Background="{Binding AddButtonBackground}"
+                Grid.Column="3"
+                Grid.Row="1"
+                Grid.RowSpan="2"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right"
+                Margin="25 5"
+                ToolTip="Add new account"
+                Panel.ZIndex="1"
+                Command="{Binding New}">
+            <Image Source="{StaticResource AddUserImage}" />
+        </Button>
+        <Border BorderBrush="LightGray"
+                BorderThickness="1"
+                CornerRadius="20"
+                Grid.Row="2"
+                Grid.Column="3">
+            <StackPanel Margin="5">
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="ID:" 
+                           FontWeight="Bold"/>
+                    <Label Content="{Binding SelectedUser.ID}" />
+                </StackPanel>
+                <Label Content="Name"
+                       FontWeight="Bold" />
+                <TextBox Text="{Binding SelectedUser.Name}"
+                         IsEnabled="{Binding Enabled}"/>
+                <Label Content="Surname"
+                       FontWeight="Bold" />
+                <TextBox Text="{Binding SelectedUser.Surname}"
+                         IsEnabled="{Binding Enabled}" />
+                <Label Content="BIZ Login"
+                       FontWeight="Bold" />
+                <TextBox Text="{Binding SelectedUser.BIZLogin}"
+                         IsEnabled="{Binding Enabled}" />
+                <Label Content="Mail"
+                       FontWeight="Bold" />
+                <TextBox Text="{Binding SelectedUser.Mail}"
+                         IsEnabled="{Binding Enabled}" />
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel MinWidth="130">
+                        <Label Content="Factory"
+                               FontWeight="Bold" />
+                        <ComboBox ItemsSource="{Binding Factories}"
+                                  SelectedItem="{Binding SelectedFactory}" 
+                                  DisplayMemberPath="Plant"
+                                  IsEnabled="{Binding Enabled}"/>
+                    </StackPanel>
+                    <StackPanel MinWidth="130"
+                                Margin="5 0">
+                        <Label Content="Devision"
+                               FontWeight="Bold" />
+                        <ComboBox ItemsSource="{Binding Devisions}"
+                                  SelectedItem="{Binding SelectedUser.Devision}"
+                                  DisplayMemberPath="Name"
+                                  IsEnabled="{Binding Enabled}"/>
+                    </StackPanel>
+                </StackPanel>
+                <Label Content="Type"
+                       FontWeight="Bold" />
+                <ComboBox ItemsSource="{Binding AccountTypes}"
+                          SelectedItem="{Binding SelectedUser.Type}"
+                          IsEnabled="{Binding Enabled}" />
+                <CheckBox Content="Active"
+                          IsChecked="{Binding SelectedUser.Active}"
+                          IsEnabled="{Binding Enabled}"
+                          Margin="5"/>
+                <Label Content="Mail Subscription"
+                       FontWeight="Bold"/>
+                <ListBox ItemsSource="{Binding Subscriptions}"
+                         MaxHeight="100"
+                         ScrollViewer.VerticalScrollBarVisibility="Auto"
+                         Background="Transparent"
+                         IsEnabled="{Binding Enabled}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <CheckBox Content="{Binding Path=Name}"
+                                      IsChecked="{Binding Path=Selected}"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <Button  Content="Add"
+                         Command="{Binding Add}"
+                         Visibility="{Binding AddBUttonVisibility}" 
+                         Width="60"
+                         HorizontalAlignment="Right"
+                         Margin="5"/>
+                <Button Content="Update"
+                        Command="{Binding Update}"
+                        Visibility="{Binding UpdateButtonVisibility}" 
+                        Width="60"
+                        HorizontalAlignment="Right"
+                        Margin="5"/>
+            </StackPanel>
+        </Border>
+
+    </Grid>
+</Page>

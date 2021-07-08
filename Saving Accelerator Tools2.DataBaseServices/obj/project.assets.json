@@ -438,6 +438,15 @@
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
+      "Prism.Core/8.1.97": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0/Prism.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Prism.dll": {}
+        }
+      },
       "runtime.native.System/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -1424,14 +1433,63 @@
           "Microsoft.WindowsDesktop.App.WPF"
         ]
       },
+      "Saving Accelerator Tools2.IServices/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "Prism.Core": "8.1.97",
+          "SavingAcceleratorTools2.ProjectModels": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Saving Accelerator Tools2.IServices.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Saving Accelerator Tools2.IServices.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
+      },
       "Saving Accelerator Tools2.Model/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "SavingAcceleratorTools2.ProjectModels": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/Saving Accelerator Tools2.Model.dll": {}
         },
         "runtime": {
           "bin/placeholder/Saving Accelerator Tools2.Model.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
+      },
+      "SavingAcceleratorTools2.MailServices/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "Saving Accelerator Tools2.Model": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/SavingAcceleratorTools2.MailServices.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SavingAcceleratorTools2.MailServices.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
+      },
+      "SavingAcceleratorTools2.ProjectModels/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/SavingAcceleratorTools2.ProjectModels.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SavingAcceleratorTools2.ProjectModels.dll": {}
         },
         "frameworkReferences": [
           "Microsoft.WindowsDesktop.App.WPF"
@@ -2183,6 +2241,32 @@
         "newtonsoft.json.13.0.1.nupkg.sha512",
         "newtonsoft.json.nuspec",
         "packageIcon.png"
+      ]
+    },
+    "Prism.Core/8.1.97": {
+      "sha512": "EP5zrvWddw3eSq25Y7hHnDYdmLZEC2Z/gMrvmHzUuLbitmA1UaS7wQUlSwNr9Km8lzJNCvytFnaGBEFukHgoHg==",
+      "type": "package",
+      "path": "prism.core/8.1.97",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "lib/net461/Prism.dll",
+        "lib/net461/Prism.pdb",
+        "lib/net461/Prism.xml",
+        "lib/net47/Prism.dll",
+        "lib/net47/Prism.pdb",
+        "lib/net47/Prism.xml",
+        "lib/net5.0/Prism.dll",
+        "lib/net5.0/Prism.pdb",
+        "lib/net5.0/Prism.xml",
+        "lib/netstandard2.0/Prism.dll",
+        "lib/netstandard2.0/Prism.pdb",
+        "lib/netstandard2.0/Prism.xml",
+        "prism-logo.png",
+        "prism.core.8.1.97.nupkg.sha512",
+        "prism.core.nuspec",
+        "readme.txt"
       ]
     },
     "runtime.native.System/4.3.0": {
@@ -5423,10 +5507,25 @@
       "path": "../Saving Accelerator Tools2.DataBaseIServices/Saving Accelerator Tools2.DataBaseIServices.csproj",
       "msbuildProject": "../Saving Accelerator Tools2.DataBaseIServices/Saving Accelerator Tools2.DataBaseIServices.csproj"
     },
+    "Saving Accelerator Tools2.IServices/1.0.0": {
+      "type": "project",
+      "path": "../Saving Accelerator Tools2.IServices/Saving Accelerator Tools2.IServices.csproj",
+      "msbuildProject": "../Saving Accelerator Tools2.IServices/Saving Accelerator Tools2.IServices.csproj"
+    },
     "Saving Accelerator Tools2.Model/1.0.0": {
       "type": "project",
       "path": "../Saving Accelerator Tool2.Model/Saving Accelerator Tools2.Model.csproj",
       "msbuildProject": "../Saving Accelerator Tool2.Model/Saving Accelerator Tools2.Model.csproj"
+    },
+    "SavingAcceleratorTools2.MailServices/1.0.0": {
+      "type": "project",
+      "path": "../SavingAcceleratorTools2.MailServices/SavingAcceleratorTools2.MailServices.csproj",
+      "msbuildProject": "../SavingAcceleratorTools2.MailServices/SavingAcceleratorTools2.MailServices.csproj"
+    },
+    "SavingAcceleratorTools2.ProjectModels/1.0.0": {
+      "type": "project",
+      "path": "../SavingAcceleratorTools2.ProjectModels/SavingAcceleratorTools2.ProjectModels.csproj",
+      "msbuildProject": "../SavingAcceleratorTools2.ProjectModels/SavingAcceleratorTools2.ProjectModels.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -5437,7 +5536,9 @@
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.7",
       "Newtonsoft.Json >= 13.0.1",
       "Saving Accelerator Tools2.DataBaseIServices >= 1.0.0",
-      "Saving Accelerator Tools2.Model >= 1.0.0"
+      "Saving Accelerator Tools2.IServices >= 1.0.0",
+      "Saving Accelerator Tools2.Model >= 1.0.0",
+      "SavingAcceleratorTools2.MailServices >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -5479,6 +5580,12 @@
             },
             "C:\\Users\\bartkkon\\OneDrive - Electrolux\\Visual Studio\\Saving Accelerator Tool2\\Saving Accelerator Tools2.DataBaseIServices\\Saving Accelerator Tools2.DataBaseIServices.csproj": {
               "projectPath": "C:\\Users\\bartkkon\\OneDrive - Electrolux\\Visual Studio\\Saving Accelerator Tool2\\Saving Accelerator Tools2.DataBaseIServices\\Saving Accelerator Tools2.DataBaseIServices.csproj"
+            },
+            "C:\\Users\\bartkkon\\OneDrive - Electrolux\\Visual Studio\\Saving Accelerator Tool2\\Saving Accelerator Tools2.IServices\\Saving Accelerator Tools2.IServices.csproj": {
+              "projectPath": "C:\\Users\\bartkkon\\OneDrive - Electrolux\\Visual Studio\\Saving Accelerator Tool2\\Saving Accelerator Tools2.IServices\\Saving Accelerator Tools2.IServices.csproj"
+            },
+            "C:\\Users\\bartkkon\\OneDrive - Electrolux\\Visual Studio\\Saving Accelerator Tool2\\SavingAcceleratorTools2.MailServices\\SavingAcceleratorTools2.MailServices.csproj": {
+              "projectPath": "C:\\Users\\bartkkon\\OneDrive - Electrolux\\Visual Studio\\Saving Accelerator Tool2\\SavingAcceleratorTools2.MailServices\\SavingAcceleratorTools2.MailServices.csproj"
             }
           }
         }

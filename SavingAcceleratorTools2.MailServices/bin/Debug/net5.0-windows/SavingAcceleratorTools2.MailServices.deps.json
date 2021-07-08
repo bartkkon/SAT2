@@ -1,0 +1,46 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "SavingAcceleratorTools2.MailServices/1.0.0": {
+        "runtime": {
+          "SavingAcceleratorTools2.MailServices.dll": {}
+        }
+      },
+      "Saving Accelerator Tools2.Model/1.0.0": {
+        "dependencies": {
+          "SavingAcceleratorTools2.ProjectModels": "1.0.0"
+        },
+        "runtime": {
+          "Saving Accelerator Tools2.Model.dll": {}
+        }
+      },
+      "SavingAcceleratorTools2.ProjectModels/1.0.0": {
+        "runtime": {
+          "SavingAcceleratorTools2.ProjectModels.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "SavingAcceleratorTools2.MailServices/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Saving Accelerator Tools2.Model/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SavingAcceleratorTools2.ProjectModels/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

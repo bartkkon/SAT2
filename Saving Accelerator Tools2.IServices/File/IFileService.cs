@@ -3,6 +3,7 @@
     public interface IFileService
     {
         T Read<T>(string folderPath, string fileName);
+        string[] Read(string path);
 
         void Save<T>(string folderPath, string fileName, T content);
 

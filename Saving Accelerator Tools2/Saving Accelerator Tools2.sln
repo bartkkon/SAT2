@@ -21,7 +21,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Saving Accelerator Tools2.D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Saving Accelerator Tools2.DataBaseServices", "..\Saving Accelerator Tools2.DataBaseServices\Saving Accelerator Tools2.DataBaseServices.csproj", "{24C37C75-4237-49E3-8E07-E8B78133D5B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SavingAcceleratorTools2.ProjectModels", "..\SavingAcceleratorTools2.ProjectModels\SavingAcceleratorTools2.ProjectModels.csproj", "{4BAFC0F1-4624-436C-AAB5-1CF5A5292A06}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SavingAcceleratorTools2.ProjectModels", "..\SavingAcceleratorTools2.ProjectModels\SavingAcceleratorTools2.ProjectModels.csproj", "{4BAFC0F1-4624-436C-AAB5-1CF5A5292A06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SavingAcceleratorTools2.MailServices", "..\SavingAcceleratorTools2.MailServices\SavingAcceleratorTools2.MailServices.csproj", "{4C629B55-2E03-4131-8799-B6C5A39E87C4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,10 @@ Global
 		{4BAFC0F1-4624-436C-AAB5-1CF5A5292A06}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BAFC0F1-4624-436C-AAB5-1CF5A5292A06}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4BAFC0F1-4624-436C-AAB5-1CF5A5292A06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C629B55-2E03-4131-8799-B6C5A39E87C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C629B55-2E03-4131-8799-B6C5A39E87C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C629B55-2E03-4131-8799-B6C5A39E87C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C629B55-2E03-4131-8799-B6C5A39E87C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

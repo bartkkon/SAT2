@@ -7,7 +7,14 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="OthersTab">
-
+    <Page.Resources>
+        <Style TargetType="Frame">
+            <Setter Property="Margin"
+                    Value="0 5 0 0" />
+            <Setter Property="MaxHeight"
+                    Value="350" />
+        </Style>
+    </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="5"/>
@@ -24,9 +31,14 @@
 
         <StackPanel Grid.Row="1"
                     Grid.Column="1">
-            <Frame Source="FactoriesView.xaml" Margin="0 5 0 0" MaxHeight="350"/>
-            <Frame Source="DevisionView.xaml" Margin="0 5 0 0" MaxHeight="350"/>
-            <Frame Source="LeadersView.xaml" Margin="0 5 0 0" MaxHeight="350"/>
+            <Frame Source="FactoriesView.xaml"/>
+            <Frame Source="DevisionView.xaml"/>
+            <Frame Source="LeadersView.xaml"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1"
+                    Grid.Column="2"
+                    Margin="5 0 0 0">
+            <Frame Source="TagView.xaml"/>
         </StackPanel>
     </Grid>
 </Page>

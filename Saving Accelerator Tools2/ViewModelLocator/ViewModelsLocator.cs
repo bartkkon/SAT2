@@ -1,11 +1,19 @@
 ﻿using Autofac;
+using Saving_Accelerator_Tools2.DataBaseIServices.Data;
 using Saving_Accelerator_Tools2.DataBaseIServices.Others;
+using Saving_Accelerator_Tools2.DataBaseIServices.Users;
 using Saving_Accelerator_Tools2.DataBaseServices.Data;
 using Saving_Accelerator_Tools2.DataBaseServices.Others;
+using Saving_Accelerator_Tools2.DataBaseServices.ProductionData;
+using Saving_Accelerator_Tools2.DataBaseServices.Users;
+using Saving_Accelerator_Tools2.FileServices.Files;
+using Saving_Accelerator_Tools2.IServices.File;
 using Saving_Accelerator_Tools2.IServices.MessageBox;
 using Saving_Accelerator_Tools2.MessageBoxes;
 using Saving_Accelerator_Tools2.ViewModel.Actions;
 using Saving_Accelerator_Tools2.ViewModel.Others;
+using Saving_Accelerator_Tools2.ViewModel.Users;
+using SavingAcceleratorTools2.MailServices;
 
 namespace Saving_Accelerator_Tools2.ViewModelLocator
 {
@@ -17,11 +25,30 @@ namespace Saving_Accelerator_Tools2.ViewModelLocator
         {
             ContainerBuilder containerBuilder = new ContainerBuilder();
 
+
+            //FileServices
+            containerBuilder.RegisterType<FileService>().As<IFileService>();
+            containerBuilder.RegisterType<FileDialogService>().As<IFileDialogService>();
+
+            //MailSender
+            containerBuilder.RegisterType<Sending>();
+
             //DataBase Services
             containerBuilder.RegisterType<ConnectionContext>().SingleInstance();
+
             containerBuilder.RegisterType<FactoriesServices>().As<IFactoriesServices>();
             containerBuilder.RegisterType<DevisionServices>().As<IDevisionServices>();
             containerBuilder.RegisterType<LeadersServices>().As<ILeadersServices>();
+            containerBuilder.RegisterType<TagServices>().As<ITagService>();
+            containerBuilder.RegisterType<UserServices>().As<IUserServices>();
+
+            //Production Data
+            containerBuilder.RegisterType<StandardCostServices>().As<IStandardCostServices>();
+            containerBuilder.RegisterType<PNCsServices>().As<IPNCsServices>();
+            containerBuilder.RegisterType<ANCsServices>().As<IANCsServices>();
+            containerBuilder.RegisterType<PNCPlatformServices>().As<IPNCPlatformServices>();
+
+            //Communication
             containerBuilder.RegisterType<MessageBoxServices>().As<IMessageBoxService>();
 
             //ViewModels
@@ -31,6 +58,9 @@ namespace Saving_Accelerator_Tools2.ViewModelLocator
             containerBuilder.RegisterType<FactoriesViewModel>();
             containerBuilder.RegisterType<DevisionsViewModel>();
             containerBuilder.RegisterType<LeadersViewModel>();
+            containerBuilder.RegisterType<TagViewModel>();
+            containerBuilder.RegisterType<AccountViewModel>();
+            containerBuilder.RegisterType<StandardCostViewModel>();
 
             container = containerBuilder.Build();
 
@@ -43,5 +73,8 @@ namespace Saving_Accelerator_Tools2.ViewModelLocator
         public FactoriesViewModel FactoriesViewModel => container.Resolve<FactoriesViewModel>();
         public DevisionsViewModel DevisionsViewModel => container.Resolve<DevisionsViewModel>();
         public LeadersViewModel LeadersViewModel => container.Resolve<LeadersViewModel>();
+        public TagViewModel TagViewModel => container.Resolve<TagViewModel>();
+        public AccountViewModel AccountViewModel => container.Resolve<AccountViewModel>();
+        public StandardCostViewModel StandardCostViewModel => container.Resolve<StandardCostViewModel>();
     }
 }

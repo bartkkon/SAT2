@@ -7,4 +7,8 @@
     <AssemblyName>Saving Accelerator Tools2.Model</AssemblyName>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SavingAcceleratorTools2.ProjectModels\SavingAcceleratorTools2.ProjectModels.csproj" />
+  </ItemGroup>
+
 </Project>

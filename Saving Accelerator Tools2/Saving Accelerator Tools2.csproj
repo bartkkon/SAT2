@@ -8,9 +8,11 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Assets\Add-New.png" />
+    <None Remove="Assets\add-user.png" />
     <None Remove="Assets\dog.png" />
     <None Remove="Assets\Factory.png" />
     <None Remove="Assets\letter-t-512.png" />
+    <None Remove="Assets\tag.png" />
     <None Remove="Assets\User.png" />
     <None Remove="Views\Action\pobrane.png" />
   </ItemGroup>
@@ -31,13 +33,16 @@
     <ProjectReference Include="..\Saving Accelerator Tools2.FileService\Saving Accelerator Tools2.FileService.csproj" />
     <ProjectReference Include="..\Saving Accelerator Tools2.ProgramSerives\Saving Accelerator Tools2.ProgramSerivces.csproj" />
     <ProjectReference Include="..\Saving Accelerator Tools2.ViewModel\Saving Accelerator Tools2.ViewModel.csproj" />
+    <ProjectReference Include="..\SavingAcceleratorTools2.MailServices\SavingAcceleratorTools2.MailServices.csproj" />
     <ProjectReference Include="..\SavingAcceleratorTools2.ProjectModels\SavingAcceleratorTools2.ProjectModels.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\Add-New.png" />
+    <Resource Include="Assets\add-user.png" />
     <Resource Include="Assets\dog.png" />
     <Resource Include="Assets\Factory.png" />
     <Resource Include="Assets\letter-t-512.png" />
+    <Resource Include="Assets\tag.png" />
     <Resource Include="Assets\User.png" />
     <Resource Include="Views\Action\pobrane.png" />
   </ItemGroup>

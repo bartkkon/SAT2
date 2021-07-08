@@ -1,0 +1,19 @@
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\SavingAcceleratorTools2.MailServices\bin\Debug\net5.0-windows\SavingAcceleratorTools2.MailServices.deps.json
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\SavingAcceleratorTools2.MailServices\bin\Debug\net5.0-windows\SavingAcceleratorTools2.MailServices.dll
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\SavingAcceleratorTools2.MailServices\bin\Debug\net5.0-windows\ref\SavingAcceleratorTools2.MailServices.dll
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\SavingAcceleratorTools2.MailServices\bin\Debug\net5.0-windows\SavingAcceleratorTools2.MailServices.pdb
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\SavingAcceleratorTools2.MailServices\bin\Debug\net5.0-windows\Saving Accelerator Tools2.Model.dll
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\SavingAcceleratorTools2.MailServices\bin\Debug\net5.0-windows\SavingAcceleratorTools2.ProjectModels.dll
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\SavingAcceleratorTools2.MailServices\bin\Debug\net5.0-windows\Saving Accelerator Tools2.Model.pdb
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\SavingAcceleratorTools2.MailServices\bin\Debug\net5.0-windows\SavingAcceleratorTools2.ProjectModels.pdb
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\SavingAcceleratorTools2.MailServices\obj\Debug\net5.0-windows\SavingAcceleratorTools2.MailServices.csproj.AssemblyReference.cache
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\SavingAcceleratorTools2.MailServices\obj\Debug\net5.0-windows\SavingAcceleratorTools2.MailServices.Properties.Resources.resources
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\SavingAcceleratorTools2.MailServices\obj\Debug\net5.0-windows\SavingAcceleratorTools2.MailServices.csproj.GenerateResource.cache
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\SavingAcceleratorTools2.MailServices\obj\Debug\net5.0-windows\SavingAcceleratorTools2.MailServices.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\SavingAcceleratorTools2.MailServices\obj\Debug\net5.0-windows\SavingAcceleratorTools2.MailServices.AssemblyInfoInputs.cache
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\SavingAcceleratorTools2.MailServices\obj\Debug\net5.0-windows\SavingAcceleratorTools2.MailServices.AssemblyInfo.cs
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\SavingAcceleratorTools2.MailServices\obj\Debug\net5.0-windows\SavingAcceleratorTools2.MailServices.csproj.CoreCompileInputs.cache
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\SavingAcceleratorTools2.MailServices\obj\Debug\net5.0-windows\SavingAcceleratorTools2.MailServices.csproj.CopyComplete
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\SavingAcceleratorTools2.MailServices\obj\Debug\net5.0-windows\SavingAcceleratorTools2.MailServices.dll
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\SavingAcceleratorTools2.MailServices\obj\Debug\net5.0-windows\ref\SavingAcceleratorTools2.MailServices.dll
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\SavingAcceleratorTools2.MailServices\obj\Debug\net5.0-windows\SavingAcceleratorTools2.MailServices.pdb

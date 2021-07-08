@@ -550,6 +550,9 @@
       "Saving Accelerator Tools2.Model/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "SavingAcceleratorTools2.ProjectModels": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/Saving Accelerator Tools2.Model.dll": {}
         },

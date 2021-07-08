@@ -6,8 +6,10 @@ C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\S
 C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.DataBaseServices\bin\Debug\net5.0-windows\Saving Accelerator Tools2.DataBaseServices.pdb
 C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.DataBaseServices\bin\Debug\net5.0-windows\Saving Accelerator Tools2.DataBaseIServices.dll
 C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.DataBaseServices\bin\Debug\net5.0-windows\Saving Accelerator Tools2.Model.dll
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.DataBaseServices\bin\Debug\net5.0-windows\SavingAcceleratorTools2.ProjectModels.dll
 C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.DataBaseServices\bin\Debug\net5.0-windows\Saving Accelerator Tools2.Model.pdb
 C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.DataBaseServices\bin\Debug\net5.0-windows\Saving Accelerator Tools2.DataBaseIServices.pdb
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.DataBaseServices\bin\Debug\net5.0-windows\SavingAcceleratorTools2.ProjectModels.pdb
 C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.DataBaseServices\obj\Debug\net5.0-windows\Saving Accelerator Tools2.DataBaseServices.csproj.AssemblyReference.cache
 C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.DataBaseServices\obj\Debug\net5.0-windows\Saving Accelerator Tools2.DataBaseServices.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.DataBaseServices\obj\Debug\net5.0-windows\Saving Accelerator Tools2.DataBaseServices.AssemblyInfoInputs.cache
@@ -18,3 +20,7 @@ C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\S
 C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.DataBaseServices\obj\Debug\net5.0-windows\ref\Saving Accelerator Tools2.DataBaseServices.dll
 C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.DataBaseServices\obj\Debug\net5.0-windows\Saving Accelerator Tools2.DataBaseServices.pdb
 C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.DataBaseServices\obj\Debug\net5.0-windows\Saving Accelerator Tools2.DataBaseServices.genruntimeconfig.cache
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.DataBaseServices\bin\Debug\net5.0-windows\Saving Accelerator Tools2.IServices.dll
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.DataBaseServices\bin\Debug\net5.0-windows\Saving Accelerator Tools2.IServices.pdb
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.DataBaseServices\bin\Debug\net5.0-windows\SavingAcceleratorTools2.MailServices.dll
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.DataBaseServices\bin\Debug\net5.0-windows\SavingAcceleratorTools2.MailServices.pdb

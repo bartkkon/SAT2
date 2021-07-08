@@ -431,6 +431,9 @@
         }
       },
       "Saving Accelerator Tools2.Model/1.0.0": {
+        "dependencies": {
+          "SavingAcceleratorTools2.ProjectModels": "1.0.0"
+        },
         "runtime": {
           "Saving Accelerator Tools2.Model.dll": {}
         }

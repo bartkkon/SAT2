@@ -122,8 +122,6 @@
                               Margin="5"
                               IsEnabled="{Binding Enabled_change}"/>
                     <Button Content="Add"
-                            Background="LightGray"
-                            Foreground="White"
                             HorizontalAlignment="Right"
                             Width="50"
                             Height="30"
@@ -132,8 +130,6 @@
                             IsEnabled="{Binding Enabled_change}"
                             ToolTip="Create new Devision"/>
                     <Button Content="Update"
-                            Background="LightGray"
-                            Foreground="White"
                             HorizontalAlignment="Right"
                             Width="50"
                             Height="30"

@@ -1,10 +1,8 @@
-﻿using System;
+﻿using Saving_Accelerator_Tools2.Model.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Saving_Accelerator_Tools2.Model.Others
 {
@@ -21,5 +19,12 @@ namespace Saving_Accelerator_Tools2.Model.Others
         public bool Active { get; set; }
 
         public ICollection<Devision> Devisions { get; set; }
+        public ICollection<Tag> Tags { get; set; }
+        public ICollection<User> Users { get; set; }
+        public ICollection<StandardCost> StandardCosts { get; set; }
+
+        public ICollection<ANC> ANCs { get; set; }
+        public ICollection<PNC> PNCs { get; set; }
+        public ICollection<PNCPlatform> PNCPlatforms { get; set; }
     }
 }

@@ -16,5 +16,6 @@ namespace Saving_Accelerator_Tools2.Model.Others
         public int FactoryID { get; set; }
         public Factories Factory { get; set; }
         public ICollection<Leaders> Leaders { get; set; }
+        public ICollection<User> Users { get; set; }
     }
 }

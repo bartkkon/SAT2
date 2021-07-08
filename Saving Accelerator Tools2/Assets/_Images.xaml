@@ -6,5 +6,7 @@
     <BitmapImage x:Key="DogImage" UriSource="/Assets/dog.png"/>
     <BitmapImage x:Key="TImage" UriSource="/Assets/letter-t-512.png"/>
     <BitmapImage x:Key="UserImage" UriSource="/Assets/User.png"/>
+    <BitmapImage x:Key="TagImage" UriSource="/Assets/tag.png" />
+    <BitmapImage x:Key="AddUserImage" UriSource="/Assets/add-user.png"/>
 
 </ResourceDictionary>
