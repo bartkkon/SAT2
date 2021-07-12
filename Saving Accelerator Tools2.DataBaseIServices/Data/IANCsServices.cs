@@ -6,7 +6,8 @@ namespace Saving_Accelerator_Tools2.DataBaseIServices.Data
 {
     public interface IANCsServices
     {
-        public void Set(ICollection<ANC> newPNCs);
+        public void Set(ICollection<ANC> newANCs, Months month, decimal year);
+        public void Set(ICollection<ANC> newANCs, Revisions revision, decimal year);
         public ICollection<ANC> Get(decimal year, Revisions revision);
         public ICollection<ANC> Get(decimal year, Revisions revision, Months month);
         public ANC Get(string item, Revisions revision, Months month);

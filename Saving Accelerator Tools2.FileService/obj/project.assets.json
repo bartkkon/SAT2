@@ -20,11 +20,29 @@
           "lib/net5.0/Prism.dll": {}
         }
       },
+      "Saving Accelerator Tools2.DataBaseIServices/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "Saving Accelerator Tools2.Model": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Saving Accelerator Tools2.DataBaseIServices.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Saving Accelerator Tools2.DataBaseIServices.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
+      },
       "Saving Accelerator Tools2.IServices/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
           "Prism.Core": "8.1.97",
+          "Saving Accelerator Tools2.DataBaseIServices": "1.0.0",
+          "Saving Accelerator Tools2.Model": "1.0.0",
           "SavingAcceleratorTools2.ProjectModels": "1.0.0"
         },
         "compile": {
@@ -32,6 +50,22 @@
         },
         "runtime": {
           "bin/placeholder/Saving Accelerator Tools2.IServices.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
+      },
+      "Saving Accelerator Tools2.Model/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "SavingAcceleratorTools2.ProjectModels": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Saving Accelerator Tools2.Model.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Saving Accelerator Tools2.Model.dll": {}
         },
         "frameworkReferences": [
           "Microsoft.WindowsDesktop.App.WPF"
@@ -106,10 +140,20 @@
         "readme.txt"
       ]
     },
+    "Saving Accelerator Tools2.DataBaseIServices/1.0.0": {
+      "type": "project",
+      "path": "../Saving Accelerator Tools2.DataBaseIServices/Saving Accelerator Tools2.DataBaseIServices.csproj",
+      "msbuildProject": "../Saving Accelerator Tools2.DataBaseIServices/Saving Accelerator Tools2.DataBaseIServices.csproj"
+    },
     "Saving Accelerator Tools2.IServices/1.0.0": {
       "type": "project",
       "path": "../Saving Accelerator Tools2.IServices/Saving Accelerator Tools2.IServices.csproj",
       "msbuildProject": "../Saving Accelerator Tools2.IServices/Saving Accelerator Tools2.IServices.csproj"
+    },
+    "Saving Accelerator Tools2.Model/1.0.0": {
+      "type": "project",
+      "path": "../Saving Accelerator Tool2.Model/Saving Accelerator Tools2.Model.csproj",
+      "msbuildProject": "../Saving Accelerator Tool2.Model/Saving Accelerator Tools2.Model.csproj"
     },
     "SavingAcceleratorTools2.ProjectModels/1.0.0": {
       "type": "project",

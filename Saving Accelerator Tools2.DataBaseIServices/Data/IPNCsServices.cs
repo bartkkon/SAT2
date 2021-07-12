@@ -10,7 +10,8 @@ namespace Saving_Accelerator_Tools2.DataBaseIServices.Data
 {
     public interface IPNCsServices
     {
-        public void Set(ICollection<PNC> newANCs);
+        public bool Set(ICollection<PNC> newPNCs, Months month, decimal year);
+        public bool Set(ICollection<PNC> newPNCs, Revisions revision, decimal year);
         public ICollection<PNC> Get(decimal year, Revisions revision);
         public ICollection<PNC> Get(decimal year, Revisions revision, Months month);
         public PNC Get(string item, Revisions revision, Months month);

@@ -11,6 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Saving Accelerator Tool2.Model\Saving Accelerator Tools2.Model.csproj" />
+    <ProjectReference Include="..\Saving Accelerator Tools2.DataBaseIServices\Saving Accelerator Tools2.DataBaseIServices.csproj" />
     <ProjectReference Include="..\SavingAcceleratorTools2.ProjectModels\SavingAcceleratorTools2.ProjectModels.csproj" />
   </ItemGroup>
 

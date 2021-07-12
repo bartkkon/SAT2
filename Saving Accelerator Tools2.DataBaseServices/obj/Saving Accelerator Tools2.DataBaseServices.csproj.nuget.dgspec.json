@@ -266,6 +266,12 @@
           "net5.0-windows7.0": {
             "targetAlias": "net5.0-windows",
             "projectReferences": {
+              "C:\\Users\\bartkkon\\OneDrive - Electrolux\\Visual Studio\\Saving Accelerator Tool2\\Saving Accelerator Tool2.Model\\Saving Accelerator Tools2.Model.csproj": {
+                "projectPath": "C:\\Users\\bartkkon\\OneDrive - Electrolux\\Visual Studio\\Saving Accelerator Tool2\\Saving Accelerator Tool2.Model\\Saving Accelerator Tools2.Model.csproj"
+              },
+              "C:\\Users\\bartkkon\\OneDrive - Electrolux\\Visual Studio\\Saving Accelerator Tool2\\Saving Accelerator Tools2.DataBaseIServices\\Saving Accelerator Tools2.DataBaseIServices.csproj": {
+                "projectPath": "C:\\Users\\bartkkon\\OneDrive - Electrolux\\Visual Studio\\Saving Accelerator Tool2\\Saving Accelerator Tools2.DataBaseIServices\\Saving Accelerator Tools2.DataBaseIServices.csproj"
+              },
               "C:\\Users\\bartkkon\\OneDrive - Electrolux\\Visual Studio\\Saving Accelerator Tool2\\SavingAcceleratorTools2.ProjectModels\\SavingAcceleratorTools2.ProjectModels.csproj": {
                 "projectPath": "C:\\Users\\bartkkon\\OneDrive - Electrolux\\Visual Studio\\Saving Accelerator Tool2\\SavingAcceleratorTools2.ProjectModels\\SavingAcceleratorTools2.ProjectModels.csproj"
               }

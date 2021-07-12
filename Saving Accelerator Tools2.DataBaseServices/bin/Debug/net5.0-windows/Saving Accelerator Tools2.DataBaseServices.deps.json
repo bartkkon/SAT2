@@ -930,6 +930,8 @@
       "Saving Accelerator Tools2.IServices/1.0.0": {
         "dependencies": {
           "Prism.Core": "8.1.97",
+          "Saving Accelerator Tools2.DataBaseIServices": "1.0.0",
+          "Saving Accelerator Tools2.Model": "1.0.0",
           "SavingAcceleratorTools2.ProjectModels": "1.0.0"
         },
         "runtime": {

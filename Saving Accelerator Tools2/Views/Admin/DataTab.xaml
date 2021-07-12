@@ -18,14 +18,19 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5" />
             <ColumnDefinition Width="89*" />
-            <ColumnDefinition Width="138*" />
+            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="10" />
             <ColumnDefinition Width="100" />
             <ColumnDefinition Width="5" />
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Row="1"
-                    Grid.Column="3">
-            <Frame Source="StandardCostView.xaml"/>
+                    Grid.Column="4">
+            <Frame Source="StandardCostView.xaml" />
+        </StackPanel>
+        <StackPanel Grid.Row="1"
+                    Grid.Column="2">
+            <Frame Source="ProductionDataView.xaml" />
         </StackPanel>
     </Grid>
 </Page>

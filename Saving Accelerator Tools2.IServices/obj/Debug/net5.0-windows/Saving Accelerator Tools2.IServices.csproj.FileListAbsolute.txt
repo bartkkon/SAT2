@@ -13,3 +13,7 @@ C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\S
 C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.IServices\obj\Debug\net5.0-windows\Saving Accelerator Tools2.IServices.dll
 C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.IServices\obj\Debug\net5.0-windows\ref\Saving Accelerator Tools2.IServices.dll
 C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.IServices\obj\Debug\net5.0-windows\Saving Accelerator Tools2.IServices.pdb
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.IServices\bin\Debug\net5.0-windows\Saving Accelerator Tools2.DataBaseIServices.dll
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.IServices\bin\Debug\net5.0-windows\Saving Accelerator Tools2.Model.dll
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.IServices\bin\Debug\net5.0-windows\Saving Accelerator Tools2.Model.pdb
+C:\Users\bartkkon\OneDrive - Electrolux\Visual Studio\Saving Accelerator Tool2\Saving Accelerator Tools2.IServices\bin\Debug\net5.0-windows\Saving Accelerator Tools2.DataBaseIServices.pdb

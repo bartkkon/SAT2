@@ -17,7 +17,7 @@ namespace Saving_Accelerator_Tools2.Model.Data
         public Revisions Revision { get; set; }
         public Months Month { get; set; }
         public Structure Structure { get; set; }
-        public Installation Installation { get; set; }
+        public Installation? Installation { get; set; }
         [Column(TypeName ="decimal(16,0")]
         public decimal Quantity { get; set; }
 

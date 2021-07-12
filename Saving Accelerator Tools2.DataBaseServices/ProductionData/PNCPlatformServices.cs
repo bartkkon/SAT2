@@ -64,7 +64,20 @@ namespace Saving_Accelerator_Tools2.DataBaseServices.ProductionData
 
         public void Set(ICollection<PNCPlatform> platform)
         {
-            connection.PNCPlatforms.AddRange(platform);
+            PNCPlatform checkDB = connection.PNCPlatforms.FirstOrDefault(c => c.Revision == platform.First().Revision && c.Month == platform.First().Month && c.Year == platform.First().Year);
+            if (checkDB != null)
+            {
+                if (checkDB.Revision == Revisions.EA4)
+                {
+                    connection.PNCPlatforms.RemoveRange(connection.PNCPlatforms.Where(c => c.Revision == platform.First().Revision && c.Month == platform.First().Month && c.Year == platform.First().Year).ToList());
+                }
+                else
+                {
+                    connection.PNCPlatforms.RemoveRange(connection.PNCPlatforms.Where(c => c.Revision == platform.First().Revision && c.Year == platform.First().Year).ToList());
+                }
+            }
+
+            connection.AddRange(platform);
             connection.SaveChanges();
         }
     }

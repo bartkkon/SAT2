@@ -106,6 +106,15 @@ namespace Saving_Accelerator_Tools2.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This service is safe: for its production was used no miligram of gluten, does not contain artificial colours and monosodium glutamate. All the animals nearby survived, some only smiled slightly. Contains greater than trace amounts of developer sweat and tears. And you who noticed it, bless you, Electrolux is on your side..
+        /// </summary>
+        public static string SettingInformationTexts {
+            get {
+                return ResourceManager.GetString("SettingInformationTexts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Settings page placeholder text.  Your app description goes here..
         /// </summary>
         public static string SettingsPageAboutText {

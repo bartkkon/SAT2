@@ -30,13 +30,31 @@
           }
         }
       },
+      "Saving Accelerator Tools2.DataBaseIServices/1.0.0": {
+        "dependencies": {
+          "Saving Accelerator Tools2.Model": "1.0.0"
+        },
+        "runtime": {
+          "Saving Accelerator Tools2.DataBaseIServices.dll": {}
+        }
+      },
       "Saving Accelerator Tools2.IServices/1.0.0": {
         "dependencies": {
           "Prism.Core": "8.1.97",
+          "Saving Accelerator Tools2.DataBaseIServices": "1.0.0",
+          "Saving Accelerator Tools2.Model": "1.0.0",
           "SavingAcceleratorTools2.ProjectModels": "1.0.0"
         },
         "runtime": {
           "Saving Accelerator Tools2.IServices.dll": {}
+        }
+      },
+      "Saving Accelerator Tools2.Model/1.0.0": {
+        "dependencies": {
+          "SavingAcceleratorTools2.ProjectModels": "1.0.0"
+        },
+        "runtime": {
+          "Saving Accelerator Tools2.Model.dll": {}
         }
       },
       "SavingAcceleratorTools2.ProjectModels/1.0.0": {
@@ -66,7 +84,17 @@
       "path": "prism.core/8.1.97",
       "hashPath": "prism.core.8.1.97.nupkg.sha512"
     },
+    "Saving Accelerator Tools2.DataBaseIServices/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "Saving Accelerator Tools2.IServices/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Saving Accelerator Tools2.Model/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

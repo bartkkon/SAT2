@@ -98,7 +98,6 @@ namespace Saving_Accelerator_Tools2.DataBaseServices.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Installation")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Month")

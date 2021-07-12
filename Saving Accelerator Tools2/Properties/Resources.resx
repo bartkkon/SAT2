@@ -195,4 +195,7 @@
   <data name="ShellQuantityPage" xml:space="preserve">
     <value>Quantity</value>
   </data>
+  <data name="SettingInformationTexts" xml:space="preserve">
+    <value>This service is safe: for its production was used no miligram of gluten, does not contain artificial colours and monosodium glutamate. All the animals nearby survived, some only smiled slightly. Contains greater than trace amounts of developer sweat and tears. And you who noticed it, bless you, Electrolux is on your side.</value>
+  </data>
 </root>

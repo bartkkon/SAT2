@@ -9,10 +9,13 @@ using Saving_Accelerator_Tools2.DataBaseServices.Users;
 using Saving_Accelerator_Tools2.FileServices.Files;
 using Saving_Accelerator_Tools2.IServices.File;
 using Saving_Accelerator_Tools2.IServices.MessageBox;
+using Saving_Accelerator_Tools2.IServices.Windows;
 using Saving_Accelerator_Tools2.MessageBoxes;
+using Saving_Accelerator_Tools2.Services;
 using Saving_Accelerator_Tools2.ViewModel.Actions;
 using Saving_Accelerator_Tools2.ViewModel.Others;
 using Saving_Accelerator_Tools2.ViewModel.Users;
+using Saving_Accelerator_Tools2.ViewModel.Windows;
 using SavingAcceleratorTools2.MailServices;
 
 namespace Saving_Accelerator_Tools2.ViewModelLocator
@@ -61,6 +64,13 @@ namespace Saving_Accelerator_Tools2.ViewModelLocator
             containerBuilder.RegisterType<TagViewModel>();
             containerBuilder.RegisterType<AccountViewModel>();
             containerBuilder.RegisterType<StandardCostViewModel>();
+            containerBuilder.RegisterType<ProductionDataViewModel>();
+
+
+            //Extra windows
+            containerBuilder.RegisterType<MonthlyQuantityViewModel>();
+            containerBuilder.RegisterType<RevisionQuantityViewModel>();
+            containerBuilder.RegisterType<ExtraWindowsServices>().As<IWindowsServices>();
 
             container = containerBuilder.Build();
 
@@ -76,5 +86,8 @@ namespace Saving_Accelerator_Tools2.ViewModelLocator
         public TagViewModel TagViewModel => container.Resolve<TagViewModel>();
         public AccountViewModel AccountViewModel => container.Resolve<AccountViewModel>();
         public StandardCostViewModel StandardCostViewModel => container.Resolve<StandardCostViewModel>();
+        public ProductionDataViewModel ProductionDataViewModel => container.Resolve<ProductionDataViewModel>();
+        public MonthlyQuantityViewModel MonthlyQuantityViewModel => container.Resolve<MonthlyQuantityViewModel>();
+        public RevisionQuantityViewModel RevisionQuantityViewModel => container.Resolve<RevisionQuantityViewModel>();
     }
 }
