@@ -23,6 +23,7 @@ namespace Saving_Accelerator_Tools2.DataBaseServices.Data
         public DbSet<PNC> PNCs { get; set; }
         public DbSet<ANC> ANCs { get; set; }
         public DbSet<PNCPlatform> PNCPlatforms { get; set; }
+        public DbSet<Currencies> Currencies { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -60,6 +61,14 @@ namespace Saving_Accelerator_Tools2.DataBaseServices.Data
             modelBuilder.Entity<PNC>()
                 .Property(e => e.Month)
                 .HasConversion(v => v.ToString(), v => (Months)Enum.Parse(typeof(Months), v));
+            modelBuilder.Entity<Currencies>()
+                .HasKey(e => e.ID);
+            modelBuilder.Entity<Currencies>()
+                .Property(e => e.Currency)
+                .HasConversion(v => v.ToString(), v => (Currency)Enum.Parse(typeof(Currency), v));
+            modelBuilder.Entity<StandardCost>()
+                .Property(e => e.Currency)
+                .HasConversion(v => v.ToString(), v => (Currency)Enum.Parse(typeof(Currency), v));
 
             modelBuilder.Entity<ANC>()
                 .HasKey(e => e.ID);

@@ -8,6 +8,7 @@ using Saving_Accelerator_Tools2.IServices.MessageBox;
 using Saving_Accelerator_Tools2.Model.Data;
 using Saving_Accelerator_Tools2.Model.Others;
 using SavingAcceleratorTools2.MailServices;
+using SavingAcceleratorTools2.ProjectModels.Data;
 using SavingAcceleratorTools2.ProjectModels.Users;
 using System;
 using System.Collections.Generic;
@@ -174,6 +175,10 @@ namespace Saving_Accelerator_Tools2.DataBaseServices.ProductionData
                     if(DataBaseRecord.Description != updatedrecord.Description)
                     {
                         DataBaseRecord.Description = updatedrecord.Description;
+                    }
+                    if(factory.Plant == "PLV")
+                    {
+                        DataBaseRecord.Currency = Currency.PLN;
                     }
                 }
             }

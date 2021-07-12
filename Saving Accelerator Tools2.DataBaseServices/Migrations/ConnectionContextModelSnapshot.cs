@@ -132,6 +132,10 @@ namespace Saving_Accelerator_Tools2.DataBaseServices.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Currency")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
@@ -158,6 +162,31 @@ namespace Saving_Accelerator_Tools2.DataBaseServices.Migrations
                     b.HasIndex("FactoryID");
 
                     b.ToTable("StandardCosts");
+                });
+
+            modelBuilder.Entity("Saving_Accelerator_Tools2.Model.Others.Currencies", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Currency")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Symbol")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Value")
+                        .HasColumnType("decimal(8,4)");
+
+                    b.Property<decimal>("Year")
+                        .HasColumnType("decimal(4,0)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Currencies");
                 });
 
             modelBuilder.Entity("Saving_Accelerator_Tools2.Model.Others.Devision", b =>

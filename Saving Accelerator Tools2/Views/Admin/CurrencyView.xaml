@@ -1,0 +1,62 @@
+﻿<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:Saving_Accelerator_Tools2.Views.Admin"
+      xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+      x:Class="Saving_Accelerator_Tools2.Views.Admin.Currency"
+      DataContext="{Binding Source={StaticResource Locator}, Path=CurrencyViewModel}"
+      mc:Ignorable="d"
+      d:DesignWidth="200">
+    <Grid>
+        <Border BorderBrush="LightGray"
+                BorderThickness="1"
+                CornerRadius="20" />
+        <StackPanel Margin="5 10">
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+                <Label Content="Year:"
+                       FontWeight="Bold" />
+                <mah:NumericUpDown Value="{Binding Year}"
+                               Minimum="2018"
+                               Maximum="2100"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        Margin="5">
+                <Label Content="PLN:" 
+                       Width="40"/>
+                <TextBox Text="{Binding PLN.Value, Converter={StaticResource DecimalConvert}}" 
+                         Width="70"/>
+                <Label Content="{Binding PLN.Symbol}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        Margin="5">
+                <Label Content="EUR:"
+                       Width="40" />
+                <TextBox Text="{Binding EUR.Value, Converter={StaticResource DecimalConvert}}"
+                         Width="70" />
+                <Label Content="{Binding EUR.Symbol}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        Margin="5">
+                <Label Content="USD:"
+                       Width="40" />
+                <TextBox Text="{Binding USD.Value, Converter={StaticResource DecimalConvert}}"
+                         Width="70" />
+                <Label Content="{Binding USD.Symbol}" />
+            </StackPanel>
+            
+            <StackPanel Orientation="Horizontal"
+                        Margin="5">
+                <Label Content="SEK:"
+                       Width="40" />
+                <TextBox Text="{Binding SEK.Value, Converter={StaticResource DecimalConvert}}"
+                         Width="70" />
+                <Label Content="{Binding SEK.Symbol}" />
+            </StackPanel>
+            <Button Content="Save Change"
+                    Command="{Binding SaveButton}" 
+                    HorizontalAlignment="Center"/>
+        </StackPanel>
+    </Grid>
+</Page>

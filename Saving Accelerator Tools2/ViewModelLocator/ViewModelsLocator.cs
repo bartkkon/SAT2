@@ -44,6 +44,7 @@ namespace Saving_Accelerator_Tools2.ViewModelLocator
             containerBuilder.RegisterType<LeadersServices>().As<ILeadersServices>();
             containerBuilder.RegisterType<TagServices>().As<ITagService>();
             containerBuilder.RegisterType<UserServices>().As<IUserServices>();
+            containerBuilder.RegisterType<CurrienciesServices>().As<ICurrenciesServices>();
 
             //Production Data
             containerBuilder.RegisterType<StandardCostServices>().As<IStandardCostServices>();
@@ -65,6 +66,7 @@ namespace Saving_Accelerator_Tools2.ViewModelLocator
             containerBuilder.RegisterType<AccountViewModel>();
             containerBuilder.RegisterType<StandardCostViewModel>();
             containerBuilder.RegisterType<ProductionDataViewModel>();
+            containerBuilder.RegisterType<CurrencyViewModel>();
 
 
             //Extra windows
@@ -89,5 +91,6 @@ namespace Saving_Accelerator_Tools2.ViewModelLocator
         public ProductionDataViewModel ProductionDataViewModel => container.Resolve<ProductionDataViewModel>();
         public MonthlyQuantityViewModel MonthlyQuantityViewModel => container.Resolve<MonthlyQuantityViewModel>();
         public RevisionQuantityViewModel RevisionQuantityViewModel => container.Resolve<RevisionQuantityViewModel>();
+        public CurrencyViewModel CurrencyViewModel => container.Resolve<CurrencyViewModel>();
     }
 }
