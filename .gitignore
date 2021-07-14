@@ -53,6 +53,8 @@ artifacts/
 *.obj
 *.pch
 *.pdb
+*.cache
+*.dll
 *.pgc
 *.pgd
 *.rsp
@@ -259,3 +261,14 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+Saving Accelerator Tools2.DataBaseServices/bin/
+
+Saving Accelerator Tools2.DataBaseServices/obj/
+
+Saving Accelerator Tools2.ProgramSerives/bin/
+
+Saving Accelerator Tools2.ProgramSerives/obj/
+
+Saving Accelerator Tools2.ViewModel/bin/
+
+Saving Accelerator Tools2.ViewModel/obj/
