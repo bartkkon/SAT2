@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Saving_Accelerator_Tools2.Model.Approvals;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
@@ -17,5 +18,6 @@ namespace Saving_Accelerator_Tools2.Model.Others
         public Factories Factory { get; set; }
         public ICollection<Leaders> Leaders { get; set; }
         public ICollection<User> Users { get; set; }
+        public ICollection<TeamApp> TeamApps { get; set; }
     }
 }

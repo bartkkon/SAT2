@@ -11,6 +11,7 @@ namespace Saving_Accelerator_Tools2.DataBaseIServices.Others
     {
         public ICollection<Devision> Get();
         public ICollection<Devision> Get(bool active);
+        public ICollection<Devision> Get(Factories factories);
         public void Add(Devision newDevision);
         public void Update(Devision updateDevison);
     }

@@ -24,6 +24,10 @@
             <ColumnDefinition Width="5" />
         </Grid.ColumnDefinitions>
 
+        <StackPanel Grid.Column="1"
+                    Grid.Row="1">
+            <Frame Source="ApprovalView.xaml" />
+        </StackPanel>
         <StackPanel Grid.Row="1"
                     Grid.Column="4">
             <Frame Source="StandardCostView.xaml" />

@@ -1,9 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Saving_Accelerator_Tools2.DataBaseServices.Connection;
 using Saving_Accelerator_Tools2.Model;
+using Saving_Accelerator_Tools2.Model.Approvals;
 using Saving_Accelerator_Tools2.Model.Data;
 using Saving_Accelerator_Tools2.Model.Others;
 using SavingAcceleratorTools2.ProjectModels.Data;
+using SavingAcceleratorTools2.ProjectModels.Helpers;
 using SavingAcceleratorTools2.ProjectModels.Users;
 using System;
 using System.Collections.Generic;
@@ -24,6 +26,10 @@ namespace Saving_Accelerator_Tools2.DataBaseServices.Data
         public DbSet<ANC> ANCs { get; set; }
         public DbSet<PNCPlatform> PNCPlatforms { get; set; }
         public DbSet<Currencies> Currencies { get; set; }
+
+        //Zatwierdzanie danych
+        public DbSet<TeamApp> Teams { get; set; }
+        public DbSet<Approval> Approvals { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -126,6 +132,34 @@ namespace Saving_Accelerator_Tools2.DataBaseServices.Data
                 .WithMany(g => g.Users)
                 .HasForeignKey(s => s.DevisionID);
 
+        }
+
+        protected void ApprovalsDB(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<TeamApp>()
+                .HasKey(e => e.ID);
+            modelBuilder.Entity<TeamApp>()
+                .Property(e => e.Status)
+                .HasConversion(v => v.ToString(), v => (Status)Enum.Parse(typeof(Status), v));
+            modelBuilder.Entity<TeamApp>()
+                .HasOne<Devision>(s => s.Devision)
+                .WithMany(g => g.TeamApps);
+            modelBuilder.Entity<TeamApp>()
+                .HasOne<Approval>(g => g.Approval)
+                .WithMany(g => g.Teams);
+
+
+            modelBuilder.Entity<Approval>()
+                .HasKey(e => e.ID);
+            modelBuilder.Entity<Approval>()
+                .Property(e => e.Status)
+                .HasConversion(v => v.ToString(), v => (Status)Enum.Parse(typeof(Status), v));
+            modelBuilder.Entity<Approval>()
+                .Property(e => e.Revision)
+                .HasConversion(v => v.ToString(), v => (Revisions)Enum.Parse(typeof(Revisions), v));
+            modelBuilder.Entity<Approval>()
+                .Property(e => e.Month)
+                .HasConversion(v => v.ToString(), v => (Months)Enum.Parse(typeof(Months), v));
         }
     }
 }

@@ -51,6 +51,7 @@ namespace Saving_Accelerator_Tools2.ViewModelLocator
             containerBuilder.RegisterType<PNCsServices>().As<IPNCsServices>();
             containerBuilder.RegisterType<ANCsServices>().As<IANCsServices>();
             containerBuilder.RegisterType<PNCPlatformServices>().As<IPNCPlatformServices>();
+            containerBuilder.RegisterType<ApprovalsService>().As<IApprovalsService>();
 
             //Communication
             containerBuilder.RegisterType<MessageBoxServices>().As<IMessageBoxService>();
@@ -67,6 +68,7 @@ namespace Saving_Accelerator_Tools2.ViewModelLocator
             containerBuilder.RegisterType<StandardCostViewModel>();
             containerBuilder.RegisterType<ProductionDataViewModel>();
             containerBuilder.RegisterType<CurrencyViewModel>();
+            containerBuilder.RegisterType<ApprovalsViewModel>();
 
 
             //Extra windows
@@ -92,5 +94,6 @@ namespace Saving_Accelerator_Tools2.ViewModelLocator
         public MonthlyQuantityViewModel MonthlyQuantityViewModel => container.Resolve<MonthlyQuantityViewModel>();
         public RevisionQuantityViewModel RevisionQuantityViewModel => container.Resolve<RevisionQuantityViewModel>();
         public CurrencyViewModel CurrencyViewModel => container.Resolve<CurrencyViewModel>();
+        public ApprovalsViewModel ApprovalsViewModel => container.Resolve<ApprovalsViewModel>();
     }
 }

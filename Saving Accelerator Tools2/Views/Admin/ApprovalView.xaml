@@ -1,0 +1,212 @@
+﻿<Page x:Class="Saving_Accelerator_Tools2.Views.Admin.ApprovalView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+      DataContext="{Binding Source={StaticResource Locator}, Path=ApprovalsViewModel}"
+      xmlns:local="clr-namespace:Saving_Accelerator_Tools2.Views.Admin"
+      mc:Ignorable="d"
+      d:DesignHeight="450"
+      d:DesignWidth="800"
+      Title="ApprovalView">
+    <Page.Resources>
+        <Style TargetType="Separator">
+            <Setter Property="BorderBrush"
+                    Value="LightGray" />
+            <Setter Property="BorderThickness"
+                    Value="1" />
+            <Setter Property="Margin"
+                    Value="5" />
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="FontWeight"
+                    Value="Bold" />
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="450" />
+            <ColumnDefinition Width="600" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="250" />
+        </Grid.RowDefinitions>
+        <Border BorderBrush="LightGray"
+                BorderThickness="1"
+                CornerRadius="20"
+                Grid.RowSpan="2"/>
+        <StackPanel Margin="5,5,5,5"
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    Grid.RowSpan="2">
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+                <Label Content="Year:" />
+                <mah:NumericUpDown Value="{Binding Year}"
+                                   Minimum="2018"
+                                   Maximum="2100"
+                                   MinWidth="90" />
+                <Label Content="Plant:" />
+                <ComboBox ItemsSource="{Binding Factories}"
+                          SelectedItem="{Binding FactorySelected}"
+                          DisplayMemberPath="Plant"
+                          MinWidth="70" />
+            </StackPanel>
+            <Separator />
+            <StackPanel>
+                <Label Content="Search:"
+                       HorizontalAlignment="Center" />
+                <StackPanel Orientation="Horizontal"
+                            Margin="10 0 0 0"
+                            HorizontalAlignment="Center">
+                    <Label Content="Status:" />
+                    <ComboBox ItemsSource="{Binding Statuses}"
+                              SelectedItem="{Binding StatusSelected}"
+                              MinWidth="70" />
+                    <Label Content="Revison:" />
+                    <ComboBox ItemsSource="{Binding Revision}"
+                              SelectedItem="{Binding RevisonSelected}"
+                              MinWidth="70" />
+                    <Label Content="Month:" />
+                    <ComboBox ItemsSource="{Binding Months}"
+                              SelectedItem="{Binding MonthSelected}"
+                              IsEnabled="{Binding MonthsEnabled}"
+                              MinWidth="70" />
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+        <ListView ItemsSource="{Binding ApprovalList}"
+                  SelectedItem="{Binding ApprovalSelected}"
+                  BorderBrush="LightGray"
+                  BorderThickness="1"
+                  Grid.Column="0"
+                  Grid.Row="2"
+                  VerticalAlignment="Stretch"
+                  Margin="5"
+                  ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <DockPanel>
+                        <Border Background="LightBlue"
+                                HorizontalAlignment="Left"
+                                DockPanel.Dock="Left"
+                                Width="30"
+                                Margin="0 2">
+                            <Image Source="{StaticResource KeyImage}"
+                                   Width="15"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Left"
+                                   Margin="5" />
+                            <Border.Clip>
+                                <RectangleGeometry RadiusX="25"
+                                                   RadiusY="25"
+                                                   Rect="0 0 25 25" />
+                            </Border.Clip>
+                        </Border>
+                        <TextBlock Text="{Binding Revision}"
+                                    VerticalAlignment="Center"
+                                   FontSize="12"
+                                   FontStyle="Italic" />
+                        <TextBlock Text="{Binding Month}"
+                                   VerticalAlignment="Center"
+                                   FontSize="12"
+                                   FontStyle="Italic"
+                                   Margin="5 0"/>
+                        <TextBlock Text="{Binding Status, StringFormat=({0})}"
+                                   VerticalAlignment="Center"
+                                   FontSize="12"
+                                   FontStyle="Italic" />
+                    </DockPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Border BorderBrush="LightGray"
+                BorderThickness="1"
+                CornerRadius="20"
+                Grid.Column="1"
+                Grid.Row="0"
+                Grid.RowSpan="3">
+            <DockPanel>
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+                    <Button Content="Open New Calculation"
+                            HorizontalAlignment="Left"
+                            Margin="10"
+                            Command="{Binding OpenCalculationButton}" />
+                    <Button Content="Save Change"
+                            HorizontalAlignment="Right"
+                            Margin="10"
+                            Command="{Binding SaveChangeButton}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+                    <Label Content="ID:" />
+                    <Label Content="{Binding ApprovalSelected.ID}" 
+                           FontWeight="Normal"/>
+                    <Label Content="Create Date:" />
+                    <Label Content="{Binding ApprovalSelected.CreateDate}"
+                           FontWeight="Normal" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+                    <Label Content="Revision:" />
+                    <ComboBox ItemsSource="{Binding Revision}"
+                              SelectedItem="{Binding ApprovalSelected.Revision}"
+                              MinWidth="90" />
+                    <Label Content="Month:" />
+                    <ComboBox ItemsSource="{Binding Months}"
+                              SelectedItem="{Binding ApprovalSelected.Month}"
+                              MinWidth="90" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Top"
+                            Margin="0 5">
+                    <Label Content="Status" />
+                    <ComboBox ItemsSource="{Binding Statuses}"
+                              SelectedItem="{Binding ApprovalSelected.Status}"
+                              MinWidth="90"
+                              Margin="16 0 0 0" />
+                    <Label Content="Year:" />
+                    <mah:NumericUpDown Value="{Binding ApprovalSelected.Year}"
+                                       Minimum="2018"
+                                       Maximum="2100"
+                                       MinWidth="90"
+                                       Margin="13 0" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+                    <Label Content="Approved by:" />
+                    <TextBox Text="{Binding ApprovalSelected.ApproveBy}"
+                             Width="100" />
+                    <Label Content="Date:" />
+                    <Label Content="{Binding ApprovalSelected.Date}" 
+                           FontWeight="Normal"/>
+                </StackPanel>
+                <DataGrid ItemsSource="{Binding ApprovalSelected.Teams}"
+                          AutoGenerateColumns="False"
+                          CanUserReorderColumns="False"
+                          CanUserAddRows="False"
+                          CanUserSortColumns="False"
+                          Margin="5 5 5 10">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID"
+                                            Binding="{Binding ID}" />
+                        <DataGridTextColumn Header="Devision"
+                                            Binding="{Binding Devision.DisplayName}"/>
+                        <DataGridTextColumn Header="Status"
+                                            Binding="{Binding Status}" />
+                        <DataGridTextColumn Header="By"
+                                            Binding="{Binding ChangeBy}" />
+                        <DataGridTextColumn Header="Date"
+                                            Binding="{Binding Date}" />
+                        <DataGridTextColumn Header="Comment"
+                                            Binding="{Binding Comment}" />
+                        <DataGridCheckBoxColumn Header="Active"
+                                                Binding="{Binding Active}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </DockPanel>
+        </Border>
+
+
+    </Grid>
+</Page>

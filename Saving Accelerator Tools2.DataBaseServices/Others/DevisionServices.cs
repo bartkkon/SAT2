@@ -42,6 +42,11 @@ namespace Saving_Accelerator_Tools2.DataBaseServices.Others
                 .ToList() : Get();
         }
 
+        public ICollection<Devision> Get(Factories factories)
+        {
+            return connection.Devisions.Where(f => f.Factory == factories && f.Active).ToList();
+        }
+
         public void Update(Devision updateDevison)
         {
             connection.Devisions.Update(updateDevison);

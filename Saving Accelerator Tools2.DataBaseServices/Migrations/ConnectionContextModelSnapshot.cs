@@ -19,6 +19,79 @@ namespace Saving_Accelerator_Tools2.DataBaseServices.Migrations
                 .HasAnnotation("ProductVersion", "5.0.7")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("Saving_Accelerator_Tools2.Model.Approvals.Approval", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ApproveBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Comment")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("Month")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Revision")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Year")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Approvals");
+                });
+
+            modelBuilder.Entity("Saving_Accelerator_Tools2.Model.Approvals.TeamApp", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("Active")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("ApprovalID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ChangeBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Comment")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("DevisionID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("ApprovalID");
+
+                    b.HasIndex("DevisionID");
+
+                    b.ToTable("Teams");
+                });
+
             modelBuilder.Entity("Saving_Accelerator_Tools2.Model.Data.ANC", b =>
                 {
                     b.Property<int>("ID")
@@ -329,6 +402,21 @@ namespace Saving_Accelerator_Tools2.DataBaseServices.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("Saving_Accelerator_Tools2.Model.Approvals.TeamApp", b =>
+                {
+                    b.HasOne("Saving_Accelerator_Tools2.Model.Approvals.Approval", "Approval")
+                        .WithMany("Teams")
+                        .HasForeignKey("ApprovalID");
+
+                    b.HasOne("Saving_Accelerator_Tools2.Model.Others.Devision", "Devision")
+                        .WithMany("TeamApps")
+                        .HasForeignKey("DevisionID");
+
+                    b.Navigation("Approval");
+
+                    b.Navigation("Devision");
+                });
+
             modelBuilder.Entity("Saving_Accelerator_Tools2.Model.Data.ANC", b =>
                 {
                     b.HasOne("Saving_Accelerator_Tools2.Model.Others.Factories", "Factory")
@@ -413,9 +501,16 @@ namespace Saving_Accelerator_Tools2.DataBaseServices.Migrations
                     b.Navigation("Devision");
                 });
 
+            modelBuilder.Entity("Saving_Accelerator_Tools2.Model.Approvals.Approval", b =>
+                {
+                    b.Navigation("Teams");
+                });
+
             modelBuilder.Entity("Saving_Accelerator_Tools2.Model.Others.Devision", b =>
                 {
                     b.Navigation("Leaders");
+
+                    b.Navigation("TeamApps");
 
                     b.Navigation("Users");
                 });
