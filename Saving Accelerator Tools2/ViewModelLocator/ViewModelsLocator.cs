@@ -45,6 +45,7 @@ namespace Saving_Accelerator_Tools2.ViewModelLocator
             containerBuilder.RegisterType<TagServices>().As<ITagService>();
             containerBuilder.RegisterType<UserServices>().As<IUserServices>();
             containerBuilder.RegisterType<CurrienciesServices>().As<ICurrenciesServices>();
+            containerBuilder.RegisterType<ConstantVariablesServices>().As<IConstatVariablesServices>();
 
             //Production Data
             containerBuilder.RegisterType<StandardCostServices>().As<IStandardCostServices>();
@@ -69,6 +70,7 @@ namespace Saving_Accelerator_Tools2.ViewModelLocator
             containerBuilder.RegisterType<ProductionDataViewModel>();
             containerBuilder.RegisterType<CurrencyViewModel>();
             containerBuilder.RegisterType<ApprovalsViewModel>();
+            containerBuilder.RegisterType<ConstantVarViewModel>();
 
 
             //Extra windows
@@ -95,5 +97,6 @@ namespace Saving_Accelerator_Tools2.ViewModelLocator
         public RevisionQuantityViewModel RevisionQuantityViewModel => container.Resolve<RevisionQuantityViewModel>();
         public CurrencyViewModel CurrencyViewModel => container.Resolve<CurrencyViewModel>();
         public ApprovalsViewModel ApprovalsViewModel => container.Resolve<ApprovalsViewModel>();
+        public ConstantVarViewModel ConstantVarViewModel => container.Resolve<ConstantVarViewModel>();
     }
 }

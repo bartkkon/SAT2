@@ -17,4 +17,6 @@
                  UriSource="/Assets/add-user.png" />
     <BitmapImage x:Key="KeyImage"
                  UriSource="/Assets/key.png" />
+    <BitmapImage x:Key="InfinityImage"
+                 UriSource="/Assets/infinity.png" />
 </ResourceDictionary>

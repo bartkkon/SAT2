@@ -10,9 +10,7 @@
       Style="{DynamicResource MahApps.Styles.Page}"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="1200">
-    <Page.DataContext>
-        <model:QuantityViewModel/>
-    </Page.DataContext>
+
     <!--<Page.Resources>
         <Style x:Key="CenterGrigHeaderStyle" TargetType="DataGridColumnHeader">
             <Setter Property="HorizontalContentAlignment" Value="Center"/>

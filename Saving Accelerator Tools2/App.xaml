@@ -14,7 +14,7 @@
             <convert:DecimalConvert x:Key="DecimalConvert" />
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Assets/_Images.xaml"/>
-                <ResourceDictionary Source="/Resources/ButtonTemplates.xaml"/>
+                <ResourceDictionary Source="/Resources/ButtonTemplates.xaml" />
                 <ResourceDictionary Source="/Styles/_FontSizes.xaml" />
                 <ResourceDictionary Source="/Styles/_Thickness.xaml" />
                 <ResourceDictionary Source="/Styles/MetroWindow.xaml" />

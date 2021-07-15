@@ -26,6 +26,7 @@ namespace Saving_Accelerator_Tools2.DataBaseServices.Data
         public DbSet<ANC> ANCs { get; set; }
         public DbSet<PNCPlatform> PNCPlatforms { get; set; }
         public DbSet<Currencies> Currencies { get; set; }
+        public DbSet<ConstantVariables> Constants { get; set; }
 
         //Zatwierdzanie danych
         public DbSet<TeamApp> Teams { get; set; }
@@ -132,8 +133,28 @@ namespace Saving_Accelerator_Tools2.DataBaseServices.Data
                 .WithMany(g => g.Users)
                 .HasForeignKey(s => s.DevisionID);
 
+            ApprovalsDB(modelBuilder);
+            ConstantVariablesDb(modelBuilder);
         }
 
+        protected void ConstantVariablesDb(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<ConstantVariables>()
+                .HasKey(e => e.ID);
+
+            modelBuilder.Entity<ConstantVariables>()
+                .Property(e => e.Name)
+                .HasConversion(v => v.ToString(), v => (Constant)Enum.Parse(typeof(Constant), v));
+            modelBuilder.Entity<ConstantVariables>()
+                .Property(e => e.Revision)
+                .HasConversion(v => v.ToString(), v => (Revisions)Enum.Parse(typeof(Revisions), v));
+            modelBuilder.Entity<ConstantVariables>()
+                .Property(e => e.Currency)
+                .HasConversion(v => v.ToString(), v => (Currency)Enum.Parse(typeof(Currency), v));
+            modelBuilder.Entity<ConstantVariables>()
+                .HasOne<Factories>(e => e.Factory)
+                .WithMany(g => g.Constatns);
+        }
         protected void ApprovalsDB(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<TeamApp>()

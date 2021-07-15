@@ -11,6 +11,7 @@
     <None Remove="Assets\add-user.png" />
     <None Remove="Assets\dog.png" />
     <None Remove="Assets\Factory.png" />
+    <None Remove="Assets\infinity.png" />
     <None Remove="Assets\key.png" />
     <None Remove="Assets\letter-t-512.png" />
     <None Remove="Assets\tag.png" />
@@ -42,6 +43,7 @@
     <Resource Include="Assets\add-user.png" />
     <Resource Include="Assets\dog.png" />
     <Resource Include="Assets\Factory.png" />
+    <Resource Include="Assets\infinity.png" />
     <Resource Include="Assets\key.png" />
     <Resource Include="Assets\letter-t-512.png" />
     <Resource Include="Assets\tag.png" />

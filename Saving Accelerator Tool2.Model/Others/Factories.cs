@@ -1,4 +1,5 @@
 ﻿using Saving_Accelerator_Tools2.Model.Data;
+using SavingAcceleratorTools2.ProjectModels.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -26,5 +27,6 @@ namespace Saving_Accelerator_Tools2.Model.Others
         public ICollection<ANC> ANCs { get; set; }
         public ICollection<PNC> PNCs { get; set; }
         public ICollection<PNCPlatform> PNCPlatforms { get; set; }
+        public ICollection<ConstantVariables> Constatns { get; set; }
     }
 }

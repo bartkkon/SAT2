@@ -26,7 +26,10 @@
 
         <StackPanel Grid.Column="1"
                     Grid.Row="1">
-            <Frame Source="ApprovalView.xaml" />
+            <Frame Source="ApprovalView.xaml"
+                   HorizontalAlignment="Left" />
+            <Frame Source="ConstantsView.xaml"  
+                   HorizontalAlignment="Left"/>
         </StackPanel>
         <StackPanel Grid.Row="1"
                     Grid.Column="4">
