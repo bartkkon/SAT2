@@ -1,52 +1,51 @@
-﻿<Page
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:properties="clr-namespace:Saving_Accelerator_Tools2.Properties"
-    xmlns:Action="clr-namespace:Saving_Accelerator_Tools2.Views.Action"
-    xmlns:Admin="clr-namespace:Saving_Accelerator_Tools2.Views.Admin"
-    x:Class="Saving_Accelerator_Tools2.Views.ActionPage"
-    Style="{DynamicResource MahApps.Styles.Page}"
-    mc:Ignorable="d" d:DesignWidth="1900" d:Height="1100" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True">
+﻿<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:properties="clr-namespace:Saving_Accelerator_Tools2.Properties"
+      xmlns:Action="clr-namespace:Saving_Accelerator_Tools2.Views.Action2"
+      xmlns:Admin="clr-namespace:Saving_Accelerator_Tools2.Views.Admin"
+      xmlns:Action1="clr-namespace:Saving_Accelerator_Tools2.Views.Action"
+      x:Class="Saving_Accelerator_Tools2.Views.ActionPage"
+      Style="{DynamicResource MahApps.Styles.Page}"
+      mc:Ignorable="d"
+      d:DesignWidth="1900"
+      d:Height="1100"
+      ScrollViewer.HorizontalScrollBarVisibility="Visible"
+      ScrollViewer.VerticalScrollBarVisibility="Visible"
+      ScrollViewer.CanContentScroll="True">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="330"/>
-            <ColumnDefinition Width="53*"/>
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="48" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <TextBlock
-            Style="{StaticResource PageTitleStyle}"
-            Margin="24,0,0,0"
-            Text="{x:Static properties:Resources.ActionPageTitle}" Grid.ColumnSpan="2" Height="29" />
-        <Grid
-            Grid.Row="1"
-            Background="{DynamicResource MahApps.Brushes.Gray10}" HorizontalAlignment="Center" Width="330">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="330"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Action:MainFilter HorizontalAlignment="Left" Margin="0,0,0,0" />
+        <TextBlock Style="{StaticResource PageTitleStyle}"
+                   Margin="24,0,0,0"
+                   Text="{x:Static properties:Resources.ActionPageTitle}"
+                   Height="29" />
 
-            <!--
-            The Mahapps Gray10 color represents where you should place your content.
-            Place your content here.
-            -->
+        <Grid Grid.Row="1">
+            <DockPanel>
+                <Frame d:DataContext="{d:DesignInstance Type=Action:MainFilterView, IsDesignTimeCreatable=True}"
+                       d:Content="{Binding}"
+                       Source="Action2/MainFilterView.xaml"
+                       VerticalAlignment="Stretch"
+                       DockPanel.Dock="Left" />
+                <Grid Margin="2 0 0 0">
+                    <Border BorderBrush="LightGray"
+                            BorderThickness="1"
+                            CornerRadius="20" />
+                    <StackPanel>
+                        <Frame d:DataContext="{d:DesignInstance Type=Action:GeneralInformationView, IsDesignTimeCreatable=True}"
+                               d:Content="{Binding}"
+                               Source="Action2/GeneralInformationView.xaml"
+                               VerticalAlignment="Stretch" />
+                        <Frame d:DataContext="{d:DesignInstance Type=Action:Test, IsDesignTimeCreatable=True}"
+                               d:Content="{Binding}"
+                               Source="Action2/Test.xaml" />
+                    </StackPanel>
+                </Grid>
+            </DockPanel>
         </Grid>
-        <!--<Action:General_Information Grid.Column="1" HorizontalAlignment="Left" Height="200" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="640"/>
-        <Action:PlatformView Grid.Column="1" HorizontalAlignment="Left" Height="100" Margin="640,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="100"/>
-        <Action:ANCChange Grid.Column="1" HorizontalAlignment="Left" Height="5" Margin="0,185,0,0" Grid.Row="1" VerticalAlignment="Top" Width="5"/>
-        <Action:NavigationButton Margin="760,0,0,695" Grid.Row="1" Grid.Column="1" Height="50" VerticalAlignment="Top" HorizontalAlignment="Right" Width="100"/>
-        <Action:ECCC Grid.Column="1" HorizontalAlignment="Left" Height="85" Margin="740,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="130"/>
-        <Action:QuantityEstymation Grid.Column="1" HorizontalAlignment="Left" Height="65" Margin="740,110,0,0" Grid.Row="1" VerticalAlignment="Top" Width="130" RenderTransformOrigin="0.5,0.5"/>
-        <Action:CalculationBy Grid.Column="1" HorizontalAlignment="Left" Height="140" Margin="870,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="225"/>
-        <Action:PNC Grid.Column="1" HorizontalAlignment="Left" Margin="1070,142,0,0" Grid.Row="1" Width="60"/>
-        <Action:ANCSpecial Grid.Column="1" HorizontalAlignment="Left" Height="13" Margin="982,162,0,0" Grid.Row="1" VerticalAlignment="Top" Width="2"/>
-        <Action:PNCSpecial Grid.Column="1" HorizontalAlignment="Left" Margin="920,135,0,0" Grid.Row="1" Width="540"/>
-        <Action:Tables Grid.Column="1" HorizontalAlignment="Left" Height="185" Margin="0,555,0,0" Grid.Row="1" VerticalAlignment="Top" Width="840"/>
-        <Action:GlobalComment Grid.Column="1" HorizontalAlignment="Left" Height="140" Margin="1095,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="350"/>-->
     </Grid>
 </Page>

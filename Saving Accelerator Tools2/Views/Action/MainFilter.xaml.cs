@@ -35,7 +35,6 @@ namespace Saving_Accelerator_Tools2.Views.Action
     /// </summary>
     public partial class MainFilter : UserControl
     {
-        int count = 0;
         public MainFilter()
         {
             InitializeComponent();

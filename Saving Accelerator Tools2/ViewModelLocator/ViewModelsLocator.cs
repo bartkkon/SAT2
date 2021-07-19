@@ -1,7 +1,9 @@
 ﻿using Autofac;
+using Saving_Accelerator_Tools2.DataBaseIServices.ActionService;
 using Saving_Accelerator_Tools2.DataBaseIServices.Data;
 using Saving_Accelerator_Tools2.DataBaseIServices.Others;
 using Saving_Accelerator_Tools2.DataBaseIServices.Users;
+using Saving_Accelerator_Tools2.DataBaseServices.Action;
 using Saving_Accelerator_Tools2.DataBaseServices.Data;
 using Saving_Accelerator_Tools2.DataBaseServices.Others;
 using Saving_Accelerator_Tools2.DataBaseServices.ProductionData;
@@ -11,6 +13,7 @@ using Saving_Accelerator_Tools2.IServices.File;
 using Saving_Accelerator_Tools2.IServices.MessageBox;
 using Saving_Accelerator_Tools2.IServices.Windows;
 using Saving_Accelerator_Tools2.MessageBoxes;
+using Saving_Accelerator_Tools2.Model.Action;
 using Saving_Accelerator_Tools2.Services;
 using Saving_Accelerator_Tools2.ViewModel.Actions;
 using Saving_Accelerator_Tools2.ViewModel.Others;
@@ -28,6 +31,8 @@ namespace Saving_Accelerator_Tools2.ViewModelLocator
         {
             ContainerBuilder containerBuilder = new ContainerBuilder();
 
+            //UserAcces
+            containerBuilder.RegisterType<LoggedUserService>().As<ILoginUserService>().SingleInstance();
 
             //FileServices
             containerBuilder.RegisterType<FileService>().As<IFileService>();
@@ -72,6 +77,17 @@ namespace Saving_Accelerator_Tools2.ViewModelLocator
             containerBuilder.RegisterType<ApprovalsViewModel>();
             containerBuilder.RegisterType<ConstantVarViewModel>();
 
+            //Action MainFilter
+            containerBuilder.RegisterType<TreeServices>().As<ITreeServices>();
+
+
+            //Action
+            containerBuilder.RegisterType<ActionBase>().SingleInstance();
+
+            //Action tab
+            containerBuilder.RegisterType<GeneralInformationViewModel>();
+            containerBuilder.RegisterType<testviewmodel>();
+
 
             //Extra windows
             containerBuilder.RegisterType<MonthlyQuantityViewModel>();
@@ -81,8 +97,9 @@ namespace Saving_Accelerator_Tools2.ViewModelLocator
             container = containerBuilder.Build();
 
         }
-
+        //Action
         public MainFilterViewModel MainFilterViewModel => container.Resolve<MainFilterViewModel>();
+        public GeneralInformationViewModel GeneralInformationViewModel => container.Resolve<GeneralInformationViewModel>();
 
 
         //Admin Part
@@ -98,5 +115,6 @@ namespace Saving_Accelerator_Tools2.ViewModelLocator
         public CurrencyViewModel CurrencyViewModel => container.Resolve<CurrencyViewModel>();
         public ApprovalsViewModel ApprovalsViewModel => container.Resolve<ApprovalsViewModel>();
         public ConstantVarViewModel ConstantVarViewModel => container.Resolve<ConstantVarViewModel>();
+        public testviewmodel testviewmodel => container.Resolve<testviewmodel>();
     }
 }

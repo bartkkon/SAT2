@@ -1,0 +1,137 @@
+﻿<Page x:Class="Saving_Accelerator_Tools2.Views.Action2.MainFilterView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      DataContext="{Binding Source={StaticResource Locator}, Path=MainFilterViewModel}"
+      xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+      xmlns:local="clr-namespace:Saving_Accelerator_Tools2.Views.Action2"
+      mc:Ignorable="d"
+      d:Height="400">
+    <Page.Resources>
+        <Style TargetType="Label">
+            <Setter Property="Margin"
+                    Value="0 0 0 5" />
+            <Setter Property="FontStyle"
+                    Value="Italic" />
+            <Setter Property="FontWeight"
+                    Value="DemiBold" />
+        </Style>
+    </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="170" />
+            <RowDefinition Height="150*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="60" />
+            <ColumnDefinition Width="210" />
+        </Grid.ColumnDefinitions>
+        <Border BorderBrush="LightGray"
+                BorderThickness="1"
+                CornerRadius="20"
+                Grid.ColumnSpan="2"
+                Grid.RowSpan="2" />
+        <StackPanel HorizontalAlignment="Left"
+                    Margin="10,10,0,3">
+            <Label Content="Status:" />
+            <Label Content="Year:" />
+            <Label Content="Plant:" />
+            <Label Content="Team:" />
+            <Label Content="Leader:" />
+        </StackPanel>
+        <StackPanel Grid.Column="1"
+                    Margin="5,10,5,3">
+            <ComboBox ItemsSource="{Binding Statuses}"
+                      SelectedItem="{Binding StatusSelected}"
+                      Margin="0 0 0 5"
+                      HorizontalContentAlignment="Center"
+                      HorizontalAlignment="Left"
+                      Width="100" />
+            <mah:NumericUpDown Value="{Binding Year}"
+                               Minimum="2018"
+                               Maximum="2100"
+                               Margin="0 0 0 5"
+                               Width="100"
+                               HorizontalAlignment="Left" />
+            <ComboBox ItemsSource="{Binding Factories}"
+                      SelectedItem="{Binding FactorySelected}"
+                      DisplayMemberPath="Plant"
+                      Margin="0 0 0 5"
+                      HorizontalContentAlignment="Center"
+                      HorizontalAlignment="Left"
+                      Width="100" />
+            <ComboBox ItemsSource="{Binding Devisions}"
+                      SelectedItem="{Binding DevisionSelected}"
+                      DisplayMemberPath="Name"
+                      Margin="0 0 0 5"
+                      HorizontalContentAlignment="Center"
+                      HorizontalAlignment="Left"
+                      Width="100" />
+            <ComboBox ItemsSource="{Binding Leaders, Mode=TwoWay}"
+                      SelectedItem="{Binding LeadersSelected}"
+                      DisplayMemberPath="FullName"
+                      Margin="0 0 0 5"
+                      Width="200" />
+        </StackPanel>
+        <Separator Grid.Row="0"
+                   Grid.ColumnSpan="2"
+                   VerticalAlignment="Bottom"
+                   BorderBrush="LightGray"
+                   BorderThickness="1"
+                   Margin="5 0" />
+        <TreeView Grid.Row="1"
+                  Grid.ColumnSpan="2"
+                  Margin="10 5 10 10"
+                  ItemsSource="{Binding TreeData}">
+            <TreeView.ItemContainerStyle>
+                <Style TargetType="TreeViewItem">
+                    <Setter Property="IsExpanded"
+                            Value="True" />
+                    <Setter Property="IsSelected"
+                            Value="{Binding IsSelected, Mode=TwoWay}" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Bold}"
+                                     Value="True">
+                            <Setter Property="FontWeight"
+                                    Value="Bold" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Bold}"
+                                     Value="False">
+                            <Setter Property="FontWeight"
+                                    Value="Normal" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ActualStart}"
+                                     Value="True">
+                            <Setter Property="Foreground"
+                                    Value="Red" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Finish}"
+                                     Value="True">
+                            <Setter Property="Foreground"
+                                    Value="Green" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TreeView.ItemContainerStyle>
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate ItemsSource="{Binding Tree}">
+                            <TextBlock Text="{Binding ActionName}"
+                                       Width="210"
+                                       HorizontalAlignment="Stretch" />
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
+        </TreeView>
+        <Button Height="70"
+                Width="70"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Grid.Column="1"
+                Margin="10"
+                ToolTip="Add New Action"
+                Background="LightGray"
+                Command="{Binding NewActionButton}">
+            <Image Source="{StaticResource PlusImage}" />
+        </Button>
+    </Grid>
+</Page>
