@@ -83,10 +83,10 @@ namespace Saving_Accelerator_Tools2.ViewModelLocator
 
             //Action
             containerBuilder.RegisterType<ActionBase>().SingleInstance();
+            containerBuilder.RegisterType<LoadedActionServices>().As<ILoadedAction>();
 
             //Action tab
             containerBuilder.RegisterType<GeneralInformationViewModel>();
-            containerBuilder.RegisterType<testviewmodel>();
 
 
             //Extra windows
@@ -115,6 +115,5 @@ namespace Saving_Accelerator_Tools2.ViewModelLocator
         public CurrencyViewModel CurrencyViewModel => container.Resolve<CurrencyViewModel>();
         public ApprovalsViewModel ApprovalsViewModel => container.Resolve<ApprovalsViewModel>();
         public ConstantVarViewModel ConstantVarViewModel => container.Resolve<ConstantVarViewModel>();
-        public testviewmodel testviewmodel => container.Resolve<testviewmodel>();
     }
 }

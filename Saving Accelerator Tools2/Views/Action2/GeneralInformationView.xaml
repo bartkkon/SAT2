@@ -4,21 +4,140 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:Saving_Accelerator_Tools2.Views.Action2"
+      xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
       DataContext="{Binding Source={StaticResource Locator}, Path=GeneralInformationViewModel}"
       mc:Ignorable="d"
-      d:DesignHeight="450"
+      d:DesignHeight="200"
       d:DesignWidth="800">
-
+    <Page.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontWeight"
+                    Value="DemiBold" />
+            <Setter Property="FontStyle"
+                    Value="Italic" />
+        </Style>
+    </Page.Resources>
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="27" />
+            <RowDefinition Height="19" />
+            <RowDefinition Height="108" />
+            <RowDefinition Height="19" />
+            <RowDefinition Height="27" />
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="101*" />
-            <ColumnDefinition Width="376*" />
-            <ColumnDefinition Width="323*" />
+            <ColumnDefinition Width="75" />
+            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="20*" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="20*" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="119*" />
+            <ColumnDefinition Width="200" />
         </Grid.ColumnDefinitions>
-
-        <StackPanel Grid.Column="1">
-            <TextBox Text="{Binding LoadedAction.Name}" />
-            <TextBox Text="{Binding LoadedAction.Description}" />
-        </StackPanel>
+        <Label Content="Name:" />
+        <Label Content="Description:"
+               Grid.Row="2" />
+        <Label Content="Tag:"
+               Grid.Row="4" />
+        <Label Content="Status:"
+               Grid.Row="4"
+               Grid.Column="3" />
+        <Label Content="Leader:"
+               Grid.Row="4"
+               Grid.Column="6" />
+        <TextBox Text="{Binding LoadedAction.Name, UpdateSourceTrigger=PropertyChanged}"
+                 Grid.Row="0"
+                 Grid.Column="1"
+                 MaxLength="100"
+                 Grid.ColumnSpan="7" />
+        <TextBox Text="{Binding LoadedAction.Description, UpdateSourceTrigger=PropertyChanged}"
+                 Grid.Row="2"
+                 Grid.Column="1"
+                 AcceptsReturn="True"
+                 AcceptsTab="True"
+                 TextWrapping="Wrap"
+                 MaxLength="1000"
+                 VerticalScrollBarVisibility="Auto"
+                 Grid.ColumnSpan="7" />
+        <TextBlock Text="{Binding LoadedAction.Name.Length, StringFormat=' {0}/100'}"
+                   HorizontalAlignment="Right"
+                   FontWeight="Normal"
+                   Grid.Row="1"
+                   Grid.Column="7"
+                   Foreground="LightGray"
+                   FontStyle="Italic">
+        </TextBlock>
+        <TextBlock Text="{Binding LoadedAction.Description.Length,StringFormat=' {0}/1000'}"
+                   HorizontalAlignment="Right"
+                   FontWeight="Normal"
+                   Grid.Row="3"
+                   Grid.Column="7"
+                   Foreground="LightGray"
+                   FontStyle="Italic" />
+        <ComboBox ItemsSource="{Binding Tags}"
+                  SelectedItem="{Binding LoadedAction.Tag}"
+                  DisplayMemberPath="Name"
+                  Grid.Row="4"
+                  Grid.Column="1" />
+        <ComboBox ItemsSource="{Binding Statuses}"
+                  SelectedItem="{Binding LoadedAction.Status}"
+                  Grid.Row="4"
+                  Grid.Column="4"
+                  Grid.ColumnSpan="2"
+                  Margin="0,0,20,0" />
+        <ComboBox ItemsSource="{Binding Leaders}"
+                  SelectedItem="{Binding LoadedAction.Leader}"
+                  DisplayMemberPath="FullName"
+                  Grid.Row="4"
+                  Grid.Column="7"
+                  Grid.ColumnSpan="2"
+                  Width="200"
+                  HorizontalAlignment="Left" />
+        <Grid Grid.Row="0"
+              Grid.RowSpan="6"
+              Grid.Column="8"
+              Margin="10,0,10,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80" />
+                <ColumnDefinition Width="100" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0">
+                <Label Content="Action ID:" />
+                <Label Content="Start Year:"
+                       Margin="0 5" />
+                <Label Content="Start Month:" />
+                <Label Content="Team:"
+                       Margin=" 0 5" />
+                <Label Content="Plant:" />
+            </StackPanel>
+            <StackPanel Grid.Column="1">
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Text="{Binding LoadedAction.ActionID}"
+                             Width="40" />
+                    <Label Content="/"
+                           Width="20"
+                           HorizontalContentAlignment="Center" />
+                    <TextBox Text="{Binding LoadedAction.ID}"
+                             Width="40" />
+                </StackPanel>
+                <mah:NumericUpDown Value="{Binding LoadedAction.Year}"
+                                   Minimum="2018"
+                                   Maximum="2100"
+                                   Margin="0 5">
+                </mah:NumericUpDown>
+                <ComboBox ItemsSource="{Binding Months}"
+                          SelectedItem="{Binding LoadedAction.Month}" />
+                <ComboBox ItemsSource="{Binding Devisions}"
+                          SelectedItem="{Binding LoadedAction.Devision}"
+                          SelectedIndex="{Binding DevisionChange}"
+                          DisplayMemberPath="Name"
+                          Margin="0 5" />
+                <ComboBox ItemsSource="{Binding Plants}"
+                          SelectedItem="{Binding PlantSelected}"
+                          DisplayMemberPath="Plant" />
+            </StackPanel>
+        </Grid>
     </Grid>
 </Page>

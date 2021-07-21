@@ -35,14 +35,10 @@
                     <Border BorderBrush="LightGray"
                             BorderThickness="1"
                             CornerRadius="20" />
-                    <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5 5">
                         <Frame d:DataContext="{d:DesignInstance Type=Action:GeneralInformationView, IsDesignTimeCreatable=True}"
                                d:Content="{Binding}"
-                               Source="Action2/GeneralInformationView.xaml"
-                               VerticalAlignment="Stretch" />
-                        <Frame d:DataContext="{d:DesignInstance Type=Action:Test, IsDesignTimeCreatable=True}"
-                               d:Content="{Binding}"
-                               Source="Action2/Test.xaml" />
+                               Source="Action2/GeneralInformationView.xaml" />
                     </StackPanel>
                 </Grid>
             </DockPanel>

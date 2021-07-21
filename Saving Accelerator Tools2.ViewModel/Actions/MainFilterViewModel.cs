@@ -1,6 +1,7 @@
 ﻿using Saving_Accelerator_Tools2.DataBaseIServices.ActionService;
 using Saving_Accelerator_Tools2.DataBaseIServices.Others;
 using Saving_Accelerator_Tools2.DataBaseIServices.Users;
+using Saving_Accelerator_Tools2.Model.Action;
 using Saving_Accelerator_Tools2.Model.ActionCriteria;
 using Saving_Accelerator_Tools2.Model.Others;
 using Saving_Accelerator_Tools2.ViewModel.Helpers;
@@ -23,13 +24,16 @@ namespace Saving_Accelerator_Tools2.ViewModel.Actions
                                    IFactoriesServices factoriesServices,
                                    IDevisionServices devisionServices,
                                    ILeadersServices leadersServices,
-                                   ITreeServices treeServices)
+                                   ITreeServices treeServices, 
+                                   ActionBase LoadedAction, ILoadedAction actionService)
         {
             this.LoggedUser = LoggedUser;
             this.factoriesServices = factoriesServices;
             this.devisionServices = devisionServices;
             this.leadersServices = leadersServices;
             this.treeServices = treeServices;
+            loadedAction = LoadedAction;
+            this.actionService = actionService;
             NewActionButton = new RelayCommand(NewAction);
 
             InitialData();
@@ -81,6 +85,8 @@ namespace Saving_Accelerator_Tools2.ViewModel.Actions
         private readonly IDevisionServices devisionServices;
         private readonly ILeadersServices leadersServices;
         private readonly ITreeServices treeServices;
+        private ActionBase loadedAction;
+        private readonly ILoadedAction actionService;
         private decimal year;
 
         public ObservableCollection<ActionTree> TreeData
@@ -185,7 +191,9 @@ namespace Saving_Accelerator_Tools2.ViewModel.Actions
 
         private void NewAction()
         {
-
+            Mouse.OverrideCursor = Cursors.Wait;
+            actionService.New();
+            Mouse.OverrideCursor = default;
         }
         private void ReloadLeader()
         {

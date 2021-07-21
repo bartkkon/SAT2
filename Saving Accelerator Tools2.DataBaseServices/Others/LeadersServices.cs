@@ -53,6 +53,11 @@ namespace Saving_Accelerator_Tools2.DataBaseServices.Others
             return leaders.ToList();
         }
 
+        public Leaders Get(string name, string surname)
+        {
+            return connection.Leaders.FirstOrDefault(n => n.Name == name && n.Surname == surname);
+        }
+
         public void Update(Leaders updateLeader)
         {
             connection.Leaders.Update(updateLeader);

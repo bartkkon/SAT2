@@ -14,5 +14,6 @@ namespace Saving_Accelerator_Tools2.DataBaseIServices.Others
         public ICollection<Leaders> Get();
         public ICollection<Leaders> Get(bool active);
         public ICollection<Leaders> Get(LeadersSearchCriteria criteria);
+        public Leaders Get(string name, string surname);
     }
 }
