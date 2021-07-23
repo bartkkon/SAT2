@@ -3,6 +3,7 @@ using Saving_Accelerator_Tools2.DataBaseIServices.Others;
 using Saving_Accelerator_Tools2.DataBaseIServices.Users;
 using Saving_Accelerator_Tools2.DataBaseServices.Data;
 using Saving_Accelerator_Tools2.Model.Action;
+using Saving_Accelerator_Tools2.Model.Action.Sub;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,6 +35,7 @@ namespace Saving_Accelerator_Tools2.DataBaseServices.Action
             {
                 Devision = loginUser.Get().Devision,
                 Leader = leadersServices.Get(loginUser.Get().Name, loginUser.Get().Surname),
+                Platforms = new List<Platform>(),
             };
             PropertyCopier<ActionBase, ActionBase>.Copy(NewRecord, loadedAction);
         }

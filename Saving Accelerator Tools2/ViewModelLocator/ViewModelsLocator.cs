@@ -87,6 +87,8 @@ namespace Saving_Accelerator_Tools2.ViewModelLocator
 
             //Action tab
             containerBuilder.RegisterType<GeneralInformationViewModel>();
+            containerBuilder.RegisterType<PlatformViewModel>();
+            containerBuilder.RegisterType<ANCChangeViewModel>();
 
 
             //Extra windows
@@ -100,6 +102,8 @@ namespace Saving_Accelerator_Tools2.ViewModelLocator
         //Action
         public MainFilterViewModel MainFilterViewModel => container.Resolve<MainFilterViewModel>();
         public GeneralInformationViewModel GeneralInformationViewModel => container.Resolve<GeneralInformationViewModel>();
+        public PlatformViewModel PlatformViewModel => container.Resolve<PlatformViewModel>();
+        public ANCChangeViewModel ANCChangeViewModel => container.Resolve<ANCChangeViewModel>();
 
 
         //Admin Part
@@ -115,5 +119,6 @@ namespace Saving_Accelerator_Tools2.ViewModelLocator
         public CurrencyViewModel CurrencyViewModel => container.Resolve<CurrencyViewModel>();
         public ApprovalsViewModel ApprovalsViewModel => container.Resolve<ApprovalsViewModel>();
         public ConstantVarViewModel ConstantVarViewModel => container.Resolve<ConstantVarViewModel>();
+
     }
 }

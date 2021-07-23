@@ -35,11 +35,22 @@
                     <Border BorderBrush="LightGray"
                             BorderThickness="1"
                             CornerRadius="20" />
-                    <StackPanel Orientation="Horizontal" Margin="5 5">
+                    <DockPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5 5" DockPanel.Dock="Top">
                         <Frame d:DataContext="{d:DesignInstance Type=Action:GeneralInformationView, IsDesignTimeCreatable=True}"
                                d:Content="{Binding}"
                                Source="Action2/GeneralInformationView.xaml" />
+                        <Frame d:DataContext="{d:DesignInstance Type=Action:PlatformView, IsDesignTimeCreatable=True}"
+                               d:Content="{Binding}"
+                               Source="Action2/PlatformView.xaml" />
                     </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    Margin="5 0">
+                            <Frame d:DataContext="{d:DesignInstance Type=Action:ANCChangeView, IsDesignTimeCreatable=True}"
+                                   d:Content="{Binding}"
+                                   Source="Action2/ANCChangeView.xaml" />
+                        </StackPanel>
+                    </DockPanel>
                 </Grid>
             </DockPanel>
         </Grid>

@@ -12,7 +12,7 @@ namespace Saving_Accelerator_Tools2.DataBaseIServices.Data
     {
         public void Set(ICollection<StandardCost> newList);
         public void UpdateFromReport(Factories factory);
-        public StandardCost Get(string item, decimal year);
+        public StandardCost Get(string item, decimal year, Factories factory);
         public ICollection<StandardCost> Get(decimal year);
         public ICollection<StandardCost> Get(ICollection<string> items, decimal year);
         public void Clear(decimal year);

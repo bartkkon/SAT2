@@ -12,6 +12,7 @@
         <ResourceDictionary>
             <vml:ViewModelsLocator x:Key="Locator"/>
             <convert:DecimalConvert x:Key="DecimalConvert" />
+            <convert:ColorConvert x:Key="ColorConvert" />
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Assets/_Images.xaml"/>
                 <ResourceDictionary Source="/Resources/ButtonTemplates.xaml" />

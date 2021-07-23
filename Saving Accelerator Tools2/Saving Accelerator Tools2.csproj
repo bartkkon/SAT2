@@ -14,6 +14,7 @@
     <None Remove="Assets\infinity.png" />
     <None Remove="Assets\key.png" />
     <None Remove="Assets\letter-t-512.png" />
+    <None Remove="Assets\minus.png" />
     <None Remove="Assets\tag.png" />
     <None Remove="Assets\User.png" />
     <None Remove="Views\Action\pobrane.png" />
@@ -29,6 +30,7 @@
     <PackageReference Include="Prism.Core" Version="8.1.97" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Saving Accelerator Tool2.Model\Saving Accelerator Tools2.Model.csproj" />
     <ProjectReference Include="..\Saving Accelerator Tools2.Core\Saving Accelerator Tools2.Core.csproj" />
     <ProjectReference Include="..\Saving Accelerator Tools2.DataBaseIServices\Saving Accelerator Tools2.DataBaseIServices.csproj" />
     <ProjectReference Include="..\Saving Accelerator Tools2.DataBaseServices\Saving Accelerator Tools2.DataBaseServices.csproj" />
@@ -46,6 +48,7 @@
     <Resource Include="Assets\infinity.png" />
     <Resource Include="Assets\key.png" />
     <Resource Include="Assets\letter-t-512.png" />
+    <Resource Include="Assets\minus.png" />
     <Resource Include="Assets\tag.png" />
     <Resource Include="Assets\User.png" />
     <Resource Include="Views\Action\pobrane.png" />

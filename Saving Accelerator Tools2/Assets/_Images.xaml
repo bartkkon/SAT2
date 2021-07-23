@@ -19,4 +19,6 @@
                  UriSource="/Assets/key.png" />
     <BitmapImage x:Key="InfinityImage"
                  UriSource="/Assets/infinity.png" />
+    <BitmapImage x:Key="MinusImage"
+                 UriSource="/Assets/minus.png" />
 </ResourceDictionary>

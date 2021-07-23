@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Win32;
 using Saving_Accelerator_Tools2.DataBaseIServices.Data;
 using Saving_Accelerator_Tools2.DataBaseIServices.Users;
 using Saving_Accelerator_Tools2.DataBaseServices.Data;
@@ -55,9 +56,9 @@ namespace Saving_Accelerator_Tools2.DataBaseServices.ProductionData
             connection.SaveChanges();
         }
 
-        public StandardCost Get(string item, decimal year)
+        public StandardCost Get(string item, decimal year, Factories factory)
         {
-            return connection.StandardCosts.Where(d => d.Item == item && d.Year == year).FirstOrDefault();
+            return connection.StandardCosts.Include(fac =>fac.Factory).FirstOrDefault(d => d.Item == item && d.Year == year);
         }
 
         public ICollection<StandardCost> Get(decimal year)
