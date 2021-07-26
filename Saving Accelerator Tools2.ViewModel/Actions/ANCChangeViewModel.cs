@@ -2,6 +2,7 @@
 using Saving_Accelerator_Tools2.Model.Action;
 using Saving_Accelerator_Tools2.Model.Action.Sub;
 using Saving_Accelerator_Tools2.ViewModel.Helpers;
+using SavingAcceleratorTools2.ProjectModels.Action;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -9,6 +10,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Saving_Accelerator_Tools2.ViewModel.Actions
@@ -105,9 +107,14 @@ namespace Saving_Accelerator_Tools2.ViewModel.Actions
             }
         }
 
-        private void LoadedAction_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void LoadedAction_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-
+            if(e.PropertyName == nameof(ActionBase.Calculation))
+            {
+                SumVisibility = (sender as ActionBase).Calculation is CalculationMethod.Mix or CalculationMethod.PNC
+                    ? Visibility.Visible
+                    : Visibility.Collapsed;
+            }
         }
 
         public ActionBase LoadedAction { get => loadedAction; set { loadedAction = value; OnPropertyChange(); } }
@@ -117,6 +124,10 @@ namespace Saving_Accelerator_Tools2.ViewModel.Actions
         private decimal deltaSum;
         private decimal estymationSum;
         private decimal calculationSum;
+        private Visibility sumVisibility = Visibility.Collapsed;
+
+        public Visibility SumVisibility { get => sumVisibility; set { sumVisibility = value; OnPropertyChange(); } }
+
 
         public decimal CalculationSum { get => calculationSum; set { calculationSum = value; OnPropertyChange(); } }
         public decimal EstymationSum { get => estymationSum; set { estymationSum = value; OnPropertyChange(); } }

@@ -19,6 +19,7 @@ using Saving_Accelerator_Tools2.ViewModel.Actions;
 using Saving_Accelerator_Tools2.ViewModel.Others;
 using Saving_Accelerator_Tools2.ViewModel.Users;
 using Saving_Accelerator_Tools2.ViewModel.Windows;
+using Saving_Accelerator_Tools2.ViewModels.BaseOriginProgram;
 using SavingAcceleratorTools2.MailServices;
 
 namespace Saving_Accelerator_Tools2.ViewModelLocator
@@ -86,9 +87,12 @@ namespace Saving_Accelerator_Tools2.ViewModelLocator
             containerBuilder.RegisterType<LoadedActionServices>().As<ILoadedAction>();
 
             //Action tab
+            containerBuilder.RegisterType<ActionViewModel>();
             containerBuilder.RegisterType<GeneralInformationViewModel>();
             containerBuilder.RegisterType<PlatformViewModel>();
             containerBuilder.RegisterType<ANCChangeViewModel>();
+            containerBuilder.RegisterType<CalculationViewModel>();
+            containerBuilder.RegisterType<PNCViewModel>();
 
 
             //Extra windows
@@ -100,10 +104,13 @@ namespace Saving_Accelerator_Tools2.ViewModelLocator
 
         }
         //Action
+        public ActionViewModel ActionViewModel => container.Resolve<ActionViewModel>();
         public MainFilterViewModel MainFilterViewModel => container.Resolve<MainFilterViewModel>();
         public GeneralInformationViewModel GeneralInformationViewModel => container.Resolve<GeneralInformationViewModel>();
         public PlatformViewModel PlatformViewModel => container.Resolve<PlatformViewModel>();
         public ANCChangeViewModel ANCChangeViewModel => container.Resolve<ANCChangeViewModel>();
+        public CalculationViewModel CalculationViewModel => container.Resolve<CalculationViewModel>();
+        public PNCViewModel PNCViewModel => container.Resolve<PNCViewModel>();
 
 
         //Admin Part

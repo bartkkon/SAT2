@@ -7,6 +7,7 @@
       xmlns:Admin="clr-namespace:Saving_Accelerator_Tools2.Views.Admin"
       xmlns:Action1="clr-namespace:Saving_Accelerator_Tools2.Views.Action"
       x:Class="Saving_Accelerator_Tools2.Views.ActionPage"
+      DataContext="{Binding Source={StaticResource Locator}, Path=ActionViewModel}"
       Style="{DynamicResource MahApps.Styles.Page}"
       mc:Ignorable="d"
       d:DesignWidth="1900"
@@ -36,20 +37,26 @@
                             BorderThickness="1"
                             CornerRadius="20" />
                     <DockPanel>
-                    <StackPanel Orientation="Horizontal" Margin="5 5" DockPanel.Dock="Top">
-                        <Frame d:DataContext="{d:DesignInstance Type=Action:GeneralInformationView, IsDesignTimeCreatable=True}"
-                               d:Content="{Binding}"
-                               Source="Action2/GeneralInformationView.xaml" />
-                        <Frame d:DataContext="{d:DesignInstance Type=Action:PlatformView, IsDesignTimeCreatable=True}"
-                               d:Content="{Binding}"
-                               Source="Action2/PlatformView.xaml" />
-                    </StackPanel>
                         <StackPanel Orientation="Horizontal"
-                                    Margin="5 0">
+                                    Margin="5 5"
+                                    DockPanel.Dock="Top">
+                            <Frame d:DataContext="{d:DesignInstance Type=Action:GeneralInformationView, IsDesignTimeCreatable=True}"
+                                   d:Content="{Binding}"
+                                   Source="Action2/GeneralInformationView.xaml" />
+                            <Frame d:DataContext="{d:DesignInstance Type=Action:PlatformView, IsDesignTimeCreatable=True}"
+                                   d:Content="{Binding}"
+                                   Source="Action2/PlatformView.xaml" />
+                            <Frame d:DataContext="{d:DesignInstance Type=Action:CalculationView, IsDesignTimeCreatable=True}"
+                                   d:Content="{Binding}"
+                                   Source="Action2/CalculationView.xaml" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    Margin="5 0" DockPanel.Dock="Left">
                             <Frame d:DataContext="{d:DesignInstance Type=Action:ANCChangeView, IsDesignTimeCreatable=True}"
                                    d:Content="{Binding}"
                                    Source="Action2/ANCChangeView.xaml" />
                         </StackPanel>
+                        <Frame  Source="{Binding CalculationMethodPage}"/>
                     </DockPanel>
                 </Grid>
             </DockPanel>

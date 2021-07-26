@@ -1,6 +1,8 @@
-﻿using Saving_Accelerator_Tools2.Model.Action.Sub;
+﻿using Saving_Accelerator_Tools2.Model.Action.InterTables;
+using Saving_Accelerator_Tools2.Model.Action.Sub;
 using Saving_Accelerator_Tools2.Model.Helpers;
 using Saving_Accelerator_Tools2.Model.Others;
+using SavingAcceleratorTools2.ProjectModels.Action;
 using SavingAcceleratorTools2.ProjectModels.Data;
 using SavingAcceleratorTools2.ProjectModels.Helpers;
 using System;
@@ -28,7 +30,9 @@ namespace Saving_Accelerator_Tools2.Model.Action
         private DateTime changeTime;
         private bool active = true;
         private ICollection<Platform> platforms;
+        private CalculationMethod calculation = CalculationMethod.ANC;
         private ObservableCollection<ANCChange> aNCChanges;
+        private ObservableCollection<PNC_InterTable> pNCs = new ObservableCollection<PNC_InterTable>();
 
         public int ID { get => iD; set { iD = value; OnPropertyChange(); } }
         public int ActionID { get => actionID; set { actionID = value; OnPropertyChange(); } }
@@ -43,9 +47,20 @@ namespace Saving_Accelerator_Tools2.Model.Action
         public string ChangeBy { get => changeBy; set { changeBy = value; OnPropertyChange(); } }
         public DateTime ChangeTime { get => changeTime; set { changeTime = value; OnPropertyChange(); } }
         public bool Active { get => active; set { active = value; OnPropertyChange(); } }
+        public CalculationMethod Calculation { get => calculation; set { calculation = value; OnPropertyChange(); } }
 
         public ICollection<Platform> Platforms { get => platforms; set { platforms = value; OnPropertyChange(); } }
         public ObservableCollection<ANCChange> ANCChanges { get => aNCChanges;
             set { aNCChanges = value; OnPropertyChange(); } }
+
+        public ObservableCollection<PNC_InterTable> PNCs
+        {
+            get => pNCs;
+            set
+            {
+                pNCs = value;
+                OnPropertyChange();
+            }
+        }
     }
 }

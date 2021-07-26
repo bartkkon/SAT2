@@ -7,11 +7,9 @@ namespace Saving_Accelerator_Tools2.Views
 {
     public partial class ActionPage : Page
     {
-        public ActionPage(ActionViewModel viewModel)
+        public ActionPage()
         {
             InitializeComponent();
-            //var Action = new ActionModel();
-            DataContext = viewModel;
         }
     }
 }
